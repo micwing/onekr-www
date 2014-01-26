@@ -39,7 +39,7 @@
 	<beans profile="pro">
 		<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 			destroy-method="close">
-			<property name="driverClass" value="${jdbc.driverClassName}" />
+			<property name="driverClass" value="com.mysql.jdbc.Driver" />
 			
 			<property name="jdbcUrl" value="jdbc:mysql://#{systemEnvironment.OPENSHIFT_MYSQL_DB_HOST}:#{systemEnvironment.OPENSHIFT_MYSQL_DB_PORT}/onekr??useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true"/>
 			<property name="username" value="#{systemEnvironment.OPENSHIFT_MYSQL_DB_USERNAME}"/>

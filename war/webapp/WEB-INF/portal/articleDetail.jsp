@@ -209,7 +209,7 @@
                                         <div class="span8">
                                             <label for="name"><span>验证码:</span></label>
                                             <div class="input">
-                                                <input id="name" name="userName" type="text" value="" class="input-xlarge" style="width: 175px">
+                                                <input name="paptcha" type="text" value="" class="input-xlarge" style="width: 175px">
                                                 &nbsp;
                                                 <img id="verifyCode" src="/verifyCode/verifyCode.jpg" alt="验证码" title="如果验证码图片无效或看不清楚，请点击换一个验证码。" style="cursor: pointer;height: 50px" onclick="this.src=this.src+'?'+Math.random()"/>
                                             </div>

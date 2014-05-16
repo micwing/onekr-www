@@ -55,7 +55,7 @@ String suffix = (String) request.getAttribute("suffix");
 	                       				
 	                       				<select id="atype" name="atype" style="width: 100px;;margin-bottom: 8px">
 	                       					<option value="PINYINZIDIAN" ${atype=='PINYINZIDIAN'?'checked':''}>拼音字典</option>
-	                       					<option value="PINYINPINGYIN" ${atype=='PINYINPINGYIN'?'checked':''}>双拼音拼音字典</option>
+	                       					<%-- <option value="PINYINPINGYIN" ${atype=='PINYINPINGYIN'?'checked':''}>双拼音拼音字典</option> --%>
 	                       					<option value="1PINYIN" ${atype=='1PINYIN'?'selected':''}>1位拼音</option>
 	                       					<option value="2PINYIN" ${atype=='2PINYIN'?'selected':''}>2位拼音</option>
 	                       					<option value="3PINYIN" ${atype=='3PINYIN'?'selected':''}>3位拼音</option>

@@ -61,6 +61,12 @@ public class ArticleController extends BaseController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView search() {
+		ModelAndView mav = new ModelAndView("redirect:/article");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/search/{keys}", method = RequestMethod.GET)
 	public ModelAndView search(@PathVariable("keys") String keys) {
 		ModelAndView mav = new ModelAndView(PORTAL+"articleSearch");

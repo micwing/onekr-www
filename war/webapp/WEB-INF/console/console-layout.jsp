@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@include file="common/includes.jsp" %>
+<%@include file="../common/includes.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,8 +13,8 @@
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       body {
-        padding-top: 60px;
-        padding-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
       }
     </style>
     <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -44,9 +44,9 @@
 
   <body>
 
-	<tiles:insertAttribute name="topbar"/>
-
     <div class="container">
+    	<tiles:insertAttribute name="topbar"/>
+    	
       <div class="row">
         <div class="span3">
         	<tiles:insertAttribute name="navbar"/>
@@ -64,7 +64,7 @@
 
 	  <tiles:insertAttribute name="footer"/>
 
-    </div><!--/.fluid-container-->
+    </div>
 
   </body>
 </html>

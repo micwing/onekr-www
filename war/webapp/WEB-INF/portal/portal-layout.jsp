@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@include file="common/includes.jsp" %>
+<%@include file="../common/includes.jsp" %>
 <!DOCTYPE html>
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
     <head>

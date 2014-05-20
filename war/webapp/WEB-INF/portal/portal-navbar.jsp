@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@include file="common/includes.jsp" %>
+<%@include file="../common/includes.jsp" %>
         <div class="navbar-wrapper" >
         	<!-- <div class="navbar navbar-static-top " id="navigation"> -->
             <div class="navbar navbar-static-top navbar-inverse" id="navigation">

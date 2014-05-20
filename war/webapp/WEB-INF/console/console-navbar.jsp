@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@include file="common/includes.jsp" %>
+<%@include file="../common/includes.jsp" %>
 <div class="well sidebar-nav">
 	<ul class="nav nav-list">
 		<li class="nav-header">首页</li>

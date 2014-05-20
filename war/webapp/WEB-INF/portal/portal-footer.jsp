@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@include file="common/includes.jsp" %>
+<%@include file="../common/includes.jsp" %>
         
 		<!--################ PUSH WILL KEEP THE FOOTER AT BOTTOM IF YOU WANT TO CREATE OTHER PAGES ################-->
         <div id="push"></div>

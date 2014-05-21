@@ -1,71 +1,69 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp" %>
-        <div id="wrap">
 
-            <!--################ HEADER START ################-->
-
-            <header class="page-title">
+            <header>
                 <div class="container">
                     <h2>关于</h2>
                 </div>
             </header>
-            <section class="single-blog">
+            <section>
                 <div class="container">
                     <div class="row">
 
-
                         <div class="span8">
-
-
-                            <div class="post-image">
-                                <img src="/assets/images/sky1.jpg" alt="">
-                                <div class="blog-date">
-                                    <h3 class="big-h2-heading" style="text-align: right;">我要像梦一样自由 像大地一样宽容<br>在这艰辛放逐的路上 点亮生命的光芒</h3>
-
-                                </div>
+                            <div>
+                                <img src="/assets/images/sky1.jpg" alt="image">
                             </div>
-                            <div class="blog-post-title">
-                                <h3>我是迈克，一位Java软件工程师</h3>
-                            </div>
-
-
-                            <div class="single-blog-meta">
-                            	<p class="author">Hi, I'm Michael.</p>
-                                <div class="socials">
-                                	<div style="float: left;margin-right: 10px;">
-                                	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:4990617:51" alt="QQ交谈" title="QQ交谈"/></a>
-                                	</div>
-                                	<div style="float: left;padding-top: 1px;">
-	                            	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-	                            	<wb:follow-button uid="1374641762" type="red_1" width="67" height="24" ></wb:follow-button>
-                                	</div>
-                                </div>
+                            <div class="pull-right" style="margin-top: 15px">
+                              	<div style="float: left;margin-right: 10px;">
+                              	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:4990617:51" alt="QQ交谈" title="QQ交谈"/></a>
+                              	</div>
+                              	<div style="float: left;padding-top: 1px;">
+	                           	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+	                           	<wb:follow-button uid="1374641762" type="red_1" width="67" height="24" ></wb:follow-button>
+                              	</div>
                             </div>
 
-                            <div class="post-content">
-                            	<p>简介：</p>
-                            	
-                            	<p>male</p>
-                            	<p>married</p>
+                            <div>
+                            	<h3>我，一位Java软件工程师</h3>
+                            	<p>男性</p>
+                            	<p>已婚</p>
                             	<p>176cm</p>
-                            	<p>70kg</p>
+                            	<p>75kg</p>
+                            	<p>江苏徐州人</p>
+                                <p>定居南京</p>
+                                <br>
+                                
                                 <p>本科</p>
-                                <p>工作4年</p>
-                                <p>南京</p>
-                                <p>J2EE</p>
-                                <p>技能看右边 →</p>
+                                <p>学士学位</p>
+                                <p>计算机相关专业</p>
+                                <p>CET4</p>
+                                <br>
                                 
-                                <p><br/></p>
+                                <p>工作5年</p>
+                                <p>参与设计开发多个大中型B/S项目</p>
+                                <p>擅长J2EE</p>
+                                <p>具体技能看右边 →</p>
+                                <br/>
                                 
-                                <p>一刻工作室onekr.com 是偶业余时间练手的小项目，欢迎一起交流探讨技术</p>
+                                <h3>ONEKR.com一刻工作室，是我业余时间练手的小项目</h3>
+                                <p>域名注册<a href="http://www.godaddy.com" target="_blank">godaddy</a></p>
+                                <p>项目运行在<a href="http://www.openshift.com" target="_blank">openshift</a>提供的云服务器</p>
+                                <p>源代码托管<a href="http://www.github.com" target="_blank">github</a></p>
+                                <p>使用<a href="http://www.cloudflare.com" target="_blank">cloudflare</a>提供的CDN服务</p>
+                                <p>语言java,jsp,html,javascript,css</p>
+                                <p>数据库mysql</p>
+                                <p>构建maven</p>
+                                <p>服务端spring,springmvc,hibernate,jpa,slf4j,logback,tiles,shiro,freemarker,ehcache,lucene等</p>
+                                <p>前端jquery,json,ajax,bootstrap,kindeditor,validate,syntaxhighlighter等</p>
                             </div>
                             
                         </div>
 
 
                         <div class="span4">  
-                            <div class="sidebar">
-                                <div class="widget">
+                            <div class="well">
+                                <div>
                                     <h4>我的 语言/技能 熟练度</h4>
 
                                     <strong>Java</strong><span class="pull-right">80%</span>
@@ -110,7 +108,7 @@
 
                                 </div>
 
-                                <div class="widget">
+                                <div>
                                     <h4>我的 框架/设计 熟练度</h4>
 
                                     <strong>Spring Framework</strong><span class="pull-right">80%</span>
@@ -155,7 +153,7 @@
 
                                 </div>
                                 
-                                <div class="widget">
+                                <div>
                                     <h4>我的 工具/软件 熟练度</h4>
 
                                     <strong>Eclipse / SpringSource Tool Suite</strong><span class="pull-right">80%</span>
@@ -218,20 +216,20 @@
                 </div>
             </section>
 
-			<section class="single-blog rev last">
+			<section>
 				<div class="container">
 					<div class="row">
-						<div class="span12">
-							<h1 class="center">我在这里</h1>
-						    <p class="description center">中国江苏省南京市鼓楼区山西路世贸中心大厦</p>
-						    <br>
-							<div class="map">
-							  <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://ditu.google.com/maps?q=32.065444,118.769824&amp;num=1&amp;brcurrent=3,0x35b58c89543e056d:0x90fed8de229d571f,0,0x35b58db1f42769b1:0xfd70470a946111b8%3B5,0,0&amp;ie=UTF8&amp;t=m&amp;z=14&amp;ll=32.06544,118.769827&amp;output=embed"></iframe>
-					        </div>
-					         <br>
+						<div class="span12 ">
+							<div class="well">
+								<h1>我在这里</h1>
+							    <p>中国江苏省南京市江宁区</p>
+							    <br>
+								<div class="map">
+									<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=zh-CN&amp;geocode=&amp;q=%E4%B8%AD%E5%9B%BD%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E6%B1%9F%E5%AE%81%E5%8C%BA%E8%83%9C%E5%A4%AA%E8%B7%AF&amp;aq=0&amp;oq=%E8%83%9C%E5%A4%AA%E8%B7%AF%E5%9C%B0%E9%93%81&amp;sll=31.943787,118.817482&amp;sspn=0.025819,0.045447&amp;gl=US&amp;ie=UTF8&amp;hq=&amp;hnear=%E4%B8%AD%E5%9B%BD%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E6%B1%9F%E5%AE%81%E5%8C%BA%E8%83%9C%E5%A4%AA%E8%B7%AF&amp;t=m&amp;z=14&amp;ll=31.944376,118.814047&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=zh-CN&amp;geocode=&amp;q=%E4%B8%AD%E5%9B%BD%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E6%B1%9F%E5%AE%81%E5%8C%BA%E8%83%9C%E5%A4%AA%E8%B7%AF&amp;aq=0&amp;oq=%E8%83%9C%E5%A4%AA%E8%B7%AF%E5%9C%B0%E9%93%81&amp;sll=31.943787,118.817482&amp;sspn=0.025819,0.045447&amp;gl=US&amp;ie=UTF8&amp;hq=&amp;hnear=%E4%B8%AD%E5%9B%BD%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E6%B1%9F%E5%AE%81%E5%8C%BA%E8%83%9C%E5%A4%AA%E8%B7%AF&amp;t=m&amp;z=14&amp;ll=31.944376,118.814047" style="color:#0000FF;text-align:left">查看大图</a></small>
+						        </div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
-        </div>

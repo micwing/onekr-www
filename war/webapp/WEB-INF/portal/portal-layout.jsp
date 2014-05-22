@@ -46,14 +46,7 @@
 	    <!-- Le styles -->
 	    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
-	    <style type="text/css">
-	      body {
-	        padding-top: 20px;
-	        padding-bottom: 20px;
-	        font-family: "Microsoft YaHei","微软雅黑","SimSun","宋体","sans-serif";
-	        font-size: 13px;
-	      }
-	    </style>
+	    <link href="/assets/css/site.css" rel="stylesheet">
 	
 	    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	    <!--[if lt IE 9]>
@@ -63,6 +56,7 @@
 	    <script src="/assets/js/jquery.js"></script>
 	    <script src="/assets/js/bootstrap.min.js"></script>
 	    <script src="/assets/js/respond.min.js"></script>
+	    
 	    <script src="/assets/js/jquery.json.js"></script>
 	    
 	    <script src="/assets/js/validate/jquery.validate.js" type="text/javascript"></script>

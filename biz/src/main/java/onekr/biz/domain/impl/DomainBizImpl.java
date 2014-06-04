@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import net.sourceforge.pinyin4j.PinyinHelper;
 import onekr.biz.common.intf.ConfigBiz;
+import onekr.biz.domain.dao.DomainSpecificDao;
 import onekr.biz.domain.dto.DomainDto;
 import onekr.biz.domain.intf.DomainBiz;
 import onekr.biz.model.Config;
@@ -24,11 +24,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class DomainBizImpl implements DomainBiz,InitializingBean {
 	private Map<String, DomainSeach> domainSeacherMap;
 	@Autowired
 	private ConfigBiz configBiz;
+	@Autowired
+	private DomainSpecificDao domainSpecificDao;
 	
 	@Qualifier("PandaDomainSeacher")
 	@Autowired
@@ -53,6 +56,26 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 		domainSeacherMap.put(GlobalConstants.DOMAIN_QIUYUMI_DOMAIN_SEACHER, qiuyumiDomainSeacher);
 		domainSeacherMap.put(GlobalConstants.DOMAIN_WWW_WHOIS_COM_SEACHER, wwwWhoisDomainSeacher);
 		domainSeacherMap.put(GlobalConstants.DOMAIN_INTERNIC_SEACHER, internicDomainSeacher);
+	}
+	
+	private DomainSeach getJudgeSearcher() {
+		Config config = configBiz.findConfig(
+				GlobalConstants.BIZ_SYSTEM, GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME);
+		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
+		if (config != null) {
+			seacherName = config.getValue();
+		}
+		return domainSeacherMap.get(seacherName);
+	}
+	
+	private DomainSeach getWhoisSearcher() {
+		Config config = configBiz.findConfig(
+				GlobalConstants.BIZ_SYSTEM, GlobalConstants.OWNER_DOMAIN_WHOIS_SEARCHER_NAME);
+		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
+		if (config != null) {
+			seacherName = config.getValue();
+		}
+		return domainSeacherMap.get(seacherName);
 	}
 	
 	/**
@@ -190,31 +213,8 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 				dto.setSuffix(suffix);
 				list.add(dto);
 			}
-		} else if (atype.equals("PINYINPINGYIN")) {
-			for (String i : GlobalConstants.DOMAIN_ALL_PINYIN_ARRAY) {
-				for (String j : GlobalConstants.DOMAIN_ALL_PINYIN_ARRAY) {
-					DomainDto dto = new DomainDto();
-					dto.setDomain(first+i+j+second+"."+suffix);
-					dto.setName(first+i+j+second);
-					dto.setSuffix(suffix);
-					if (dto.getName().length() <= 4) {
-						continue;
-					}
-					list.add(dto);
-				}
-			}
 		}
 		return list;
-	}
-	
-	public DomainSeach getJudgeSearcher() {
-		Config config = configBiz.findConfig(
-				GlobalConstants.BIZ_SYSTEM, GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME);
-		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
-		if (config != null) {
-			seacherName = config.getValue();
-		}
-		return domainSeacherMap.get(seacherName);
 	}
 	
 	@Override
@@ -264,16 +264,6 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 	    return StringUtils.isEmpty(text) ? "":text;
 	}
 	
-	public DomainSeach getWhoisSearcher() {
-		Config config = configBiz.findConfig(
-				GlobalConstants.BIZ_SYSTEM, GlobalConstants.OWNER_DOMAIN_WHOIS_SEARCHER_NAME);
-		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
-		if (config != null) {
-			seacherName = config.getValue();
-		}
-		return domainSeacherMap.get(seacherName);
-	}
-	
 	@Override
 	public DomainDto queryDomainWhois(String domain) {
 		if (!Pattern.matches(GlobalConstants.DOMAIN_REGULAR_EXPRESSION, domain)) {
@@ -285,4 +275,12 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 		return searcher.search(domain);
 	}
 	
+	@Override
+	public List<DomainDto> listDomains4Expired(String date, String key,
+			Integer keyPos, List<String> suffix, Integer minlength,
+			Integer maxlength, Integer pinyinType, List<String> textType) {
+		List<DomainDto> lst = domainSpecificDao.listExpiredDomain(
+				date, key, keyPos, suffix, minlength, maxlength, pinyinType, textType);
+		return lst;
+	}
 }

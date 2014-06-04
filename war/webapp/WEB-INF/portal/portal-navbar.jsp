@@ -34,6 +34,7 @@
 		                	<li><a href="/domain/group">组合查询</a></li>
 		                    <li><a href="/domain/suffix">多后缀查询</a></li>
 		                    <li><a href="/domain/whois">whois查询</a></li>
+		                    <li><a href="/domain/expired">过期域名查询</a></li>
 		                </ul>
 		            </li>
 		            

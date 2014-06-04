@@ -38,16 +38,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${domainDtoList}" var="domainDto" varStatus="st">
-					<tr index="${st.index+1}">
-						<td>${st.index+1}</td>
-						<td class="domain-td">${domainDto.name}.<span
-							style="color: red">${domainDto.suffix}</span></td>
-						<td>${fn:length(domainDto.name)}</td>
-						<td class="result-td"></td>
-						<td class="baidu-td"></td>
-					</tr>
-				</c:forEach>
+				<c:if test="${!empty domainDtoList}">
+					<c:forEach items="${domainDtoList}" var="domainDto" varStatus="st">
+						<tr index="${st.index+1}">
+							<td>${st.index+1}</td>
+							<td class="domain-td">${domainDto.name}.<span
+								style="color: red">${domainDto.suffix}</span></td>
+							<td>${fn:length(domainDto.name)}</td>
+							<td class="result-td"></td>
+							<td class="baidu-td"></td>
+						</tr>
+					</c:forEach>
+				</c:if>
 			</tbody>
 		</table>
 
@@ -111,7 +113,7 @@
 	                    				$tr.find('.result-td').html('<span class="label label-success">未注册</span>');
 	                    				if (baidu) {
 		                    				$tr.find('.baidu-td').html('<img src="/assets/images/icon_b.gif"/> '+baidu
-		                    						+(recommend?' <span class="label label-success">推荐</span>':''));
+		                    						+(recommend?' <span class="label label-success">推荐</span>':' <span class="label label-warning">相似</span>'));
 		                    				$('#info-available').text(parseInt($('#info-available').text())+1);
 	                    				}
                     					

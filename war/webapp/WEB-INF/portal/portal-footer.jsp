@@ -26,6 +26,7 @@
                             <li><a href="/domain/group">组合查询</a></li>
                             <li><a href="/domain/suffix">多后缀查询</a></li>
                             <li><a href="/domain/whois">whois查询</a></li>
+                            <li><a href="/domain/expired">过期域名查询</a></li>
                             <!-- <li><a href="/contact">留言</a></li> -->
                             <li><a href="
                             https://maps.google.com/maps?q=%E4%B8%AD%E5%9B%BD%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E6%B1%9F%E5%AE%81%E5%8C%BA%E8%83%9C%E5%A4%AA%E8%B7%AF&hl=zh-CN&ie=UTF8&sll=31.943787,118.817482&sspn=0.025819,0.045447&oq=%E8%83%9C%E5%A4%AA%E8%B7%AF%E5%9C%B0%E9%93%81&gl=US&hnear=%E4%B8%AD%E5%9B%BD%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E6%B1%9F%E5%AE%81%E5%8C%BA%E8%83%9C%E5%A4%AA%E8%B7%AF&t=m&z=16

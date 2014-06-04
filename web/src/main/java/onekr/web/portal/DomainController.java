@@ -2,12 +2,14 @@ package onekr.web.portal;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import onekr.biz.domain.dto.DomainDto;
 import onekr.biz.domain.intf.DomainBiz;
 import onekr.biz.utils.GlobalConstants;
 import onekr.framework.result.Result;
+import onekr.framework.utils.DateUtil;
 import onekr.web.base.BaseController;
 
 import org.apache.commons.lang.StringUtils;
@@ -35,7 +37,11 @@ public class DomainController extends BaseController {
 			@RequestParam(value = "atype", required = false) String atype,
 			@RequestParam(value = "suffix", required = false) String suffix) {
 		first = first == null ? "" : first;
+		first = first.toLowerCase();
+		
 		second = second == null? "" : second;
+		second = second.toLowerCase();
+		
 		atype = atype == null?"" : atype;
 		suffix = suffix == null?"":suffix;
 		ModelAndView mav = new ModelAndView(PORTAL+"/domain-group");
@@ -62,6 +68,8 @@ public class DomainController extends BaseController {
 		if (StringUtils.isEmpty(domain)) {
 			domain = GlobalConstants.DOMAIN_DEFAULT_SEACH_DOMAIN;
 		}
+		domain = domain.toLowerCase();
+		
 		ModelAndView mav = new ModelAndView(PORTAL+"/domain-whois");
 		DomainDto dto = domainBiz.queryDomainWhois(domain);
 		mav.addObject("dto", dto);
@@ -75,6 +83,8 @@ public class DomainController extends BaseController {
 		if (StringUtils.isEmpty(name)) {
 			name = GlobalConstants.DOMAIN_DEFAULT_SEACH_DOMAIN_NAME;
 		}
+		name = name.toLowerCase();
+		
 		if (CollectionUtils.isEmpty(suffix)) {
 			suffix = Collections.singletonList("com");
 		}
@@ -92,20 +102,76 @@ public class DomainController extends BaseController {
 		return mav;
 	} 
 	
+	@RequestMapping(value = "/expired", method = RequestMethod.GET)
+	public ModelAndView expiredQuery(
+			@RequestParam(value = "date", required = false) String date,
+			@RequestParam(value = "key", required = false) String key,
+			@RequestParam(value = "keypos", required = false) Integer keyPos,
+			@RequestParam(value = "suffix", required = false) List<String> suffix,
+			@RequestParam(value = "minlength", required = false) Integer minlength,
+			@RequestParam(value = "maxlength", required = false) Integer maxlength,
+			@RequestParam(value = "pinyintype", required = false) Integer pinyinType,
+			@RequestParam(value = "texttype", required = false) List<String> textType) {
+		Date now = new Date();
+		date = StringUtils.isEmpty(date) ? DateUtil.cnvDate2Str(now) : date;
+		
+		key = key == null ? "" : key;
+		key = key.toLowerCase();
+		
+		keyPos = keyPos == null ? 0 : keyPos;
+		
+		if (CollectionUtils.isEmpty(suffix)) {
+			suffix = new ArrayList<String>();
+			suffix.add("com");
+			suffix.add("net");
+		}
+		
+		if (minlength == null) {
+			minlength = 3;
+		}
+		
+		if (maxlength == null) {
+			maxlength = 8;
+		}
+		
+		if (pinyinType == null) {
+			pinyinType = 2;
+		}
+		
+		if (CollectionUtils.isEmpty(textType)) {
+			textType = new ArrayList<String>();
+			textType.add("1");
+		}
+		
+		List<DomainDto> domainDtoList = domainBiz.listDomains4Expired(
+				date, key, keyPos, suffix, minlength, maxlength, pinyinType, textType);
+		
+		ModelAndView mav = new ModelAndView(PORTAL+"/domain-expired");
+		mav.addObject("date", date);
+		List<String> dates = new ArrayList<String>();
+		dates.add(DateUtil.cnvDate2Str(now));
+		dates.add(DateUtil.cnvDate2Str(DateUtil.addDate(now, -1)));
+		dates.add(DateUtil.cnvDate2Str(DateUtil.addDate(now, -2)));
+		dates.add(DateUtil.cnvDate2Str(DateUtil.addDate(now, -3)));
+		dates.add(DateUtil.cnvDate2Str(DateUtil.addDate(now, -4)));
+		mav.addObject("key", key);
+		mav.addObject("keyPos", keyPos);
+		mav.addObject("dates", dates);
+		mav.addObject("minlength", minlength);
+		mav.addObject("maxlength", maxlength);
+		mav.addObject("pinyinType", pinyinType);
+		mav.addObject("textType", textType);
+		mav.addObject("suffix", suffix);
+		mav.addObject("allSuffix", GlobalConstants.DOMAIN_ALL_SUFFIX);
+		mav.addObject("domainDtoList", domainDtoList);
+		return mav;
+	}
+	
 	@RequestMapping(value = "/domainAvailable", method = RequestMethod.POST)
 	@ResponseBody
 	public Result domainAvailable(String domain) {
-//		domain = "kuangtu.net";
 		Result result = new Result();
-//		String value = "";
 		DomainDto dto = domainBiz.queryJudgeDomain(domain);
-//		if (dto != null && dto.getAvailable() != null) {
-//			if (dto.getAvailable()) {
-//				value = "available";
-//			} else {
-//				value = "notAvailable";
-//			}
-//		}
 		result.setValue(dto);
 		return result;
 	}

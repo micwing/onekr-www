@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import onekr.biz.domain.dao.ExpiredDomainDao;
 import onekr.biz.model.ExpiredDomain;
 import onekr.biz.utils.GlobalConstants;
-import onekr.framework.utils.DateUtil;
 
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
@@ -26,18 +25,18 @@ public class ExpiredDomainUpdater {
 	private ExpiredDomainDao expiredDomainDao;
 	
 	public void execute() {
-		executeCom();
-		executeCn();
+		String date = executeCom();
+		executeCn(date);
 	}
 	
-	public void executeCom() {
+	public String executeCom() {
 		Document doc = null;
 		try {
 			doc = Jsoup.connect(address)
 					.userAgent("User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0")
 					.timeout(5000).get();
 		} catch (IOException e) {
-			return;
+			return null;
 		}  
 	    
 	    String title = doc.select("#Head table .mainr pre strong").text();
@@ -48,9 +47,10 @@ public class ExpiredDomainUpdater {
 	    for (String domain : domains) {
 	    	saveExpiredDomain(domain.trim(), date);
 	    }
+	    return date;
 	}
 	
-	public void executeCn() {
+	public void executeCn(String date) {
 		Document doc = null;
 		try {
 			doc = Jsoup.connect(addressCn)
@@ -65,7 +65,7 @@ public class ExpiredDomainUpdater {
 	    String[] domains = main.split(" ");
 	    for (String domain : domains) {
 	    	if (domain.startsWith("[")) {
-	    		saveExpiredDomain(domain.replace("[", "").replace("]", "").trim(), DateUtil.cnvDate2Str(new Date()));
+	    		saveExpiredDomain(domain.replace("[", "").replace("]", "").trim(), date);
 	    	}
 	    }
 	}

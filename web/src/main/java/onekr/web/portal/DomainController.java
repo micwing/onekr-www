@@ -13,6 +13,7 @@ import onekr.framework.utils.DateUtil;
 import onekr.web.base.BaseController;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -113,6 +114,7 @@ public class DomainController extends BaseController {
 			@RequestParam(value = "pinyintype", required = false) Integer pinyinType,
 			@RequestParam(value = "texttype", required = false) List<String> textType) {
 		Date now = new Date();
+		now = DateUtils.addHours(now, 12);
 		date = StringUtils.isEmpty(date) ? DateUtil.cnvDate2Str(now) : date;
 		
 		key = key == null ? "" : key;

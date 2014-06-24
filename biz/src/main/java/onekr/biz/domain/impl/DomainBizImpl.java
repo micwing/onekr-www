@@ -107,6 +107,14 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 				dto.setSuffix(suffix);
 				list.add(dto);
 			}
+		} else if (atype.equals("PINYINZIDIAN2")) {
+			for (String i : GlobalConstants.DOMAIN_ALL_PINYIN_ARRAY) {
+				DomainDto dto = new DomainDto();
+				dto.setDomain(first+i+i+second+"."+suffix);
+				dto.setName(first+i+i+second);
+				dto.setSuffix(suffix);
+				list.add(dto);
+			}
 		} else if (atype.equals("1PINYIN")) {
 			for (String i : GlobalConstants.DOMAIN_ALL_PINYIN_ARRAY) {
 				if (i.length() != 1)
@@ -226,7 +234,7 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 		}
 		DomainSeach searcher = getJudgeSearcher();
 		DomainDto dto = searcher.search(domain);
-		if (dto != null && dto.getAvailable()) {
+		if (dto != null && dto.getAvailable() != null) {
 			
 			String name = dto.getDomain().substring(0, domain.indexOf("."));
 			String baidu = queryBaiduSuggest(name);

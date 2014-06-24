@@ -24,6 +24,7 @@ public class GlobalConstants extends Constants {
 	public static final List<String> DOMAIN_GROUP_TYPE_LIST = new ArrayList<String>();
 	static {
 		DOMAIN_GROUP_TYPE_LIST.add("PINYINZIDIAN");
+		DOMAIN_GROUP_TYPE_LIST.add("PINYINZIDIAN2");
 		DOMAIN_GROUP_TYPE_LIST.add("PINYINPINGYIN");
 		DOMAIN_GROUP_TYPE_LIST.add("1PINYIN");
 		DOMAIN_GROUP_TYPE_LIST.add("2PINYIN");

@@ -58,7 +58,8 @@
 </div>
 <script type="text/javascript">
                     var stopFlag = false;
-                    var currentIndex = 0;
+                    var currentIndex = 1;
+                    
                     $('#domain-query-stop').click(function() {
                     	stopFlag = true;
                     	$('#domain-query-stop').attr('disabled', true);
@@ -72,7 +73,9 @@
                     	$('#domain-query-continue').attr('disabled', true);
                     	$('#domain-query-stop').show();
                     	$('#domain-query-continue').hide();
-                    	queryDomain(currentIndex+1);
+                    	queryDomain(currentIndex);
+                    	queryDomain(currentIndex++);
+                    	queryDomain(currentIndex++);
                     });
                     $('#hideNotAvailable').click(function() {
                     	var checked = $(this).attr('checked');
@@ -87,17 +90,25 @@
 	                		$(this).closest('tr').hide(100);
 	                	});
                     }
+                    
                     function queryDomain(index) {
-                    	index = index || 1;
+                    	
+                    	if (stopFlag) {
+                    		return;
+                    	}
+                    	
                     	var $tr = $('#domian-table tbody tr[index='+index+']');
                     	if ($tr.size() == 0) {
                     		return;
                     	}
-                    	if (stopFlag) {
+                    	
+                    	if ($tr.find('.result-td').html()) {
+                    		queryDomain(currentIndex++);
                     		return;
                     	}
+                    	
                     	$tr.find('.result-td').html('<img src="/assets/images/loading.gif"/>');
-                    	currentIndex = index;
+                    	
                     	var domain = $tr.find('.domain-td').text();
                     	$.ajax({
                     		url : "/domain/domainAvailable",
@@ -130,12 +141,14 @@
                     			$('#info-query').text(parseInt($('#info-query').text())+1);
                     			$('#domain-query-stop').attr('disabled', false);
                             	$('#domain-query-continue').attr('disabled', false);
-                    			queryDomain(index+1);
+                    			queryDomain(currentIndex);
                     		}
                     	});
                     }
                     $(function() {
                     	$('#info-total').text($('#domian-table tbody tr').size());
-                    	queryDomain();
+                    	queryDomain(1);
+                    	queryDomain(2);
+                    	queryDomain(3);
                     });
                     </script>

@@ -1,9 +1,10 @@
 package onekr.biz.domain.impl;
 
 import java.io.DataInputStream;
-import java.io.IOException;
 import java.io.PrintStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 
 import onekr.biz.domain.dto.DomainDto;
 
@@ -26,7 +27,10 @@ public class InternicDomainSeacher implements DomainSeach {
 		
 		try {
 			// 在TCP服务端口43（十进制）连接SRI-NIC服务主机
-			theSocket = new Socket(hostname, port, true);
+			SocketAddress  remoteAddr = new InetSocketAddress(hostname, port);
+			theSocket = new Socket();
+			theSocket.connect(remoteAddr, 5000);
+			
 			ps = new PrintStream(theSocket.getOutputStream());
 			ps.println("whois " + domain);// 发送命令到服务端
 			ps.println("\r\n");
@@ -41,7 +45,7 @@ public class InternicDomainSeacher implements DomainSeach {
 			theWhoisStream.close();
 			ps.close();
 			theSocket.close();
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			return dto;
 		}
 		String whoisInfo = stringBuffer.toString();

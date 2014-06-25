@@ -25,6 +25,7 @@
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">教程<b class="caret"></b></a>
 		                <ul class="dropdown-menu">
 		                	<li><a href="http://bootstrap2.onekr.com" target="_blank">Bootstrap v2</a></li>
+		                	<li><a href="/assets/more/html/nodejs7.html" target="_blank">七天学会NodeJS</a></li>
 		                </ul>
 		            </li>
 		            

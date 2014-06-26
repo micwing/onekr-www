@@ -15,12 +15,15 @@
                                 <img src="/assets/images/sky1.jpg" alt="image">
                             </div>
                             <div class="pull-right" style="margin-top: 15px">
-                              	<div style="float: left;margin-right: 10px;">
-                              	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:4990617:51" alt="QQ交谈" title="QQ交谈"/></a>
+                            	<div style="float: left;margin-right: 10px;" title="micwing@163.com">
+                              		<a href="mailto:micwing@163.com"><img src="/assets/images/email.png" alt="micwing@163.com"/></i></a>
                               	</div>
-                              	<div style="float: left;padding-top: 1px;">
-	                           	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-	                           	<wb:follow-button uid="1374641762" type="red_1" width="67" height="24" ></wb:follow-button>
+                              	<div style="float: left;margin-right: 10px;" title="4990617">
+                              		<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:4990617:51" alt="QQ交谈" title="QQ交谈"/></a>
+                              	</div>
+                              	<div style="float: left;padding-top: 1px;" title="http://weibo.com/micwing">
+		                           	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+		                           	<wb:follow-button uid="1374641762" type="red_1" width="67" height="24" ></wb:follow-button>
                               	</div>
                             </div>
 

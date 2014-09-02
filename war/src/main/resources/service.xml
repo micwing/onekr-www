@@ -162,11 +162,11 @@
     </bean>
 
 	<!-- job -->
-	<task:scheduler id="taskScheduler" pool-size="20" />
+	<!-- <task:scheduler id="taskScheduler" pool-size="20" />
 	<task:scheduled-tasks scheduler="taskScheduler">
 		<task:scheduled ref="expiredDomainUpdater" method="execute"
 			cron="0 0 18 * * ?" />
-	</task:scheduled-tasks>
+	</task:scheduled-tasks> -->
 	
 
 </beans>

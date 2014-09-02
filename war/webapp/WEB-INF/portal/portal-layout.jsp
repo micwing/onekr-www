@@ -4,7 +4,7 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
     <head>
 <%--         <meta charset="utf-8">
-        <title>一刻工作室</title>
+        <title>一氪工作室</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">

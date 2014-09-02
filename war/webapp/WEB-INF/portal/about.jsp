@@ -49,7 +49,7 @@
                                 <p>具体技能看右边 →</p>
                                 <br/>
                                 
-                                <h3>ONEKR.com一刻工作室，是我业余时间练手的小项目</h3>
+                                <h3>ONEKR.com一氪工作室，是我业余时间练手的小项目</h3>
                                 <p>域名注册<a href="http://www.godaddy.com" target="_blank">godaddy</a></p>
                                 <p>项目运行在<a href="http://www.openshift.com" target="_blank">openshift</a>提供的云服务器</p>
                                 <p>源代码托管<a href="http://www.github.com" target="_blank">github</a></p>

@@ -51,6 +51,7 @@ import org.apache.http.util.VersionInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
 /** 
  * @ClassName: HttpClientTemplate 
@@ -58,6 +59,7 @@ import org.springframework.beans.factory.InitializingBean;
  * @author micwing
  * @date 2013-3-26 下午5:32:53 
  */ 
+@Component
 public class HttpClientTemplate implements InitializingBean {
     /** logger */
     private static final Logger logger                   = LoggerFactory

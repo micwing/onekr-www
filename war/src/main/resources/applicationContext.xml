@@ -19,7 +19,6 @@
     </bean>
 	<util:properties id="systemConfig" location="classpath:system.properties" />
 	
-	<import resource="beans.xml" />
 	<import resource="datasource.xml" /> 
 	<import resource="service.xml" />
 	<import resource="shiro.xml" />

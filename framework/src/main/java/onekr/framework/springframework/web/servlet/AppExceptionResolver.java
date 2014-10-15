@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
-import onekr.framework.type.Constants;
+import onekr.framework.utils.Constants;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

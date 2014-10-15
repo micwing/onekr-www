@@ -3,12 +3,12 @@ package onekr.web.console;
 import java.io.IOException;
 import java.util.Collections;
 
-import onekr.commonservice.article.intf.ArticleBiz;
-import onekr.commonservice.article.intf.ScriptBiz;
-import onekr.commonservice.article.intf.SearchArticleBiz;
-import onekr.commonservice.model.Article;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
+import onekr.portalservice.article.intf.ArticleBiz;
+import onekr.portalservice.article.intf.ScriptBiz;
+import onekr.portalservice.article.intf.SearchArticleBiz;
+import onekr.portalservice.model.Article;
 import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;

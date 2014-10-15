@@ -1,4 +1,4 @@
-<%@page import="onekr.commonservice.utils.GlobalConstants"%>
+<%@page import="onekr.portalservice.utils.GlobalConstants"%>
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.commonservice.domain.dto.DomainDto"%>
 <%@page import="java.util.*"%>

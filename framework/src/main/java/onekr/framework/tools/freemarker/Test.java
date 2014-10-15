@@ -58,7 +58,7 @@ public class Test {
         dataMap.put("name", "王五");
         dataMap.put("score", 72);
         list.add(dataMap);
-        Entity est = new Entity();
+        _Entity est = new _Entity();
         est.setId(99);
         est.setName("dingzh@zbiti.com");
         //
@@ -73,5 +73,27 @@ public class Test {
         out.flush();
         out.close();
         System.out.println("Successfull................");
+    }
+    
+}
+
+class _Entity {
+	private int id;
+    private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

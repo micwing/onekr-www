@@ -12,13 +12,13 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import onekr.framework.type.Constants;
+import onekr.commonservice.utils.CommonConstants;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = Constants.TABLE_PREFIX_NAMING + "script")
+@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "script")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Script implements Serializable {
 

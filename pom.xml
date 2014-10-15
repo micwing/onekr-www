@@ -12,6 +12,7 @@
 	<modules>
 		<module>commonservice</module>
 		<module>identityservice</module>
+		<module>portalservice</module>
 		<module>framework</module>
 		<module>war</module>
 	</modules>
@@ -48,6 +49,11 @@
 			<dependency>
 				<groupId>onekr</groupId>
 				<artifactId>identityservice</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>portalservice</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

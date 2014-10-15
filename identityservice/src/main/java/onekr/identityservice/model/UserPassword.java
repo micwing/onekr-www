@@ -9,10 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import onekr.framework.type.Constants;
+import onekr.identityservice.utils.IdentityConstants;
 
 @Entity
-@Table(name = Constants.TABLE_PREFIX_NAMING + "user_password")
+@Table(name = IdentityConstants.TABLE_PREFIX_NAMING + "user_password")
 public class UserPassword implements Serializable {
 
 	private static final long serialVersionUID = 728203867028997886L;

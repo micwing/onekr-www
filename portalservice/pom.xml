@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>onekr</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>portalservice</artifactId>
+	<packaging>jar</packaging>
+	<name>${project.artifactId}</name>
+	<description>The portal service</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>framework</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>identityservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>commonservice</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>portalservice</finalName>
+	</build>
+
+</project>

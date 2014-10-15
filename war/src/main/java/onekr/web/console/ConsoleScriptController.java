@@ -3,11 +3,11 @@ package onekr.web.console;
 import java.util.Collections;
 import java.util.List;
 
-import onekr.commonservice.article.intf.ScriptBiz;
 import onekr.commonservice.model.Script;
 import onekr.commonservice.model.ScriptType;
 import onekr.framework.result.Result;
 import onekr.framework.springframework.web.method.annotation.RequestJsonParam;
+import onekr.portalservice.article.intf.ScriptBiz;
 import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;

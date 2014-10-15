@@ -18,10 +18,10 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import onekr.commonservice.sys.intf.FileBiz;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
+import onekr.portalservice.sys.intf.FileBiz;
 import onekr.web.base.BaseController;
 
 import org.apache.commons.fileupload.FileItem;

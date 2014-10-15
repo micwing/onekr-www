@@ -25,6 +25,10 @@
 			</dependency>
 			<dependency>
 				<groupId>onekr</groupId>
+				<artifactId>portalservice</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
 				<artifactId>framework</artifactId>
 			</dependency>
 		<!-- app end -->

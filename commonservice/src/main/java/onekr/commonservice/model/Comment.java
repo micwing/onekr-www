@@ -17,13 +17,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import onekr.framework.type.Constants;
+import onekr.commonservice.utils.CommonConstants;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = Constants.TABLE_PREFIX_NAMING + "common_comment")
+@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "common_comment")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Comment implements Serializable {
 

@@ -5,11 +5,11 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import onekr.commonservice.domain.dto.DomainDto;
-import onekr.commonservice.domain.intf.DomainBiz;
-import onekr.commonservice.utils.GlobalConstants;
 import onekr.framework.result.Result;
 import onekr.framework.utils.DateUtil;
+import onekr.portalservice.domain.dto.DomainDto;
+import onekr.portalservice.domain.intf.DomainBiz;
+import onekr.portalservice.utils.GlobalConstants;
 import onekr.web.base.BaseController;
 
 import org.apache.commons.lang.StringUtils;

@@ -19,10 +19,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import onekr.framework.type.Constants;
+import onekr.framework.type.Gender;
+import onekr.identityservice.utils.IdentityConstants;
 
 @Entity
-@Table(name = Constants.TABLE_PREFIX_NAMING + "user")
+@Table(name = IdentityConstants.TABLE_PREFIX_NAMING + "user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -441280225512165188L;
@@ -69,7 +70,7 @@ public class User implements Serializable {
 	private Date updateAt;
 	
 	@ElementCollection(fetch = FetchType.LAZY)
-	@JoinTable(name = Constants.TABLE_PREFIX_NAMING + "user_attr", 
+	@JoinTable(name = IdentityConstants.TABLE_PREFIX_NAMING + "user_attr", 
 			joinColumns = @JoinColumn(name = "user_id"))
 	@MapKeyColumn(length = 255, name = "attr_key")
 	@Column(name = "attr_value", length = 3000)

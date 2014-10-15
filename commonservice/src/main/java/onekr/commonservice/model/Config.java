@@ -13,13 +13,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import onekr.framework.type.Constants;
+import onekr.commonservice.utils.CommonConstants;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = Constants.TABLE_PREFIX_NAMING + "common_config")
+@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "common_config")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Config implements Serializable {
 

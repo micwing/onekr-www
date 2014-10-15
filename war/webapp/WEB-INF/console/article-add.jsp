@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@page import="onekr.commonservice.model.Article" %>
-<%@page import="onekr.commonservice.utils.GlobalConstants" %>
+<%@page import="onekr.portalservice.model.onekr.commonservice.model.Article" %>
+<%@page import="onekr.portalservice.utils.GlobalConstants" %>
 <%@include file="../common/includes.jsp"%>
 <h4><c:if test="${empty article}">新文章</c:if><c:if test="${!empty article}">修改文章</c:if></h4>
 <%

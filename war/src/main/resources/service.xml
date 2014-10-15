@@ -25,7 +25,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="onekr.biz.model" />
+		<property name="packagesToScan" value="onekr.**.model" />
 		<property name="persistenceProvider">
 			<bean class="org.hibernate.ejb.HibernatePersistence" />
 		</property>
@@ -53,9 +53,9 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="javax.persistence.validation.mode">none</prop>
-				<prop key="hibernate.ejb.event.post-insert">onekr.biz.sys.impl.PostCrudEventListener</prop>
-				<prop key="hibernate.ejb.event.post-update">onekr.biz.sys.impl.PostCrudEventListener</prop>
-				<prop key="hibernate.ejb.event.post-delete">onekr.biz.sys.impl.PostCrudEventListener</prop>
+				<prop key="hibernate.ejb.event.post-insert">onekr.commonservice.sys.impl.PostCrudEventListener</prop>
+				<prop key="hibernate.ejb.event.post-update">onekr.commonservice.sys.impl.PostCrudEventListener</prop>
+				<prop key="hibernate.ejb.event.post-delete">onekr.commonservice.sys.impl.PostCrudEventListener</prop>
 			</props>
 		</property>
 	</bean>
@@ -82,7 +82,7 @@
 	<aop:aspectj-autoproxy proxy-target-class="false" />
 	<aop:config proxy-target-class="false">
 		<!-- for transaction -->
-		<aop:pointcut expression="execution(* onekr.biz..*.*(..))"
+		<aop:pointcut expression="execution(* onekr.commonservice..*.*(..))"
 			id="servicePointCut" />
 		<!-- for transaction -->
 		<aop:advisor pointcut-ref="servicePointCut" advice-ref="txAdvice" />

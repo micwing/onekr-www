@@ -1,5 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@page import="onekr.biz.domain.dto.DomainDto" %>
+<%@page import="onekr.commonservice.domain.dto.DomainDto" %>
 <%@include file="../common/includes.jsp" %>
         <div id="wrap">
 

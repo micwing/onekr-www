@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@page import="onekr.biz.model.*" %>
-<%@page import="onekr.biz.utils.GlobalConstants" %>
+<%@page import="onekr.commonservice.model.*" %>
+<%@page import="onekr.commonservice.utils.GlobalConstants" %>
 <%@include file="../common/includes.jsp"%>
 <%
 request.setCharacterEncoding("UTF-8");

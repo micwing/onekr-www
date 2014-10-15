@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import onekr.biz.domain.dto.DomainDto;
-import onekr.biz.domain.intf.DomainBiz;
-import onekr.biz.utils.GlobalConstants;
+import onekr.commonservice.domain.dto.DomainDto;
+import onekr.commonservice.domain.intf.DomainBiz;
+import onekr.commonservice.utils.GlobalConstants;
 import onekr.framework.result.Result;
 import onekr.framework.utils.DateUtil;
 import onekr.web.base.BaseController;

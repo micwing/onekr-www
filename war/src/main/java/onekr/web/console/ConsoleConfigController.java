@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import onekr.biz.common.intf.ConfigBiz;
-import onekr.biz.model.Config;
-import onekr.biz.utils.GlobalConstants;
+import onekr.commonservice.common.intf.ConfigBiz;
+import onekr.commonservice.model.Config;
+import onekr.commonservice.utils.GlobalConstants;
 import onekr.framework.result.Result;
 import onekr.framework.springframework.web.method.annotation.RequestJsonParam;
 import onekr.web.base.BaseController;

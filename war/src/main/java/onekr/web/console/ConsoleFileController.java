@@ -18,7 +18,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import onekr.biz.sys.intf.FileBiz;
+import onekr.commonservice.sys.intf.FileBiz;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;

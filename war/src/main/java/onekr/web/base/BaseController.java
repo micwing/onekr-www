@@ -23,8 +23,8 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import onekr.biz.model.User;
 import onekr.framework.java.beans.NormalDateEditor;
+import onekr.identityservice.model.User;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.PrincipalCollection;

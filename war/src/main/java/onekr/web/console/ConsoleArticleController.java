@@ -3,10 +3,10 @@ package onekr.web.console;
 import java.io.IOException;
 import java.util.Collections;
 
-import onekr.biz.article.intf.ArticleBiz;
-import onekr.biz.article.intf.ScriptBiz;
-import onekr.biz.article.intf.SearchArticleBiz;
-import onekr.biz.model.Article;
+import onekr.commonservice.article.intf.ArticleBiz;
+import onekr.commonservice.article.intf.ScriptBiz;
+import onekr.commonservice.article.intf.SearchArticleBiz;
+import onekr.commonservice.model.Article;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.web.base.BaseController;

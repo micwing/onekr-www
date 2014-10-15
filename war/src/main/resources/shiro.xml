@@ -36,7 +36,7 @@
 		</property>
 	</bean>
 	<!-- 自定义Realm 继承自AuthorizingRealm -->  
-	<bean id="userRealm" class="onekr.biz.user.realm.UserAuthorizingRealm"
+	<bean id="userRealm" class="onekr.commonservice.user.realm.UserAuthorizingRealm"
 		depends-on="userDao,userPasswordDao"></bean>
 		
 </beans>

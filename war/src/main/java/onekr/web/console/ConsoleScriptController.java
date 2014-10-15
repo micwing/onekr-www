@@ -3,9 +3,9 @@ package onekr.web.console;
 import java.util.Collections;
 import java.util.List;
 
-import onekr.biz.article.intf.ScriptBiz;
-import onekr.biz.model.Script;
-import onekr.biz.model.ScriptType;
+import onekr.commonservice.article.intf.ScriptBiz;
+import onekr.commonservice.model.Script;
+import onekr.commonservice.model.ScriptType;
 import onekr.framework.result.Result;
 import onekr.framework.springframework.web.method.annotation.RequestJsonParam;
 import onekr.web.base.BaseController;

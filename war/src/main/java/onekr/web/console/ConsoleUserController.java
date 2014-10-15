@@ -3,8 +3,8 @@ package onekr.web.console;
 //
 //import java.util.List;
 //
-//import onekr.biz.model.User;
-//import onekr.biz.user.intf.UserBiz;
+//import onekr.commonservice.model.User;
+//import onekr.commonservice.user.intf.UserBiz;
 //import onekr.framework.result.Result;
 //import onekr.framework.springmvc.annotation.RequestJsonParam;
 //import onekr.web.base.BaseController;

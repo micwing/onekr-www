@@ -10,8 +10,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>biz</module>
-		<module>biz-intf</module>
+		<module>commonservice</module>
+		<module>identityservice</module>
 		<module>framework</module>
 		<module>war</module>
 	</modules>
@@ -42,12 +42,12 @@
 			<!-- app begin -->
 			<dependency>
 				<groupId>onekr</groupId>
-				<artifactId>biz</artifactId>
+				<artifactId>commonservice</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>onekr</groupId>
-				<artifactId>biz-intf</artifactId>
+				<artifactId>identityservice</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

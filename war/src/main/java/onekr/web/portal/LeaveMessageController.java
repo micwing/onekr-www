@@ -2,7 +2,7 @@ package onekr.web.portal;
 
 import java.util.Date;
 
-import onekr.biz.leaveComment.intf.LeaveCommentBiz;
+import onekr.commonservice.leaveComment.intf.LeaveCommentBiz;
 import onekr.framework.result.Result;
 import onekr.web.base.BaseController;
 

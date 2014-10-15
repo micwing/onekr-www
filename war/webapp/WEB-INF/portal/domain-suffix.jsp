@@ -1,6 +1,6 @@
-<%@page import="onekr.biz.utils.GlobalConstants"%>
+<%@page import="onekr.commonservice.utils.GlobalConstants"%>
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
-<%@page import="onekr.biz.domain.dto.DomainDto" %>
+<%@page import="onekr.commonservice.domain.dto.DomainDto" %>
 <%@page import="java.util.*" %>
 <%@page import="org.springframework.util.CollectionUtils" %>
 <%@include file="../common/includes.jsp" %>

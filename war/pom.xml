@@ -17,11 +17,11 @@
 		<!-- app begin -->
 			<dependency>
 				<groupId>onekr</groupId>
-				<artifactId>biz</artifactId>
+				<artifactId>commonservice</artifactId>
 			</dependency>
 			<dependency>
 				<groupId>onekr</groupId>
-				<artifactId>biz-intf</artifactId>
+				<artifactId>identityservice</artifactId>
 			</dependency>
 			<dependency>
 				<groupId>onekr</groupId>

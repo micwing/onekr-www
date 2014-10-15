@@ -1,8 +1,8 @@
 package onekr.web.portal;
 
-import onekr.biz.common.intf.ConfigBiz;
-import onekr.biz.leaveComment.intf.LeaveCommentBiz;
-import onekr.biz.utils.GlobalConstants;
+import onekr.commonservice.common.intf.ConfigBiz;
+import onekr.commonservice.leaveComment.intf.LeaveCommentBiz;
+import onekr.commonservice.utils.GlobalConstants;
 import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;

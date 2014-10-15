@@ -13,9 +13,7 @@
 		<module>biz</module>
 		<module>biz-intf</module>
 		<module>framework</module>
-		<module>client</module>
 		<module>war</module>
-		<module>web</module>
 	</modules>
 
 	<properties>
@@ -59,17 +57,7 @@
 			</dependency>
 			<dependency>
 				<groupId>onekr</groupId>
-				<artifactId>client</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
 				<artifactId>war</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>web</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!-- app end -->

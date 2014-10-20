@@ -8,7 +8,7 @@ import java.util.Map;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
 import onekr.framework.result.Result;
-import onekr.framework.springframework.web.method.annotation.RequestJsonParam;
+import onekr.framework.spring.web.annotation.RequestJsonParam;
 import onekr.portalservice.utils.GlobalConstants;
 import onekr.web.base.BaseController;
 

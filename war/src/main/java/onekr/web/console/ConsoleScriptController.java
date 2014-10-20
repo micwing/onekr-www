@@ -6,7 +6,7 @@ import java.util.List;
 import onekr.commonservice.model.Script;
 import onekr.commonservice.model.ScriptType;
 import onekr.framework.result.Result;
-import onekr.framework.springframework.web.method.annotation.RequestJsonParam;
+import onekr.framework.spring.web.annotation.RequestJsonParam;
 import onekr.portalservice.article.intf.ScriptBiz;
 import onekr.web.base.BaseController;
 

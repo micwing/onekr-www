@@ -17,7 +17,7 @@
  */
 package onekr.framework.exception;
 
-import onekr.framework.springframework.beans.factory.config.CustomizedPropertyPlaceholderConfigurer;
+import onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer;
 
 
 /** 

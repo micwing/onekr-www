@@ -1,8 +1,8 @@
-<%@page import="onekr.framework.springframework.beans.factory.config.CustomizedPropertyPlaceholderConfigurer"%>
+<%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer"%>
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
 <%@page import="java.io.File" %>
-<%@page import="onekr.framework.springframework.beans.factory.config.CustomizedPropertyPlaceholderConfigurer" %>
+<%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer" %>
 <%@page import="onekr.framework.utils.FileUtil" %>
 <%@page import="org.apache.commons.io.FileUtils" %>
 <h4>

@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<!-- <context:property-placeholder location="classpath:system.properties" /> -->
-	<bean class="onekr.framework.springframework.beans.factory.config.CustomizedPropertyPlaceholderConfigurer">
+	<bean class="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer">
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
         <property name="ignoreResourceNotFound" value="true" />
         <property name="locations">

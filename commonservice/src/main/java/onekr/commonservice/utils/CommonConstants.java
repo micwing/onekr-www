@@ -1,6 +1,6 @@
 package onekr.commonservice.utils;
 
-import onekr.framework.utils.Constants;
+import onekr.framework.contstants.Constants;
 
 public class CommonConstants extends Constants {
 	

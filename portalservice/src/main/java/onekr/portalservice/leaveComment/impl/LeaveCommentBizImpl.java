@@ -15,7 +15,7 @@ import onekr.commonservice.model.Count;
 import onekr.commonservice.model.Status;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
-import onekr.framework.java.util.observer.Observable;
+import onekr.framework.lang.Observable;
 import onekr.framework.utils.HtmlUtil;
 import onekr.portalservice.leaveComment.intf.LeaveCommentBiz;
 import onekr.portalservice.utils.GlobalConstants;

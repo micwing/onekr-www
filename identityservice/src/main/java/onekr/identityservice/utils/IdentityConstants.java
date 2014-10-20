@@ -1,6 +1,6 @@
 package onekr.identityservice.utils;
 
-import onekr.framework.utils.Constants;
+import onekr.framework.contstants.Constants;
 
 public class IdentityConstants extends Constants {
 	

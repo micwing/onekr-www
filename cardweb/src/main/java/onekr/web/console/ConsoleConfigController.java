@@ -1,10 +1,7 @@
 package onekr.web.console;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import onekr.cardservice.utils.GlobalConstants;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
 import onekr.framework.result.Result;
@@ -28,10 +25,11 @@ public class ConsoleConfigController extends BaseController {
 	@RequestMapping(value = "/baseConfig", method = RequestMethod.GET)
 	public ModelAndView baseConfig() {
 		ModelAndView mav = new ModelAndView(CONSOLE+"baseConfig");
-		List<String> owners = new ArrayList<String>();
-		owners.add(GlobalConstants.OWNER_HOME_SLIDER);
-		Map<String, Config> configs = configBiz.findConfigs(GlobalConstants.BIZ_SYSTEM, owners);
-		mav.addObject("configs", configs);
+		//TODO
+//		List<String> owners = new ArrayList<String>();
+//		owners.add(GlobalConstants.OWNER_HOME_SLIDER);
+//		Map<String, Config> configs = configBiz.findConfigs(GlobalConstants.BIZ_SYSTEM, owners);
+//		mav.addObject("configs", configs);
 		return mav;
 	}
 	

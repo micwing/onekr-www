@@ -1,7 +1,8 @@
 package onekr.web.card;
 
-import onekr.commonservice.common.intf.CommentBiz;
-import onekr.commonservice.common.intf.CountBiz;
+import onekr.cardservice.card.intf.CardBiz;
+import onekr.cardservice.card.intf.CardDto;
+import onekr.cardservice.model.Card;
 import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +18,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class CardController extends BaseController {
 	
 	@Autowired
-	private CommentBiz commentBiz;
-	@Autowired
-	private CountBiz countBiz;
+	private CardBiz cardBiz;
 	
 	@RequestMapping(value = "/{cardId}/cover", method = RequestMethod.GET)
-	public ModelAndView cover(@PathVariable("cardId") String cardId) {
+	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		ModelAndView mav = new ModelAndView(CARD+"cover");
-//		Article article = articleBiz.findArticle(articleId);
-//		countBiz.addCount(GlobalConstants.BIZ_ARTICLE_VIEW_COUNT, article.getId()+"", null);
-//		articleBiz.putTotalViewCount2Articles(Collections.singleton(article));
-//		mav.addObject("article", article);
-//		mav.addObject("comments", commentBiz.findComments(GlobalConstants.BIZ_ARTICLE_COMMENTS, articleId+""));
+		Card card = cardBiz.findById(cardId);
+		mav.addObject("card", card);
 		return mav;
 	}
 	
 	@RequestMapping(value = "/{cardId}/main", method = RequestMethod.GET)
-	public ModelAndView main(@PathVariable("cardId") String cardId) {
-		ModelAndView mav = new ModelAndView("redirect:/article");
+	public ModelAndView main(@PathVariable("cardId") Long cardId) {
+		ModelAndView mav = new ModelAndView(CARD+"main");
+		CardDto dto = cardBiz.findCardInfo(cardId);
+		mav.addObject("dto", dto);
 		return mav;
 	}
 	

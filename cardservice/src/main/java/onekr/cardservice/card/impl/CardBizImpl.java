@@ -5,15 +5,18 @@ import java.util.List;
 import onekr.cardservice.card.dao.CardDao;
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardDto;
-import onekr.cardservice.card.intf.LeaveCommentBiz;
 import onekr.cardservice.model.Card;
+import onekr.commonservice.biz.Biz;
+import onekr.commonservice.common.intf.CommentBiz;
 import onekr.commonservice.filestore.intf.FileBiz;
 import onekr.commonservice.model.Comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CardBizImpl implements CardBiz {
 	
 	@Autowired
@@ -21,7 +24,7 @@ public class CardBizImpl implements CardBiz {
 	@Autowired
 	private FileBiz fileBiz;
 	@Autowired
-	private LeaveCommentBiz leaveCommentBiz;
+	private CommentBiz commentBiz;
 
 	@Override
 	public CardDto findCardInfo(Long cardId) {
@@ -30,8 +33,7 @@ public class CardBizImpl implements CardBiz {
 		dto.setCard(card);
 		
 		
-		
-		List<Comment> comments = leaveCommentBiz.listAll(cardId);
+		List<Comment> comments = commentBiz.findComments(Biz.CARD_COMMENTS, cardId+"");
 		dto.setComments(comments);
 		
 		return dto;
@@ -39,8 +41,7 @@ public class CardBizImpl implements CardBiz {
 
 	@Override
 	public Card findById(Long cardId) {
-		// TODO Auto-generated method stub
-		return null;
+		return cardDao.findOne(cardId);
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package onekr.commonservice.common.impl;
 import java.util.Collection;
 import java.util.List;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.dao.MessageDao;
 import onekr.commonservice.common.intf.MessageBiz;
 import onekr.commonservice.model.Message;
@@ -29,8 +30,8 @@ public class MessageBizImpl implements MessageBiz {
 	}
 
 	@Override
-	public List<Message> findByBizOwner(String biz, String owner) {
-		return messageDao.findByBizAndOwner(biz, owner);
+	public List<Message> findByBizOwner(Biz biz, String owner) {
+		return messageDao.findByBizAndOwner(biz.name(), owner);
 	}
 
 	@Override

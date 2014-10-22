@@ -4,15 +4,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.model.Count;
 
 public interface CountBiz {
 
-	Map<String, Count> findCounts(String biz, Collection<String> owners);
+	Map<String, Count> findCounts(Biz biz, Collection<String> owners);
 	
-	Count findCount(String biz, String owner);
+	Count findCount(Biz biz, String owner);
 	
-	Count addCount(String biz, String owner, Long step);
+	Count addCount(Biz biz, String owner, Long step);
 	
 	void updateCounts(List<Count> counts);
 }

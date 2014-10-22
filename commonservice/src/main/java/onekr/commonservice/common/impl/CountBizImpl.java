@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.dao.CountDao;
 import onekr.commonservice.common.intf.CountBiz;
 import onekr.commonservice.model.Count;
@@ -22,11 +23,11 @@ public class CountBizImpl implements CountBiz {
 	private CountDao countDao;
 
 	@Override
-	public Map<String, Count> findCounts(String biz, Collection<String> owners) {
+	public Map<String, Count> findCounts(Biz biz, Collection<String> owners) {
 		Map<String, Count> map = new HashMap<String, Count>();
 		if (CollectionUtils.isEmpty(owners))
 			return map;
-		List<Count> counts = countDao.findByBizAndOwnerIn(biz, owners);
+		List<Count> counts = countDao.findByBizAndOwnerIn(biz.name(), owners);
 		if (!CollectionUtils.isEmpty(counts)) {
 			for (Count c : counts) {
 				map.put(c.getOwner(), c);
@@ -36,17 +37,17 @@ public class CountBizImpl implements CountBiz {
 	}
 	
 	@Override
-	public Count findCount(String biz, String owner) {
-		return countDao.findByBizAndOwner(biz, owner);
+	public Count findCount(Biz biz, String owner) {
+		return countDao.findByBizAndOwner(biz.name(), owner);
 	}
 	
 	@Override
-	public Count addCount(String biz, String owner, Long step) {
+	public Count addCount(Biz biz, String owner, Long step) {
 		step = step == null ? 1L : step;
 		Count count = findCount(biz, owner);
 		if (count == null) {
 			count = new Count();
-			count.setBiz(biz);
+			count.setBiz(biz.name());
 			count.setOwner(owner);
 			count.setNum(0L);
 			count.setStatus(Status.NORMAL);

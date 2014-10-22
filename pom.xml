@@ -10,16 +10,18 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>framework</module>
 		<module>commonservice</module>
 		<module>identityservice</module>
 		<module>portalservice</module>
-		<module>framework</module>
-		<module>war</module>
+		<module>cardservice</module>
+		<module>portalweb</module>
+		<module>cardweb</module>
 	</modules>
 
 	<properties>
 		<project.warName>app</project.warName>
-		<lib.dir>${project.basedir}/webapp/WEB-INF/lib</lib.dir>
+		<lib.dir>${project.basedir}/../libs</lib.dir>
 
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<spring.security.version>3.1.2.RELEASE</spring.security.version>
@@ -43,6 +45,11 @@
 			<!-- app begin -->
 			<dependency>
 				<groupId>onekr</groupId>
+				<artifactId>framework</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
 				<artifactId>commonservice</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -58,12 +65,17 @@
 			</dependency>
 			<dependency>
 				<groupId>onekr</groupId>
-				<artifactId>framework</artifactId>
+				<artifactId>cardservice</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>onekr</groupId>
-				<artifactId>war</artifactId>
+				<artifactId>portalweb</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>cardweb</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!-- app end -->
@@ -640,7 +652,7 @@
 				<version>2012.6</version>
 				<type>jar</type>
 				<scope>system</scope>
-				<systemPath>${project.basedir}/../war/webapp/WEB-INF/lib/IKAnalyzer2012_u6.jar</systemPath> 
+				<systemPath>${lib.dir}/IKAnalyzer2012_u6.jar</systemPath> 
 			</dependency>
 			<dependency>
 	            <groupId>pinyin4j</groupId>
@@ -648,7 +660,7 @@
 	            <version>2.5.0</version>
 	            <type>jar</type>
 				<scope>system</scope>
-				<systemPath>${project.basedir}/../war/webapp/WEB-INF/lib/pinyin4j-2.5.0.jar</systemPath>
+				<systemPath>${lib.dir}/pinyin4j-2.5.0.jar</systemPath>
 	        </dependency>
 	        
 		</dependencies>

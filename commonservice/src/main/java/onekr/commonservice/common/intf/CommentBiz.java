@@ -4,17 +4,18 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.model.Comment;
 import onekr.commonservice.model.Status;
 
 public interface CommentBiz {
-	List<Comment> findCommentsByOwners(String biz, Collection<String> owners);
+	List<Comment> findCommentsByOwners(Biz biz, Collection<String> owners);
 	
-	Map<String, Long> findOwnerCountMap(String biz, Collection<String> owners);
+	Map<String, Long> findOwnerCountMap(Biz biz, Collection<String> owners);
 	
-	List<Comment> findAll(String biz);
+	List<Comment> findAll(Biz biz);
 	
-	List<Comment> findComments(String biz, String owner);
+	List<Comment> findComments(Biz biz, String owner);
 	
 	Comment findById(Long id);
 	

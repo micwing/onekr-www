@@ -3,19 +3,15 @@ package onekr.commonservice.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import onekr.commonservice.utils.CommonConstants;
 
@@ -23,20 +19,11 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "common_comment")
+@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "comment")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Comment implements Serializable {
 
 	private static final long serialVersionUID = -441280225512165188L;
-	
-	@Transient
-	public static final String KEY_EMAIL = "email";
-	@Transient
-	private String email;
-	@Transient
-	private Long good;
-	@Transient
-	private Long bad;
 	
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
@@ -58,10 +45,10 @@ public class Comment implements Serializable {
 	@Column(name = "title")
 	private String title;
 
-	@Column(name = "content", length = 3000)
+	@Column(name = "content", length = 1000)
 	private String content;
 	
-	@Column(name = "json", length = 3000)
+	@Column(name = "json", length = 1000)
 	private String json;
 	
 	@Enumerated
@@ -72,18 +59,6 @@ public class Comment implements Serializable {
 	@Column(name = "create_at", nullable = false)
 	private Date createAt;
 	
-	@OneToOne(cascade=CascadeType.ALL, optional=true)
-	@JoinColumn(name="sub_id")
-	private Comment subComment;
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -162,30 +137,6 @@ public class Comment implements Serializable {
 
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
-	}
-
-	public Comment getSubComment() {
-		return subComment;
-	}
-
-	public void setSubComment(Comment subComment) {
-		this.subComment = subComment;
-	}
-
-	public Long getGood() {
-		return good;
-	}
-
-	public void setGood(Long good) {
-		this.good = good;
-	}
-
-	public Long getBad() {
-		return bad;
-	}
-
-	public void setBad(Long bad) {
-		this.bad = bad;
 	}
 
 }

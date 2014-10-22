@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.dao.ConfigDao;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
@@ -22,8 +23,8 @@ public class ConfigBizImpl implements ConfigBiz {
 	private ConfigDao configDao;
 
 	@Override
-	public Map<String, Config> findConfigs(String biz, Collection<String> owners) {
-		List<Config> configs = configDao.findByBizAndOwnerIn(biz, owners);
+	public Map<String, Config> findConfigs(Biz biz, Collection<String> owners) {
+		List<Config> configs = configDao.findByBizAndOwnerIn(biz.name(), owners);
 		Map<String, Config> map = new HashMap<String, Config>();
 		if (!CollectionUtils.isEmpty(configs)) {
 			for (Config c : configs) {
@@ -34,8 +35,8 @@ public class ConfigBizImpl implements ConfigBiz {
 	}
 	
 	@Override
-	public Config findConfig(String biz, String owner) {
-		return configDao.findByBizAndOwner(biz, owner);
+	public Config findConfig(Biz biz, String owner) {
+		return configDao.findByBizAndOwner(biz.name(), owner);
 	}
 	
 	@Override

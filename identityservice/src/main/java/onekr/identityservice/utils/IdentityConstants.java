@@ -4,5 +4,5 @@ import onekr.framework.contstants.Constants;
 
 public class IdentityConstants extends Constants {
 	
-	public static final String TABLE_PREFIX_NAMING = "t_";
+	public static final String TABLE_PREFIX_NAMING = "identity_";
 }

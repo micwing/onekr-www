@@ -19,7 +19,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "common_count")
+@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "count")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Count implements Serializable {
 

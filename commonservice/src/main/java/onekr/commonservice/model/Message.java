@@ -18,7 +18,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "common_message")
+@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "message")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Message implements Serializable {
 

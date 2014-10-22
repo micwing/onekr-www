@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.dao.CommentDao;
 import onekr.commonservice.common.dao.CommonSpecificDao;
 import onekr.commonservice.common.intf.CommentBiz;
@@ -25,24 +26,24 @@ public class CommentBizImpl implements CommentBiz {
 	private CommonSpecificDao commonSpecificDao;
 
 	@Override
-	public List<Comment> findCommentsByOwners(String biz, Collection<String> owners) {
-		return commentDao.findByBizAndOwnerIn(biz, owners);
+	public List<Comment> findCommentsByOwners(Biz biz, Collection<String> owners) {
+		return commentDao.findByBizAndOwnerIn(biz.name(), owners);
 	}
 	
 	@Override
-	public Map<String, Long> findOwnerCountMap(String biz,
+	public Map<String, Long> findOwnerCountMap(Biz biz,
 			Collection<String> owners) {
-		return commonSpecificDao.countOwnerComments(biz, owners);
+		return commonSpecificDao.countOwnerComments(biz.name(), owners);
 	}
 	
 	@Override
-	public List<Comment> findAll(String biz) {
-		return commentDao.findByBiz(biz);
+	public List<Comment> findAll(Biz biz) {
+		return commentDao.findByBiz(biz.name());
 	}
 	
 	@Override
-	public List<Comment> findComments(String biz, String owner) {
-		return commentDao.findByBizAndOwner(biz, owner);
+	public List<Comment> findComments(Biz biz, String owner) {
+		return commentDao.findByBizAndOwner(biz.name(), owner);
 	}
 	
 	@Override
@@ -74,7 +75,6 @@ public class CommentBizImpl implements CommentBiz {
 		}
 		entry.setUserId(param.getUserId());
 		entry.setUserName(param.getUserName());
-		entry.setSubComment(param.getSubComment());
 		return commentDao.save(entry);
 	}
 	
@@ -89,5 +89,9 @@ public class CommentBizImpl implements CommentBiz {
 	@Override
 	public void delete(Long id) {
 		commentDao.delete(id);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(Biz.ARTICLE_COMMENTS.name());
 	}
 }

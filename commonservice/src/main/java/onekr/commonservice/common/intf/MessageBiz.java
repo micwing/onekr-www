@@ -3,6 +3,7 @@ package onekr.commonservice.common.intf;
 import java.util.Collection;
 import java.util.List;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.model.Message;
 
 public interface MessageBiz {
@@ -10,7 +11,7 @@ public interface MessageBiz {
 	
 	List<Message> findByIds(Collection<Long> ids);
 	
-	List<Message> findByBizOwner(String biz, String owner);
+	List<Message> findByBizOwner(Biz biz, String owner);
 	
 	Message save(Message message);
 	

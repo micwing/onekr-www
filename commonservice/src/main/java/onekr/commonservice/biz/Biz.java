@@ -24,6 +24,12 @@ public enum Biz {
 	CARD_COMMENTS,
 	
 	/**card照片点赞计数*/
-	CARD_PHOTO_PRAISE_COUNT;
+	CARD_PHOTO_PRAISE_COUNT,
+	
+	/**card照片存储*/
+	CARD_PHOTO_FILE_STORE,
+	
+	/**card音乐存储*/
+	CARD_MUSIC_FILE_STORE;
 	
 }

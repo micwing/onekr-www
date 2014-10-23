@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import onekr.commonservice.model.Status;
 import onekr.commonservice.utils.CommonConstants;
 
 import org.hibernate.annotations.Cache;
@@ -110,6 +111,9 @@ public class Card implements Serializable {
 	
 	@Column(name = "remark", length = 500)
 	private String remark;
+	
+	@Column(name = "status")
+	private Status status;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "create_at")
@@ -315,6 +319,14 @@ public class Card implements Serializable {
 
 	public void setUpdateBy(Long updateBy) {
 		this.updateBy = updateBy;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 }

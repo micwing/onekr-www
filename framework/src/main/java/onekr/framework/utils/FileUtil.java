@@ -19,6 +19,7 @@ import org.apache.commons.lang.StringUtils;
 public class FileUtil {
 	
 	public static String[] IMAGE_FILE_TYPES = {"png", "jpg", "jpeg", "gif", "bmp", "ico"};
+	public static String[] MUSIC_FILE_TYPES = {"wav", "mp3", "aif",  "midi", "wma"};
 	
 	/**
 	 * 复制指定URL地址的文件到指定位置File
@@ -172,6 +173,16 @@ public class FileUtil {
 	public static boolean isImage(File f) {
 		String extention = getFileSuffix(f);
 		return ArrayUtils.contains(IMAGE_FILE_TYPES, extention);
+	}
+	
+	/**
+	 * 根据后缀名判断是否是图片
+	 * @param f
+	 * @return
+	 */
+	public static boolean isMusic(File f) {
+		String extention = getFileSuffix(f);
+		return ArrayUtils.contains(MUSIC_FILE_TYPES, extention);
 	}
 	
 	/**

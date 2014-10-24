@@ -18,8 +18,11 @@ import org.apache.commons.lang.StringUtils;
 
 public class FileUtil {
 	
-	public static String[] IMAGE_FILE_TYPES = {"png", "jpg", "jpeg", "gif", "bmp", "ico"};
-	public static String[] MUSIC_FILE_TYPES = {"wav", "mp3", "aif",  "midi", "wma"};
+	public static String[] IMAGE_FILE_TYPES = {"png", "jpg", "jpeg", "jpe", "gif", "bmp", "ico", "pic", "tif", "tiff", "jfif"};
+	public static String[] AUDIO_FILE_TYPES = {"wav", "mp3", "aif", "midi", "wma", "ram", "au"};
+	public static String[] VIDEO_FILE_TYPES = {"rm", "rmvb", "wmv", "avi", "flv", "swf", "mp4", "3gp", "mpeg", "mpg", "mov", "asf", "dat", "vob"};
+	public static String[] DOC_FILE_TYPES = {"txt", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "docx", "pdf", "wps", "rtf"};
+	public static String[] PACKAGE_FILE_TYPES = {"zip", "rar", "7z", "cab", "iso", "arj", "gz", "z"};
 	
 	/**
 	 * 复制指定URL地址的文件到指定位置File
@@ -171,18 +174,29 @@ public class FileUtil {
 	 * @return
 	 */
 	public static boolean isImage(File f) {
-		String extention = getFileSuffix(f);
-		return ArrayUtils.contains(IMAGE_FILE_TYPES, extention);
+		return isFileType(f, IMAGE_FILE_TYPES);
 	}
 	
 	/**
-	 * 根据后缀名判断是否是图片
+	 * 根据后缀名判断是否是含有指定的后缀
 	 * @param f
+	 * @param fileTypes FileUtil.IMAGE_FILE_TYPES/AUDIO_FILE_TYPES/...
 	 * @return
 	 */
-	public static boolean isMusic(File f) {
+	public static boolean isFileType(File f, String[] fileTypes) {
 		String extention = getFileSuffix(f);
-		return ArrayUtils.contains(MUSIC_FILE_TYPES, extention);
+		return ArrayUtils.contains(fileTypes, extention.toLowerCase());
+	}
+	
+	/**
+	 * 根据后缀名判断是否是含有指定的后缀
+	 * @param f
+	 * @param fileTypes FileUtil.IMAGE_FILE_TYPES/AUDIO_FILE_TYPES/...
+	 * @return
+	 */
+	public static boolean isFileType(String filename, String[] fileTypes) {
+		String extention = getPathOrUrlSuffix(filename);
+		return ArrayUtils.contains(fileTypes, extention.toLowerCase());
 	}
 	
 	/**

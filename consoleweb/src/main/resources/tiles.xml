@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="portal:*" template="/WEB-INF/layout.jsp">
+		<put-attribute name="navbar" expression="/WEB-INF/portal-navbar.jsp"/>
+		<put-attribute name="content" expression="/WEB-INF/portal/{1}.jsp"/>
+	</definition>
+	<definition name="portal:*/*" template="/WEB-INF/layout.jsp">
+		<put-attribute name="navbar" expression="/WEB-INF/portal-navbar.jsp"/>
+		<put-attribute name="content" expression="/WEB-INF/portal/{1}/{2}.jsp"/>
+	</definition>
+	
+	<definition name="card:*" template="/WEB-INF/layout.jsp">
+		<put-attribute name="navbar" expression="/WEB-INF/card-navbar.jsp"/>
+		<put-attribute name="content" expression="/WEB-INF/card/{1}.jsp"/>
+	</definition>
+	<definition name="card:*/*" template="/WEB-INF/layout.jsp">
+		<put-attribute name="navbar" expression="/WEB-INF/card-navbar.jsp"/>
+		<put-attribute name="content" expression="/WEB-INF/card/{1}/{2}.jsp"/>
+	</definition>
+	
+	<definition name="single:*/*/*" templateExpression="/WEB-INF/{1}/{2}/{3}.jsp"/>
+	<definition name="single:*/*" templateExpression="/WEB-INF/{1}/{2}.jsp"/>
+	<definition name="single:*" templateExpression="/WEB-INF/{1}.jsp"/>
+</tiles-definitions>

@@ -14,24 +14,22 @@
 	<description>The Portal</description>
 
 	<dependencies>
-		<!-- app begin -->
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>commonservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>identityservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>portalservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>framework</artifactId>
-			</dependency>
-		<!-- app end -->
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>commonservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>identityservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>portalservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>framework</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -49,7 +47,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-		
+
 	</dependencies>
 
 </project>

@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import onekr.framework.controller.BaseController;
 import onekr.framework.result.Result;
 import onekr.framework.utils.DateUtil;
 import onekr.portalservice.domain.dto.DomainDto;
 import onekr.portalservice.domain.intf.DomainBiz;
 import onekr.portalservice.utils.GlobalConstants;
-import onekr.web.base.BaseController;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -45,7 +45,7 @@ public class DomainController extends BaseController {
 		
 		atype = atype == null?"" : atype;
 		suffix = suffix == null?"":suffix;
-		ModelAndView mav = new ModelAndView(PORTAL+"/domain-group");
+		ModelAndView mav = new ModelAndView("portal:/domain-group");
 		mav.addObject("first", first);
 		mav.addObject("second", second);
 		mav.addObject("atype", atype);
@@ -71,7 +71,7 @@ public class DomainController extends BaseController {
 		}
 		domain = domain.toLowerCase();
 		
-		ModelAndView mav = new ModelAndView(PORTAL+"/domain-whois");
+		ModelAndView mav = new ModelAndView("portal:/domain-whois");
 		DomainDto dto = domainBiz.queryDomainWhois(domain);
 		mav.addObject("dto", dto);
 		return mav;
@@ -97,7 +97,7 @@ public class DomainController extends BaseController {
 			dto.setSuffix(suf);
 			domainDtoList.add(dto);
 		}
-		ModelAndView mav = new ModelAndView(PORTAL+"/domain-suffix");
+		ModelAndView mav = new ModelAndView("portal:/domain-suffix");
 		mav.addObject("name", name);
 		mav.addObject("domainDtoList", domainDtoList);
 		return mav;
@@ -148,7 +148,7 @@ public class DomainController extends BaseController {
 		List<DomainDto> domainDtoList = domainBiz.listDomains4Expired(
 				date, key, keyPos, suffix, minlength, maxlength, pinyinType, textType);
 		
-		ModelAndView mav = new ModelAndView(PORTAL+"/domain-expired");
+		ModelAndView mav = new ModelAndView("portal:/domain-expired");
 		mav.addObject("date", date);
 		List<String> dates = new ArrayList<String>();
 		dates.add(DateUtil.cnvDate2Str(now));

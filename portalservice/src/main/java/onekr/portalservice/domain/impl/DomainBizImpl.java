@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
 import onekr.framework.utils.PinyinUtil;
@@ -60,7 +61,7 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 	
 	private DomainSeach getJudgeSearcher() {
 		Config config = configBiz.findConfig(
-				GlobalConstants.BIZ_SYSTEM, GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME);
+				Biz.PORTAL_SYSTEM, GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME);
 		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
 		if (config != null) {
 			seacherName = config.getValue();
@@ -70,7 +71,7 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 	
 	private DomainSeach getWhoisSearcher() {
 		Config config = configBiz.findConfig(
-				GlobalConstants.BIZ_SYSTEM, GlobalConstants.OWNER_DOMAIN_WHOIS_SEARCHER_NAME);
+				Biz.PORTAL_SYSTEM, GlobalConstants.OWNER_DOMAIN_WHOIS_SEARCHER_NAME);
 		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
 		if (config != null) {
 			seacherName = config.getValue();

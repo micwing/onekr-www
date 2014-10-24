@@ -8,7 +8,9 @@ import onekr.commonservice.filestore.intf.FileStoreBiz;
 import onekr.commonservice.model.FileStore;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FileStoreBizImpl implements FileStoreBiz {
 	
 	@Autowired

@@ -1,9 +1,10 @@
 package onekr.web.portal;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.ConfigBiz;
+import onekr.framework.controller.BaseController;
 import onekr.portalservice.leaveComment.intf.LeaveCommentBiz;
 import onekr.portalservice.utils.GlobalConstants;
-import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,28 +23,28 @@ public class HomeController extends BaseController {
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home() {
-		ModelAndView mav = new ModelAndView(PORTAL+"/home");
+		ModelAndView mav = new ModelAndView("portal:/home");
 		mav.addObject("HOME_SLIDER", 
-				configBiz.findConfig(GlobalConstants.BIZ_SYSTEM, GlobalConstants.OWNER_HOME_SLIDER));
+				configBiz.findConfig(Biz.PORTAL_SYSTEM, GlobalConstants.OWNER_HOME_SLIDER));
 		return mav;
 	}
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public ModelAndView contact() {
-		ModelAndView mav = new ModelAndView(PORTAL+"/leaveComment");
+		ModelAndView mav = new ModelAndView("portal:/leaveComment");
 		mav.addObject("comments", leaveCommentBiz.listAll());
 		return mav;
 	}
 	
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public ModelAndView about() {
-		ModelAndView mav = new ModelAndView(PORTAL+"/about");
+		ModelAndView mav = new ModelAndView("portal:/about");
 		return mav;
 	}
 	
 	@RequestMapping(value = "/product/introduce", method = RequestMethod.GET)
 	public ModelAndView productIntroduce() {
-		ModelAndView mav = new ModelAndView(PORTAL+"/productIntroduce");
+		ModelAndView mav = new ModelAndView("portal:/productIntroduce");
 		return mav;
 	}
 }

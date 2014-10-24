@@ -26,6 +26,11 @@
 			<groupId>onekr</groupId>
 			<artifactId>commonservice</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>IKAnalyzer</groupId>
+			<artifactId>IKAnalyzer</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

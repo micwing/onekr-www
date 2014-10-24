@@ -29,8 +29,6 @@ public class CardFileBizImpl implements CardFileBiz {
 
 	@Override
 	public FileStore saveCardFile(Long cardId, MultipartFile mfile, Long uid) {
-		mfile.getContentType()
-		mfile.getName()
 		String originalFilename = mfile.getOriginalFilename();
 		
 		String path;
@@ -40,12 +38,11 @@ public class CardFileBizImpl implements CardFileBiz {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}
 		
-		
+		Date now = new Date();
 		
 		FileStore fileStore = new FileStore();
-//		fileStore.setId(id)
 		fileStore.setBiz(Biz.CARD_PHOTO_FILE_STORE.name());
-		fileStore.setCreateAt(new Date());
+		fileStore.setCreateAt(now);
 		fileStore.setCreateBy(uid);
 		fileStore.setDescription("");
 		fileStore.setJson("");
@@ -54,20 +51,29 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setRank(getNewRank4Card(cardId));
 		fileStore.setSize(mfile.getSize());
 		fileStore.setStatus(Status.NORMAL);
-		fileStore.setStoreName(storeName);
-		fileStore.setSuffixName(suffixName);
-		fileStore.setType(type);
-		fileStore.setUpdateBy(updateBy);
-		fileStore.setUserId(userId);
+		fileStore.setStoreName(path);
+		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
+		fileStore.setType(getFileType4Filename(originalFilename));
+		fileStore.setUpdateBy(now);
+		fileStore.setUserId(uid);
 		
-		fileStoreBiz.saveFileStore(fileStore);
-		
-		return null;
+		return fileStoreBiz.saveFileStore(fileStore);
 	}
 	
 	private FileType getFileType4Filename(String filename) {
-		String suffix = FileUtil.getPathOrUrlSuffix(filename);
-		if ()
+		if (FileUtil.isFileType(filename, FileUtil.IMAGE_FILE_TYPES)) {
+			return FileType.IMAGE;
+		} else if (FileUtil.isFileType(filename, FileUtil.AUDIO_FILE_TYPES)) {
+			return FileType.AUDIO;
+		} else if (FileUtil.isFileType(filename, FileUtil.VIDEO_FILE_TYPES)) {
+			return FileType.VIDEO;
+		} else if (FileUtil.isFileType(filename, FileUtil.DOC_FILE_TYPES)) {
+			return FileType.DOC;
+		} else if (FileUtil.isFileType(filename, FileUtil.PACKAGE_FILE_TYPES)) {
+			return FileType.PACKAGE;
+		} else {
+			return FileType.OTHER;
+		}
 		
 	}
 	

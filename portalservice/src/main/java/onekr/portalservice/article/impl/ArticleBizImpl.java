@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.CommentBiz;
 import onekr.commonservice.common.intf.CountBiz;
 import onekr.commonservice.model.Count;
 import onekr.portalservice.article.dao.ArticleDao;
 import onekr.portalservice.article.intf.ArticleBiz;
 import onekr.portalservice.model.Article;
-import onekr.portalservice.utils.GlobalConstants;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -81,7 +81,7 @@ public class ArticleBizImpl implements ArticleBiz {
 		for (Article article : articles) {
 			ids.add(article.getId()+"");
 		}
-		Map<String, Long> map = commentBiz.findOwnerCountMap(GlobalConstants.BIZ_ARTICLE_COMMENTS, ids);
+		Map<String, Long> map = commentBiz.findOwnerCountMap(Biz.PORTAL_ARTICLE_COMMENTS, ids);
 		for (Article article : articles) {
 			String idstr = article.getId()+"";
 			if (map.containsKey(idstr))
@@ -99,7 +99,7 @@ public class ArticleBizImpl implements ArticleBiz {
 		for (Article article : articles) {
 			ids.add(article.getId()+"");
 		}
-		Map<String, Count> map = countBiz.findCounts(GlobalConstants.BIZ_ARTICLE_VIEW_COUNT, ids);
+		Map<String, Count> map = countBiz.findCounts(Biz.PORTAL_ARTICLE_VIEW_COUNT, ids);
 		for (Article article : articles) {
 			String idstr = article.getId()+"";
 			if (map.containsKey(idstr))

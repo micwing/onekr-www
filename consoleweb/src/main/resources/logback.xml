@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property resource="system.properties"/>
+	<property name="log_home" value="${log_home}" />
+	<property name="log_file_name_prefix" value="${log_file_name_prefix}" />
+	<property name="max_history" value="30" />
+
+	<!-- 控制台输出 -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<charset>GBK</charset>
+			<pattern>%d{HH:mm:ss.SSS} |-%-5level [%thread] %logger{50}:%L - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 按照每天生成系统日志文件 -->
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<charset>GBK</charset>
+			<pattern>%d{HH:mm:ss.SSS} |-%-5level [%thread] %logger{50}:%L - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_home}/${log_file_name_prefix}.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>${max_history}</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="FILE" />
+	</appender>
+
+
+	<!--业务日志记录到数据库 -->
+	<!-- <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator>
+				<expression>return message.contains("${biz_key}");</expression>
+			</evaluator>
+			<OnMatch>ACCEPT</OnMatch>
+			<OnMismatch>DENY</OnMismatch>
+		</filter>
+		<connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
+			<dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<driverClass>com.mysql.jdbc.Driver</driverClass>
+				<jdbcUrl>jdbc:mysql://localhost:3306/onekr?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true</jdbcUrl>
+				<user>root</user>
+				<password>root</password>
+			</dataSource>
+		</connectionSource>
+	</appender> -->
+
+
+	<!-- 日志输出级别 -->
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="ASYNC" />
+		<!-- <appender-ref ref="DB" /> -->
+	</root>
+</configuration>
+

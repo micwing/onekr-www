@@ -2,9 +2,9 @@ package onekr.web.portal;
 
 import java.util.Date;
 
+import onekr.framework.controller.BaseController;
 import onekr.framework.result.Result;
 import onekr.portalservice.leaveComment.intf.LeaveCommentBiz;
-import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

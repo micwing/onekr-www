@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>onekr</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>consoleweb</artifactId>
+	<packaging>war</packaging>
+	<name>${project.artifactId}</name>
+	<description>The console web</description>
+
+	<dependencies>
+		<!-- app begin -->
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>commonservice</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>identityservice</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>portalservice</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>cardservice</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>framework</artifactId>
+			</dependency>
+		<!-- app end -->
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+</project>

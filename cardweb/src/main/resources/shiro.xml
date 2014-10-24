@@ -18,7 +18,7 @@
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login" />
 		<property name="successUrl" value="/home" />
-		<property name="unauthorizedUrl" value="/global/noPermissions" />
+		<property name="unauthorizedUrl" value="/login" />
 		<property name="filterChainDefinitions">
 			<value>
 				/console/** = authc

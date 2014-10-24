@@ -258,13 +258,9 @@
 			<artifactId>lucene-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>IKAnalyzer</groupId>
-			<artifactId>IKAnalyzer</artifactId>
+			<groupId>pinyin4j</groupId>
+			<artifactId>pinyin4j</artifactId>
 		</dependency>
-		<dependency>
-            <groupId>pinyin4j</groupId>
-            <artifactId>pinyin4j</artifactId>
-        </dependency>
 	</dependencies>
 	<build>
 		<finalName>framework</finalName>

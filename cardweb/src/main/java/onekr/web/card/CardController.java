@@ -3,7 +3,6 @@ package onekr.web.card;
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardDto;
 import onekr.cardservice.model.Card;
-import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/card")
-public class CardController extends BaseController {
+public class CardController {
 	
 	@Autowired
 	private CardBiz cardBiz;
 	
 	@RequestMapping(value = "/{cardId}/cover", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
-		ModelAndView mav = new ModelAndView(CARD+"cover");
+		ModelAndView mav = new ModelAndView("card:cover");
 		Card card = cardBiz.findById(cardId);
 		mav.addObject("card", card);
 		return mav;
@@ -30,7 +29,7 @@ public class CardController extends BaseController {
 	
 	@RequestMapping(value = "/{cardId}/main", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
-		ModelAndView mav = new ModelAndView(CARD+"main");
+		ModelAndView mav = new ModelAndView("card:main");
 		CardDto dto = cardBiz.findCardInfo(cardId);
 		mav.addObject("dto", dto);
 		return mav;

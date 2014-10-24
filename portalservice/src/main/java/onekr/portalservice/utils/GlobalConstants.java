@@ -3,12 +3,12 @@ package onekr.portalservice.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import onekr.commonservice.utils.CommonConstants;
+import onekr.framework.contstants.Constants;
 
 
 
 
-public class GlobalConstants extends CommonConstants {
+public class GlobalConstants extends Constants {
 	
 	public static final String DOMAIN_REGULAR_EXPRESSION = 
 			"[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\\.?";

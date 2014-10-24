@@ -3,16 +3,16 @@ package onekr.commonservice.biz;
 public enum Biz {
 	
 	/**系统*/
-	SYSTEM,
+	PORTAL_SYSTEM,
 	
 	/**文章评论*/
-	ARTICLE_COMMENTS,
+	PORTAL_ARTICLE_COMMENTS,
 	
 	/**门户留言*/
 	PORTAL_COMMENTS,
 	
 	/**文章查看计数*/
-	ARTICLE_VIEW_COUNT,
+	PORTAL_ARTICLE_VIEW_COUNT,
 	
 	/**门户留言好评计数*/
 	PORTAL_COMMENTS_GOOD_COUNT,

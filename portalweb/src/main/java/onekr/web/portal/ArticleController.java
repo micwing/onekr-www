@@ -3,9 +3,11 @@ package onekr.web.portal;
 import java.util.Collections;
 import java.util.List;
 
+import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.CommentBiz;
 import onekr.commonservice.common.intf.CountBiz;
 import onekr.commonservice.model.Comment;
+import onekr.framework.controller.BaseController;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.verifycode.ImageIOVerifyCodeServlet;
@@ -13,7 +15,6 @@ import onekr.portalservice.article.intf.ArticleBiz;
 import onekr.portalservice.article.intf.SearchArticleBiz;
 import onekr.portalservice.model.Article;
 import onekr.portalservice.utils.GlobalConstants;
-import onekr.web.base.BaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,7 +43,7 @@ public class ArticleController extends BaseController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView index(Pageable pageable) {
-		ModelAndView mav = new ModelAndView(PORTAL+"articleList");
+		ModelAndView mav = new ModelAndView("portal:articleList");
 		Page<Article> page = articleBiz.list(pageable);
 		articleBiz.putTotalComment2Articles(page.getContent());
 		articleBiz.putTotalViewCount2Articles(page.getContent());
@@ -52,12 +53,12 @@ public class ArticleController extends BaseController {
 	
 	@RequestMapping(value = "/detail/{articleId}", method = RequestMethod.GET)
 	public ModelAndView detail(@PathVariable("articleId") Long articleId) {
-		ModelAndView mav = new ModelAndView(PORTAL+"articleDetail");
+		ModelAndView mav = new ModelAndView("portal:articleDetail");
 		Article article = articleBiz.findArticle(articleId);
-		countBiz.addCount(GlobalConstants.BIZ_ARTICLE_VIEW_COUNT, article.getId()+"", null);
+		countBiz.addCount(Biz.PORTAL_ARTICLE_VIEW_COUNT, article.getId()+"", null);
 		articleBiz.putTotalViewCount2Articles(Collections.singleton(article));
 		mav.addObject("article", article);
-		mav.addObject("comments", commentBiz.findComments(GlobalConstants.BIZ_ARTICLE_COMMENTS, articleId+""));
+		mav.addObject("comments", commentBiz.findComments(Biz.PORTAL_ARTICLE_COMMENTS, articleId+""));
 		return mav;
 	}
 	
@@ -69,7 +70,7 @@ public class ArticleController extends BaseController {
 	
 	@RequestMapping(value = "/search/{keys}", method = RequestMethod.GET)
 	public ModelAndView search(@PathVariable("keys") String keys) {
-		ModelAndView mav = new ModelAndView(PORTAL+"articleSearch");
+		ModelAndView mav = new ModelAndView("portal:articleSearch");
 		mav.addObject("keys", keys);
 		try {
 			List<Article> list = searchArticleBiz.search(keys);
@@ -94,7 +95,7 @@ public class ArticleController extends BaseController {
 		comment.setOwner(articleId+"");
 		comment.setTitle(data.getTitle());
 		comment.setUserName(data.getUserName());
-		comment.setJson(JSON.toJSONString(Collections.singletonMap(Comment.KEY_EMAIL, data.getEmail())));
+//		comment.setJson(JSON.toJSONString(Collections.singletonMap(Comment.KEY_EMAIL, data.getEmail())));
 		commentBiz.saveComment(comment);
 		return "redirect:/article/detail/"+articleId;
 	}

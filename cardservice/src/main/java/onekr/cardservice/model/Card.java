@@ -12,14 +12,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import onekr.cardservice.utils.CardConstants;
 import onekr.commonservice.model.Status;
-import onekr.commonservice.utils.CommonConstants;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "wedcard")
+@Table(name = CardConstants.TABLE_PREFIX_NAMING + "cardinfo")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Card implements Serializable {
 
@@ -48,17 +48,11 @@ public class Card implements Serializable {
 	@Column(name = "people1_mobile")
 	private String people1Mobile;
 	
-	@Column(name = "people1_photo_url", length = 500)
-	private String people1PhotoUrl;
-	
 	@Column(name = "people2_name")
 	private String people2Name;
 	
 	@Column(name = "people2_mobile")
 	private String people2Mobile;
-	
-	@Column(name = "people2_photo_url", length = 500)
-	private String people2PhotoUrl;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "party_time")
@@ -106,8 +100,11 @@ public class Card implements Serializable {
 	@Column(name = "map_url", length = 1000)
 	private String mapUrl;
 	
-	@Column(name = "music_url", length = 500)
-	private String musicUrl;
+	@Column(name = "taobao_id")
+	private String taobaoId;
+	
+	@Column(name = "templet_id")
+	private String templetId;
 	
 	@Column(name = "remark", length = 500)
 	private String remark;
@@ -177,14 +174,6 @@ public class Card implements Serializable {
 		this.people1Mobile = people1Mobile;
 	}
 
-	public String getPeople1PhotoUrl() {
-		return people1PhotoUrl;
-	}
-
-	public void setPeople1PhotoUrl(String people1PhotoUrl) {
-		this.people1PhotoUrl = people1PhotoUrl;
-	}
-
 	public String getPeople2Name() {
 		return people2Name;
 	}
@@ -199,14 +188,6 @@ public class Card implements Serializable {
 
 	public void setPeople2Mobile(String people2Mobile) {
 		this.people2Mobile = people2Mobile;
-	}
-
-	public String getPeople2PhotoUrl() {
-		return people2PhotoUrl;
-	}
-
-	public void setPeople2PhotoUrl(String people2PhotoUrl) {
-		this.people2PhotoUrl = people2PhotoUrl;
 	}
 
 	public Date getPartyTime() {
@@ -273,14 +254,6 @@ public class Card implements Serializable {
 		this.mapUrl = mapUrl;
 	}
 
-	public String getMusicUrl() {
-		return musicUrl;
-	}
-
-	public void setMusicUrl(String musicUrl) {
-		this.musicUrl = musicUrl;
-	}
-
 	public String getRemark() {
 		return remark;
 	}
@@ -327,6 +300,22 @@ public class Card implements Serializable {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public String getTempletId() {
+		return templetId;
+	}
+
+	public void setTempletId(String templetId) {
+		this.templetId = templetId;
+	}
+
+	public String getTaobaoId() {
+		return taobaoId;
+	}
+
+	public void setTaobaoId(String taobaoId) {
+		this.taobaoId = taobaoId;
 	}
 
 }

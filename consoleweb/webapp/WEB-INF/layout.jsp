@@ -54,10 +54,10 @@ body {
 					<a class="brand" href="#">ONEKR CONSOLE</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active"><a href="#">通知中心</a></li>
-							<li><a href="#about">门户管理</a></li>
-							<li><a href="#contact">请柬管理</a></li>
-							<li><a href="#contact">用户管理</a></li>
+							<li class="${fn:startsWith(requestServletPath, '/center/')?'active':''}"><a href="#">通知中心</a></li>
+							<li class="${fn:startsWith(requestServletPath, '/console/')?'active':''}"><a href="/console/dashboard">门户管理</a></li>
+							<li class="${fn:startsWith(requestServletPath, '/card/')?'active':''}"><a href="/card/index">请柬管理</a></li>
+							<li class="${fn:startsWith(requestServletPath, '/identity')?'active':''}"><a href="#contact">用户管理</a></li>
 						</ul>
 						<ul class="nav pull-right">
 							<li><a href="/console/account/accountInfo"><shiro:principal /></a></li>

@@ -8,6 +8,7 @@ import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.utils.FileUtil;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,9 +18,6 @@ public class FileBizImpl implements FileBiz {
 	
 	@Value("#{systemConfig['file.fileUploadDir']}")
 	private String fileUploadDir;
-	
-	@Value("#{systemConfig['file.fileUploadDirMore']}")
-	private String fileUploadDirMore;
 	
 	@Value("#{systemConfig['file.fileManagerUrl']}")
 	private String fileManagerUrl;
@@ -32,7 +30,17 @@ public class FileBizImpl implements FileBiz {
 	
 	@Override
 	public String saveMultipartFile(MultipartFile file) throws Exception {
-		File uploadPathFile = new File(fileUploadDir+fileUploadDirMore);
+        return saveMultipartFile(file, FileBiz.fileUploadDirMore);
+	}
+	
+	@Override
+	public String saveMultipartFile(MultipartFile file, String dirName) throws Exception {
+		if ( !StringUtils.isEmpty(dirName) ) {
+//			dirName = dirName.startsWith("/") ? dirName : ("/"+dirName);
+		} else {
+			dirName = FileBiz.fileUploadDirMore;
+		}
+		File uploadPathFile = new File(fileUploadDir+dirName);
         if (!uploadPathFile.exists()) {
         	uploadPathFile.mkdir();
         }

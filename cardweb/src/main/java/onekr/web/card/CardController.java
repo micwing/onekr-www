@@ -19,7 +19,7 @@ public class CardController {
 	@Autowired
 	private CardBiz cardBiz;
 	
-	@RequestMapping(value = "/{cardId}/cover", method = RequestMethod.GET)
+	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		ModelAndView mav = new ModelAndView("card:cover");
 		Card card = cardBiz.findById(cardId);
@@ -27,7 +27,7 @@ public class CardController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/{cardId}/main", method = RequestMethod.GET)
+	@RequestMapping(value = "/main/{cardId}", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
 		ModelAndView mav = new ModelAndView("card:main");
 		CardDto dto = cardBiz.findCardInfo(cardId);

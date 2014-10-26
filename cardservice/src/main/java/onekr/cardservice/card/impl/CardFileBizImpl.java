@@ -3,6 +3,9 @@ package onekr.cardservice.card.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 import onekr.cardservice.card.intf.CardFileBiz;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.filestore.intf.FileBiz;
@@ -28,12 +31,12 @@ public class CardFileBizImpl implements CardFileBiz {
 	private FileStoreBiz fileStoreBiz;
 
 	@Override
-	public FileStore saveCardFile(Long cardId, MultipartFile mfile, Long uid) {
+	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile, Long uid) {
 		String originalFilename = mfile.getOriginalFilename();
 		
 		String path;
 		try {
-			path = fileBiz.saveMultipartFile(mfile);
+			path = fileBiz.saveMultipartFile(mfile, "/card");
 		} catch (Exception e) {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}
@@ -51,7 +54,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setRank(getNewRank4Card(cardId));
 		fileStore.setSize(mfile.getSize());
 		fileStore.setStatus(Status.NORMAL);
-		fileStore.setStoreName(path);
+		fileStore.setStorePath(path);
 		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
 		fileStore.setType(getFileType4Filename(originalFilename));
 		fileStore.setUpdateBy(now);
@@ -60,7 +63,18 @@ public class CardFileBizImpl implements CardFileBiz {
 		return fileStoreBiz.saveFileStore(fileStore);
 	}
 	
-	private FileType getFileType4Filename(String filename) {
+	@Override
+	public FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid) {
+		FileStore[] stores = new FileStore[mfiles.length];
+		for (int i = 0; i < mfiles.length ; i++) {
+			stores[i] = saveCardPhoto(cardId, mfiles[i], uid);
+		}
+		return stores;
+	}
+	
+	@Override
+	public FileType getFileType4Filename(String filename) {
 		if (FileUtil.isFileType(filename, FileUtil.IMAGE_FILE_TYPES)) {
 			return FileType.IMAGE;
 		} else if (FileUtil.isFileType(filename, FileUtil.AUDIO_FILE_TYPES)) {
@@ -77,7 +91,8 @@ public class CardFileBizImpl implements CardFileBiz {
 		
 	}
 	
-	private long getNewRank4Card(Long cardId) {
+	@Override
+	public long getNewRank4Card(Long cardId) {
 		long max = 1;
 		List<FileStore> fileStores = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
 		if (CollectionUtils.isEmpty(fileStores))
@@ -88,4 +103,9 @@ public class CardFileBizImpl implements CardFileBiz {
 		return max;
 	}
 
+	@Override
+	public List<FileStore> listCardPhoto(Long cardId) {
+		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
+		return list;
+	}
 }

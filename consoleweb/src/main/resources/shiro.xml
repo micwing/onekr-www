@@ -21,7 +21,7 @@
 		<property name="unauthorizedUrl" value="/global/noPermissions" />
 		<property name="filterChainDefinitions">
 			<value>
-				/console/** = authc
+				<!-- /console/** = authc -->
 				<!-- /** = anon -->
 			</value>
 		</property>

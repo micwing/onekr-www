@@ -1,4 +1,4 @@
-package onekr.web.console.portal;
+package onekr.web.console.identity;
 
 import onekr.framework.controller.BaseController;
 
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/console/account")
-public class PortalAccountController extends BaseController {
+public class IdentityAccountController extends BaseController {
 	
 	@RequestMapping(value = "/accountInfo", method = RequestMethod.GET)
 	public ModelAndView accountInfo() {

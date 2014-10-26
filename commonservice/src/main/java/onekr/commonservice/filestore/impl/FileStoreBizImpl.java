@@ -30,8 +30,8 @@ public class FileStoreBizImpl implements FileStoreBiz {
 
 	@Override
 	public List<FileStore> listFileStore(Biz biz, String owner) {
-		// TODO Auto-generated method stub
-		return null;
+		List<FileStore> list = fileStoreDao.findByBizAndOwnerOrderByRankDesc(biz.name(), owner);
+		return list;
 	}
 
 }

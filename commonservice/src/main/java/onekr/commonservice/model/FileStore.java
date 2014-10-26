@@ -44,8 +44,8 @@ public class FileStore implements Serializable {
 	@Column(name = "suffix_name")
 	private String suffixName;
 	
-	@Column(name = "store_name")
-	private String storeName;
+	@Column(name = "store_path")
+	private String storePath;
 	
 	@NotNull
 	@Enumerated
@@ -127,12 +127,12 @@ public class FileStore implements Serializable {
 		this.suffixName = suffixName;
 	}
 
-	public String getStoreName() {
-		return storeName;
+	public String getStorePath() {
+		return storePath;
 	}
 
-	public void setStoreName(String storeName) {
-		this.storeName = storeName;
+	public void setStorePath(String storePath) {
+		this.storePath = storePath;
 	}
 
 	public FileType getType() {

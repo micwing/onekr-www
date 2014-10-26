@@ -33,17 +33,17 @@ public class GlobalController extends BaseController{
 	
 	@RequestMapping(value = "/noPermissions", method = RequestMethod.GET)
 	public String noPermissions() {
-		return SINGLE+"common/noPermissions";
+		return "single:common/noPermissions";
 	}
 	
 	@RequestMapping(value = "/404", method = RequestMethod.GET)
 	public String pageNotFound() {
-		return SINGLE+"common/404";
+		return "single:common/404";
 	}
 	
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
 	public String error() {
-		return SINGLE+"common/error";
+		return "singlecommon/error";
 	}
 
 }

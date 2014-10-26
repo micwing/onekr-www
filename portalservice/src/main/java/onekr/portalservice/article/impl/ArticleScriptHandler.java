@@ -29,8 +29,6 @@ public class ArticleScriptHandler implements ScriptHandler,BeanClassLoaderAware 
 
 	@Value("#{systemConfig['file.fileUploadDir']}")
 	private String fileUploadDir;
-	@Value("#{systemConfig['file.fileUploadDirMore']}")
-	private String fileUploadDirMore;
 	@Value("#{systemConfig['file.fileManagerUrl']}")
 	private String fileManagerUrl;
 	

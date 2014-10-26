@@ -3,16 +3,17 @@
 <%@include file="../common/includes.jsp"%>
 <%@page import="java.io.File" %>
 <%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer" %>
+<%@page import="onekr.commonservice.filestore.intf.FileBiz" %>
 <%@page import="onekr.framework.utils.FileUtil" %>
 <%@page import="org.apache.commons.io.FileUtils" %>
 <h4>
-上传位置：<%=new File(CustomizedPropertyPlaceholderConfigurer.getContextProperty("file.fileUploadDir") + CustomizedPropertyPlaceholderConfigurer.getContextProperty("file.fileUploadDirMore")).getPath() %>
+上传位置：<%=new File(CustomizedPropertyPlaceholderConfigurer.getContextProperty("file.fileUploadDir") + FileBiz.fileUploadDirMore).getPath() %>
 </h4>
 <form class="form-horizontal" action="/console/file/doUploadFile2" method="post" enctype="multipart/form-data" id="file-form">
 	<div class="control-group">
 		<label class="control-label" for="file">选择图片</label>
 		<div class="controls">
-			<input type="file" id="file" name="file" value="选择文件" placeholder="file"/>
+			<input type="file" id="file" name="file" multiple value="选择文件" placeholder="file"/>
 		</div>
 	</div>
 	<div class="control-group">

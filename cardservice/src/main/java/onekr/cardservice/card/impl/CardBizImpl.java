@@ -70,6 +70,9 @@ public class CardBizImpl implements CardBiz {
 			card.setCreateBy(entity.getCreateBy());
 			card.setCardType(entity.getCardType());
 			card.setStatus(entity.getStatus());
+		} else {
+			card.setCreateAt(now);
+			card.setCreateBy(uid);
 		}
 
 		// 默认值

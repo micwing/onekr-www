@@ -35,9 +35,7 @@ public class FileBizImpl implements FileBiz {
 	
 	@Override
 	public String saveMultipartFile(MultipartFile file, String dirName) throws Exception {
-		if ( !StringUtils.isEmpty(dirName) ) {
-//			dirName = dirName.startsWith("/") ? dirName : ("/"+dirName);
-		} else {
+		if ( StringUtils.isEmpty(dirName) ) {
 			dirName = FileBiz.fileUploadDirMore;
 		}
 		File uploadPathFile = new File(fileUploadDir+dirName);
@@ -52,7 +50,7 @@ public class FileBizImpl implements FileBiz {
         fileOS.write(file.getBytes());
         fileOS.close();
         
-        return uploadPathFile.getPath();
+        return fileDir;
 	}
 	
 	@Override

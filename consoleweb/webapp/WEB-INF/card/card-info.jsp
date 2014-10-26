@@ -17,32 +17,32 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="tab1">
 		<form class="form-horizontal" id="card-form" method="post" action="">
-			<input type="hidden" name="id">
+			<input type="hidden" name="id" value="${card.id}">
 			<input type="hidden" name="cardType" value="WED_CARD" />
 			<fieldset>
 				<legend>新人</legend>
 				<div class="control-group">
 					<label class="control-label" for="people1Name"><span class="star">*</span> 新郎姓名</label>
 					<div class="controls">
-						<input type="text" name="people1Name" placeholder="people1Name">
+						<input type="text" name="people1Name" placeholder="people1Name" value="${card.people1Name}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="people1Mobile">新郎手机号码</label>
 					<div class="controls">
-						<input type="text" name="people1Mobile" placeholder="people1Mobile">
+						<input type="text" name="people1Mobile" placeholder="people1Mobile" value="${card.people1Mobile}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="people2Name"><span class="star">*</span> 新娘姓名</label>
 					<div class="controls">
-						<input type="text" name="people2Name" placeholder="people2Name">
+						<input type="text" name="people2Name" placeholder="people2Name" value="${card.people2Name}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="people2Mobile">新娘手机号码</label>
 					<div class="controls">
-						<input type="text" name="people2Mobile" placeholder="people2Mobile">
+						<input type="text" name="people2Mobile" placeholder="people2Mobile" value="${card.people2Mobile}">
 					</div>
 				</div>
 			</fieldset>
@@ -52,39 +52,39 @@
 				<div class="control-group">
 					<label class="control-label" for="partyTime"><span class="star">*</span> 典礼时间</label>
 					<div class="controls">
-						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="${card.partyTime}"/>
 						<span class="help-block">使用时间控件选择</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="partyTimeInfo"><span class="star">*</span> 典礼时间描述</label>
 					<div class="controls">
-						<input type="text" name="partyTimeInfo" placeholder="partyTimeInfo">
+						<input type="text" name="partyTimeInfo" placeholder="partyTimeInfo" value="${card.partyTimeInfo}">
 						<span class="help-block">根据典礼时间自动生成描述，也可以手动修改描述的时间。</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="restaurant"><span class="star">*</span> 酒店名称</label>
 					<div class="controls">
-						<input type="text" name="restaurant" placeholder="restaurant">
+						<input type="text" name="restaurant" placeholder="restaurant" value="${card.restaurant}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="address">酒店地址</label>
 					<div class="controls">
-						<input type="text" name="address" placeholder="address">
+						<input type="text" name="address" placeholder="address" value="${card.address}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="traffic">交通方式</label>
 					<div class="controls">
-						<input type="text" name="traffic" placeholder="traffic">
+						<input type="text" name="traffic" placeholder="traffic" value="${card.traffic}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="remind">温馨提醒</label>
 					<div class="controls">
-						<input type="text" name="remind" placeholder="remind">
+						<input type="text" name="remind" placeholder="remind" value="${card.remind}">
 					</div>
 				</div>
 			</fieldset>
@@ -94,28 +94,31 @@
 				<div class="control-group">
 					<label class="control-label" for="title"><span class="star">*</span> 标题</label>
 					<div class="controls">
-						<input type="text" name="title" placeholder="title">
+						<input type="text" name="title" placeholder="title" value="${card.title}">
 						<span class="help-block">标题根据已经填写的内容自动生成，也可以手动修改。</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="beforeInfo">前置语句</label>
 					<div class="controls">
-						<input type="text" name="beforeInfo" placeholder="beforeInfo">
-						<span class="help-block">示例：沉浸在幸福中的我们&lt;br/&gt;谨定于。</span>
+						<input type="text" name="beforeInfo" placeholder="beforeInfo" value="${card.beforeInfo}">
+						<span class="help-block">示例：沉浸在幸福中的我们&lt;br/&gt;谨定于</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="afterInfo">后置语句</label>
 					<div class="controls">
-						<input type="text" name="afterInfo" placeholder="afterInfo">
-						<span class="help-block">示例：举行典礼&lt;br/&gt;敬备喜宴 恭请光临。</span>
+						<input type="text" name="afterInfo" placeholder="afterInfo" value="${card.afterInfo}">
+						<span class="help-block">示例：举行典礼&lt;br/&gt;敬备喜宴 恭请光临</span>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label">描述预览</label>
-					<div class="controls"></div>
+					<div class="controls">
+						<div id="preview">
+						</div>
+					</div>
 				</div>
 			</fieldset>
 
@@ -125,23 +128,29 @@
 					<label class="control-label" for="templetId"><span class="star">*</span> 选择模板</label>
 					<div class="controls">
 						<select name="templetId">
-							<option value="10001">浪漫爱情</option>
+							<option value="10001" ${card.templetId == 10001 ? 'selected':'' }>浪漫爱情</option>
 						</select>
 						<button type="button" class="btn" id="updateTempletList">刷新模版列表</button>
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label" for="taobaoId">淘宝ID</label>
+					<div class="controls">
+						<input type="text" name="taobaoId" placeholder="taobaoId" value="${card.taobaoId}">
+					</div>
+				</div>
+				<div class="control-group">
 					<label class="control-label" for="remark">备注</label>
 					<div class="controls">
-						<textarea name="remark" placeholder="remark"></textarea>
+						<textarea name="remark" placeholder="remark">${card.remark}</textarea>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="status"><span class="star">*</span> 状态</label>
 					<div class="controls">
 						<select name="status">
-							<option value="NORMAL">正常</option>
-							<option value="PAUSED">停用</option>
+							<option value="NORMAL" ${card.status == 'NORMAL' ? 'selected':'' }>正常</option>
+							<option value="PAUSED" ${card.status == 'PAUSED' ? 'selected':'' }>停用</option>
 						</select>
 					</div>
 				</div>
@@ -158,6 +167,16 @@
 		</form>
 		<script>
 			var ns = ns || {};
+			ns.updatePartyTimeInfo = function() {
+				$('#card-form input[name=partTimeInfo]').val($('#card-form input[name=partTime]').val());
+			};
+			ns.updateTitle = function() {
+				$('#card-form input[name=title]').val('我们结婚啦！'+$('#card-form input[name=people1Name]').val()+'&'+$('#card-form input[name=people2Name]').val());
+			};
+			ns.updatePreview = function() {
+				//$('#preview').html('xxx');
+			};
+			
 			$('#card-form').validate({
 				rules : {
 					title : {
@@ -188,11 +207,18 @@
 				$('#updateTempletList').click(function(){
 					//TODO  
 				});
+				$('#card-form input[name=people1Name]').change(function() {
+					ns.updateTitle();
+				});
+				$('#card-form input[name=people2Name]').change(function() {
+					ns.updateTitle();
+				});
+				$('#card-form input[name=partyTime]').change(function() {
+					ns.updatePartyTimeInfo();
+				});
 			});
 		</script>
 	</div>
-	<div class="tab-pane" id="tab2">...</div>
-	<div class="tab-pane" id="tab3">...</div>
 </div>
 
 

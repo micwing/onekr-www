@@ -34,10 +34,6 @@ public class FileStore implements Serializable {
 	@Column(name = "owner", nullable = false)
 	private String owner;
 	
-	@NotNull
-	@Column(name = "user_id", nullable = false)
-	private Long userId;
-	
 	@Column(name = "original_name")
 	private String originalName;
 	
@@ -76,8 +72,11 @@ public class FileStore implements Serializable {
 	private Long createBy;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "update_at", nullable = false)
+	private Date updateAt;
+	
 	@Column(name = "update_by", nullable = false)
-	private Date updateBy;
+	private Long updateBy;
 
 	public Long getId() {
 		return id;
@@ -101,14 +100,6 @@ public class FileStore implements Serializable {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
 	}
 
 	public String getOriginalName() {
@@ -199,11 +190,19 @@ public class FileStore implements Serializable {
 		this.createBy = createBy;
 	}
 
-	public Date getUpdateBy() {
+	public Date getUpdateAt() {
+		return updateAt;
+	}
+
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
+	}
+
+	public Long getUpdateBy() {
 		return updateBy;
 	}
 
-	public void setUpdateBy(Date updateBy) {
+	public void setUpdateBy(Long updateBy) {
 		this.updateBy = updateBy;
 	}
 

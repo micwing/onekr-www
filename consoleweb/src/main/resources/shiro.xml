@@ -21,8 +21,10 @@
 		<property name="unauthorizedUrl" value="/global/noPermissions" />
 		<property name="filterChainDefinitions">
 			<value>
-				<!-- /console/** = authc -->
-				<!-- /** = anon -->
+				/login/** = anon
+				/assets/** = anon
+				/attached/** = anon
+				/** = authc
 			</value>
 		</property>
 	</bean>

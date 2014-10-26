@@ -5,7 +5,6 @@ import java.util.List;
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardFileBiz;
 import onekr.cardservice.model.Card;
-import onekr.commonservice.filestore.intf.FileBiz;
 import onekr.commonservice.model.FileStore;
 import onekr.framework.controller.BaseController;
 import onekr.framework.exception.AppException;
@@ -13,7 +12,6 @@ import onekr.framework.exception.ErrorCode;
 import onekr.identityservice.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/card/photo")
 public class CardPhotoController extends BaseController {
-	
-	@Autowired
-	private FileBiz fileBiz;
 	
 	@Autowired
 	private CardBiz cardBiz;
@@ -49,10 +44,14 @@ public class CardPhotoController extends BaseController {
 	}
 	
 	@RequestMapping(value="/doUploadFile",method=RequestMethod.POST)
-    public String doUploadFile2(@RequestParam("file") CommonsMultipartFile[] mfiles, @RequestParam("cardId") Long cardId) {       
+    public String doUploadFile2(
+    		@RequestParam("file") CommonsMultipartFile[] mfiles, 
+    		@RequestParam("cardId") Long cardId,
+    		@RequestParam("width") String width,
+    		@RequestParam("height") String height) {       
 		User user = (User) getCurrentUser();
-		cardFileBiz.saveCardPhoto(cardId, mfiles, user.getId());
-        return "redirect:/card/photo/cardphoto?cardId="+cardId;
+		cardFileBiz.saveCardPhoto(cardId, mfiles,width,height, user.getId());
+        return "redirect:/card/photo/cardphoto/"+cardId;
     }
 	
 	

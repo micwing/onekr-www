@@ -65,8 +65,8 @@
 
       <form class="form-signin">
         <label id="msg">登录</label>
-        <input type="text" class="input-block-level" placeholder="用户名" id="username" value="">
-        <input type="password" class="input-block-level" placeholder="密码" id="password" value="">
+        <input type="text" class="input-block-level" placeholder="用户名" id="username" value="admin">
+        <input type="password" class="input-block-level" placeholder="密码" id="password" value="1">
         <label class="checkbox">
           <input type="checkbox" value="remember-me" id="remember"> 记住我
         </label>

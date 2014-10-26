@@ -3,9 +3,6 @@ package onekr.cardservice.card.impl;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-
 import onekr.cardservice.card.intf.CardFileBiz;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.filestore.intf.FileBiz;
@@ -31,12 +28,11 @@ public class CardFileBizImpl implements CardFileBiz {
 	private FileStoreBiz fileStoreBiz;
 
 	@Override
-	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile, Long uid) {
+	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile, String width, String height, Long uid) {
 		String originalFilename = mfile.getOriginalFilename();
-		
 		String path;
 		try {
-			path = fileBiz.saveMultipartFile(mfile, "/card");
+			path = fileBiz.saveMultipartFile(mfile, "/card/"+cardId);
 		} catch (Exception e) {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}
@@ -57,18 +53,18 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setStorePath(path);
 		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
 		fileStore.setType(getFileType4Filename(originalFilename));
-		fileStore.setUpdateBy(now);
-		fileStore.setUserId(uid);
+		fileStore.setUpdateAt(now);
+		fileStore.setUpdateBy(uid);
 		
 		return fileStoreBiz.saveFileStore(fileStore);
 	}
 	
 	@Override
-	public FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId,
-			@NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid) {
+	public FileStore[] saveCardPhoto(Long cardId,
+			MultipartFile[] mfiles, String width, String height,Long uid) {
 		FileStore[] stores = new FileStore[mfiles.length];
 		for (int i = 0; i < mfiles.length ; i++) {
-			stores[i] = saveCardPhoto(cardId, mfiles[i], uid);
+			stores[i] = saveCardPhoto(cardId, mfiles[i],width,height, uid);
 		}
 		return stores;
 	}

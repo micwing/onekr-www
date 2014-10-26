@@ -14,9 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Validated
 public interface CardFileBiz {
 	
-	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
+	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, String width, String height, @NotNull @Min(1) Long uid);
 
-	FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
+	FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile[] mfiles, String width, String height, @NotNull @Min(1) Long uid);
 	
 	FileType getFileType4Filename(String filename);
 	

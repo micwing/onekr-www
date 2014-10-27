@@ -29,6 +29,9 @@ public enum Biz {
 	/**card照片存储*/
 	CARD_PHOTO_FILE_STORE,
 	
+	/**card地图图片存储*/
+	CARD_MAPPIC_FILE_STORE,
+	
 	/**card音乐存储*/
 	CARD_MUSIC_FILE_STORE;
 	

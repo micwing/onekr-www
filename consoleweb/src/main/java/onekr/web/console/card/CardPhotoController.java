@@ -44,7 +44,7 @@ public class CardPhotoController extends BaseController {
 	}
 	
 	@RequestMapping(value="/doUploadFile",method=RequestMethod.POST)
-    public String doUploadFile2(
+    public String doUploadFile(
     		@RequestParam("file") CommonsMultipartFile[] mfiles, 
     		@RequestParam("cardId") Long cardId,
     		@RequestParam("width") String width,
@@ -53,6 +53,50 @@ public class CardPhotoController extends BaseController {
 		cardFileBiz.saveCardPhoto(cardId, mfiles,width,height, user.getId());
         return "redirect:/card/photo/cardphoto/"+cardId;
     }
+	
+	@RequestMapping(value="/doUseWay",method=RequestMethod.GET)
+    public String doUseWay(@RequestParam("cardId") Long cardId, 
+    		@RequestParam("desc") String desc, @RequestParam("fileStoreId") Long fileStoreId) {       
+		User user = (User) getCurrentUser();
+		cardFileBiz.usePhotoAs(fileStoreId, desc, user.getId());
+        return "redirect:/card/photo/cardphoto/"+cardId;
+    }
+	
+	@RequestMapping(value="/doCancelWay",method=RequestMethod.GET)
+    public String doCancelWay(@RequestParam("cardId") Long cardId, 
+    		@RequestParam("desc") String desc, @RequestParam("fileStoreId") Long fileStoreId) {       
+		User user = (User) getCurrentUser();
+		cardFileBiz.cancelPhotoAs(fileStoreId, desc, user.getId());
+        return "redirect:/card/photo/cardphoto/"+cardId;
+    }
+	
+	@RequestMapping(value="/doDelete",method=RequestMethod.GET)
+    public String doDelete(
+    		@RequestParam("cardId") Long cardId,
+    		@RequestParam("fileStoreId") Long fileStoreId) { 
+		User user = (User) getCurrentUser();
+		cardFileBiz.delete(fileStoreId, user.getId());
+        return "redirect:/card/photo/cardphoto/"+cardId;
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 //	@RequestMapping(value = "/doCardUploadFile", method = RequestMethod.POST)

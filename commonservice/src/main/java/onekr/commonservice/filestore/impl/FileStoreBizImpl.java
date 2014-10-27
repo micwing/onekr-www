@@ -8,6 +8,8 @@ import onekr.commonservice.filestore.dao.FileStoreDao;
 import onekr.commonservice.filestore.intf.FileStoreBiz;
 import onekr.commonservice.model.FileStore;
 import onekr.commonservice.model.Status;
+import onekr.framework.exception.AppException;
+import onekr.framework.exception.ErrorCode;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,4 +59,17 @@ public class FileStoreBizImpl implements FileStoreBiz {
 		return list;
 	}
 
+	@Override
+	public FileStore findById(Long fileStoreId) {
+		return fileStoreDao.findOne(fileStoreId);
+	}
+	
+	@Override
+	public FileStore delete(Long fileStoreId) {
+		FileStore fs = fileStoreDao.findOne(fileStoreId);
+		if (fs == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
+		fileStoreDao.delete(fs);
+		return fs;
+	}
 }

@@ -2,13 +2,22 @@ package onekr.commonservice.filestore.intf;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
+
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.model.FileStore;
 
-
+@Validated
 public interface FileStoreBiz {
 
-	FileStore saveFileStore(FileStore fileStore);
+	FileStore saveFileStore(@NotNull FileStore fileStore);
 	
-	List<FileStore> listFileStore(Biz biz, String owner);
+	List<FileStore> listFileStore(@NotNull Biz biz, @NotNull String owner);
+	
+	FileStore findById(@NotNull @Min(1) Long fileStoreId);
+	
+	FileStore delete(@NotNull @Min(1) Long fileStoreId);
 }

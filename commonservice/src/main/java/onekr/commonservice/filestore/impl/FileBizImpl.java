@@ -43,8 +43,10 @@ public class FileBizImpl implements FileBiz {
         	uploadPathFile.mkdir();
         }
         
-        String fileDir = uploadPathFile.getPath()+File.separator+file.getOriginalFilename();
-        fileDir = FileUtil.noDuplicatedFilePath(fileDir);
+//        String fileDir = uploadPathFile.getPath()+File.separator+file.getOriginalFilename();
+//        fileDir = FileUtil.noDuplicatedFilePath(fileDir);
+        String fileDir = uploadPathFile.getPath()+File.separator
+        		+FileUtil.createNewFileName(FileUtil.getPathOrUrlSuffix(file.getOriginalFilename()));
         
         FileOutputStream fileOS=new FileOutputStream(fileDir);
         fileOS.write(file.getBytes());

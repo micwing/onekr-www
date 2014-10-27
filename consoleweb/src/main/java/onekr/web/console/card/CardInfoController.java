@@ -40,19 +40,10 @@ public class CardInfoController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/doSave", method = RequestMethod.POST)
-	public ModelAndView doSave(Card card) {
+	public String doSave(Card card) {
 		User user = (User) getCurrentUser();
 		card = cardBiz.saveCard(card, user.getId());
-		ModelAndView mav = new ModelAndView("card:card-info");
-		mav.addObject("card", card);
-		return mav;
-	}
-	
-	@RequestMapping(value = "/doSaveGotoPhoto", method = RequestMethod.POST)
-	public ModelAndView doSaveGotoPhoto(Card card) {
-		ModelAndView mav = doSave(card);
-		mav.setViewName("card:card-photo");
-		return mav;
+		return "redirect:/card/info/modify/"+card.getId();
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

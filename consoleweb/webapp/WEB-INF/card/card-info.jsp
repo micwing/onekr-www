@@ -7,7 +7,12 @@
 	color: red;
 }
 </style>
-<h4>请柬信息</h4>
+<h4>请柬信息
+<c:if test="${!empty card}">
+	<span class="pull-right"><a class="btn" href="/card/photo/cardphoto/${card.id}">下一步管理照片</a></span>
+</c:if>
+</h4>
+
 <hr>
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab1" data-toggle="tab"><%=CardType.WED_CARD.getLabel() %></a></li>
@@ -16,7 +21,7 @@
 </ul>
 <div class="tab-content">
 	<div class="tab-pane active" id="tab1">
-		<form class="form-horizontal" id="card-form" method="post" action="">
+		<form class="form-horizontal" id="card-form" method="post" action="/card/info/doSave">
 			<input type="hidden" name="id" value="${card.id}">
 			<input type="hidden" name="cardType" value="WED_CARD" />
 			<fieldset>
@@ -52,39 +57,40 @@
 				<div class="control-group">
 					<label class="control-label" for="partyTime"><span class="star">*</span> 典礼时间</label>
 					<div class="controls">
-						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="${card.partyTime}"/>
+						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:ns.updatePartyTimeInfo})" value="${card.partyTime}"/>
 						<span class="help-block">使用时间控件选择</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="partyTimeInfo"><span class="star">*</span> 典礼时间描述</label>
 					<div class="controls">
-						<input type="text" name="partyTimeInfo" placeholder="partyTimeInfo" value="${card.partyTimeInfo}">
+						<input type="text" class="input-block-level" name="partyTimeInfo" placeholder="partyTimeInfo" value="${card.partyTimeInfo}">
 						<span class="help-block">根据典礼时间自动生成描述，也可以手动修改描述的时间。</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="restaurant"><span class="star">*</span> 酒店名称</label>
 					<div class="controls">
-						<input type="text" name="restaurant" placeholder="restaurant" value="${card.restaurant}">
+						<input type="text" class="input-block-level" name="restaurant" placeholder="restaurant" value="${card.restaurant}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="address">酒店地址</label>
 					<div class="controls">
-						<input type="text" name="address" placeholder="address" value="${card.address}">
+						<input type="text" class="input-block-level" name="address" placeholder="address" value="${card.address}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="traffic">交通方式</label>
 					<div class="controls">
-						<input type="text" name="traffic" placeholder="traffic" value="${card.traffic}">
+						<input type="text" class="input-block-level" name="traffic" placeholder="traffic" value="${card.traffic}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="remind">温馨提醒</label>
 					<div class="controls">
-						<input type="text" name="remind" placeholder="remind" value="${card.remind}">
+						<input type="text" class="input-block-level" name="remind" placeholder="remind" value="${empty card.remind ? '喝酒不开车，开车不喝酒' : card.remind}">
+						<span class="help-block">示例：喝酒不开车，开车不喝酒</span>
 					</div>
 				</div>
 			</fieldset>
@@ -94,21 +100,21 @@
 				<div class="control-group">
 					<label class="control-label" for="title"><span class="star">*</span> 标题</label>
 					<div class="controls">
-						<input type="text" name="title" placeholder="title" value="${card.title}">
+						<input type="text" class="input-block-level" name="title" placeholder="title" value="${card.title}">
 						<span class="help-block">标题根据已经填写的内容自动生成，也可以手动修改。</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="beforeInfo">前置语句</label>
 					<div class="controls">
-						<input type="text" name="beforeInfo" placeholder="beforeInfo" value="${card.beforeInfo}">
+						<input type="text" class="input-block-level" name="beforeInfo" placeholder="beforeInfo" value="${empty card.beforeInfo ? '沉浸在幸福中的我们&lt;br/&gt;谨定于' : card.beforeInfo}">
 						<span class="help-block">示例：沉浸在幸福中的我们&lt;br/&gt;谨定于</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="afterInfo">后置语句</label>
 					<div class="controls">
-						<input type="text" name="afterInfo" placeholder="afterInfo" value="${card.afterInfo}">
+						<input type="text" class="input-block-level" name="afterInfo" placeholder="afterInfo" value="${empty card.afterInfo ? '举行典礼&lt;br/&gt;敬备喜宴 恭请光临' : card.afterInfo}">
 						<span class="help-block">示例：举行典礼&lt;br/&gt;敬备喜宴 恭请光临</span>
 					</div>
 				</div>
@@ -142,7 +148,7 @@
 				<div class="control-group">
 					<label class="control-label" for="remark">备注</label>
 					<div class="controls">
-						<textarea name="remark" placeholder="remark">${card.remark}</textarea>
+						<textarea name="remark" class="input-block-level" placeholder="remark">${card.remark}</textarea>
 					</div>
 				</div>
 				<div class="control-group">
@@ -160,7 +166,6 @@
 			<div class="control-group">
 				<div class="controls">
 					<button type="button" class="btn btn-primary" id="saveCard">保存</button>
-					<button type="button" class="btn btn-primary" id="saveCardGotoPhoto">保存并管理照片</button>
 				</div>
 			</div>
 
@@ -168,7 +173,8 @@
 		<script>
 			var ns = ns || {};
 			ns.updatePartyTimeInfo = function() {
-				$('#card-form input[name=partTimeInfo]').val($('#card-form input[name=partTime]').val());
+				var date = $dp.cal.newdate;
+				$('#card-form input[name=partyTimeInfo]').val(date.y+'年'+date.M+'月'+date.d+'日 '+date.H+'时'+date.m+'分');
 			};
 			ns.updateTitle = function() {
 				$('#card-form input[name=title]').val('我们结婚啦！'+$('#card-form input[name=people1Name]').val()+'&'+$('#card-form input[name=people2Name]').val());
@@ -197,11 +203,6 @@
 			});
 			$(function() {
 				$('#saveCard').click(function(){
-					$('#card-form').attr('action','/card/info/doSave');
-					$('#card-form').submit();
-				});
-				$('#saveCardGotoPhoto').click(function(){
-					$('#card-form').attr('action','/card/info/doSaveGotoPhoto');
 					$('#card-form').submit();
 				});
 				$('#updateTempletList').click(function(){

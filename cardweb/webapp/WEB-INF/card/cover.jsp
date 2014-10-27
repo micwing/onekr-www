@@ -5,7 +5,7 @@
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>我们结婚啦！姜志刚  & 张培 </title>
+        <title>${card.title}</title>
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
@@ -37,13 +37,13 @@
 		<div class="btn-collections">
 			<a class="ir" id='page_link' href="/create.php?ctl=create&act=wedding&id=31671&sid=47297">^</a>
 		</div>
-		<h1 class="title"><a href="#">我们结婚啦！！</a></h1>
-		<p class="subtitle">刘传乐  & 张萍 </p>
+		<h1 class="title"><a href="#">${card.title}</a></h1>
+		<p class="subtitle">${card.people1Name}  & ${card.people2Name} </p>
 		<p>2014-10-6</p>
 		
 	</div>
 			<p class="subtitle-comment">
-		<a href="/create.php?ctl=create&act=wedding&id=31671&sid=47297&t=tag3"></a>
+		<a href="${ctx}/card/main/${card.id}"></a>
 		</p>
 			
 	</div> 
@@ -101,7 +101,7 @@ $(function () {
 	pic_width = max_width;
 	pic_height = max_width * height / width;
 
-	var url = '/public/wedding/original/201409/03/10/54067a37d63a2.jpg';//+ '&w=' + pic_width + '&h=' + pic_height
+	var url = "${ctx}${fn:replace(coverPhoto.storePath, '\\', '/')}";//+ '&w=' + pic_width + '&h=' + pic_height
 	$('div.container').css({'background':'url("' + url + '") no-repeat scroll 0 0', 'background-size':'cover'});
 	$('div.container').css('height',height);
 
@@ -143,7 +143,7 @@ $(function () {
      
  <script language="javascript" type="text/javascript">
  
-var contentModel = {    "img_url": "http://www.360hunjia.com//public/wedding/original/201409/03/10/54067a37d63a2.jpg",     "title": "我们结婚啦！！-刘传乐  & 张萍 ",     "src": "2014-10-6 16 点 30 分   朗庭别苑    刘传乐  张萍 诚邀" };</script><script language="JavaScript" src="http://www.360hunjia.com/app/Tpl/fanwe/mob/js/share.js" type="text/javascript" ></script>
+var contentModel = {    "img_url": "${ctx}${fn:replace(coverPhoto.storePath, '\\', '/')}",     "title": "${card.title} ",     "src": "2014-10-6 16 点 30 分   朗庭别苑    刘传乐  张萍 诚邀" };</script><script language="JavaScript" src="http://www.360hunjia.com/app/Tpl/fanwe/mob/js/share.js" type="text/javascript" ></script>
     <img src="http://hm.baidu.com/hm.gif?si=dd2730bfbb6ea37dbfd64d6f163c618a&amp;et=0&amp;nv=0&amp;st=4&amp;lt=1413946018&amp;su=http%3A%2F%2Fwww.360hunjia.com%2Fcreate.php%3Fctl%3Dcreate%26act%3Dwedding%26id%3D31671%26sid%3D47297&amp;v=wap-0-0.2&amp;rnd=5714923325" width="0" height="0" />
 	</body>
 </html>

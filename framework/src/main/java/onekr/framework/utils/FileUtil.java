@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
@@ -129,6 +130,15 @@ public class FileUtil {
         	tmp = new File(filePath);
         }
         return filePath;
+	}
+	
+	private static SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+	public static String createNewFileName(String suffix) {
+		if (!suffix.startsWith(".")) {
+			suffix = "." + suffix;
+		}
+		String newFileName = df.format(new Date()) + "_" + new Random().nextInt(1000) + suffix;
+		return newFileName;
 	}
 	
 	/**

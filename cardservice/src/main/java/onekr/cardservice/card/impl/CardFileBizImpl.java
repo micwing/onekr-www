@@ -104,4 +104,97 @@ public class CardFileBizImpl implements CardFileBiz {
 		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
 		return list;
 	}
+	
+	@Override
+	public FileStore usePhotoAs(Long fileStoreId, String cardPhotoDesc, Long uid) {
+		FileStore fs = fileStoreBiz.findById(fileStoreId);
+		if (fs == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
+		if (!fs.getBiz().equals(Biz.CARD_PHOTO_FILE_STORE.name())) 
+			throw new AppException(ErrorCode.ILLEGAL_PARAM);
+		
+		Date now = new Date();
+		
+		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, fs.getOwner());
+		for (FileStore e : list) {
+			if (e.getDescription().contains("|"+cardPhotoDesc)) {
+				e.setDescription(e.getDescription().replace("|"+cardPhotoDesc, ""));
+				fs.setUpdateAt(now);
+				fs.setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(e);
+			}
+		}
+		
+		fs.setDescription(fs.getDescription()+"|"+cardPhotoDesc);
+		fs.setUpdateAt(now);
+		fs.setUpdateBy(uid);
+		return fileStoreBiz.saveFileStore(fs);
+	}
+	
+	@Override
+	public FileStore cancelPhotoAs(Long fileStoreId, String cardPhotoDesc, Long uid) {
+		FileStore fs = fileStoreBiz.findById(fileStoreId);
+		if (fs == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
+		if (!fs.getBiz().equals(Biz.CARD_PHOTO_FILE_STORE.name())) 
+			throw new AppException(ErrorCode.ILLEGAL_PARAM);
+		
+		Date now = new Date();
+		
+		fs.setDescription(fs.getDescription().replace("|"+cardPhotoDesc, ""));
+		fs.setUpdateAt(now);
+		fs.setUpdateBy(uid);
+		return fileStoreBiz.saveFileStore(fs);
+	}
+	
+	@Override
+	public FileStore delete(Long fileStoreId, Long uid) {
+		FileStore fs = fileStoreBiz.findById(fileStoreId);
+		fileBiz.deleteFile(fs.getStorePath());
+		return fileStoreBiz.delete(fileStoreId);
+	}
+	
+	@Override
+	public FileStore saveCardMapPic(Long cardId, MultipartFile mfile, Long uid) {
+		List<FileStore> lst = fileStoreBiz.listFileStore(Biz.CARD_MAPPIC_FILE_STORE, cardId+"");
+		if (!CollectionUtils.isEmpty(lst)) {
+			for (FileStore tmp : lst) {
+				delete(tmp.getId(), uid);
+			}
+		}
+		String originalFilename = mfile.getOriginalFilename();
+		String path;
+		try {
+			path = fileBiz.saveMultipartFile(mfile, "/card/"+cardId);
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.SERVER_ERROR);
+		}
+		
+		Date now = new Date();
+		
+		FileStore fileStore = new FileStore();
+		fileStore.setBiz(Biz.CARD_MAPPIC_FILE_STORE.name());
+		fileStore.setCreateAt(now);
+		fileStore.setCreateBy(uid);
+		fileStore.setDescription("");
+		fileStore.setJson("");
+		fileStore.setOriginalName(mfile.getOriginalFilename());
+		fileStore.setOwner(cardId+"");
+		fileStore.setRank(0L);
+		fileStore.setSize(mfile.getSize());
+		fileStore.setStatus(Status.NORMAL);
+		fileStore.setStorePath(path);
+		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
+		fileStore.setType(getFileType4Filename(originalFilename));
+		fileStore.setUpdateAt(now);
+		fileStore.setUpdateBy(uid);
+		
+		return fileStoreBiz.saveFileStore(fileStore);
+	}
+	
+	@Override
+	public FileStore findCardMappic(Long cardId) {
+		List<FileStore> lst = fileStoreBiz.listFileStore(Biz.CARD_MAPPIC_FILE_STORE, cardId+"");
+		return CollectionUtils.isEmpty(lst) ? null : lst.get(0);
+	}
 }

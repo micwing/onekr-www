@@ -47,7 +47,7 @@
 						 <a href="/card/music/manager/${card.id}">展示</a> <a
 						href="/card/info/modify/${card.id}">信息</a> <a
 						href="/card/photo/cardphoto/${card.id}">照片</a> <br> <a
-						href="/card/map/manager/${card.id}">地图</a> <a
+						href="/card/map/cardmap/${card.id}">地图</a> <a
 						href="/card/music/manager/${card.id}">音乐</a> <a
 						href="/card/music/manager/${card.id}">二维码</a></td>
 				</tr>

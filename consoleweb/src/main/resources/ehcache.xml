@@ -7,7 +7,7 @@
    <!--  <diskStore path="java.io.tmpdir"/> -->
    
    <!-- 配置缓存文件存放路径 -->
-   <diskStore path="java.io.tmpdir"/>
+   <diskStore path="java.io.tmpdir.consoleweb"/>
 
    <!--   
         

@@ -264,7 +264,7 @@ div.gallery ul.collections li {
 	overflow: hidden;
 }
 div.gallery ul.collections li a {
-	width: 33%;
+	/* width: 33%; */
 	display: inline-block;
 	line-height: 0;
 	float: left;

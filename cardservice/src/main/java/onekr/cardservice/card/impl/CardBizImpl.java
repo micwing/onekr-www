@@ -30,19 +30,19 @@ public class CardBizImpl implements CardBiz {
 	@Autowired
 	private CardCommentBiz cardCommentBiz;
 
-	@Override
-	public CardDto findCardInfo(Long cardId) {
-		CardDto dto = new CardDto();
-		Card card = cardDao.findOne(cardId);
-		dto.setCard(card);
-
-		List<Comment> comments = cardCommentBiz.listAll(cardId);
-		dto.setComments(comments);
-
-		// TODO fileBiz
-
-		return dto;
-	}
+//	@Override
+//	public CardDto findCardInfo(Long cardId) {
+//		CardDto dto = new CardDto();
+//		Card card = cardDao.findOne(cardId);
+//		dto.setCard(card);
+//
+//		List<Comment> comments = cardCommentBiz.listAll(cardId);
+//		dto.setComments(comments);
+//
+//		// TODO fileBiz
+//
+//		return dto;
+//	}
 
 	@Override
 	public Card findById(Long cardId) {

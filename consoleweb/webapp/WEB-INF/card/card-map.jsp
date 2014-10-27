@@ -33,7 +33,7 @@
 <c:if test="${!empty mappic}">
 <div class="row-fluid">
 	<div class="span12">
-		<img src="${ctx}${fn:replace(mappic.storePath, '\\', '/')}" alt="" height="600" width="600"/>
+		<img src="${ctx}${fn:replace(mappic.storePath, '\\', '/')}" alt="" height="400" width="330"/>
 	</div>
 	<div class="span12">
 		<button type="button" class="btn btn-danger" id="deleteMappic">删除</button>
@@ -86,6 +86,9 @@ $('#deleteMappic').click(function() {
 		<p>
 			<div id="r-result">请输入:<input type="text"  id="suggestId" size="20" value="百度" class="input-block-level"/></div>
 			<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+		</p>
+		<p class="text-left">
+			<span>推荐尺寸 400px * 330px</span>
 		</p>
 		<p class="text-right">
 			<a href="http://map.baidu.com/" class="btn" target="_blank">访问百度地图</a> 

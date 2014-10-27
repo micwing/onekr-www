@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="${ctx}/assets/css/normalize.css">
         <link rel="stylesheet" href="${ctx}/assets/cardtpl/10001/main.css">
-        <script src="${ctx}/assets/js/respond-v1.1.0.min.js"></script>
+        <script src="${ctx}/assets/js/respond.min.js"></script>
         <script src="${ctx}/assets/js/snowstorm.js"></script>
         
     </head>
@@ -35,7 +35,7 @@
 		
 	<div class="header">
 		<div class="btn-collections">
-			<a class="ir" id='page_link' href="/create.php?ctl=create&act=wedding&id=31671&sid=47297">^</a>
+			<a class="ir" id='page_link' href="${ctx}/card/main/${card.id}">^</a>
 		</div>
 		<h1 class="title"><a href="#">${card.title}</a></h1>
 		<p class="subtitle">${card.people1Name}  & ${card.people2Name} </p>
@@ -141,9 +141,19 @@ $(function () {
 </script>
 		
      
- <script language="javascript" type="text/javascript">
- 
-var contentModel = {    "img_url": "${ctx}${fn:replace(coverPhoto.storePath, '\\', '/')}",     "title": "${card.title} ",     "src": "2014-10-6 16 点 30 分   朗庭别苑    刘传乐  张萍 诚邀" };</script><script language="JavaScript" src="http://www.360hunjia.com/app/Tpl/fanwe/mob/js/share.js" type="text/javascript" ></script>
-    <img src="http://hm.baidu.com/hm.gif?si=dd2730bfbb6ea37dbfd64d6f163c618a&amp;et=0&amp;nv=0&amp;st=4&amp;lt=1413946018&amp;su=http%3A%2F%2Fwww.360hunjia.com%2Fcreate.php%3Fctl%3Dcreate%26act%3Dwedding%26id%3D31671%26sid%3D47297&amp;v=wap-0-0.2&amp;rnd=5714923325" width="0" height="0" />
-	</body>
+<script type="text/javascript">
+var contentModel = {    
+	"img_url": "<%=basePath %>${fn:replace(coverPhoto.storePath, '\\', '/')}",     
+	"title": "${card.title} ",     
+	"src": "诚挚邀请您共同分享幸福与喜悦" 
+};
+</script>
+<script src="${ctx}/assets/js/share.js" type="text/javascript" ></script>
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc66053765b2cb1b2a03cdbbfa97aebf4' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
 </html>

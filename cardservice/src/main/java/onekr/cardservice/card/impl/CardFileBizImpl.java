@@ -148,6 +148,21 @@ public class CardFileBizImpl implements CardFileBiz {
 	}
 	
 	@Override
+	public FileStore getCardPhotoByUse(Long cardId, String cardPhotoDesc) {
+		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
+		if (CollectionUtils.isEmpty(list))
+			return null;
+		
+		for (FileStore e : list) {
+			if (e.getDescription().contains("|"+cardPhotoDesc)) {
+				return e;
+			}
+		}
+		
+		return null;
+	}
+	
+	@Override
 	public FileStore delete(Long fileStoreId, Long uid) {
 		FileStore fs = fileStoreBiz.findById(fileStoreId);
 		fileBiz.deleteFile(fs.getStorePath());

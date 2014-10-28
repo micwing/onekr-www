@@ -73,13 +73,13 @@ ns.formSubmit = function() {
 		value: $('#domainWhoisQuery').val()
 	});
 	$.ajax({
-		url : "/console/config/doSaveConfig",
+		url : "console/config/doSaveConfig",
 		type : 'post',
         dataType : 'json',
 		data : {configs: $.toJSON(params)},
 		success : function(data) {
 			alert(data.message);
-			location.href="/console/domain/config";
+			location.href="console/domain/config";
 		}
 	});
 };

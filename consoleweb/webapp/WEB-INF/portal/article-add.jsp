@@ -8,11 +8,11 @@
 	Article article = (Article) request.getAttribute("article");
 %>
 
-<link rel="stylesheet" href="/assets/js/kindeditor/themes/default/default.css" />
-<link rel="stylesheet" href="/assets/js/kindeditor/plugins/code/prettify.css" />
-<script charset="utf-8" src="/assets/js/kindeditor/kindeditor.js"></script>
-<script charset="utf-8" src="/assets/js/kindeditor/lang/zh_CN.js"></script>
-<script charset="utf-8" src="/assets/js/kindeditor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="assets/js/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="assets/js/kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="assets/js/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="assets/js/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="assets/js/kindeditor/plugins/code/prettify.js"></script>
 <script>
 	KindEditor.ready(function(K) {
 		var editor1 = K.create('textarea[name="content"]', {
@@ -49,7 +49,7 @@
 	});
 </script>
 
-<form id="article-form" method="post" action="/console/article/doSave">
+<form id="article-form" method="post" action="console/article/doSave">
 	<input type="hidden" name="id" value="${article == null ? '' : article.id}"/>
 	<label>标题</label>
 	<input type="text" id="title" name="title" placeholder="title" class="input-block-level"

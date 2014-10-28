@@ -96,15 +96,15 @@
 	<!-- <cache:annotation-driven cache-manager="cacheManager" /> -->
 
 	<!-- 声明cacheManager -->
-	<!-- <bean id="cacheManager" class="onekr.framework.cache.ehcache.SimpleEhCacheCacheManager"
+	<!-- bean id="cacheManager" class="onekr.framework.cache.ehcache.SimpleEhCacheCacheManager"
 		p:cacheManager-ref="ehcache" /> -->
 
 	<!-- cacheManager工厂类，指定ehcache.xml的位置 -->
-	<!-- <bean id="ehcache"
+	<bean id="ehCacheManagerFactory"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
 		p:configLocation="classpath:/ehcache.xml">
 		<property name="shared" value="true" />
-	</bean> -->
+	</bean>
 
 	<!-- messagesource -->
 	<bean id="messageSource"

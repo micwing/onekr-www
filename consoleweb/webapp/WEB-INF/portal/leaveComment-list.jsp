@@ -1,10 +1,10 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
-<link rel="stylesheet" href="/assets/js/kindeditor/themes/default/default.css" />
-<link rel="stylesheet" href="/assets/js/kindeditor/plugins/code/prettify.css" />
-<script charset="utf-8" src="/assets/js/kindeditor/kindeditor.js"></script>
-<script charset="utf-8" src="/assets/js/kindeditor/lang/zh_CN.js"></script>
-<script charset="utf-8" src="/assets/js/kindeditor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="assets/js/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="assets/js/kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="assets/js/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="assets/js/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="assets/js/kindeditor/plugins/code/prettify.js"></script>
 <style>
 .table-overflow table th,td {
 	min-width: 100px;
@@ -29,7 +29,7 @@
 		<c:set value="${fn:replace(fn:replace(fn:replace(fn:replace(comment.content,'&','&amp;'),'<','&lt;'),'>','&gt;'),'\"','&quot;')}" 
 		var="comment_content" />
 		<tr>
-			<td style="min-width: 30px;"><img src="/assets/images/default-user.jpg" class="img-circle author_pic" style="width: 30px"></td>
+			<td style="min-width: 30px;"><img src="assets/images/default-user.jpg" class="img-circle author_pic" style="width: 30px"></td>
 			<td>${comment.userName}</td>
 			<td>${comment.email}</td>
 			<td style="min-width: 200px;"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${comment.createAt}" type="both"/></td>

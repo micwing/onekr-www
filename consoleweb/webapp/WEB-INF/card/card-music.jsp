@@ -3,7 +3,7 @@
 <h4>请柬音乐</h4>
 <hr>
 <form class="form-horizontal" id="card-form" method="post"
-	action="/card/info/doSave">
+	action="card/info/doSave">
 
 	<div class="control-group">
 		<label class="control-label" for="musicUrl">选择音乐</label>

@@ -19,7 +19,7 @@ if (dir.equals(new File(fileUploadDir).getPath())) {
 %>
 	href="#" 
 <% } else { %>
-	href="/console/file/list?dir=<%=pdir%>" 
+	href="console/file/list?dir=<%=pdir%>" 
 <% } %>
 class="btn" title="上一级"><i class="icon-chevron-up"></i></a>
 当前目录：<%=dir%> 
@@ -43,7 +43,7 @@ class="btn" title="上一级"><i class="icon-chevron-up"></i></a>
 				<td><i class="icon-file"></i> <%=f.getName() %> </td>
 			<% } %>
 		<% } else { %>
-			<td><a href="/console/file/list?dir=<%=(dir+File.separator+f.getName())%>"><i class="icon-folder-open"></i> <%=f.getName() %></a></td>
+			<td><a href="console/file/list?dir=<%=(dir+File.separator+f.getName())%>"><i class="icon-folder-open"></i> <%=f.getName() %></a></td>
 		<% } %>
 		
 		<% if (f.isDirectory()) { %>
@@ -74,14 +74,14 @@ class="btn" title="上一级"><i class="icon-chevron-up"></i></a>
 	<% } %>
 </table>
 
-<script type="text/javascript" src="/assets/js/fancyBox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
-<script type="text/javascript" src="/assets/js/fancyBox/source/jquery.fancybox.js?v=2.1.5"></script>
-<link rel="stylesheet" type="text/css" href="/assets/js/fancyBox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
-<link rel="stylesheet" type="text/css" href="/assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
-<script type="text/javascript" src="/assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-<link rel="stylesheet" type="text/css" href="/assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
-<script type="text/javascript" src="/assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-<script type="text/javascript" src="/assets/js/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+<script type="text/javascript" src="assets/js/fancyBox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="assets/js/fancyBox/source/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="assets/js/fancyBox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+<link rel="stylesheet" type="text/css" href="assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+<script type="text/javascript" src="assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<link rel="stylesheet" type="text/css" href="assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+<script type="text/javascript" src="assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script type="text/javascript" src="assets/js/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 
 <script>
 var ns = ns || {};
@@ -90,7 +90,7 @@ ns.doDelete = function(dir) {
 		return;
 	}
 	$.ajax({
-		url : "/console/file/doDelete",
+		url : "console/file/doDelete",
 		type : 'post',
         dataType : 'json',
 		data : {dir:dir},

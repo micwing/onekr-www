@@ -31,9 +31,9 @@
 			<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${article.createAt}" type="both"/></td>
 			<td>
 			<div class="btn-group">
-				<a href="/article/detail/${article.id}" class="btn" target="_blank"><i class="icon-eye-open"></i> 查看</a>
-				<a href="/console/article/modify/${article.id}" class="btn" onclick=""><i class="icon-pencil"></i> 修改</a>
-				<a href="/console/article/doDelete/${article.id}" class="btn btn-danger" onclick="return window.confirm('确定要删除吗?');"><i class="icon-remove"></i> 删除</a>
+				<a href="article/detail/${article.id}" class="btn" target="_blank"><i class="icon-eye-open"></i> 查看</a>
+				<a href="console/article/modify/${article.id}" class="btn" onclick=""><i class="icon-pencil"></i> 修改</a>
+				<a href="console/article/doDelete/${article.id}" class="btn btn-danger" onclick="return window.confirm('确定要删除吗?');"><i class="icon-remove"></i> 删除</a>
 			</div>
 			</td>
 		</tr>
@@ -41,7 +41,7 @@
 	</table>
 	<div class="pagination">
 	<jsp:include page="../util/paging.jsp">
-		<jsp:param name="_paging_base_url" value="/console/article/list?"/>
+		<jsp:param name="_paging_base_url" value="console/article/list?"/>
 		<jsp:param name="_paging_size" value="10"/>
 		<jsp:param name="_paging_range" value="3"/>
 	</jsp:include>

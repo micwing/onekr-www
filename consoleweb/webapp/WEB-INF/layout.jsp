@@ -56,15 +56,15 @@ body {
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="${fn:startsWith(requestServletPath, '/center/')?'active':''}"><a href="#">通知中心</a></li>
-							<li class="${fn:startsWith(requestServletPath, '/console/')?'active':''}"><a href="/console/dashboard">门户管理</a></li>
-							<li class="${fn:startsWith(requestServletPath, '/card/')?'active':''}"><a href="/card/index">请柬管理</a></li>
+							<li class="${fn:startsWith(requestServletPath, '/console/')?'active':''}"><a href="console/dashboard">门户管理</a></li>
+							<li class="${fn:startsWith(requestServletPath, '/card/')?'active':''}"><a href="card/index">请柬管理</a></li>
 							<li class="${fn:startsWith(requestServletPath, '/identity')?'active':''}"><a href="#contact">用户管理</a></li>
 						</ul>
 						<ul class="nav pull-right">
-							<li><a href="/console/account/accountInfo"><shiro:principal /></a></li>
+							<li><a href="console/account/accountInfo"><shiro:principal /></a></li>
 							<li><a href="/" target="_blank">查看前台</a></li>
 							<li><a href="https://login.secureserver.net" target="_blank">系统邮箱</a></li>
-							<li><a href="/login/doSignout">退出</a></li>
+							<li><a href="login/doSignout">退出</a></li>
 						</ul>
 					</div>
 					<!--/.nav-collapse -->

@@ -7,7 +7,7 @@
 request.setCharacterEncoding("UTF-8");
 Map<String,Config> configs = (Map<String,Config>) request.getAttribute("configs");
 %>
-<script src="/assets/js/ace-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="assets/js/ace-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <style>
 .ace_editor {
 	position: relative !important;
@@ -33,7 +33,7 @@ ns.doUpdateIndex = function() {
 		return;	
 	}
 	$.ajax({
-		url : "/console/article/doIndex",
+		url : "console/article/doIndex",
 		type : 'post',
         dataType : 'json',
 		data : {},

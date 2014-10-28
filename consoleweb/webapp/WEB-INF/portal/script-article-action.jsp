@@ -94,13 +94,13 @@ ns.doExceuteScript = function() {
 		params = {author:author, scriptId:scriptId, preScriptId:preScriptId, preUrl:preUrl};
 	}
 	$.ajax({
-		url : "/console/script/doExceuteArticleScript",
+		url : "console/script/doExceuteArticleScript",
 		type : 'post',
         dataType : 'json',
 		data : params,
 		success : function(data) {
 			alert(data.message);
-			location.href="/console/script/executeScript/${script.id}";
+			location.href="console/script/executeScript/${script.id}";
 		}
 	});
 };

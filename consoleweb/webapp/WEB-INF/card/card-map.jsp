@@ -55,7 +55,10 @@ $('#deleteMappic').click(function() {
 	<div class="span12">
 		<fieldset>
 			<legend>上传图片文件</legend>
-			<form class="form-horizontal" action="/card/map/doUploadFile"
+			<p class="text-right">
+				<span>推荐尺寸 400px * 330px</span>
+			</p>
+			<form class="form-horizontal" action="card/map/doUploadFile"
 						method="post" enctype="multipart/form-data" id="file-form">
 						<div class="control-group">
 							<label class="control-label" for="file">选择图片</label>
@@ -86,9 +89,6 @@ $('#deleteMappic').click(function() {
 		<p>
 			<div id="r-result">请输入:<input type="text"  id="suggestId" size="20" value="百度" class="input-block-level"/></div>
 			<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
-		</p>
-		<p class="text-left">
-			<span>推荐尺寸 400px * 330px</span>
 		</p>
 		<p class="text-right">
 			<a href="http://map.baidu.com/" class="btn" target="_blank">访问百度地图</a> 

@@ -44,17 +44,17 @@
 					<td>${card.taobaoId}</td>
 					<td>${catd.remark}</td>
 					<td>
-						 <a href="/card/music/manager/${card.id}">展示</a> <a
-						href="/card/info/modify/${card.id}">信息</a> <a
-						href="/card/photo/cardphoto/${card.id}">照片</a> <br> <a
-						href="/card/map/cardmap/${card.id}">地图</a> <a
-						href="/card/music/manager/${card.id}">音乐</a> <a
-						href="/card/music/manager/${card.id}">二维码</a></td>
+						 <a href="card/music/manager/${card.id}">展示</a> <a
+						href="card/info/modify/${card.id}">信息</a> <a
+						href="card/photo/cardphoto/${card.id}">照片</a> <br> <a
+						href="card/map/cardmap/${card.id}">地图</a> <a
+						href="card/music/manager/${card.id}">音乐</a> <a
+						href="card/music/manager/${card.id}">二维码</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 		<jsp:include page="../util/paging.jsp">
-			<jsp:param name="_paging_base_url" value="/card/info/list?cardType=WED_CARD&status=NORMAL" />
+			<jsp:param name="_paging_base_url" value="card/info/list?cardType=WED_CARD&status=NORMAL" />
 			<jsp:param name="_paging_size" value="20" />
 			<jsp:param name="_paging_range" value="3" />
 		</jsp:include>

@@ -8,13 +8,13 @@
 <%@page import="org.apache.commons.io.FileUtils"%>
 <%@page import="onekr.cardservice.model.Card"%>
 <h4>请柬照片
-<span class="pull-right"><a class="btn" href="/card/map/cardmap/${card.id}">下一步设置地图</a></span>
+<span class="pull-right"><a class="btn" href="card/map/cardmap/${card.id}">下一步设置地图</a></span>
 </h4>
 <hr>
 
 <div class="row-fluid">
 	<div class="span12">
-		<form class="form-horizontal" action="/card/photo/doUploadFile"
+		<form class="form-horizontal" action="card/photo/doUploadFile"
 			method="post" enctype="multipart/form-data" id="file-form">
 			<div class="control-group">
 				<label class="control-label" for="file">选择照片</label>
@@ -46,22 +46,22 @@
 <hr>
 
 <script type="text/javascript"
-	src="/assets/js/fancyBox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+	src="assets/js/fancyBox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
 <script type="text/javascript"
-	src="/assets/js/fancyBox/source/jquery.fancybox.js?v=2.1.5"></script>
+	src="assets/js/fancyBox/source/jquery.fancybox.js?v=2.1.5"></script>
 <link rel="stylesheet" type="text/css"
-	href="/assets/js/fancyBox/source/jquery.fancybox.css?v=2.1.5"
+	href="assets/js/fancyBox/source/jquery.fancybox.css?v=2.1.5"
 	media="screen" />
 <link rel="stylesheet" type="text/css"
-	href="/assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+	href="assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
 <script type="text/javascript"
-	src="/assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+	src="assets/js/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
 <link rel="stylesheet" type="text/css"
-	href="/assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+	href="assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
 <script type="text/javascript"
-	src="/assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+	src="assets/js/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 <script type="text/javascript"
-	src="/assets/js/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+	src="assets/js/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 
 <div class="row-fluid">
 	<div class="span12">
@@ -90,26 +90,26 @@
 					<td>
 						<div>
 							<c:if test="${!fn:contains(fileStore.description, 'cover')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
 							</c:if>
 							<c:if test="${fn:contains(fileStore.description, 'cover')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
 							</c:if>
 							
 							<c:if test="${!fn:contains(fileStore.description, 'people1')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
 							</c:if>
 							<c:if test="${fn:contains(fileStore.description, 'people1')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
 							</c:if>
 							
 							<c:if test="${!fn:contains(fileStore.description, 'people2')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
 							</c:if> 
 							<c:if test="${fn:contains(fileStore.description, 'people2')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
 							</c:if>
-							<div><a href="/card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
+							<div><a href="card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
 						</div>
 					</td>
 				</tr>
@@ -145,26 +145,26 @@
 					<td>
 						<div>
 							<c:if test="${!fn:contains(fileStore.description, 'cover')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
 							</c:if>
 							<c:if test="${fn:contains(fileStore.description, 'cover')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
 							</c:if>
 							
 							<c:if test="${!fn:contains(fileStore.description, 'people1')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
 							</c:if>
 							<c:if test="${fn:contains(fileStore.description, 'people1')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
 							</c:if>
 							
 							<c:if test="${!fn:contains(fileStore.description, 'people2')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
 							</c:if> 
 							<c:if test="${fn:contains(fileStore.description, 'people2')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
 							</c:if>
-							<div><a href="/card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
+							<div><a href="card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
 						</div>
 					</td>
 				</tr>
@@ -200,26 +200,26 @@
 					<td>
 						<div>
 							<c:if test="${!fn:contains(fileStore.description, 'cover')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
 							</c:if>
 							<c:if test="${fn:contains(fileStore.description, 'cover')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
 							</c:if>
 							
 							<c:if test="${!fn:contains(fileStore.description, 'people1')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
 							</c:if>
 							<c:if test="${fn:contains(fileStore.description, 'people1')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
 							</c:if>
 							
 							<c:if test="${!fn:contains(fileStore.description, 'people2')}">
-							<div><a href="/card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
+							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
 							</c:if> 
 							<c:if test="${fn:contains(fileStore.description, 'people2')}">
-							<div><a href="/card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
+							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
 							</c:if>
-							<div><a href="/card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
+							<div><a href="card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
 						</div>
 					</td>
 				</tr>

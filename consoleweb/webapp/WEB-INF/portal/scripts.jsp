@@ -3,17 +3,17 @@
 <%@page import="onekr.portalservice.utils.GlobalConstants" %>
 <%@include file="../common/includes.jsp"%>
 
-<script type="text/javascript" src="/assets/js/syntaxhighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="/assets/js/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
-<link type="text/css" rel="stylesheet" href="/assets/js/syntaxhighlighter/styles/shCore.css"/>
-<link type="text/css" rel="stylesheet" href="/assets/js/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript" src="assets/js/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="assets/js/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<link type="text/css" rel="stylesheet" href="assets/js/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="assets/js/syntaxhighlighter/styles/shThemeDefault.css"/>
 <script type="text/javascript">
 SyntaxHighlighter.config.clipboardSwf = '/assets/js/syntaxhighlighter/scripts/clipboard.swf';
 SyntaxHighlighter.config.strings.copyToClipboardConfirmation = "已复制到剪贴板！";
 </script>
 
 <h4>
-<a class="btn" href="/console/script/createScript">新增脚本</a>
+<a class="btn" href="console/script/createScript">新增脚本</a>
 </h4>
 	<table class="table table-hover">
 		<tr>
@@ -29,9 +29,9 @@ SyntaxHighlighter.config.strings.copyToClipboardConfirmation = "已复制到剪�
 			<td>${script.scriptType.label}</td>
 			<td>
 			<div class="btn-group">
-				<a class="btn" href="/console/script/modifyScript/${script.id}"><i class="icon-eye-open"></i> 修改</a>
-				<a class="btn" href="/console/script/executeScript/${script.id}"><i class="icon-eye-open"></i> 执行</a>
-				<a class="btn btn-danger" href="/console/script/doDelete/${script.id}" onclick="return window.confirm('确定要删除吗?');"><i class="icon-remove"></i> 删除</a>
+				<a class="btn" href="console/script/modifyScript/${script.id}"><i class="icon-eye-open"></i> 修改</a>
+				<a class="btn" href="console/script/executeScript/${script.id}"><i class="icon-eye-open"></i> 执行</a>
+				<a class="btn btn-danger" href="console/script/doDelete/${script.id}" onclick="return window.confirm('确定要删除吗?');"><i class="icon-remove"></i> 删除</a>
 			</div>
 			</td>
 		</tr>
@@ -97,7 +97,7 @@ SyntaxHighlighter.config.strings.copyToClipboardConfirmation = "已复制到剪�
 		$('#scriptType').text('');
 		$('#code-controls').html('');
 		$.ajax({
-			url : "/console/article/findActionScriptById",
+			url : "console/article/findActionScriptById",
 			type : 'post',
 	        dataType : 'json',
 			data : {scriptId:scriptId},
@@ -117,13 +117,13 @@ SyntaxHighlighter.config.strings.copyToClipboardConfirmation = "已复制到剪�
 		var arr = new Array();
 		arr.push($('#url-textarea').val());
 		$.ajax({
-			url : "/console/article/doExceuteArticleScript",
+			url : "console/article/doExceuteArticleScript",
 			type : 'post',
 	        dataType : 'json',
 			data : {urls:$.toJSON(arr), scriptId:scriptId},
 			success : function(data) {
 				alert(data.message);
-				location.href="/console/article/scripts";
+				location.href="console/article/scripts";
 			}
 		});
 	};

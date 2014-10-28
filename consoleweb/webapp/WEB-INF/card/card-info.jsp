@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.cardservice.model.CardType" %>
 <%@include file="../common/includes.jsp"%>
-<script language="javascript" type="text/javascript" src="${ctx}/assets/js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/My97DatePicker/WdatePicker.js"></script>
 <style>
 .star{
 	color: red;
@@ -9,7 +9,7 @@
 </style>
 <h4>请柬信息
 <c:if test="${!empty card}">
-	<span class="pull-right"><a class="btn" href="/card/photo/cardphoto/${card.id}">下一步管理照片</a></span>
+	<span class="pull-right"><a class="btn" href="card/photo/cardphoto/${card.id}">下一步管理照片</a></span>
 </c:if>
 </h4>
 
@@ -21,7 +21,7 @@
 </ul>
 <div class="tab-content">
 	<div class="tab-pane active" id="tab1">
-		<form class="form-horizontal" id="card-form" method="post" action="/card/info/doSave">
+		<form class="form-horizontal" id="card-form" method="post" action="card/info/doSave">
 			<input type="hidden" name="id" value="${card.id}">
 			<input type="hidden" name="cardType" value="WED_CARD" />
 			<fieldset>

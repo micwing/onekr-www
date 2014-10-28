@@ -7,7 +7,7 @@
 request.setCharacterEncoding("UTF-8");
 Map<String,Config> configs = (Map<String,Config>) request.getAttribute("configs");
 %>
-<script src="/assets/js/ace-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="assets/js/ace-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <style>
 .ace_editor {
 	position: relative !important;
@@ -28,7 +28,7 @@ Map<String,Config> configs = (Map<String,Config>) request.getAttribute("configs"
 &lt;ul class="slides">
 	&lt;li>
         &lt;div class="span7 animated fadeInLeftBig">
-            &lt;img src="/assets/more/images/1121174058.png">
+            &lt;img src="assets/more/images/1121174058.png">
         &lt;/div>
         &lt;div class="span4 margintop10p animated fadeInDownBig">
 
@@ -41,12 +41,12 @@ Map<String,Config> configs = (Map<String,Config>) request.getAttribute("configs"
             &lt;h3>&lt;i class="icon-tablet">&lt;/i>&lt;i class="icon-mobile-phone">&lt;/i>&lt;i class="icon-desktop">&lt;/i>&lt;br />Hi！ 您可以通过本站了解我和我的软件！&lt;/h3>
         &lt;/div>
         &lt;div class="span7 animated fadeInLeftBig">
-            &lt;img src="/assets/more/images/1121174058.png">
+            &lt;img src="assets/more/images/1121174058.png">
         &lt;/div>
     &lt;/li>
 	&lt;li>
         &lt;div class="span7 animated fadeInLeftBig">
-            &lt;img src="/assets/images/responsive.png">
+            &lt;img src="assets/images/responsive.png">
         &lt;/div>
         &lt;div class="span4 margintop10p animated fadeInDownBig">
             &lt;h3>&lt;i class="icon-tablet">&lt;/i>&lt;i class="icon-mobile-phone">&lt;/i>&lt;i class="icon-desktop">&lt;/i>&lt;br />本站可以在各种分辨率屏幕上浏览&lt;/h3>
@@ -75,13 +75,13 @@ ns.formSubmit = function() {
 		value:editor.getValue()
 	});
 	$.ajax({
-		url : "/console/config/doSaveConfig",
+		url : "console/config/doSaveConfig",
 		type : 'post',
         dataType : 'json',
 		data : {configs: $.toJSON(params)},
 		success : function(data) {
 			alert(data.message);
-			location.href="/console/config/baseConfig";
+			location.href="console/config/baseConfig";
 		}
 	});
 };

@@ -9,7 +9,7 @@
 <h4>
 上传位置：<%=new File(CustomizedPropertyPlaceholderConfigurer.getContextProperty("file.fileUploadDir") + FileBiz.fileUploadDirMore).getPath() %>
 </h4>
-<form class="form-horizontal" action="/console/file/doUploadFile2" method="post" enctype="multipart/form-data" id="file-form">
+<form class="form-horizontal" action="console/file/doUploadFile2" method="post" enctype="multipart/form-data" id="file-form">
 	<div class="control-group">
 		<label class="control-label" for="file">选择图片</label>
 		<div class="controls">
@@ -23,11 +23,11 @@
 		</div>
 	</div>
 </form>
-<link rel="stylesheet" href="/assets/js/kindeditor/themes/default/default.css" />
-<link rel="stylesheet" href="/assets/js/kindeditor/plugins/code/prettify.css" />
-<script charset="utf-8" src="/assets/js/kindeditor/kindeditor.js"></script>
-<script charset="utf-8" src="/assets/js/kindeditor/lang/zh_CN.js"></script>
-<script charset="utf-8" src="/assets/js/kindeditor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="assets/js/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="assets/js/kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="assets/js/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="assets/js/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="assets/js/kindeditor/plugins/code/prettify.js"></script>
 	<script type="text/javascript">
     $('#file-form').validate({
     	rules: {

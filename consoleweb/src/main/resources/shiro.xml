@@ -28,12 +28,17 @@
 			</value>
 		</property>
 	</bean>
-	
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="sessionMode" value="native" />
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"
+		lazy-init="true">
 		<property name="realm" ref="userRealm" />
+		<property name="cacheManager">
+			<bean class="org.apache.shiro.cache.ehcache.EhCacheManager">
+				<property name="cacheManager" ref="ehCacheManagerFactory" />
+			</bean>
+		</property>
 	</bean>
-	
+
 	<!-- 自定义Realm 继承自AuthorizingRealm -->
 	<bean id="userRealm" class="onekr.identityservice.user.realm.UserAuthorizingRealm"
 		depends-on="userDao,userPasswordDao"></bean>

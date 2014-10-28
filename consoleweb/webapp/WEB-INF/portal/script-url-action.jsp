@@ -38,7 +38,7 @@ ns.doExceuteScript = function() {
 	var scriptId = $('#scriptId').val();
 	var url = $('#url').val();
 	$.ajax({
-		url : "/console/script/doExceuteUrlScript",
+		url : "console/script/doExceuteUrlScript",
 		type : 'post',
         dataType : 'json',
 		data : {url:url, scriptId:scriptId},

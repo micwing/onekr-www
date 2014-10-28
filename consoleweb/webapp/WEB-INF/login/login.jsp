@@ -102,7 +102,7 @@
     		return;
     	}
     	$.ajax({
-			url : "/login/doSignin",
+			url : "login/doSignin",
 			type : 'post',
 	        dataType : 'json',
 			data : {username:$('#username').val(), password:$('#password').val(), remember:$('#remember:checked').val()},

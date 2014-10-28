@@ -6,7 +6,7 @@
 request.setCharacterEncoding("UTF-8");
 Script script = (Script) request.getAttribute("script");
 %>
-<script src="/assets/js/ace-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="assets/js/ace-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <style>
 .ace_editor {
 	position: relative !important;
@@ -16,7 +16,7 @@ Script script = (Script) request.getAttribute("script");
 }
 </style>
 <h4>编辑脚本</h4>
-<form id="script-form" method="post" action="/console/script/doSave" onsubmit="ns.formSubmit()">
+<form id="script-form" method="post" action="console/script/doSave" onsubmit="ns.formSubmit()">
 	<input type="hidden" name="id" value="${script == null ? '' : script.id}"/>
 	<label>脚步语言</label>
 	<select name="scriptLanguage">

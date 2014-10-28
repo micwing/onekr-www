@@ -11,6 +11,7 @@
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="cleartype" content="on">
+        <base href="<%=basePath%>" />
 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -18,10 +19,10 @@
         <!-- This script prevents links from opening in Mobile Safari. -->
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
 
-        <link rel="stylesheet" href="${ctx}/assets/css/normalize.css">
-        <link rel="stylesheet" href="${ctx}/assets/cardtpl/10001/main.css">
-        <script src="${ctx}/assets/js/respond.min.js"></script>
-        <script src="${ctx}/assets/js/snowstorm.js"></script>
+        <link rel="stylesheet" href="/assets/css/normalize.css">
+        <link rel="stylesheet" href="/assets/cardtpl/10001/main.css">
+        <script src="/assets/js/respond.min.js"></script>
+        <script src="/assets/js/snowstorm.js"></script>
         
     </head>
     <body class="home">
@@ -35,7 +36,7 @@
 		
 	<div class="header">
 		<div class="btn-collections">
-			<a class="ir" id='page_link' href="${ctx}/card/main/${card.id}">^</a>
+			<a class="ir" id='page_link' href="/card/main/${card.id}">^</a>
 		</div>
 		<h1 class="title"><a href="#">${card.title}</a></h1>
 		<p class="subtitle">${card.people1Name}  & ${card.people2Name} </p>
@@ -43,15 +44,15 @@
 		
 	</div>
 			<p class="subtitle-comment">
-		<a href="${ctx}/card/main/${card.id}"></a>
+		<a href="/card/main/${card.id}"></a>
 		</p>
 			
 	</div> 
 
 </div>
 
-<script src="${ctx}/assets/js/jquery.js"></script>
-<script src="${ctx}/assets/js/countdown.js"></script>
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/countdown.js"></script>
 <script>
 function get_viewport_width() {
 	var width;
@@ -101,7 +102,7 @@ $(function () {
 	pic_width = max_width;
 	pic_height = max_width * height / width;
 
-	var url = "${ctx}${fn:replace(coverPhoto.storePath, '\\', '/')}";//+ '&w=' + pic_width + '&h=' + pic_height
+	var url = "${fn:replace(coverPhoto.storePath, '\\', '/')}";//+ '&w=' + pic_width + '&h=' + pic_height
 	$('div.container').css({'background':'url("' + url + '") no-repeat scroll 0 0', 'background-size':'cover'});
 	$('div.container').css('height',height);
 
@@ -148,7 +149,7 @@ var contentModel = {
 	"src": "诚挚邀请您共同分享幸福与喜悦" 
 };
 </script>
-<script src="${ctx}/assets/js/share.js" type="text/javascript" ></script>
+<script src="/assets/js/share.js" type="text/javascript" ></script>
 
 <script type="text/javascript">
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");

@@ -45,9 +45,9 @@
 				<prop key="hibernate.jdbc.fetch_size">18</prop>
 				<prop key="hibernate.jdbc.batch_size">10</prop>
 				<prop key="use_streams_for_binary">true</prop>
-				<prop key="hibernate.cache.use_second_level_cache">true</prop>
-				<prop key="hibernate.cache.use_query_cache">true</prop>
-				<prop key="hibernate.cache.region.factory_class">onekr.framework.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<!-- <prop key="hibernate.cache.region.factory_class">onekr.framework.cache.ehcache.EhCacheRegionFactory</prop> -->
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
@@ -93,18 +93,18 @@
 	</aop:config>
 
 	<!-- 启用缓存注解功能 -->
-	<cache:annotation-driven cache-manager="cacheManager" />
+	<!-- <cache:annotation-driven cache-manager="cacheManager" /> -->
 
 	<!-- 声明cacheManager -->
-	<bean id="cacheManager" class="onekr.framework.cache.ehcache.SimpleEhCacheCacheManager"
-		p:cacheManager-ref="ehcache" />
+	<!-- <bean id="cacheManager" class="onekr.framework.cache.ehcache.SimpleEhCacheCacheManager"
+		p:cacheManager-ref="ehcache" /> -->
 
 	<!-- cacheManager工厂类，指定ehcache.xml的位置 -->
-	<bean id="ehcache"
+	<!-- <bean id="ehcache"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
 		p:configLocation="classpath:/ehcache.xml">
 		<property name="shared" value="true" />
-	</bean>
+	</bean> -->
 
 	<!-- messagesource -->
 	<bean id="messageSource"

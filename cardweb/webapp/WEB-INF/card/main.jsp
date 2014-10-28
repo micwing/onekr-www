@@ -16,19 +16,21 @@
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta http-equiv="cleartype" content="on">
+        <base href="<%=basePath%>" />
+        
 		<!--  Common CSS,JS Start Mango Filing -->
         <!-- This script prevents links from opening in Mobile Safari. -->
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
-        <link rel="stylesheet" type="text/css" href="${ctx}/assets/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="${ctx}/assets/js/toastr/toastr.min.css">
-		<link rel="stylesheet" type="text/css" href="${ctx}/assets/js/photoswipe/photoswipe.css" />        
-        <script type="text/javascript" src="${ctx}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="${ctx}/assets/js/toastr/toastr.min.js"></script>
-       	<script type="text/javascript" src="${ctx}/assets/js/commons.js"></script>
-		<script type="text/javascript" src="${ctx}/assets/js/klass.min.js"></script>
-		<script type="text/javascript" src="${ctx}/assets/js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
-        <script type="text/javascript" src="${ctx}/assets/js/respond.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="/assets/js/toastr/toastr.min.css">
+		<link rel="stylesheet" type="text/css" href="/assets/js/photoswipe/photoswipe.css" />        
+        <script type="text/javascript" src="/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="/assets/js/toastr/toastr.min.js"></script>
+       	<script type="text/javascript" src="/assets/js/commons.js"></script>
+		<script type="text/javascript" src="/assets/js/klass.min.js"></script>
+		<script type="text/javascript" src="/assets/js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
+        <script type="text/javascript" src="/assets/js/respond.min.js"></script>
         <!--  Common CSS,JS end Mango-->
         <link rel="stylesheet" href="http://www.360hunjia.com/app/Tpl/fanwe/mob/t7/css/main.css"> 
         <link rel="stylesheet" href="http://www.360hunjia.com/app/Tpl/fanwe/mob/t7/css/infostyle.css">
@@ -300,7 +302,7 @@ function doOptions() {
    .clr{width:100%; clear:both; float:none!important}
    </style>
 	<c:forEach items="${photos}" var="fileStore" varStatus="st">
-                    <li><a href="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"><img src="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}" alt="1/16"></a>
+                    <li><a href="${fn:replace(fileStore.storePath, '\\', '/')}"><img src="${fn:replace(fileStore.storePath, '\\', '/')}" alt="1/16"></a>
 			</li>
 			<c:if test="${ (st.index > 0) && (st.index%3==2) }">
 				<div class="clr"></div>
@@ -321,9 +323,9 @@ function doOptions() {
                           <div class="imgcontent">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <!-- /public/wedding/original/201409/03/10/5406785a4878a.JPG -->
-                        <tr bgcolor="#FF3300" style="color:#FFF"><td width="50%" align="center"><img src="${ctx}${fn:replace(people1Photo.storePath, '\\', '/')}" width="50%"> </td>
+                        <tr bgcolor="#FF3300" style="color:#FFF"><td width="50%" align="center"><img src="${fn:replace(people1Photo.storePath, '\\', '/')}" width="50%"> </td>
 
-                            <td width="50%"  align="center"> <img src="${ctx}${fn:replace(people2Photo.storePath, '\\', '/')}" width="50%"></td></tr>
+                            <td width="50%"  align="center"> <img src="${fn:replace(people2Photo.storePath, '\\', '/')}" width="50%"></td></tr>
                     </table>
                 </div>
 
@@ -607,7 +609,7 @@ var Accordion1 = new Spry.Widget.Accordion("Accordion1");
 </script>	
 			<div class="footer">
 				<p class="back">
-					<a href="${ctx}/card/cover/${card.id}" class="link"><span></span></a>
+					<a href="/card/cover/${card.id}" class="link"><span></span></a>
 				</p>
 			</div>
 		</div>

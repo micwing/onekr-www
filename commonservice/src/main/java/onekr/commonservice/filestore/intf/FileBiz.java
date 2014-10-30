@@ -4,6 +4,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface FileBiz {
 	
+	public static final String fileBaseUrl = "/attached";
+	
 	public static final String fileUploadDirCard = "card/";
 	
 	public static final String fileUploadDirMore = "more/";

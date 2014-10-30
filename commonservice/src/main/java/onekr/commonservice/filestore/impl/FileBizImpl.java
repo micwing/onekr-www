@@ -19,9 +19,6 @@ public class FileBizImpl implements FileBiz {
 	@Value("#{systemConfig['file.fileUploadDir']}")
 	private String fileUploadDir;
 	
-	@Value("#{systemConfig['file.fileManagerUrl']}")
-	private String fileManagerUrl;
-	
 	@Override
 	public String saveUrlFile(String url) {
 		// TODO Auto-generated method stub

@@ -17,7 +17,6 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta http-equiv="cleartype" content="on">
         <base href="<%=basePath%>" />
-        
 		<!--  Common CSS,JS Start Mango Filing -->
         <!-- This script prevents links from opening in Mobile Safari. -->
         <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
@@ -32,7 +31,7 @@
 		<script type="text/javascript" src="assets/js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
         <script type="text/javascript" src="assets/js/respond.min.js"></script>
         <!--  Common CSS,JS end Mango-->
-        <link rel="stylesheet" href="http://www.360hunjia.com/app/Tpl/fanwe/mob/t7/css/main.css"> 
+        <link rel="stylesheet" href="assets/cardtpl/10001/css/main.css"> 
         <link rel="stylesheet" href="http://www.360hunjia.com/app/Tpl/fanwe/mob/t7/css/infostyle.css">
 	</head>
     <body class="page" onLoad="doOptions()" >

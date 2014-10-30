@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 
+import onekr.commonservice.filestore.intf.FileBiz;
 import onekr.commonservice.model.Script;
 import onekr.framework.result.Result;
 import onekr.framework.utils.FileUtil;
@@ -29,8 +30,6 @@ public class ArticleScriptHandler implements ScriptHandler,BeanClassLoaderAware 
 
 	@Value("#{systemConfig['file.fileUploadDir']}")
 	private String fileUploadDir;
-	@Value("#{systemConfig['file.fileManagerUrl']}")
-	private String fileManagerUrl;
 	
 	private ClassLoader classLoader;
 	
@@ -164,7 +163,7 @@ public class ArticleScriptHandler implements ScriptHandler,BeanClassLoaderAware 
 	    String newSrc = null;
 	    try {
 			FileUtil.copyURLToFile(src, f);
-			newSrc = FileUtil.cvtUrl(f, fileUploadDir, fileManagerUrl);
+			newSrc = FileUtil.cvtUrl(f, fileUploadDir, FileBiz.fileBaseUrl);
 		} catch (Exception e) {
 			newSrc = "";
 		}

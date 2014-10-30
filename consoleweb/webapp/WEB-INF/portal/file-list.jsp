@@ -4,12 +4,13 @@
 <%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer" %>
 <%@page import="onekr.framework.utils.FileUtil" %>
 <%@page import="org.apache.commons.io.FileUtils" %>
+<%@page import="onekr.commonservice.filestore.intf.FileBiz" %>
 <% 
 File file = (File) request.getAttribute("file");
 String dir = (String) request.getAttribute("dir");
 String pdir = (String) request.getAttribute("pdir");
 String fileUploadDir = CustomizedPropertyPlaceholderConfigurer.getContextProperty("file.fileUploadDir");
-String fileManagerUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty("file.fileManagerUrl");
+String fileBaseUrl = FileBiz.fileBaseUrl;
 %>
 <div>
 <h4>
@@ -17,7 +18,7 @@ String fileManagerUrl = CustomizedPropertyPlaceholderConfigurer.getContextProper
 <% 
 if (dir.equals(new File(fileUploadDir).getPath())) { 
 %>
-	href="#" 
+	href="javascript:;" 
 <% } else { %>
 	href="console/file/list?dir=<%=pdir%>" 
 <% } %>
@@ -30,7 +31,7 @@ class="btn" title="上一级"><i class="icon-chevron-up"></i></a>
 		<th>名称</th>
 		<th>大小</th>
 		<th>内部数量</th>
-		<th>操作(右键另存为可下载)</th>
+		<th>操作("查看"右键另存为可下载)</th>
 	</tr>
 	<% File[] files = file.listFiles(); 
 	   for (File f : files) {
@@ -62,9 +63,9 @@ class="btn" title="上一级"><i class="icon-chevron-up"></i></a>
 		
 		<% if (f.isFile()) { %>
 			<% if (FileUtil.isImage(f)) { %>
-				<a class="btn fancybox" rel="group1" href="<%=FileUtil.cvtUrl(f,fileUploadDir,fileManagerUrl)%>" title="<%=f.getName() %>"><i class="icon-eye-open"></i> 查看</a>
+				<a class="btn fancybox" rel="group1" href="<%=FileUtil.cvtUrl(f,fileUploadDir,fileBaseUrl)%>" title="<%=f.getName() %>"><i class="icon-eye-open"></i> 查看</a>
 			<% } else { %>
-				<a class="btn" href="<%=FileUtil.cvtUrl(f,fileUploadDir,fileManagerUrl)%>" target="_blank" title="下载 <%=f.getName() %>"><i class="icon-download-alt"></i> 下载</a>
+				<a class="btn" href="<%=FileUtil.cvtUrl(f,fileUploadDir,fileBaseUrl)%>" target="_blank" title="下载 <%=f.getName() %>"><i class="icon-download-alt"></i> 下载</a>
 			<% } %>
 		<% } %>
 		<button type="button" class="btn" onclick="ns.doDelete('<%=(dir+File.separator+f.getName()).replace("\\", "\\\\")%>');"><i class="icon-remove-sign"></i> 删除</button>

@@ -12,18 +12,13 @@
 
 <!-- Le styles -->
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-<style type="text/css">
-body {
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-</style>
 <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="assets/css/site.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-    <![endif]-->
+<script src="assets/js/html5shiv.js"></script>
+<![endif]-->
 
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -52,7 +47,14 @@ body {
 		<div class="navbar">
 			<div class="navbar-inner">
 				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</a>
+					
 					<a class="brand" href="#">ONEKR CONSOLE</a>
+					
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="${fn:startsWith(requestServletPath, '/center/')?'active':''}"><a href="#">通知中心</a></li>
@@ -61,10 +63,18 @@ body {
 							<li class="${fn:startsWith(requestServletPath, '/identity')?'active':''}"><a href="#contact">用户管理</a></li>
 						</ul>
 						<ul class="nav pull-right">
-							<li><a href="console/account/accountInfo"><shiro:principal /></a></li>
-							<li><a href="/" target="_blank">查看前台</a></li>
-							<li><a href="https://login.secureserver.net" target="_blank">系统邮箱</a></li>
-							<li><a href="login/doSignout">退出</a></li>
+							<li class="divider-vertical"></li>
+							
+							<li class="dropdown">
+		                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><shiro:principal /> <b class="caret"></b></a>
+		                        <ul class="dropdown-menu">
+		                          <li><a href="console/account/accountInfo">我的账号</a></li>
+		                          <li><a href="/" target="_blank">查看前台</a></li>
+		                          <li><a href="https://login.secureserver.net" target="_blank">系统邮箱</a></li>
+		                          <li class="divider"></li>
+		                          <li><a href="login/doSignout">安全退出</a></li>
+		                        </ul>
+	                      	</li>
 						</ul>
 					</div>
 					<!--/.nav-collapse -->

@@ -146,12 +146,12 @@ public class FileUtil {
 	 * @param f
 	 * @return
 	 */
-	public static String cvtUrl(File f, String fileUploadDir, String fileManagerUrl) {
+	public static String cvtUrl(File f, String fileUploadDir, String fileBaseUrl) {
 		fileUploadDir = new File(fileUploadDir).getPath();
 		
 		String fileAbsPath = f.getAbsolutePath();
 		String fileDir = fileAbsPath.substring(fileAbsPath.indexOf(fileUploadDir) + fileUploadDir.length());
-		String url = (fileManagerUrl+fileDir.replace("\\", "/")).replace("//", "/");
+		String url = (fileBaseUrl+"/"+fileDir.replace("\\", "/")).replace("//", "/");
 		return url;
 	}
 	

@@ -10,6 +10,7 @@ import onekr.framework.controller.FileUploadSupportController;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
+import onekr.framework.utils.FileUtil;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,6 @@ public class PortalFileController extends FileUploadSupportController {
 	@Value("#{systemConfig['file.fileUploadDir']}")
 	private String fileUploadDir;
 	
-	@Value("#{systemConfig['file.fileManagerUrl']}")
-	private String fileManagerUrl;
-	
 	@Autowired
 	private FileBiz fileBiz;
 	
@@ -41,7 +39,7 @@ public class PortalFileController extends FileUploadSupportController {
     @RequestMapping(value="/doUploadFile2",method=RequestMethod.POST)
     public String doUploadFile2(@RequestParam("file") CommonsMultipartFile file) throws Exception{       
         String path = fileBiz.saveMultipartFile(file);
-        return "redirect:/console/file/list?dir="+path;
+        return "redirect:/console/file/list?dir="+FileUtil.getParentOfPathOrUrl(path);
     }
 	
 	@RequestMapping(value = "/doDelete", method = RequestMethod.POST)
@@ -100,7 +98,7 @@ public class PortalFileController extends FileUploadSupportController {
 	}
 
 	public String getFileManagerUrl() {
-		return fileManagerUrl;
+		return FileBiz.fileBaseUrl;
 	}
 	
 	

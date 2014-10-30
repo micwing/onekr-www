@@ -31,6 +31,7 @@ public class CardMapController extends BaseController {
 	@Autowired
 	private CardFileBiz cardFileBiz;
 	
+	//http://api.map.baidu.com/staticimage?width=600&height=400&center=120.70021967046,31.30336591322&markers=120.70021967046,31.30336591322&zoom=10&markerStyles=m,,0xff0000
 	@RequestMapping(value = "/cardmap/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cardmap(@PathVariable("cardId") Long cardId) {
 		ModelAndView mav = new ModelAndView("card:card-map");

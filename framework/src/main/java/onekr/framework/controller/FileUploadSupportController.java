@@ -43,7 +43,7 @@ public abstract class FileUploadSupportController extends BaseController {
 		String savePath = getFileUploadDir();
 		
 		//文件保存目录URL
-		String saveUrl  = request.getContextPath() + getFileManagerUrl();
+		String saveUrl  = request.getContextPath() + getFileManagerUrl()+"/";
 		
 		//定义允许上传的文件扩展名
 		HashMap<String, String> extMap = getExtMap();
@@ -151,7 +151,7 @@ public abstract class FileUploadSupportController extends BaseController {
 		String rootPath = getFileUploadDir();
 		
 		//根目录URL，可以指定绝对路径，比如 http://www.yoursite.com/attached/
-		String rootUrl  = request.getContextPath() + getFileManagerUrl();
+		String rootUrl  = request.getContextPath() + getFileManagerUrl() +"/";
 		
 		//图片扩展名
 		String[] fileTypes = new String[]{"gif", "jpg", "jpeg", "png", "bmp"};

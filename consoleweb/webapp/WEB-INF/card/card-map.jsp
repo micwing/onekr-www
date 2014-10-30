@@ -86,19 +86,14 @@ $('#deleteMappic').click(function() {
 	<fieldset>
 		<legend>百度地图查找</legend>
 			
-		<p>
+		<div>
 			<div id="r-result">请输入:<input type="text"  id="suggestId" size="20" value="百度" class="input-block-level"/></div>
 			<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
-		</p>
-		<p class="text-right">
-			<a href="http://map.baidu.com/" class="btn" target="_blank">访问百度地图</a> 
-			<button type="button" class="btn" id="showMapTool">显示地图工具</button>
-			<button type="button" class="btn" id="hideMapTool" style="display: none">隐藏地图工具</button>
-			<br>
-		</p>
-		<p>
+		</div>
+		<div><input type="text" id="a"/><input type="text" id="b"/></div>
+		<div>
 			<div id="allmap"></div>
-		</p>
+		</div>
 	</fieldset>
 	</div>
 </div>
@@ -146,15 +141,21 @@ var _value = e.item.value;
 	
 	setPlace();
 });
+
+var marker;
 function setPlace(){
 	map.clearOverlays();    //清除地图上所有覆盖物
 	function myFun(){
 		var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
 		map.centerAndZoom(pp, 18);
 		
-		var marker = new BMap.Marker(pp);
+		marker = new BMap.Marker(pp);
 		map.addOverlay(marker);    //添加标注
 		marker.enableDragging();
+		marker.addEventListener('dragging', function() {
+			$('#a').val(marker.getPosition().lng);
+			$('#b').val(marker.getPosition().lat);
+		});
 	}
 	var local = new BMap.LocalSearch(map, { //智能搜索
 	  onSearchComplete: myFun
@@ -185,18 +186,8 @@ function delete_control() {
 	map.removeControl(top_left_control);
 	map.removeControl(top_left_navigation);
 }
-delete_control();
+add_control();
 
-$('#showMapTool').click(function() {
-	$('#hideMapTool').show();
-	$('#showMapTool').hide();
-	add_control();
-});
-$('#hideMapTool').click(function() {
-	$('#hideMapTool').hide();
-	$('#showMapTool').show();
-	delete_control();
-});
 /*==========================================================控件和比例尺end===============================================================*/
 </script>
 

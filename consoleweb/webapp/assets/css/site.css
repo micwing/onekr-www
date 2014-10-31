@@ -1,8 +1,27 @@
 body {
-	padding-top:20px; 
-	padding-bottom:20px;
-	font-family: "Microsoft YaHei","Î¢ÈíÑÅºÚ","SimSun","ËÎÌå","sans-serif";
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: "Microsoft YaHei", "Î¢ÈíÑÅºÚ", "SimSun", "ËÎÌå", "sans-serif";
 	font-size: 13px;
 }
 
-h1 {padding-bottom:0.2em;}
+h1 {
+	padding-bottom: 0.2em;
+}
+
+fieldset {  
+}
+
+fieldset legend {  
+    font-weight: bold;
+    font-size: 18px;
+    color: #8A8A8A;
+}
+
+.head-hr {
+	border-width: 3px;
+}
+
+section {
+	margin-bottom: 10px;
+}

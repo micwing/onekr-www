@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="request"/>
 <%!
-private String htmlspecialchars(String str) {
+public String htmlspecialchars(String str) {
 	str = str.replaceAll("&", "&amp;");
 	str = str.replaceAll("<", "&lt;");
 	str = str.replaceAll(">", "&gt;");

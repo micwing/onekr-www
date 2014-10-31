@@ -27,9 +27,9 @@ public class CardController {
 	
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
-		ModelAndView mav = new ModelAndView("single:card/cover");
 		Card card = cardBiz.findById(cardId);
 		FileStore coverPhoto = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_COVER_PHOTO_DESC);
+		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/cover");
 		mav.addObject("card", card);
 		mav.addObject("coverPhoto", coverPhoto);
 		
@@ -38,12 +38,13 @@ public class CardController {
 	
 	@RequestMapping(value = "/main/{cardId}", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
-		ModelAndView mav = new ModelAndView("single:card/main");
 		Card card = cardBiz.findById(cardId);
 		FileStore coverPhoto = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_COVER_PHOTO_DESC);
 		FileStore people1Photo = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_PEOPLE1_PHOTO_DESC);
 		FileStore people2Photo = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_PEOPLE2_PHOTO_DESC);
 		List<FileStore> photos = cardFileBiz.listCardPhoto(cardId);
+		
+		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/main");
 		mav.addObject("card", card);
 		mav.addObject("coverPhoto", coverPhoto);
 		mav.addObject("people1Photo", people1Photo);

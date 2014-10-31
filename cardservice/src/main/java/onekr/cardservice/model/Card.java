@@ -59,12 +59,6 @@ public class Card implements Serializable {
 	private Date partyTime;
 	
 	/**
-	 * 2014年10月06日/星期一/16点30分
-	 */
-	@Column(name = "party_time_info")
-	private String partyTimeInfo;
-	
-	/**
 	 * 举行典礼 敬备喜宴<br/>恭请光临
 	 */
 	@Column(name = "after_info", length = 500)
@@ -95,14 +89,24 @@ public class Card implements Serializable {
 	private String remind;
 	
 	/**
+	 * 地图图片地址
+	 */
+	@Column(name = "map_pic_url", length = 2000)
+	private String mapPicUrl;
+	
+	/**
+	 * 地图导航链接地址
 	 * http://map.baidu.com/?latlng=31.303365913228,120.70021967046&title=%E5%A9%9A%E7%A4%BC%E4%BD%8D%E7%BD%AE&content=%E8%8B%8F%E5%B7%9E%E5%B8%82%E5%B7%A5%E4%B8%9A%E5%9B%AD%E5%8C%BA%E6%9D%8E%E5%85%AC%E5%A0%A43%E6%9C%9F22%E5%B9%A2%28%E8%BF%91%E9%87%91%E9%B8%A1%E6%B9%96%E5%A4%A7%E9%81%93%29&autoOpen=true&l
 	 */
-	@Column(name = "map_url", length = 1000)
+	@Column(name = "map_url", length = 2000)
 	private String mapUrl;
 	
 	@Column(name = "taobao_id")
 	private String taobaoId;
 	
+	/**
+	 * templetId的前2位表示jspId
+	 */
 	@Column(name = "templet_id")
 	private String templetId;
 	
@@ -196,14 +200,6 @@ public class Card implements Serializable {
 
 	public void setPartyTime(Date partyTime) {
 		this.partyTime = partyTime;
-	}
-
-	public String getPartyTimeInfo() {
-		return partyTimeInfo;
-	}
-
-	public void setPartyTimeInfo(String partyTimeInfo) {
-		this.partyTimeInfo = partyTimeInfo;
 	}
 
 	public String getAfterInfo() {
@@ -316,6 +312,14 @@ public class Card implements Serializable {
 
 	public void setTaobaoId(String taobaoId) {
 		this.taobaoId = taobaoId;
+	}
+
+	public String getMapPicUrl() {
+		return mapPicUrl;
+	}
+
+	public void setMapPicUrl(String mapPicUrl) {
+		this.mapPicUrl = mapPicUrl;
 	}
 
 }

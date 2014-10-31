@@ -28,39 +28,19 @@ public class CardMapController extends BaseController {
 	@Autowired
 	private CardBiz cardBiz;
 	
-	@Autowired
-	private CardFileBiz cardFileBiz;
-	
 	//http://api.map.baidu.com/staticimage?width=600&height=400&center=120.70021967046,31.30336591322&markers=120.70021967046,31.30336591322&zoom=10&markerStyles=m,,0xff0000
 	@RequestMapping(value = "/cardmap/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cardmap(@PathVariable("cardId") Long cardId) {
 		ModelAndView mav = new ModelAndView("card:card-map");
 		mav.addObject("card", cardBiz.findById(cardId));
-		mav.addObject("mappic", cardFileBiz.findCardMappic(cardId));
 		return mav;
 	}
 	
-	@RequestMapping(value = "/doSave", method = RequestMethod.POST)
-	public String doSave(Card card) {
+	@RequestMapping(value = "/doUpdateMap", method = RequestMethod.POST)
+	public String doUpdateMap(Long cardId, String mapUrl, String mapPicUrl) {
 		User user = (User) getCurrentUser();
-		card = cardBiz.saveCard(card, user.getId());
+		Card card = cardBiz.updateCardMap(cardId, mapPicUrl, mapUrl, user.getId());
 		return "redirect:/card/map/cardmap/"+card.getId();
 	}
 	
-	@RequestMapping(value="/doUploadFile",method=RequestMethod.POST)
-    public String doUploadFile(
-    		@RequestParam("file") CommonsMultipartFile mfile, 
-    		@RequestParam("cardId") Long cardId) {
-		User user = (User) getCurrentUser();
-		cardFileBiz.saveCardMapPic(cardId, mfile, user.getId());
-        return "redirect:/card/map/cardmap/"+cardId;
-    }
-	
-	@RequestMapping(value="/doDelete",method=RequestMethod.GET)
-    public String doDelete(@RequestParam("cardId") Long cardId,
-    		@RequestParam("fileStoreId") Long fileStoreId) { 
-		User user = (User) getCurrentUser();
-		cardFileBiz.delete(fileStoreId, user.getId());
-		return "redirect:/card/map/cardmap/"+cardId;
-    }
 }

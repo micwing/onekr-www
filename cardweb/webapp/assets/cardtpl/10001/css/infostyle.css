@@ -149,12 +149,12 @@ footer {
 	-webkit-transform: translate3d(0, 0, 0);
 }
 .invititle {
-	background:url(images/slider-inner-bg.png) no-repeat top center;
+	/* background:url(../images/slider-inner-bg.png) no-repeat top center; */
 	padding-top:50px;
 	margin-top:-10px;
 }
 .invitext {
-	background:url(images/slider-outer-title.png) repeat-x bottom;
+	/* background:url(../images/slider-outer-title.png) repeat-x bottom; */
 	padding-bottom:20px;
 	margin-bottom:-20px;
 }

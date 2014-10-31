@@ -23,4 +23,5 @@ public interface CardBiz {
 
 	Card saveCard(@NotNull Card card, @NotNull  @Min(1) Long uid);
 
+	Card updateCardMap(Long cardId, String mapPicUrl, String mapUrl, Long uid);
 }

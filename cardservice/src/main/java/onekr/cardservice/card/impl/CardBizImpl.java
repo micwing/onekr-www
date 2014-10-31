@@ -88,4 +88,15 @@ public class CardBizImpl implements CardBiz {
 		return cardDao.save(card);
 	}
 
+	@Override
+	public Card updateCardMap(Long cardId, String mapPicUrl, String mapUrl, Long uid) {
+		Card card = cardDao.findOne(cardId);
+		if (card == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
+		card.setMapPicUrl(mapPicUrl);
+		card.setMapUrl(mapUrl);
+		card.setUpdateAt(new Date());
+		card.setUpdateBy(uid);
+		return cardDao.save(card);
+	}
 }

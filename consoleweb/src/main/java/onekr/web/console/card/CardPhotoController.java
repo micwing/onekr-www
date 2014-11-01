@@ -46,11 +46,14 @@ public class CardPhotoController extends BaseController {
 	@RequestMapping(value="/doUploadFile",method=RequestMethod.POST)
     public String doUploadFile(
     		@RequestParam("file") CommonsMultipartFile[] mfiles, 
-    		@RequestParam("cardId") Long cardId,
-    		@RequestParam("width") String width,
-    		@RequestParam("height") String height) {       
+    		@RequestParam("cardId") Long cardId
+//    		,
+//    		@RequestParam("width") String width,
+//    		@RequestParam("height") String height
+    		) {       
 		User user = (User) getCurrentUser();
-		cardFileBiz.saveCardPhoto(cardId, mfiles,width,height, user.getId());
+		cardFileBiz.saveCardPhoto(cardId, mfiles, user.getId());
+		cardFileBiz.saveCardPhotoThumb(cardId, mfiles, user.getId());
         return "redirect:/card/photo/cardphoto/"+cardId;
     }
 	

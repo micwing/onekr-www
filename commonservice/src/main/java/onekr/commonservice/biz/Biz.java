@@ -28,6 +28,8 @@ public enum Biz {
 	
 	/**card照片存储*/
 	CARD_PHOTO_FILE_STORE,
+	/**card照片缩略图存储*/
+	CARD_PHOTO_THUMB_FILE_STORE,
 	
 	/**card地图图片存储*/
 	CARD_MAPPIC_FILE_STORE,

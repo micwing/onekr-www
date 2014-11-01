@@ -1,5 +1,6 @@
 package onekr.cardservice.card.impl;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -28,11 +29,12 @@ public class CardFileBizImpl implements CardFileBiz {
 	private FileStoreBiz fileStoreBiz;
 
 	@Override
-	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile, String width, String height, Long uid) {
+	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile, Long uid) {
 		String originalFilename = mfile.getOriginalFilename();
-		String path;
+		String path = File.separator+"card"+File.separator+cardId;
+		String name;
 		try {
-			path = fileBiz.saveMultipartFile(mfile, "/card/"+cardId);
+			name = fileBiz.saveMultipartFile(mfile, path);
 		} catch (Exception e) {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}
@@ -50,7 +52,40 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setRank(getNewRank4Card(cardId));
 		fileStore.setSize(mfile.getSize());
 		fileStore.setStatus(Status.NORMAL);
-		fileStore.setStorePath(path);
+		fileStore.setStorePath(path+File.separator+name);
+		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
+		fileStore.setType(getFileType4Filename(originalFilename));
+		fileStore.setUpdateAt(now);
+		fileStore.setUpdateBy(uid);
+		
+		return fileStoreBiz.saveFileStore(fileStore);
+	}
+	
+	@Override
+	public FileStore saveCardPhotoThumb(Long cardId, MultipartFile mfile, Long uid) {
+		String originalFilename = mfile.getOriginalFilename();
+		String path = File.separator+"card"+File.separator+cardId+File.separator+"thumb";
+		String name;
+		try {
+			name = fileBiz.saveMultipartImageThumb(mfile, CardFileBiz.squareImageThumbWidth, path);
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.SERVER_ERROR);
+		}
+		
+		Date now = new Date();
+		
+		FileStore fileStore = new FileStore();
+		fileStore.setBiz(Biz.CARD_PHOTO_THUMB_FILE_STORE.name());
+		fileStore.setCreateAt(now);
+		fileStore.setCreateBy(uid);
+		fileStore.setDescription("");
+		fileStore.setJson("");
+		fileStore.setOriginalName(mfile.getOriginalFilename());
+		fileStore.setOwner(cardId+"");
+		fileStore.setRank(getNewRank4Card(cardId));
+		fileStore.setSize(mfile.getSize());
+		fileStore.setStatus(Status.NORMAL);
+		fileStore.setStorePath(path+File.separator+name);
 		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
 		fileStore.setType(getFileType4Filename(originalFilename));
 		fileStore.setUpdateAt(now);
@@ -61,10 +96,20 @@ public class CardFileBizImpl implements CardFileBiz {
 	
 	@Override
 	public FileStore[] saveCardPhoto(Long cardId,
-			MultipartFile[] mfiles, String width, String height,Long uid) {
+			MultipartFile[] mfiles,Long uid) {
 		FileStore[] stores = new FileStore[mfiles.length];
 		for (int i = 0; i < mfiles.length ; i++) {
-			stores[i] = saveCardPhoto(cardId, mfiles[i],width,height, uid);
+			stores[i] = saveCardPhoto(cardId, mfiles[i], uid);
+		}
+		return stores;
+	}
+	
+	@Override
+	public FileStore[] saveCardPhotoThumb(Long cardId,
+			MultipartFile[] mfiles,Long uid) {
+		FileStore[] stores = new FileStore[mfiles.length];
+		for (int i = 0; i < mfiles.length ; i++) {
+			stores[i] = saveCardPhotoThumb(cardId, mfiles[i], uid);
 		}
 		return stores;
 	}

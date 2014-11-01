@@ -43,6 +43,102 @@ import javax.imageio.ImageIO;
  * @date 2013-3-26 下午5:33:14 
  */ 
 public class ImageUtil {
+	
+//	/**
+//     * 图像切割(按指定起点坐标和宽高切割)
+//     * @param srcImageFile 源图像地址
+//     * @param result 切片后的图像地址
+//     * @param x 目标切片起点坐标X
+//     * @param y 目标切片起点坐标Y
+//     * @param width 目标切片宽度
+//     * @param height 目标切片高度
+//     */
+//    public final static void cutAndWrite(BufferedImage bi, File out,
+//            int x, int y, int width, int height, String fileFormat) {
+//        try {
+//            // 读取源图像
+//            int srcWidth = bi.getHeight(); // 源图宽度
+//            int srcHeight = bi.getWidth(); // 源图高度
+//            if (srcWidth > 0 && srcHeight > 0) {
+//                Image image = bi.getScaledInstance(srcWidth, srcHeight,
+//                        Image.SCALE_DEFAULT);
+//                // 四个参数分别为图像起点坐标和宽高
+//                // 即: CropImageFilter(int x,int y,int width,int height)
+//                ImageFilter cropFilter = new CropImageFilter(x, y, width, height);
+//                Image img = Toolkit.getDefaultToolkit().createImage(
+//                        new FilteredImageSource(image.getSource(),
+//                                cropFilter));
+//                BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+//                Graphics g = tag.getGraphics();
+//                g.drawImage(img, 0, 0, width, height, null); // 绘制切割后的图
+//                g.dispose();
+//                // 输出为文件
+//                ImageIO.write(tag, fileFormat, out);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+    
+//    /**
+//     * 缩放图像（按高度和宽度缩放）
+//     * @param srcImageFile 源图像文件地址
+//     * @param result 缩放后的图像地址
+//     * @param height 缩放后的高度
+//     * @param width 缩放后的宽度
+//     * @param bb 比例不对时是否需要补白：true为补白; false为不补白;
+//     * @param byMax true表示按照图片width、height中像素值大的为准缩成指定像素值，false表示按照图片width、height中像素值小的为准缩成指定像素值
+//     */
+//    public final static BufferedImage scaleByWidthAndHeight(BufferedImage bi, int width, int height, boolean bb, boolean byMax) {
+//        try {
+//            double ratio = 0.0; // 缩放比例
+//            Image itemp = bi.getScaledInstance(width, height, bi.SCALE_SMOOTH);
+////            Image itemp = bi.getScaledInstance(bi.getWidth(), bi.getHeight(), bi.SCALE_SMOOTH);
+//            // 计算比例
+//            if ((bi.getHeight() > height) || (bi.getWidth() > width)) {
+//            	if (byMax) {
+//            		if (bi.getHeight() > bi.getWidth()) {
+//                        ratio = (new Integer(height)).doubleValue()
+//                                / bi.getHeight();
+//                    } else {
+//                        ratio = (new Integer(width)).doubleValue() / bi.getWidth();
+//                    }
+//            	} else {
+//            		if (bi.getHeight() < bi.getWidth()) {
+//                        ratio = (new Integer(height)).doubleValue()
+//                                / bi.getHeight();
+//                    } else {
+//                        ratio = (new Integer(width)).doubleValue() / bi.getWidth();
+//                    }
+//            	}
+//                
+//                AffineTransformOp op = new AffineTransformOp(AffineTransform
+//                        .getScaleInstance(ratio, ratio), null);
+//                itemp = op.filter(bi, null);
+//            }
+//            if (bb) {//补白
+//                BufferedImage image = new BufferedImage(width, height,
+//                        BufferedImage.TYPE_INT_RGB);
+//                Graphics2D g = image.createGraphics();
+//                g.setColor(Color.white);
+//                g.fillRect(0, 0, width, height);
+//                if (width == itemp.getWidth(null))
+//                    g.drawImage(itemp, 0, (height - itemp.getHeight(null)) / 2,
+//                            itemp.getWidth(null), itemp.getHeight(null),
+//                            Color.white, null);
+//                else
+//                    g.drawImage(itemp, (width - itemp.getWidth(null)) / 2, 0,
+//                            itemp.getWidth(null), itemp.getHeight(null),
+//                            Color.white, null);
+//                g.dispose();
+//                itemp = image;
+//            }
+//            return (BufferedImage) itemp;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
 	/** 
 	* 从指定文件名读取图像，目前只支持读取以下格式图像：bmp,wbmp,gif,jpge,png。 

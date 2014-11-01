@@ -19,9 +19,13 @@ public interface CardFileBiz {
 	public static final String CARD_PEOPLE1_PHOTO_DESC = "people1";
 	public static final String CARD_PEOPLE2_PHOTO_DESC = "people2";
 	
-	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, String width, String height, @NotNull @Min(1) Long uid);
+	public static final int squareImageThumbWidth = 200;
+	
+	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
+	FileStore saveCardPhotoThumb(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
 
-	FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile[] mfiles, String width, String height, @NotNull @Min(1) Long uid);
+	FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
+	FileStore[] saveCardPhotoThumb(@NotNull @Min(1) Long cardId, @NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
 	
 	FileType getFileType4Filename(@NotBlank String filename);
 	

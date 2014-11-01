@@ -1,8 +1,7 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
 <%@page import="java.io.File"%>
-<%@page
-	import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer"%>
+<%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer"%>
 <%@page import="onekr.commonservice.filestore.intf.FileBiz"%>
 <%@page import="onekr.framework.utils.FileUtil"%>
 <%@page import="org.apache.commons.io.FileUtils"%>
@@ -82,9 +81,9 @@
 						<div><span class="label">请柬相册</span></div>
 					</td>
 					<td><a
-						href="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"
+						href="attached${fn:replace(fileStore.storePath, '\\', '/')}"
 						class="fancybox" rel="group1"> <img
-							src="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"
+							src="attached${fn:replace(fileStore.storePath, '\\', '/')}"
 							class="img-polaroid" height="200px" width="200px">
 					</a></td>
 					<td>
@@ -137,9 +136,9 @@
 						<div><span class="label">请柬相册</span></div> 
 					</td>
 					<td><a
-						href="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"
+						href="attached${fn:replace(fileStore.storePath, '\\', '/')}"
 						class="fancybox" rel="group1"> <img
-							src="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"
+							src="attached${fn:replace(fileStore.storePath, '\\', '/')}"
 							class="img-polaroid" height="200px" width="200px">
 					</a></td>
 					<td>
@@ -192,9 +191,9 @@
 						<div><span class="label">请柬相册</span></div>
 					</td>
 					<td><a
-						href="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"
+						href="attached${fn:replace(fileStore.storePath, '\\', '/')}"
 						class="fancybox" rel="group1"> <img
-							src="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"
+							src="attached${fn:replace(fileStore.storePath, '\\', '/')}"
 							class="img-polaroid" height="200px" width="200px">
 					</a></td>
 					<td>

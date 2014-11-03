@@ -4,6 +4,7 @@ import java.util.List;
 
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardPhotoDto;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.FileStore;
 import onekr.framework.controller.BaseController;
@@ -25,6 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/card/photo")
 public class CardPhotoController extends BaseController {
 	
+	public static final String CARD_COVER_PHOTO_DESC = "cover";
+	public static final String CARD_PEOPLE1_PHOTO_DESC = "people1";
+	public static final String CARD_PEOPLE2_PHOTO_DESC = "people2";
+	
 	@Autowired
 	private CardBiz cardBiz;
 	
@@ -37,7 +42,7 @@ public class CardPhotoController extends BaseController {
 		Card card = cardBiz.findById(cardId);
 		if (card == null)
 			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
-		List<FileStore> list = cardFileBiz.listCardPhoto(cardId);
+		List<CardPhotoDto> list = cardFileBiz.listCardPhoto(cardId);
 		mav.addObject("photos", list);
 		mav.addObject("card", card);
 		return mav;
@@ -52,16 +57,22 @@ public class CardPhotoController extends BaseController {
 //    		@RequestParam("height") String height
     		) {       
 		User user = (User) getCurrentUser();
-		cardFileBiz.saveCardPhoto(cardId, mfiles, user.getId());
-		cardFileBiz.saveCardPhotoThumb(cardId, mfiles, user.getId());
+		FileStore[] thumbs = cardFileBiz.saveCardPhotoThumb(cardId, mfiles, user.getId());
+		cardFileBiz.saveCardPhoto(cardId, mfiles,thumbs, user.getId());
         return "redirect:/card/photo/cardphoto/"+cardId;
     }
 	
 	@RequestMapping(value="/doUseWay",method=RequestMethod.GET)
-    public String doUseWay(@RequestParam("cardId") Long cardId, 
+    public String doUseCover(@RequestParam("cardId") Long cardId, 
     		@RequestParam("desc") String desc, @RequestParam("fileStoreId") Long fileStoreId) {       
 		User user = (User) getCurrentUser();
-		cardFileBiz.usePhotoAs(fileStoreId, desc, user.getId());
+		if (desc.equals(CARD_COVER_PHOTO_DESC)) {			
+			cardFileBiz.usePhotoAsCover(cardId, fileStoreId, user.getId());
+		} else if (desc.equals(CARD_PEOPLE1_PHOTO_DESC)) {
+			cardFileBiz.usePhotoAsPeople1(cardId, fileStoreId, user.getId());
+		} else if (desc.equals(CARD_PEOPLE2_PHOTO_DESC)) {
+			cardFileBiz.usePhotoAsPeople2(cardId, fileStoreId, user.getId());
+		}
         return "redirect:/card/photo/cardphoto/"+cardId;
     }
 	
@@ -69,7 +80,13 @@ public class CardPhotoController extends BaseController {
     public String doCancelWay(@RequestParam("cardId") Long cardId, 
     		@RequestParam("desc") String desc, @RequestParam("fileStoreId") Long fileStoreId) {       
 		User user = (User) getCurrentUser();
-		cardFileBiz.cancelPhotoAs(fileStoreId, desc, user.getId());
+		if (desc.equals(CARD_COVER_PHOTO_DESC)) {			
+			cardFileBiz.cancelPhotoAsCover(cardId, fileStoreId, user.getId());
+		} else if (desc.equals(CARD_PEOPLE1_PHOTO_DESC)) {
+			cardFileBiz.cancelPhotoAsPeople1(cardId, fileStoreId, user.getId());
+		} else if (desc.equals(CARD_PEOPLE2_PHOTO_DESC)) {
+			cardFileBiz.cancelPhotoAsPeople2(cardId, fileStoreId, user.getId());
+		}
         return "redirect:/card/photo/cardphoto/"+cardId;
     }
 	
@@ -78,7 +95,7 @@ public class CardPhotoController extends BaseController {
     		@RequestParam("cardId") Long cardId,
     		@RequestParam("fileStoreId") Long fileStoreId) { 
 		User user = (User) getCurrentUser();
-		cardFileBiz.delete(fileStoreId, user.getId());
+		cardFileBiz.deleteCardPhoto(fileStoreId, user.getId());
         return "redirect:/card/photo/cardphoto/"+cardId;
     }
 	

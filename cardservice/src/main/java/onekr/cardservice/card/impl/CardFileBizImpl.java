@@ -1,15 +1,20 @@
 package onekr.cardservice.card.impl;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardPhotoDto;
+import onekr.cardservice.utils.Converter;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.filestore.intf.FileBiz;
 import onekr.commonservice.filestore.intf.FileStoreBiz;
 import onekr.commonservice.model.FileStore;
-import onekr.commonservice.model.FileType;
 import onekr.commonservice.model.Status;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
@@ -20,6 +25,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.JSON;
+
 @Service
 public class CardFileBizImpl implements CardFileBiz {
 	
@@ -29,7 +36,7 @@ public class CardFileBizImpl implements CardFileBiz {
 	private FileStoreBiz fileStoreBiz;
 
 	@Override
-	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile, Long uid) {
+	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile,FileStore cardPhotoThumb, Long uid) {
 		String originalFilename = mfile.getOriginalFilename();
 		String path = File.separator+"card"+File.separator+cardId;
 		String name;
@@ -46,7 +53,9 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setCreateAt(now);
 		fileStore.setCreateBy(uid);
 		fileStore.setDescription("");
-		fileStore.setJson("");
+		Map<String, Object> attr = new HashMap<String, Object>();
+		attr.put(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB, cardPhotoThumb.getId());
+		fileStore.setJson(JSON.toJSONString(attr));
 		fileStore.setOriginalName(mfile.getOriginalFilename());
 		fileStore.setOwner(cardId+"");
 		fileStore.setRank(getNewRank4Card(cardId));
@@ -54,7 +63,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setStatus(Status.NORMAL);
 		fileStore.setStorePath(path+File.separator+name);
 		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
-		fileStore.setType(getFileType4Filename(originalFilename));
+		fileStore.setType(Converter.getFileType(originalFilename));
 		fileStore.setUpdateAt(now);
 		fileStore.setUpdateBy(uid);
 		
@@ -67,7 +76,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		String path = File.separator+"card"+File.separator+cardId+File.separator+"thumb";
 		String name;
 		try {
-			name = fileBiz.saveMultipartImageThumb(mfile, CardFileBiz.squareImageThumbWidth, path);
+			name = fileBiz.saveMultipartImageThumb(mfile, CardFileBiz.SQUARE_IMAGE_THUMB_WIDTH, path);
 		} catch (Exception e) {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}
@@ -87,7 +96,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setStatus(Status.NORMAL);
 		fileStore.setStorePath(path+File.separator+name);
 		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
-		fileStore.setType(getFileType4Filename(originalFilename));
+		fileStore.setType(Converter.getFileType(originalFilename));
 		fileStore.setUpdateAt(now);
 		fileStore.setUpdateBy(uid);
 		
@@ -96,10 +105,10 @@ public class CardFileBizImpl implements CardFileBiz {
 	
 	@Override
 	public FileStore[] saveCardPhoto(Long cardId,
-			MultipartFile[] mfiles,Long uid) {
+			MultipartFile[] mfiles,FileStore[] cardPhotoThumb,Long uid) {
 		FileStore[] stores = new FileStore[mfiles.length];
 		for (int i = 0; i < mfiles.length ; i++) {
-			stores[i] = saveCardPhoto(cardId, mfiles[i], uid);
+			stores[i] = saveCardPhoto(cardId, mfiles[i],cardPhotoThumb[i], uid);
 		}
 		return stores;
 	}
@@ -114,26 +123,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		return stores;
 	}
 	
-	@Override
-	public FileType getFileType4Filename(String filename) {
-		if (FileUtil.isFileType(filename, FileUtil.IMAGE_FILE_TYPES)) {
-			return FileType.IMAGE;
-		} else if (FileUtil.isFileType(filename, FileUtil.AUDIO_FILE_TYPES)) {
-			return FileType.AUDIO;
-		} else if (FileUtil.isFileType(filename, FileUtil.VIDEO_FILE_TYPES)) {
-			return FileType.VIDEO;
-		} else if (FileUtil.isFileType(filename, FileUtil.DOC_FILE_TYPES)) {
-			return FileType.DOC;
-		} else if (FileUtil.isFileType(filename, FileUtil.PACKAGE_FILE_TYPES)) {
-			return FileType.PACKAGE;
-		} else {
-			return FileType.OTHER;
-		}
-		
-	}
-	
-	@Override
-	public long getNewRank4Card(Long cardId) {
+	private long getNewRank4Card(Long cardId) {
 		long max = 1;
 		List<FileStore> fileStores = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
 		if (CollectionUtils.isEmpty(fileStores))
@@ -145,116 +135,215 @@ public class CardFileBizImpl implements CardFileBiz {
 	}
 
 	@Override
-	public List<FileStore> listCardPhoto(Long cardId) {
+	public List<CardPhotoDto> listCardPhoto(Long cardId) {
 		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
-		return list;
-	}
-	
-	@Override
-	public FileStore usePhotoAs(Long fileStoreId, String cardPhotoDesc, Long uid) {
-		FileStore fs = fileStoreBiz.findById(fileStoreId);
-		if (fs == null)
-			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
-		if (!fs.getBiz().equals(Biz.CARD_PHOTO_FILE_STORE.name())) 
-			throw new AppException(ErrorCode.ILLEGAL_PARAM);
+		if (CollectionUtils.isEmpty(list))
+			return Collections.emptyList();
 		
-		Date now = new Date();
-		
-		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, fs.getOwner());
-		for (FileStore e : list) {
-			if (e.getDescription().contains("|"+cardPhotoDesc)) {
-				e.setDescription(e.getDescription().replace("|"+cardPhotoDesc, ""));
-				fs.setUpdateAt(now);
-				fs.setUpdateBy(uid);
-				fileStoreBiz.saveFileStore(e);
+		List<FileStore> thumbList = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_THUMB_FILE_STORE, cardId+"");
+		Map<Long, FileStore> thumbMap = new HashMap<Long, FileStore>();
+		if (!CollectionUtils.isEmpty(thumbList)) {
+			for (FileStore fs : thumbList) {
+				thumbMap.put(fs.getId(), fs);
 			}
 		}
-		
-		fs.setDescription(fs.getDescription()+"|"+cardPhotoDesc);
-		fs.setUpdateAt(now);
-		fs.setUpdateBy(uid);
-		return fileStoreBiz.saveFileStore(fs);
+		List<CardPhotoDto> targetList = new ArrayList<CardPhotoDto>();
+		for (FileStore fs : list) {
+			CardPhotoDto dto = new CardPhotoDto(fs);
+			if (dto.getThumbId() != null) {				
+				dto.setThumb(thumbMap.get(dto.getThumbId()));
+			}
+			targetList.add(dto);
+		}
+		return targetList;
 	}
 	
 	@Override
-	public FileStore cancelPhotoAs(Long fileStoreId, String cardPhotoDesc, Long uid) {
-		FileStore fs = fileStoreBiz.findById(fileStoreId);
-		if (fs == null)
-			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
-		if (!fs.getBiz().equals(Biz.CARD_PHOTO_FILE_STORE.name())) 
-			throw new AppException(ErrorCode.ILLEGAL_PARAM);
-		
+	public void usePhotoAsCover(Long cardId, Long fileStoreId, Long uid) {
 		Date now = new Date();
 		
-		fs.setDescription(fs.getDescription().replace("|"+cardPhotoDesc, ""));
-		fs.setUpdateAt(now);
-		fs.setUpdateBy(uid);
-		return fileStoreBiz.saveFileStore(fs);
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		for (CardPhotoDto dto : list) {
+			if (dto.getId().equals(fileStoreId) && !dto.isCover()) {
+				dto.setCover(true);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+			
+			if (!dto.getId().equals(fileStoreId) && dto.isCover()) {
+				dto.setCover(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+		}
 	}
 	
 	@Override
-	public FileStore getCardPhotoByUse(Long cardId, String cardPhotoDesc) {
-		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
+	public void cancelPhotoAsCover(Long cardId, Long fileStoreId, Long uid) {
+		Date now = new Date();
+		
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		for (CardPhotoDto dto : list) {
+			if (dto.getId().equals(fileStoreId) && dto.isCover()) {
+				dto.setCover(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+			
+			if (!dto.getId().equals(fileStoreId) && dto.isCover()) {
+				dto.setCover(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+		}
+	}
+	
+	@Override
+	public CardPhotoDto getCardPhotoCover(Long cardId) {
+		List<CardPhotoDto> list = listCardPhoto(cardId);
 		if (CollectionUtils.isEmpty(list))
 			return null;
 		
-		for (FileStore e : list) {
-			if (e.getDescription().contains("|"+cardPhotoDesc)) {
-				return e;
+		for (CardPhotoDto dto : list) {
+			if (dto.isCover()) {
+				return dto;
 			}
 		}
-		
 		return null;
 	}
 	
 	@Override
-	public FileStore delete(Long fileStoreId, Long uid) {
-		FileStore fs = fileStoreBiz.findById(fileStoreId);
-		fileBiz.deleteFile(fs.getStorePath());
-		return fileStoreBiz.delete(fileStoreId);
-	}
-	
-	@Override
-	public FileStore saveCardMapPic(Long cardId, MultipartFile mfile, Long uid) {
-		List<FileStore> lst = fileStoreBiz.listFileStore(Biz.CARD_MAPPIC_FILE_STORE, cardId+"");
-		if (!CollectionUtils.isEmpty(lst)) {
-			for (FileStore tmp : lst) {
-				delete(tmp.getId(), uid);
-			}
-		}
-		String originalFilename = mfile.getOriginalFilename();
-		String path;
-		try {
-			path = fileBiz.saveMultipartFile(mfile, "/card/"+cardId);
-		} catch (Exception e) {
-			throw new AppException(ErrorCode.SERVER_ERROR);
-		}
-		
+	public void usePhotoAsPeople1(Long cardId, Long fileStoreId, Long uid) {
 		Date now = new Date();
 		
-		FileStore fileStore = new FileStore();
-		fileStore.setBiz(Biz.CARD_MAPPIC_FILE_STORE.name());
-		fileStore.setCreateAt(now);
-		fileStore.setCreateBy(uid);
-		fileStore.setDescription("");
-		fileStore.setJson("");
-		fileStore.setOriginalName(mfile.getOriginalFilename());
-		fileStore.setOwner(cardId+"");
-		fileStore.setRank(0L);
-		fileStore.setSize(mfile.getSize());
-		fileStore.setStatus(Status.NORMAL);
-		fileStore.setStorePath(path);
-		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
-		fileStore.setType(getFileType4Filename(originalFilename));
-		fileStore.setUpdateAt(now);
-		fileStore.setUpdateBy(uid);
-		
-		return fileStoreBiz.saveFileStore(fileStore);
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		for (CardPhotoDto dto : list) {
+			if (dto.getId().equals(fileStoreId) && !dto.isPeople1Photo()) {
+				dto.setPeople1Photo(true);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+			
+			if (!dto.getId().equals(fileStoreId) && dto.isPeople1Photo()) {
+				dto.setPeople1Photo(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+		}
 	}
 	
 	@Override
-	public FileStore findCardMappic(Long cardId) {
-		List<FileStore> lst = fileStoreBiz.listFileStore(Biz.CARD_MAPPIC_FILE_STORE, cardId+"");
-		return CollectionUtils.isEmpty(lst) ? null : lst.get(0);
+	public void cancelPhotoAsPeople1(Long cardId, Long fileStoreId, Long uid) {
+		Date now = new Date();
+		
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		for (CardPhotoDto dto : list) {
+			if (dto.getId().equals(fileStoreId) && dto.isPeople1Photo()) {
+				dto.setPeople1Photo(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+			
+			if (!dto.getId().equals(fileStoreId) && dto.isPeople1Photo()) {
+				dto.setPeople1Photo(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+		}
 	}
+	
+	@Override
+	public CardPhotoDto getCardPhotoPeople1(Long cardId) {
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		if (CollectionUtils.isEmpty(list))
+			return null;
+		
+		for (CardPhotoDto dto : list) {
+			if (dto.isPeople1Photo()) {
+				return dto;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public void usePhotoAsPeople2(Long cardId, Long fileStoreId, Long uid) {
+		Date now = new Date();
+		
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		for (CardPhotoDto dto : list) {
+			if (dto.getId().equals(fileStoreId) && !dto.isPeople2Photo()) {
+				dto.setPeople2Photo(true);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+			
+			if (!dto.getId().equals(fileStoreId) && dto.isPeople2Photo()) {
+				dto.setPeople2Photo(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+		}
+	}
+	
+	@Override
+	public void cancelPhotoAsPeople2(Long cardId, Long fileStoreId, Long uid) {
+		Date now = new Date();
+		
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		for (CardPhotoDto dto : list) {
+			if (dto.getId().equals(fileStoreId) && dto.isPeople2Photo()) {
+				dto.setPeople2Photo(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+			
+			if (!dto.getId().equals(fileStoreId) && dto.isPeople2Photo()) {
+				dto.setPeople2Photo(false);
+				dto.getPhoto().setUpdateAt(now);
+				dto.getPhoto().setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(dto.getPhoto());
+			}
+		}
+	}
+	
+	@Override
+	public CardPhotoDto getCardPhotoPeople2(Long cardId) {
+		List<CardPhotoDto> list = listCardPhoto(cardId);
+		if (CollectionUtils.isEmpty(list))
+			return null;
+		
+		for (CardPhotoDto dto : list) {
+			if (dto.isPeople2Photo()) {
+				return dto;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public void deleteCardPhoto(Long fileStoreId, Long uid) {
+		FileStore fs = fileStoreBiz.findById(fileStoreId);
+		CardPhotoDto dto = new CardPhotoDto(fs);
+		
+		fileBiz.deleteFile(dto.getPhoto().getStorePath());
+		fileStoreBiz.delete(dto.getPhoto().getId());
+		
+		if (dto.getThumb().getId() != null) {
+			fileBiz.deleteFile(dto.getThumb().getStorePath());
+			fileStoreBiz.delete(dto.getThumb().getId());
+		}
+	}
+	
 }

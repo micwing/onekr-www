@@ -4,6 +4,7 @@ import java.util.List;
 
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardPhotoDto;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.FileStore;
 
@@ -28,7 +29,7 @@ public class CardController {
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
-		FileStore coverPhoto = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_COVER_PHOTO_DESC);
+		CardPhotoDto coverPhoto = cardFileBiz.getCardPhotoCover(cardId);
 		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/cover");
 		mav.addObject("card", card);
 		mav.addObject("coverPhoto", coverPhoto);
@@ -39,10 +40,10 @@ public class CardController {
 	@RequestMapping(value = "/main/{cardId}", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
-		FileStore coverPhoto = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_COVER_PHOTO_DESC);
-		FileStore people1Photo = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_PEOPLE1_PHOTO_DESC);
-		FileStore people2Photo = cardFileBiz.getCardPhotoByUse(cardId, CardFileBiz.CARD_PEOPLE2_PHOTO_DESC);
-		List<FileStore> photos = cardFileBiz.listCardPhoto(cardId);
+		CardPhotoDto coverPhoto = cardFileBiz.getCardPhotoCover(cardId);
+		CardPhotoDto people1Photo = cardFileBiz.getCardPhotoPeople1(cardId);
+		CardPhotoDto people2Photo = cardFileBiz.getCardPhotoPeople2(cardId);
+		List<CardPhotoDto> photos = cardFileBiz.listCardPhoto(cardId);
 		
 		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/main");
 		mav.addObject("card", card);

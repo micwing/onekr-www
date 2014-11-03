@@ -6,43 +6,130 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import onekr.commonservice.model.FileStore;
-import onekr.commonservice.model.FileType;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 @Validated
 public interface CardFileBiz {
-	
-	public static final String CARD_COVER_PHOTO_DESC = "cover";
-	public static final String CARD_PEOPLE1_PHOTO_DESC = "people1";
-	public static final String CARD_PEOPLE2_PHOTO_DESC = "people2";
-	
-	public static final int squareImageThumbWidth = 200;
-	
-	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
-	FileStore saveCardPhotoThumb(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
 
-	FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId, @NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
-	FileStore[] saveCardPhotoThumb(@NotNull @Min(1) Long cardId, @NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
+	public static final int SQUARE_IMAGE_THUMB_WIDTH = 200;
 	
-	FileType getFileType4Filename(@NotBlank String filename);
+	public static final String CARD_PHOTO_JSON_ATTR_KEY_THUMB = "thumbId";
+	public static final String CARD_PHOTO_JSON_ATTR_KEY_COVER = "cover";
+	public static final String CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1 = "people1";
+	public static final String CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2 = "people2";
+
+	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile mfile, @NotNull FileStore cardPhotoThumb,
+			@NotNull @Min(1) Long uid);
+
+	FileStore saveCardPhotoThumb(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
+
+	FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile[] mfiles, @NotNull FileStore[] cardPhotoThumb,
+			@NotNull @Min(1) Long uid);
+
+	FileStore[] saveCardPhotoThumb(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
+
+	List<CardPhotoDto> listCardPhoto(@NotNull @Min(1) Long cardId);
+
+	/**
+	 * 把cardId的fileStoreId的照片设为封面
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param cardPhotoAs
+	 * @param uid
+	 * @return
+	 */
+	void usePhotoAsCover(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+
+	/**
+	 * 把cardId的fileStoreId的照片取消设为封面
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param cardPhotoAs
+	 * @param uid
+	 * @return
+	 */
+	void cancelPhotoAsCover(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+
+	/**
+	 * 获取封面照片
+	 * @param cardId
+	 * @return
+	 */
+	CardPhotoDto getCardPhotoCover(@NotNull @Min(1) Long cardId);
 	
-	long getNewRank4Card(@NotNull @Min(1) Long cardId);
+	/**
+	 * 把cardId的fileStoreId的照片设为用户1新郎
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param cardPhotoAs
+	 * @param uid
+	 * @return
+	 */
+	void usePhotoAsPeople1(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+
+	/**
+	 * 把cardId的fileStoreId的照片取消设为用户1新郎
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param cardPhotoAs
+	 * @param uid
+	 * @return
+	 */
+	void cancelPhotoAsPeople1(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+
+	/**
+	 * 获取用户1新郎照片
+	 * @param cardId
+	 * @return
+	 */
+	CardPhotoDto getCardPhotoPeople1(@NotNull @Min(1) Long cardId);
 	
-	List<FileStore> listCardPhoto(@NotNull @Min(1) Long cardId);
-	
-	FileStore usePhotoAs(@NotNull @Min(1) Long fileStoreId,@NotNull String cardPhotoDesc, @NotNull @Min(1) Long uid);
-	
-	FileStore cancelPhotoAs(@NotNull @Min(1) Long fileStoreId,@NotNull String cardPhotoDesc, @NotNull @Min(1) Long uid);
-	
-	FileStore getCardPhotoByUse(@NotNull @Min(1) Long cardId, @NotNull String cardPhotoDesc);
-	
-	FileStore delete(@NotNull @Min(1) Long fileStoreId, @NotNull @Min(1) Long uid);
-	
-	
-	FileStore saveCardMapPic(@NotNull @Min(1) Long cardId, @NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
-	
-	FileStore findCardMappic(@NotNull @Min(1) Long cardId);
+	/**
+	 * 把cardId的fileStoreId的照片设为用户2新娘
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param cardPhotoAs
+	 * @param uid
+	 * @return
+	 */
+	void usePhotoAsPeople2(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+
+	/**
+	 * 把cardId的fileStoreId的照片取消设为用户2新娘
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param cardPhotoAs
+	 * @param uid
+	 * @return
+	 */
+	void cancelPhotoAsPeople2(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+
+	/**
+	 * 获取用户2新娘照片
+	 * @param cardId
+	 * @return
+	 */
+	CardPhotoDto getCardPhotoPeople2(@NotNull @Min(1) Long cardId);
+
+	/**
+	 * 删除照片的同时缩略图也会被删除
+	 * 
+	 * @param fileStoreId
+	 * @param uid
+	 */
+	void deleteCardPhoto(@NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+
 }

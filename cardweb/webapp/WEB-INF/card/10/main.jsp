@@ -39,10 +39,6 @@ header{margin-top:-10px;}
 	width: 100% !important;
 	margin-top: 2px !important
 }
-.contenbox{background-color:#FFF; padding:5px 3px; box-shadow:0px 1px 3px rgba(34,25,25,0.4); margin-top:7px; border-radius:5px;}
-.contenbox p{padding-top:2px; padding-bottom:2px; margin:0px!important;}
-.contenbox h6{float:left; padding-left:5px;}
-.contenboxspan{float:right; padding-right:10px; color:#CCC;}
 </style>
 </head>
 <body class="page">

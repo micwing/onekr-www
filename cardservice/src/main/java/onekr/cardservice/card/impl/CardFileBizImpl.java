@@ -26,6 +26,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 @Service
 public class CardFileBizImpl implements CardFileBiz {
@@ -34,6 +35,99 @@ public class CardFileBizImpl implements CardFileBiz {
 	private FileBiz fileBiz;
 	@Autowired
 	private FileStoreBiz fileStoreBiz;
+	
+	@Override
+	public FileStore saveCardMusic(Long cardId, MultipartFile mfile, Long uid) {
+		String originalFilename = mfile.getOriginalFilename();
+		String path = File.separator+"card"+File.separator+cardId;
+		String name;
+		try {
+			name = fileBiz.saveMultipartFile(mfile, path);
+		} catch (Exception e) {
+			throw new AppException(ErrorCode.SERVER_ERROR);
+		}
+		
+		Date now = new Date();
+		
+		FileStore fileStore = new FileStore();
+		fileStore.setBiz(Biz.CARD_MUSIC_FILE_STORE.name());
+		fileStore.setCreateAt(now);
+		fileStore.setCreateBy(uid);
+		fileStore.setDescription("");
+		fileStore.setOriginalName(mfile.getOriginalFilename());
+		fileStore.setOwner(cardId+"");
+		fileStore.setRank(getNewRank4Card(cardId));
+		fileStore.setSize(mfile.getSize());
+		fileStore.setStatus(Status.NORMAL);
+		fileStore.setStorePath(path+File.separator+name);
+		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
+		fileStore.setType(Converter.getFileType(originalFilename));
+		fileStore.setUpdateAt(now);
+		fileStore.setUpdateBy(uid);
+		
+		return fileStoreBiz.saveFileStore(fileStore);
+	}
+	
+	@Override
+	public List<FileStore> listCardMusic(Long cardId) {
+		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_MUSIC_FILE_STORE, cardId+"");
+		return list;
+	}
+	
+	@Override
+	public void useMusic(Long cardId, Long fileStoreId, Long uid) {
+		Date now = new Date();
+		
+		List<FileStore> list = listCardMusic(cardId);
+		for (FileStore fs : list) {
+			JSONObject json = JSON.parseObject(fs.getJson());
+			boolean using = false;
+			if (json != null) {
+				using = json.getBoolean(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE);
+			} else {
+				json = new JSONObject();
+			}
+			
+			if (fs.getId().equals(fileStoreId) && !using) {
+				json.put(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE, true);
+				fs.setJson(JSON.toJSONString(json));
+				fs.setUpdateAt(now);
+				fs.setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(fs);
+			}
+			if (!fs.getId().equals(fileStoreId) && using) {
+				json.put(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE, false);
+				fs.setJson(JSON.toJSONString(json));
+				fs.setUpdateAt(now);
+				fs.setUpdateBy(uid);
+				fileStoreBiz.saveFileStore(fs);
+			}
+		}
+	}
+	
+	@Override
+	public void deleteCardMusic(Long cardId, Long fileStoreId, Long uid) {
+		FileStore fs = fileStoreBiz.findById(fileStoreId);
+		CardPhotoDto dto = new CardPhotoDto(fs);
+		
+		fileBiz.deleteFile(dto.getPhoto().getStorePath());
+		fileStoreBiz.delete(dto.getPhoto().getId());
+	}
+	
+	@Override
+	public FileStore getUseMusic(Long cardId) {
+		List<FileStore> list = listCardMusic(cardId);
+		if (CollectionUtils.isEmpty(list))
+			return null;
+		
+		for (FileStore fs : list) {
+			JSONObject json = JSON.parseObject(fs.getJson());
+			if (json.getBooleanValue(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE)) {
+				return fs;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile,FileStore cardPhotoThumb, Long uid) {
@@ -41,7 +135,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		String path = File.separator+"card"+File.separator+cardId;
 		String name;
 		try {
-			name = fileBiz.saveMultipartFile(mfile, path);
+			name = fileBiz.saveMultipartImage(mfile, CardFileBiz.SQUARE_IMAGE_PHOTO_MAX_WIDTH, path);
 		} catch (Exception e) {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}
@@ -340,13 +434,15 @@ public class CardFileBizImpl implements CardFileBiz {
 		FileStore fs = fileStoreBiz.findById(fileStoreId);
 		CardPhotoDto dto = new CardPhotoDto(fs);
 		
+		if (dto.getThumbId() != null) {
+			FileStore thumb = fileStoreBiz.findById(dto.getThumbId());
+			fileBiz.deleteFile(thumb.getStorePath());
+			fileStoreBiz.delete(thumb.getId());
+		}
+		
 		fileBiz.deleteFile(dto.getPhoto().getStorePath());
 		fileStoreBiz.delete(dto.getPhoto().getId());
 		
-		if (dto.getThumb().getId() != null) {
-			fileBiz.deleteFile(dto.getThumb().getStorePath());
-			fileStoreBiz.delete(dto.getThumb().getId());
-		}
 	}
 	
 }

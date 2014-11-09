@@ -16,13 +16,57 @@ import org.springframework.web.multipart.MultipartFile;
 @Validated
 public interface CardFileBiz {
 
-	public static final int SQUARE_IMAGE_THUMB_WIDTH = 200;
+	public static final int SQUARE_IMAGE_THUMB_WIDTH = 300;
+	public static final int SQUARE_IMAGE_PHOTO_MAX_WIDTH = 960;
 	
 	public static final String CARD_PHOTO_JSON_ATTR_KEY_THUMB = "thumbId";
 	public static final String CARD_PHOTO_JSON_ATTR_KEY_COVER = "cover";
 	public static final String CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1 = "people1";
 	public static final String CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2 = "people2";
-
+	
+	public static final String CARD_MUSIC_JSON_ATTR_KEY_USE = "use";
+	
+	/**
+	 * 保存请柬音乐
+	 * @param cardId
+	 * @param mfile
+	 * @param uid
+	 * @return
+	 */
+	FileStore saveCardMusic(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
+	
+	/**
+	 * 设置为请柬音乐
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param uid
+	 */
+	void useMusic(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId, @NotNull @Min(1) Long uid);
+	
+	/**
+	 * 删除请柬音乐
+	 * 
+	 * @param fileStoreId
+	 * @param uid
+	 */
+	void deleteCardMusic(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
+	
+	/**
+	 * 获得请柬音乐
+	 * @param cardId
+	 * @return
+	 */
+	FileStore getUseMusic(@NotNull @Min(1) Long cardId);
+	
+	/**
+	 * 请柬音乐列表
+	 * @param cardId
+	 * @return
+	 */
+	List<FileStore> listCardMusic(@NotNull @Min(1) Long cardId);
+	
 	/**
 	 * 保存请柬照片
 	 * @param cardId
@@ -60,7 +104,7 @@ public interface CardFileBiz {
 	 * @return
 	 */
 	FileStore[] saveCardPhotoThumb(@NotNull @Min(1) Long cardId,
-			@NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
+			@NotNull MultipartFile[] mfiles, @NotNull Long uid);
 
 	/**
 	 * 请柬照片列表

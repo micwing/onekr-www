@@ -3,13 +3,19 @@
 <%@page import="java.io.File"%>
 <%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer"%>
 <%@page import="onekr.commonservice.filestore.intf.FileBiz"%>
+<%@page import="onekr.cardservice.card.intf.CardFileBiz" %>
 <%@page import="onekr.framework.utils.FileUtil"%>
 <%@page import="org.apache.commons.io.FileUtils"%>
 <%@page import="onekr.cardservice.model.Card"%>
-<h4>请柬照片
-<span class="pull-right"><a class="btn" href="card/map/cardmap/${card.id}">下一步设置地图</a></span>
-</h4>
-<hr>
+<h3>请柬照片
+<span class="pull-right">
+    <span class="btn-group">
+		<a class="btn" href="card/info/modify/${card.id}">上一步请柬信息</a>
+		<a class="btn" href="card/map/cardmap/${card.id}">下一步设置地图</a>
+    </span>
+</span>
+</h3>
+<hr class="head-hr">
 
 <div class="row-fluid">
 	<div class="span12">
@@ -21,16 +27,7 @@
 					<input type="hidden" name="cardId" value="${card.id}" /> <input
 						type="file" id="file" name="file" multiple value="选择文件"
 						placeholder="file" />
-				</div>
-			</div>
-			<!-- 先隐藏压缩相关的 -->
-			<div class="control-group" style="display: none">
-				<label class="control-label" for="">压缩宽度 /长度</label>
-				<div class="controls">
-					<input type="text" name="width" placeholder="file" /> / <input
-						type="text" name="height" placeholder="file" /> <span
-						class="help-block">当照片宽度大于等于高度，则依照宽度压缩；</span> <span
-						class="help-block">当照片宽度小于高度，则依照高度压缩；</span>
+					<span class="help-block">系统自动等比例压缩宽高大于<%=CardFileBiz.SQUARE_IMAGE_PHOTO_MAX_WIDTH %>px的图片，并生成宽高<%=CardFileBiz.SQUARE_IMAGE_THUMB_WIDTH %>px的缩略图</span>
 				</div>
 			</div>
 			<div class="control-group">
@@ -64,8 +61,8 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<c:forEach items="${photos}" var="dto" varStatus="st">
 		<table class="table">
+		<c:forEach items="${photos}" var="dto" varStatus="st">
 			<tr>
 				<td>
 					<c:if test="${dto.isCover}">
@@ -111,8 +108,8 @@
 					</div>
 				</td>
 			</tr>
-		</table>
 		</c:forEach>
+		</table>
 	</div>
 </div>
 <script type="text/javascript">

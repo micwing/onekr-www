@@ -17,8 +17,8 @@
 
 		<c:forEach items="${photos}" var="fileStore" varStatus="st">
 			<li><a
-				href="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}"><img
-					src="${ctx}${fn:replace(fileStore.storePath, '\\', '/')}" alt=""></a>
+				href="attached${fn:replace(fileStore.photo.storePath, '\\', '/')}"><img
+					src="attached${fn:replace(fileStore.thumb.storePath, '\\', '/')}" alt=""></a>
 			</li>
 			<c:if test="${ (st.index > 0) && (st.index%3==2) }">
 				<div class="clr"></div>

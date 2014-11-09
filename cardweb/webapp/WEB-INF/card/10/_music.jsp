@@ -1,5 +1,10 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
+<%@page import="onekr.commonservice.model.FileStore" %>
 <%@include file="../../common/includes.jsp" %>
+
+<% 
+FileStore music = (FileStore) request.getAttribute("music");
+if (music != null) { %>
 <style>
 #musicControl {
 	position: fixed;
@@ -47,8 +52,9 @@
 <span id="musicControl"> <a id="mc_play" class="on"
 	onclick="play_music();"> <audio autoplay="autoplay" id="audio_play"
 			loop>
-			<source src="http://mp3.360hunjia.com/mob/music/m4.mp3"
+			<source src="attached${fn:replace(music.storePath, '\\', '/')}"
 				type="audio/mpeg"></source>
 		</audio>
 </a>
 </span>
+<%}%>

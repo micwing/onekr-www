@@ -64,7 +64,7 @@ public class FileBizImpl implements FileBiz {
 		
 		File uploadPathFile = new File(fileUploadDir+dirName);
         if (!uploadPathFile.exists()) {
-        	uploadPathFile.mkdir();
+        	uploadPathFile.mkdirs();
         }
         
         String suffix = FileUtil.getPathOrUrlSuffix(file.getOriginalFilename());
@@ -73,6 +73,57 @@ public class FileBizImpl implements FileBiz {
         
         File newFile = new File(fileDir);
         ImageUtil.writeImage(thumb, suffix, newFile);
+        
+        return newFileName;
+	}
+	
+	@Override
+	public String saveMultipartImage(MultipartFile file, int max,
+			String dirName) throws Exception {
+		BufferedImage bufferedImage = ImageUtil.readImage(file.getInputStream());
+		
+		int orgheight = ImageUtil.getHeight(bufferedImage);
+		int orgwidth = ImageUtil.getWidth(bufferedImage);
+		
+		int height = 0;
+		int width = 0;
+		BufferedImage target = null;
+		if (orgwidth > orgheight) {
+			if (orgwidth > max) {
+				width = max;
+				height = (int) ( ((double)orgheight) *  (  ((double)max) / ((double)orgwidth) ) );
+				target = ImageUtil.zoom(bufferedImage, width, height);
+			} else {
+				width = orgwidth;
+				height = orgheight;
+				target = bufferedImage;
+			}
+		} else {
+			if (orgheight > max) {
+				height = max;
+				width = (int) ( ((double)orgwidth) *  ( ((double)max) /  ((double)orgheight) ) );
+				target = ImageUtil.zoom(bufferedImage, width, height);
+			} else {
+				width = orgwidth;
+				height = orgheight;
+				target = bufferedImage;
+			}
+		}
+		
+		if ( StringUtils.isEmpty(dirName) )
+			throw new AppException(ErrorCode.ILLEGAL_PARAM, "dirName");
+		
+		File uploadPathFile = new File(fileUploadDir+dirName);
+        if (!uploadPathFile.exists()) {
+        	uploadPathFile.mkdirs();
+        }
+        
+        String suffix = FileUtil.getPathOrUrlSuffix(file.getOriginalFilename());
+        String newFileName = FileUtil.createNewFileName(suffix);
+        String fileDir = uploadPathFile.getPath()+File.separator +newFileName;
+        
+        File newFile = new File(fileDir);
+        ImageUtil.writeImage(target, suffix, newFile);
         
         return newFileName;
 	}
@@ -106,7 +157,8 @@ public class FileBizImpl implements FileBiz {
 	
 	@Override
 	public void deleteFile(String filePath) {
-		File file = new File(filePath);
+		
+		File file = new File(fileUploadDir+filePath);
 		if(file.isFile()){
 			file.delete();
 		} else {

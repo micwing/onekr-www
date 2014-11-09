@@ -43,13 +43,7 @@ public class CardPhotoController extends BaseController {
 		if (card == null)
 			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
 		List<CardPhotoDto> list = cardFileBiz.listCardPhoto(cardId);
-		CardPhotoDto cover = cardFileBiz.getCardPhotoCover(cardId);
-		CardPhotoDto people1 = cardFileBiz.getCardPhotoPeople1(cardId);
-		CardPhotoDto people2 = cardFileBiz.getCardPhotoPeople2(cardId);
 		mav.addObject("photos", list);
-		mav.addObject("cover", cover);
-		mav.addObject("people1", people1);
-		mav.addObject("people2", people2);
 		mav.addObject("card", card);
 		return mav;
 	}

@@ -35,7 +35,7 @@
 			</div>
 			<h1 class="title"><a href="#">${card.title}</a></h1>
 			<p class="subtitle">${card.people1Name}  & ${card.people2Name} </p>
-			<p>${card.partyDate}</p>
+			<p><fmt:formatDate value="${card.partyTime}" type="date" pattern="yyyy年M月d日"/></p>
 		</div>
 		<p class="subtitle-comment">
 			<a href="card/main/${card.id}"></a>
@@ -93,7 +93,7 @@ $(function () {
 	pic_width = max_width;
 	pic_height = max_width * height / width;
 
-	var url = "${ctx}${fn:replace(coverPhoto.storePath, '\\', '/')}";//+ '&w=' + pic_width + '&h=' + pic_height
+	var url = "attached${fn:replace(coverPhoto.photo.storePath, '\\', '/')}";//+ '&w=' + pic_width + '&h=' + pic_height
 	$('div.container').css({'background':'url("' + url + '") no-repeat scroll 0 0', 'background-size':'cover'});
 	$('div.container').css('height',height);
 

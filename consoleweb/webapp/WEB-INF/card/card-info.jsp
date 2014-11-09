@@ -7,13 +7,13 @@
 	color: red;
 }
 </style>
-<h4>请柬信息
+<h3>请柬信息
 <c:if test="${!empty card}">
 	<span class="pull-right"><a class="btn" href="card/photo/cardphoto/${card.id}">下一步管理照片</a></span>
 </c:if>
-</h4>
+</h3>
+<hr class="head-hr">
 
-<hr>
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab1" data-toggle="tab"><%=CardType.WED_CARD.getLabel() %></a></li>
 	<%-- <li><a href="#tab2" data-toggle="tab"><%=CardType.BABY_CARD.getLabel() %></a></li>

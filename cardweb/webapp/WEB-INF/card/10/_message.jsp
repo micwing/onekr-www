@@ -31,11 +31,11 @@
 		<!-- /public/wedding/original/201409/03/10/5406785a4878a.JPG -->
 		<tr bgcolor="#FF3300" style="color: #FFF">
 			<td width="50%" align="center"><img
-				src="${ctx}${fn:replace(people1Photo.storePath, '\\', '/')}"
+				src="attached${fn:replace(people1Photo.photo.storePath, '\\', '/')}"
 				width="50%"></td>
 
 			<td width="50%" align="center"><img
-				src="${ctx}${fn:replace(people2Photo.storePath, '\\', '/')}"
+				src="attached${fn:replace(people2Photo.photo.storePath, '\\', '/')}"
 				width="50%"></td>
 		</tr>
 	</table>

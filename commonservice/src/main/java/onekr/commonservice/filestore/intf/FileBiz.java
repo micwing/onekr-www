@@ -23,6 +23,24 @@ public interface FileBiz {
 	 */
 	String saveMultipartFile(MultipartFile file, String dir) throws Exception;
 	
+	/**
+	 * 保存图片
+	 * @param file
+	 * @param squareThumbMaxHeight
+	 * @param dirName
+	 * @return
+	 * @throws Exception
+	 */
+	String saveMultipartImage(MultipartFile file, int maxHeight, String dirName) throws Exception;
+	
+	/**
+	 * 保存图片缩略图
+	 * @param file
+	 * @param squareThumbMaxHeight
+	 * @param dirName
+	 * @return
+	 * @throws Exception
+	 */
 	String saveMultipartImageThumb(MultipartFile file, int squareThumbMaxHeight, String dirName) throws Exception;
 	
 	void deleteFile(String filePath);

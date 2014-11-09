@@ -5,7 +5,7 @@
 </div>
 <script type="text/javascript">
 var contentModel = {    
-	"img_url": "<%=basePath %>${fn:replace(coverPhoto.storePath, '\\', '/')}",     
+	"img_url": "<%=basePath %>${fn:replace(coverPhoto.thumb.storePath, '\\', '/')}",     
 	"title": "${card.title} ",     
 	"src": "诚挚邀请您共同分享幸福与喜悦" 
 };

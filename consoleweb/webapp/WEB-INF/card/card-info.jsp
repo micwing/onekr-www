@@ -62,13 +62,6 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="partyTimeInfo"><span class="star">*</span> 典礼时间描述</label>
-					<div class="controls">
-						<input type="text" class="input-block-level" name="partyTimeInfo" placeholder="partyTimeInfo" value="${card.partyTimeInfo}">
-						<span class="help-block">根据典礼时间自动生成描述，也可以手动修改描述的时间。</span>
-					</div>
-				</div>
-				<div class="control-group">
 					<label class="control-label" for="restaurant"><span class="star">*</span> 酒店名称</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="restaurant" placeholder="restaurant" value="${card.restaurant}">

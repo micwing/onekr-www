@@ -10,6 +10,9 @@ import onekr.commonservice.model.FileStore;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * 请柬文件业务接口
+ */
 @Validated
 public interface CardFileBiz {
 
@@ -20,20 +23,50 @@ public interface CardFileBiz {
 	public static final String CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1 = "people1";
 	public static final String CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2 = "people2";
 
+	/**
+	 * 保存请柬照片
+	 * @param cardId
+	 * @param mfile
+	 * @param cardPhotoThumb
+	 * @param uid
+	 * @return
+	 */
 	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId,
 			@NotNull MultipartFile mfile, @NotNull FileStore cardPhotoThumb,
 			@NotNull @Min(1) Long uid);
 
+	/**
+	 * 保存请柬照片缩略图
+	 * @param cardId
+	 * @param mfile
+	 * @param uid
+	 * @return
+	 */
 	FileStore saveCardPhotoThumb(@NotNull @Min(1) Long cardId,
 			@NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
 
+	/**
+	 * 批量保存请柬照片
+	 */
 	FileStore[] saveCardPhoto(@NotNull @Min(1) Long cardId,
 			@NotNull MultipartFile[] mfiles, @NotNull FileStore[] cardPhotoThumb,
 			@NotNull @Min(1) Long uid);
 
+	/**
+	 * 批量保存请柬照片缩略图
+	 * @param cardId
+	 * @param mfiles
+	 * @param uid
+	 * @return
+	 */
 	FileStore[] saveCardPhotoThumb(@NotNull @Min(1) Long cardId,
 			@NotNull MultipartFile[] mfiles, @NotNull @Min(1) Long uid);
 
+	/**
+	 * 请柬照片列表
+	 * @param cardId
+	 * @return
+	 */
 	List<CardPhotoDto> listCardPhoto(@NotNull @Min(1) Long cardId);
 
 	/**
@@ -124,7 +157,7 @@ public interface CardFileBiz {
 	CardPhotoDto getCardPhotoPeople2(@NotNull @Min(1) Long cardId);
 
 	/**
-	 * 删除照片的同时缩略图也会被删除
+	 * 删除照片，同时该照片对应的缩略图也会被删除
 	 * 
 	 * @param fileStoreId
 	 * @param uid

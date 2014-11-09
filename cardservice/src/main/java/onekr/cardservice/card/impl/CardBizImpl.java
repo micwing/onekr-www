@@ -1,16 +1,11 @@
 package onekr.cardservice.card.impl;
 
 import java.util.Date;
-import java.util.List;
 
 import onekr.cardservice.card.dao.CardDao;
 import onekr.cardservice.card.intf.CardBiz;
-import onekr.cardservice.card.intf.CardCommentBiz;
-import onekr.cardservice.card.intf.CardDto;
-import onekr.cardservice.card.intf.CardFileBiz;
 import onekr.cardservice.model.Card;
 import onekr.cardservice.model.CardType;
-import onekr.commonservice.model.Comment;
 import onekr.commonservice.model.Status;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
@@ -25,24 +20,6 @@ public class CardBizImpl implements CardBiz {
 
 	@Autowired
 	private CardDao cardDao;
-	@Autowired
-	private CardFileBiz cardFileBiz;
-	@Autowired
-	private CardCommentBiz cardCommentBiz;
-
-//	@Override
-//	public CardDto findCardInfo(Long cardId) {
-//		CardDto dto = new CardDto();
-//		Card card = cardDao.findOne(cardId);
-//		dto.setCard(card);
-//
-//		List<Comment> comments = cardCommentBiz.listAll(cardId);
-//		dto.setComments(comments);
-//
-//		// TODO fileBiz
-//
-//		return dto;
-//	}
 
 	@Override
 	public Card findById(Long cardId) {

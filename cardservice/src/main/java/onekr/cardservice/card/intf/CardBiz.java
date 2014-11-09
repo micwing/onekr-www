@@ -11,6 +11,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 
+/**
+ * 请柬业务接口
+ * @author Administrator
+ *
+ */
 @Validated
 public interface CardBiz {
 

@@ -64,166 +64,54 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<c:forEach items="${photos}" var="fileStore" varStatus="st">
-		<c:if test="${fn:contains(fileStore.description, 'cover')}">
-			<table class="table">
-				<tr>
-					<td>
-						<c:if test="${fn:contains(fileStore.description, 'cover')}">
-						<div><span class="label label-success">请柬封面</span></div> 
+		<c:forEach items="${photos}" var="dto" varStatus="st">
+		<table class="table">
+			<tr>
+				<td>
+					<c:if test="${dto.isCover}">
+					<div><span class="label label-success">请柬封面</span></div>
+					</c:if>
+					<c:if test="${dto.isPeople1Photo}">
+					<div><span class="label label-info">新郎独照</span></div>
+					</c:if>
+					<c:if test="${dto.isPeople2Photo}">
+					<span class="label label-important">新娘独照</span>
+					</c:if>
+					<div><span class="label">请柬相册</span></div>
+				</td>
+				<td><a
+					href="attached${fn:replace(dto.photo.storePath, '\\', '/')}"
+					class="fancybox" rel="group1"> <img
+						src="attached${fn:replace(dto.thumb.storePath, '\\', '/')}"
+						class="img-polaroid" height="200px" width="200px">
+				</a></td>
+				<td>
+					<div>
+						<c:if test="${!dto.isCover}">
+						<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${dto.photo.id}">设为封面</a> </div>
 						</c:if>
-						<c:if test="${fn:contains(fileStore.description, 'people1')}">
-						<div><span class="label label-info">新郎独照</span></div> 
+						<c:if test="${dto.isCover}">
+						<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${dto.photo.id}">取消封面</a> </div>
 						</c:if>
-						<c:if test="${fn:contains(fileStore.description, 'people2')}">
-						<span class="label label-important">新娘独照</span>
+						
+						<c:if test="${!dto.isPeople1Photo}">
+						<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${dto.photo.id}">设为新郎独照</a> </div>
 						</c:if>
-						<div><span class="label">请柬相册</span></div>
-					</td>
-					<td><a
-						href="attached${fn:replace(fileStore.storePath, '\\', '/')}"
-						class="fancybox" rel="group1"> <img
-							src="attached${fn:replace(fileStore.storePath, '\\', '/')}"
-							class="img-polaroid" height="200px" width="200px">
-					</a></td>
-					<td>
-						<div>
-							<c:if test="${!fn:contains(fileStore.description, 'cover')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
-							</c:if>
-							<c:if test="${fn:contains(fileStore.description, 'cover')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
-							</c:if>
-							
-							<c:if test="${!fn:contains(fileStore.description, 'people1')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
-							</c:if>
-							<c:if test="${fn:contains(fileStore.description, 'people1')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
-							</c:if>
-							
-							<c:if test="${!fn:contains(fileStore.description, 'people2')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
-							</c:if> 
-							<c:if test="${fn:contains(fileStore.description, 'people2')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
-							</c:if>
-							<div><a href="card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</c:if>
-		</c:forEach>
-	</div>
-</div>
-<div class="row-fluid">
-	<div class="span12">
-		<c:forEach items="${photos}" var="fileStore" varStatus="st">
-		<c:if test="${fn:contains(fileStore.description, 'people1') || fn:contains(fileStore.description, 'people2')}">
-			<table class="table">
-				<tr>
-					<td>
-						<c:if test="${fn:contains(fileStore.description, 'cover')}">
-						<div><span class="label label-success">请柬封面</span></div> 
+						<c:if test="${dto.isPeople1Photo}">
+						<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${dto.photo.id}">取消新郎独照</a> </div>
 						</c:if>
-						<c:if test="${fn:contains(fileStore.description, 'people1')}">
-						<div><span class="label label-info">新郎独照</span></div> 
+						
+						<c:if test="${!dto.isPeople2Photo}">
+						<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${dto.photo.id}">设为新娘独照</a> </div>
+						</c:if> 
+						<c:if test="${dto.isPeople2Photo}">
+						<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${dto.photo.id}">取消新娘独照</a> </div>
 						</c:if>
-						<c:if test="${fn:contains(fileStore.description, 'people2')}">
-						<span class="label label-important">新娘独照</span>
-						</c:if>
-						<div><span class="label">请柬相册</span></div> 
-					</td>
-					<td><a
-						href="attached${fn:replace(fileStore.storePath, '\\', '/')}"
-						class="fancybox" rel="group1"> <img
-							src="attached${fn:replace(fileStore.storePath, '\\', '/')}"
-							class="img-polaroid" height="200px" width="200px">
-					</a></td>
-					<td>
-						<div>
-							<c:if test="${!fn:contains(fileStore.description, 'cover')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
-							</c:if>
-							<c:if test="${fn:contains(fileStore.description, 'cover')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
-							</c:if>
-							
-							<c:if test="${!fn:contains(fileStore.description, 'people1')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
-							</c:if>
-							<c:if test="${fn:contains(fileStore.description, 'people1')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
-							</c:if>
-							
-							<c:if test="${!fn:contains(fileStore.description, 'people2')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
-							</c:if> 
-							<c:if test="${fn:contains(fileStore.description, 'people2')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
-							</c:if>
-							<div><a href="card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</c:if>
-		</c:forEach>
-	</div>
-</div>
-<div class="row-fluid">
-	<div class="span12">
-		<c:forEach items="${photos}" var="fileStore" varStatus="st">
-		<c:if test="${!fn:contains(fileStore.description, 'cover') && !fn:contains(fileStore.description, 'people1') && !fn:contains(fileStore.description, 'people2')}">
-			<table class="table">
-				<tr>
-					<td>
-						<c:if test="${fn:contains(fileStore.description, 'cover')}">
-						<div><span class="label label-success">请柬封面</span></div> 
-						</c:if>
-						<c:if test="${fn:contains(fileStore.description, 'people1')}">
-						<div><span class="label label-info">新郎独照</span></div> 
-						</c:if>
-						<c:if test="${fn:contains(fileStore.description, 'people2')}">
-						<span class="label label-important">新娘独照</span>
-						</c:if>
-						<div><span class="label">请柬相册</span></div>
-					</td>
-					<td><a
-						href="attached${fn:replace(fileStore.storePath, '\\', '/')}"
-						class="fancybox" rel="group1"> <img
-							src="attached${fn:replace(fileStore.storePath, '\\', '/')}"
-							class="img-polaroid" height="200px" width="200px">
-					</a></td>
-					<td>
-						<div>
-							<c:if test="${!fn:contains(fileStore.description, 'cover')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">设为封面</a> </div>
-							</c:if>
-							<c:if test="${fn:contains(fileStore.description, 'cover')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${fileStore.id}">取消封面</a> </div>
-							</c:if>
-							
-							<c:if test="${!fn:contains(fileStore.description, 'people1')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">设为新郎独照</a> </div>
-							</c:if>
-							<c:if test="${fn:contains(fileStore.description, 'people1')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${fileStore.id}">取消新郎独照</a> </div>
-							</c:if>
-							
-							<c:if test="${!fn:contains(fileStore.description, 'people2')}">
-							<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">设为新娘独照</a> </div>
-							</c:if> 
-							<c:if test="${fn:contains(fileStore.description, 'people2')}">
-							<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${fileStore.id}">取消新娘独照</a> </div>
-							</c:if>
-							<div><a href="card/photo/doDelete?fileStoreId=${fileStore.id}&cardId=${card.id}">删除</a> </div>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</c:if>
+						<div><a href="card/photo/doDelete?fileStoreId=${dto.photo.id}&cardId=${card.id}">删除</a> </div>
+					</div>
+				</td>
+			</tr>
+		</table>
 		</c:forEach>
 	</div>
 </div>

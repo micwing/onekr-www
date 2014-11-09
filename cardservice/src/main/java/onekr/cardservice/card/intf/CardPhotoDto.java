@@ -5,6 +5,11 @@ import onekr.commonservice.model.FileStore;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+/**
+ * 请柬照片对象
+ * @author Administrator
+ *
+ */
 public class CardPhotoDto {
 
 	private Long id;
@@ -25,18 +30,20 @@ public class CardPhotoDto {
 		this.id = fs.getId();
 		this.photo = fs;
 		JSONObject json = JSON.parseObject(fs.getJson());
-		this.setThumbId(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB) ? 
-				json.getLong(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB)
-				: null);
-		this.setCover(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER) ? 
-				json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER)
-				: false);
-		this.setPeople1Photo(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1) ? 
-				json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1)
-				: false);
-		this.setPeople2Photo(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2) ? 
-				json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2)
-				: false);
+		if (json != null) {
+			this.setThumbId(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB) ? 
+					json.getLong(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB)
+					: null);
+			this.setCover(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER) ? 
+					json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER)
+					: false);
+			this.setPeople1Photo(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1) ? 
+					json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1)
+					: false);
+			this.setPeople2Photo(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2) ? 
+					json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2)
+					: false);
+		}
 	}
 
 	public Long getId() {
@@ -71,7 +78,7 @@ public class CardPhotoDto {
 		this.thumb = thumb;
 	}
 
-	public boolean isCover() {
+	public boolean getIsCover() {
 		return isCover;
 	}
 
@@ -84,7 +91,7 @@ public class CardPhotoDto {
 		this.isCover = isCover;
 	}
 
-	public boolean isPeople1Photo() {
+	public boolean getIsPeople1Photo() {
 		return isPeople1Photo;
 	}
 
@@ -97,7 +104,7 @@ public class CardPhotoDto {
 		this.isPeople1Photo = isPeople1Photo;
 	}
 
-	public boolean isPeople2Photo() {
+	public boolean getIsPeople2Photo() {
 		return isPeople2Photo;
 	}
 

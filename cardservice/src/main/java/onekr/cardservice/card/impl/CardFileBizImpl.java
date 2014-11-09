@@ -136,18 +136,21 @@ public class CardFileBizImpl implements CardFileBiz {
 
 	@Override
 	public List<CardPhotoDto> listCardPhoto(Long cardId) {
+		//原图
 		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
 		if (CollectionUtils.isEmpty(list))
 			return Collections.emptyList();
-		
+		//缩略图
 		List<FileStore> thumbList = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_THUMB_FILE_STORE, cardId+"");
+		
+		//组装
+		List<CardPhotoDto> targetList = new ArrayList<CardPhotoDto>();
 		Map<Long, FileStore> thumbMap = new HashMap<Long, FileStore>();
 		if (!CollectionUtils.isEmpty(thumbList)) {
 			for (FileStore fs : thumbList) {
 				thumbMap.put(fs.getId(), fs);
 			}
 		}
-		List<CardPhotoDto> targetList = new ArrayList<CardPhotoDto>();
 		for (FileStore fs : list) {
 			CardPhotoDto dto = new CardPhotoDto(fs);
 			if (dto.getThumbId() != null) {				
@@ -164,14 +167,14 @@ public class CardFileBizImpl implements CardFileBiz {
 		
 		List<CardPhotoDto> list = listCardPhoto(cardId);
 		for (CardPhotoDto dto : list) {
-			if (dto.getId().equals(fileStoreId) && !dto.isCover()) {
+			if (dto.getId().equals(fileStoreId) && !dto.getIsCover()) {
 				dto.setCover(true);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
 				fileStoreBiz.saveFileStore(dto.getPhoto());
 			}
 			
-			if (!dto.getId().equals(fileStoreId) && dto.isCover()) {
+			if (!dto.getId().equals(fileStoreId) && dto.getIsCover()) {
 				dto.setCover(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
@@ -186,14 +189,14 @@ public class CardFileBizImpl implements CardFileBiz {
 		
 		List<CardPhotoDto> list = listCardPhoto(cardId);
 		for (CardPhotoDto dto : list) {
-			if (dto.getId().equals(fileStoreId) && dto.isCover()) {
+			if (dto.getId().equals(fileStoreId) && dto.getIsCover()) {
 				dto.setCover(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
 				fileStoreBiz.saveFileStore(dto.getPhoto());
 			}
 			
-			if (!dto.getId().equals(fileStoreId) && dto.isCover()) {
+			if (!dto.getId().equals(fileStoreId) && dto.getIsCover()) {
 				dto.setCover(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
@@ -209,7 +212,7 @@ public class CardFileBizImpl implements CardFileBiz {
 			return null;
 		
 		for (CardPhotoDto dto : list) {
-			if (dto.isCover()) {
+			if (dto.getIsCover()) {
 				return dto;
 			}
 		}
@@ -222,14 +225,14 @@ public class CardFileBizImpl implements CardFileBiz {
 		
 		List<CardPhotoDto> list = listCardPhoto(cardId);
 		for (CardPhotoDto dto : list) {
-			if (dto.getId().equals(fileStoreId) && !dto.isPeople1Photo()) {
+			if (dto.getId().equals(fileStoreId) && !dto.getIsPeople1Photo()) {
 				dto.setPeople1Photo(true);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
 				fileStoreBiz.saveFileStore(dto.getPhoto());
 			}
 			
-			if (!dto.getId().equals(fileStoreId) && dto.isPeople1Photo()) {
+			if (!dto.getId().equals(fileStoreId) && dto.getIsPeople1Photo()) {
 				dto.setPeople1Photo(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
@@ -244,14 +247,14 @@ public class CardFileBizImpl implements CardFileBiz {
 		
 		List<CardPhotoDto> list = listCardPhoto(cardId);
 		for (CardPhotoDto dto : list) {
-			if (dto.getId().equals(fileStoreId) && dto.isPeople1Photo()) {
+			if (dto.getId().equals(fileStoreId) && dto.getIsPeople1Photo()) {
 				dto.setPeople1Photo(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
 				fileStoreBiz.saveFileStore(dto.getPhoto());
 			}
 			
-			if (!dto.getId().equals(fileStoreId) && dto.isPeople1Photo()) {
+			if (!dto.getId().equals(fileStoreId) && dto.getIsPeople1Photo()) {
 				dto.setPeople1Photo(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
@@ -267,7 +270,7 @@ public class CardFileBizImpl implements CardFileBiz {
 			return null;
 		
 		for (CardPhotoDto dto : list) {
-			if (dto.isPeople1Photo()) {
+			if (dto.getIsPeople1Photo()) {
 				return dto;
 			}
 		}
@@ -280,14 +283,14 @@ public class CardFileBizImpl implements CardFileBiz {
 		
 		List<CardPhotoDto> list = listCardPhoto(cardId);
 		for (CardPhotoDto dto : list) {
-			if (dto.getId().equals(fileStoreId) && !dto.isPeople2Photo()) {
+			if (dto.getId().equals(fileStoreId) && !dto.getIsPeople2Photo()) {
 				dto.setPeople2Photo(true);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
 				fileStoreBiz.saveFileStore(dto.getPhoto());
 			}
 			
-			if (!dto.getId().equals(fileStoreId) && dto.isPeople2Photo()) {
+			if (!dto.getId().equals(fileStoreId) && dto.getIsPeople2Photo()) {
 				dto.setPeople2Photo(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
@@ -302,14 +305,14 @@ public class CardFileBizImpl implements CardFileBiz {
 		
 		List<CardPhotoDto> list = listCardPhoto(cardId);
 		for (CardPhotoDto dto : list) {
-			if (dto.getId().equals(fileStoreId) && dto.isPeople2Photo()) {
+			if (dto.getId().equals(fileStoreId) && dto.getIsPeople2Photo()) {
 				dto.setPeople2Photo(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
 				fileStoreBiz.saveFileStore(dto.getPhoto());
 			}
 			
-			if (!dto.getId().equals(fileStoreId) && dto.isPeople2Photo()) {
+			if (!dto.getId().equals(fileStoreId) && dto.getIsPeople2Photo()) {
 				dto.setPeople2Photo(false);
 				dto.getPhoto().setUpdateAt(now);
 				dto.getPhoto().setUpdateBy(uid);
@@ -325,7 +328,7 @@ public class CardFileBizImpl implements CardFileBiz {
 			return null;
 		
 		for (CardPhotoDto dto : list) {
-			if (dto.isPeople2Photo()) {
+			if (dto.getIsPeople2Photo()) {
 				return dto;
 			}
 		}

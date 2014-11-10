@@ -45,7 +45,7 @@ public class Comment implements Serializable {
 	@Column(name = "title")
 	private String title;
 
-	@Column(name = "content", length = 1000)
+	@Column(name = "content", length = 2000)
 	private String content;
 	
 	@Column(name = "json", length = 1000)

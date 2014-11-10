@@ -1,12 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
-<%@page import="java.io.File"%>
-<%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer"%>
-<%@page import="onekr.commonservice.filestore.intf.FileBiz"%>
 <%@page import="onekr.cardservice.card.intf.CardFileBiz" %>
-<%@page import="onekr.framework.utils.FileUtil"%>
-<%@page import="org.apache.commons.io.FileUtils"%>
-<%@page import="onekr.cardservice.model.Card"%>
 <h3>请柬照片
 <span class="pull-right">
     <span class="btn-group">

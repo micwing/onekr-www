@@ -10,4 +10,6 @@ import org.springframework.validation.annotation.Validated;
 public interface UserBiz {
 	
 	User findById(@NotNull Long id);
+	
+	User getAnonymous();
 }

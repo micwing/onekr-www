@@ -5,11 +5,14 @@ import onekr.identityservice.user.dao.UserDao;
 import onekr.identityservice.user.intf.UserBiz;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserBizImpl implements UserBiz {
-
+	@Value("#{systemConfig['user.anonymousId']}")
+	private Long anonymousId;
+	
 	@Autowired
 	private UserDao userDao;
 	
@@ -18,4 +21,8 @@ public class UserBizImpl implements UserBiz {
 		return userDao.findOne(id);
 	}
 
+	@Override
+	public User getAnonymous() {
+		return userDao.findOne(anonymousId);
+	}
 }

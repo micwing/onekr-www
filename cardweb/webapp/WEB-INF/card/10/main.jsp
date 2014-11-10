@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="assets/js/toastr/toastr.min.css">
 <script type="text/javascript" src="assets/js/jquery.js"></script>
 <script type="text/javascript" src="assets/js/toastr/toastr.min.js"></script>
-<script type="text/javascript" src="assets/js/commons.js"></script>
+<!-- <script type="text/javascript" src="assets/js/commons.js"></script> -->
 <script type="text/javascript" src="assets/js/klass.min.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
    
@@ -38,6 +38,20 @@ header{margin-top:-10px;}
 .jiuba {
 	width: 100% !important;
 	margin-top: 2px !important
+}
+.gallery table td {
+	padding-top: 5px;
+	padding-bottom: 3px;
+}
+
+.gallery {
+	padding: 5px;
+}
+
+.redinput {
+	width: 20px;
+	height: 20px;
+	border: 0px;
 }
 </style>
 </head>

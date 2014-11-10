@@ -130,7 +130,31 @@ public class CardFileBizImpl implements CardFileBiz {
 	}
 
 	@Override
-	public FileStore saveCardPhoto(Long cardId, MultipartFile mfile,FileStore cardPhotoThumb, Long uid) {
+	public FileStore[] saveMomentPhotoThumb(Long cardId,
+			MultipartFile[] mfiles, Long uid) {
+		FileStore[] stores = new FileStore[mfiles.length];
+		for (int i = 0; i < mfiles.length ; i++) {
+			stores[i] = saveCardPhotoThumb(cardId, mfiles[i], uid, Biz.MOMENT_PHOTO_THUMB_FILE_STORE);
+		}
+		return stores;
+	}
+	
+	@Override
+	public FileStore[] saveMomentPhoto(Long cardId, MultipartFile[] mfiles,
+			FileStore[] cardPhotoThumb, Long uid) {
+		FileStore[] stores = new FileStore[mfiles.length];
+		for (int i = 0; i < mfiles.length ; i++) {
+			stores[i] = saveCardPhoto(cardId, mfiles[i],cardPhotoThumb[i], uid, Biz.MOMENT_PHOTO_FILE_STORE);
+		}
+		return stores;
+	}
+	
+	@Override
+	public List<CardPhotoDto> listMomentPhoto(Long cardId) {
+		return listCardPhoto(cardId, Biz.MOMENT_PHOTO_FILE_STORE, Biz.MOMENT_PHOTO_THUMB_FILE_STORE);
+	}
+	
+	private FileStore saveCardPhoto(Long cardId, MultipartFile mfile,FileStore cardPhotoThumb, Long uid, Biz biz) {
 		String originalFilename = mfile.getOriginalFilename();
 		String path = File.separator+"card"+File.separator+cardId;
 		String name;
@@ -143,7 +167,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		Date now = new Date();
 		
 		FileStore fileStore = new FileStore();
-		fileStore.setBiz(Biz.CARD_PHOTO_FILE_STORE.name());
+		fileStore.setBiz(biz.name());
 		fileStore.setCreateAt(now);
 		fileStore.setCreateBy(uid);
 		fileStore.setDescription("");
@@ -164,8 +188,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		return fileStoreBiz.saveFileStore(fileStore);
 	}
 	
-	@Override
-	public FileStore saveCardPhotoThumb(Long cardId, MultipartFile mfile, Long uid) {
+	private FileStore saveCardPhotoThumb(Long cardId, MultipartFile mfile, Long uid, Biz biz) {
 		String originalFilename = mfile.getOriginalFilename();
 		String path = File.separator+"card"+File.separator+cardId+File.separator+"thumb";
 		String name;
@@ -178,7 +201,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		Date now = new Date();
 		
 		FileStore fileStore = new FileStore();
-		fileStore.setBiz(Biz.CARD_PHOTO_THUMB_FILE_STORE.name());
+		fileStore.setBiz(biz.name());
 		fileStore.setCreateAt(now);
 		fileStore.setCreateBy(uid);
 		fileStore.setDescription("");
@@ -202,7 +225,7 @@ public class CardFileBizImpl implements CardFileBiz {
 			MultipartFile[] mfiles,FileStore[] cardPhotoThumb,Long uid) {
 		FileStore[] stores = new FileStore[mfiles.length];
 		for (int i = 0; i < mfiles.length ; i++) {
-			stores[i] = saveCardPhoto(cardId, mfiles[i],cardPhotoThumb[i], uid);
+			stores[i] = saveCardPhoto(cardId, mfiles[i],cardPhotoThumb[i], uid, Biz.CARD_PHOTO_FILE_STORE);
 		}
 		return stores;
 	}
@@ -212,7 +235,7 @@ public class CardFileBizImpl implements CardFileBiz {
 			MultipartFile[] mfiles,Long uid) {
 		FileStore[] stores = new FileStore[mfiles.length];
 		for (int i = 0; i < mfiles.length ; i++) {
-			stores[i] = saveCardPhotoThumb(cardId, mfiles[i], uid);
+			stores[i] = saveCardPhotoThumb(cardId, mfiles[i], uid, Biz.CARD_PHOTO_THUMB_FILE_STORE);
 		}
 		return stores;
 	}
@@ -227,15 +250,14 @@ public class CardFileBizImpl implements CardFileBiz {
 		}
 		return max;
 	}
-
-	@Override
-	public List<CardPhotoDto> listCardPhoto(Long cardId) {
+	
+	private List<CardPhotoDto> listCardPhoto(Long cardId, Biz photoBiz, Biz thumbBiz) {
 		//原图
-		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_FILE_STORE, cardId+"");
+		List<FileStore> list = fileStoreBiz.listFileStore(photoBiz, cardId+"");
 		if (CollectionUtils.isEmpty(list))
 			return Collections.emptyList();
 		//缩略图
-		List<FileStore> thumbList = fileStoreBiz.listFileStore(Biz.CARD_PHOTO_THUMB_FILE_STORE, cardId+"");
+		List<FileStore> thumbList = fileStoreBiz.listFileStore(thumbBiz, cardId+"");
 		
 		//组装
 		List<CardPhotoDto> targetList = new ArrayList<CardPhotoDto>();
@@ -253,6 +275,11 @@ public class CardFileBizImpl implements CardFileBiz {
 			targetList.add(dto);
 		}
 		return targetList;
+	}
+
+	@Override
+	public List<CardPhotoDto> listCardPhoto(Long cardId) {
+		return listCardPhoto(cardId, Biz.CARD_PHOTO_FILE_STORE, Biz.CARD_PHOTO_THUMB_FILE_STORE);
 	}
 	
 	@Override

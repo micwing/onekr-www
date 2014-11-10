@@ -1,13 +1,17 @@
 package onekr.web.card;
 
+import java.util.Date;
 import java.util.List;
 
 import onekr.cardservice.card.intf.CardBiz;
+import onekr.cardservice.card.intf.CardCommentBiz;
 import onekr.cardservice.card.intf.CardFileBiz;
 import onekr.cardservice.card.intf.CardPhotoDto;
 import onekr.cardservice.model.Card;
+import onekr.commonservice.model.Comment;
 import onekr.commonservice.model.FileStore;
-import onekr.identityservice.model.User;
+import onekr.framework.result.Result;
+import onekr.identityservice.user.intf.UserBiz;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +33,12 @@ public class CardController {
 	
 	@Autowired
 	private CardFileBiz cardFileBiz;
+	
+	@Autowired
+	private CardCommentBiz cardCommentBiz;
+	
+	@Autowired
+	private UserBiz userBiz;
 	
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
@@ -47,6 +58,7 @@ public class CardController {
 		CardPhotoDto people1Photo = cardFileBiz.getCardPhotoPeople1(cardId);
 		CardPhotoDto people2Photo = cardFileBiz.getCardPhotoPeople2(cardId);
 		List<CardPhotoDto> photos = cardFileBiz.listCardPhoto(cardId);
+		List<CardPhotoDto> moments = cardFileBiz.listMomentPhoto(cardId);
 		FileStore music = cardFileBiz.getUseMusic(cardId);
 		
 		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/main");
@@ -56,16 +68,37 @@ public class CardController {
 		mav.addObject("people2Photo", people2Photo);
 		mav.addObject("photos", photos);
 		mav.addObject("music", music);
-		
+		mav.addObject("moments", moments);
 		return mav;
 	}
 	
-//	@RequestMapping(value="/doUploadFile",method=RequestMethod.POST)
-//	public ModelAndView doUploadMemontPhoto(
-//    		@RequestParam("file") CommonsMultipartFile[] mfiles, 
-//    		@RequestParam("cardId") Long cardId) {
-//		FileStore[] thumbs = cardFileBiz.saveCardPhotoThumb(cardId, mfiles, -1L);
-//		cardFileBiz.saveCardPhoto(cardId, mfiles,thumbs, -1L);
-//        return "redirect:/card/photo/cardphoto/"+cardId;
-//	}
+	@RequestMapping(value="/listComments",method=RequestMethod.GET)
+	@ResponseBody
+	public Result listComments(@PathVariable("cardId") Long cardId) {
+		List<Comment> list = cardCommentBiz.listAll(cardId);
+		Result result = new Result();
+		result.setValue(list);
+		return result;
+	}
+	
+	@RequestMapping(value="/doUploadMemontPhoto",method=RequestMethod.POST)
+	public String doUploadMemontPhoto(
+    		@RequestParam("file") CommonsMultipartFile[] mfiles, 
+    		@RequestParam("cardId") Long cardId) {
+		Long uid = userBiz.getAnonymous().getId();
+		FileStore[] thumbs = cardFileBiz.saveMomentPhotoThumb(cardId, mfiles, uid);
+		cardFileBiz.saveMomentPhoto(cardId, mfiles,thumbs, uid);
+        return "redirect:/card/main/"+cardId;
+	}
+	
+	@RequestMapping(value="/doSaveComment",method=RequestMethod.POST)
+	@ResponseBody
+	public Result doSaveComment(
+			@RequestParam("userName") String userName,
+			@RequestParam("reply") String reply,
+			@RequestParam("content") String content,
+			@RequestParam("cardId") Long cardId) {
+		cardCommentBiz.saveCardComment(cardId, null, userName, content, new Date());
+		return new Result();
+	}
 }

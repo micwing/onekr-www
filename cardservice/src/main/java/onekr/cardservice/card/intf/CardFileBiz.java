@@ -67,28 +67,35 @@ public interface CardFileBiz {
 	 */
 	List<FileStore> listCardMusic(@NotNull @Min(1) Long cardId);
 	
+	
+	
 	/**
-	 * 保存请柬照片
-	 * @param cardId
-	 * @param mfile
-	 * @param cardPhotoThumb
-	 * @param uid
-	 * @return
+	 * 批量保存现场婚礼照片
 	 */
-	FileStore saveCardPhoto(@NotNull @Min(1) Long cardId,
-			@NotNull MultipartFile mfile, @NotNull FileStore cardPhotoThumb,
+	FileStore[] saveMomentPhoto(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile[] mfiles, @NotNull FileStore[] cardPhotoThumb,
 			@NotNull @Min(1) Long uid);
 
 	/**
-	 * 保存请柬照片缩略图
+	 * 批量保存现场婚礼照片缩略图
 	 * @param cardId
-	 * @param mfile
+	 * @param mfiles
 	 * @param uid
 	 * @return
 	 */
-	FileStore saveCardPhotoThumb(@NotNull @Min(1) Long cardId,
-			@NotNull MultipartFile mfile, @NotNull @Min(1) Long uid);
+	FileStore[] saveMomentPhotoThumb(@NotNull @Min(1) Long cardId,
+			@NotNull MultipartFile[] mfiles, @NotNull Long uid);
 
+	/**
+	 * 现场婚礼照片列表
+	 * @param cardId
+	 * @return
+	 */
+	List<CardPhotoDto> listMomentPhoto(@NotNull @Min(1) Long cardId);
+	
+	
+	
+	
 	/**
 	 * 批量保存请柬照片
 	 */

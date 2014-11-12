@@ -13,5 +13,5 @@ public interface CommentDao extends JpaRepository<Comment, Long> {
 	
 	List<Comment> findByBizAndOwnerIn(String biz, Collection<String> owners);
 	
-	List<Comment> findByBizAndOwner(String biz, String owner);
+	List<Comment> findByBizAndOwnerOrderByCreateAtDesc(String biz, String owner);
 }

@@ -102,7 +102,7 @@ express.put("钞票", "chaopiao.png");
 			<tr>
 				<td>出席人数</td>
 				<td><select name="reply" class="jiuba">
-						<option value="无">无法出席</option>
+						<option value="0">无法出席</option>
 						<option selected value="1">1人出席</option>
 						<option value="2">2人出席</option>
 						<option value="3">3人出席</option>
@@ -151,6 +151,22 @@ express.put("钞票", "chaopiao.png");
 	</form>
 
 	<script>
+	Date.prototype.Format = function (fmt) { //author: meizz 
+	    var o = {
+	        "M+": this.getMonth() + 1, //月份 
+	        "d+": this.getDate(), //日 
+	        "h+": this.getHours(), //小时 
+	        "m+": this.getMinutes(), //分 
+	        "s+": this.getSeconds(), //秒 
+	        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+	        "S": this.getMilliseconds() //毫秒 
+	    };
+	    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+	    for (var k in o)
+	    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+	    return fmt;
+	};
+	
 	function messageContentShow(v) {
 		document.getElementById("messageContent").innerHTML = v;
 	}
@@ -161,7 +177,7 @@ express.put("钞票", "chaopiao.png");
             dataType: "json",//返回json格式的数据
             url: "card/listComments",//要访问的后台地址
             data: {
-            	'cardId' : $('#commentForm input[name=cardId]').val()
+            	'cardId' : '${card.id}'
             },
             success: function(result){
             	if (result.code == 0) {
@@ -171,14 +187,13 @@ express.put("钞票", "chaopiao.png");
             			for (var i = 0; i < comments.length; i++) {
 		            		html += '<div class="contenbox">'
 		            		+ '<h6>'+comments[i].userName+'</h6>'
-		    				+ '<span class="contenboxspan">'+comments[i].createAt+'</span>'
+		    				+ '<span class="contenboxspan">'+(new Date(comments[i].createAt)).Format("yyyy-MM-dd hh:mm")+'</span>'
 		    				+ '<div class="clr"></div>'
-		    				+ '<p>'+comments[i].content+'</p>'
-		    				+ '<p style="text-align: right; color: #ccc">'+comments[i].json+'</p>'
+		    				+ '<p>'+replayExpress(comments[i].content)+'</p>'
+		    				+ '<p style="text-align: right; color: #ccc">'+(comments[i].json ? comments[i].json+'人出席':'无法出席')+'</p>'
 		    				+ '</div>';
             			}
             			$('#mes_con').html(html);
-            			replayExpress();
             		}
             	} else {
             	}
@@ -216,14 +231,11 @@ express.put("钞票", "chaopiao.png");
 		});
 	}
 		
-	function replayExpress() {
-		$('#mes_con .contenbox p').each(function() {
-			var html = $(this).html();
-			<% for (Map.Entry<String, String> entry : express.entrySet()) { %>
-			html = html.replace(/\[<%=entry.getKey()%>\]/g, '<img src="assets/images/expression/<%=entry.getValue()%>" alt="<%=entry.getKey()%>" />');
-			<%}%>
-			$(this).html(html);
-		});
+	function replayExpress(html) {
+		<% for (Map.Entry<String, String> entry : express.entrySet()) { %>
+		html = html.replace(/\[<%=entry.getKey()%>\]/g, '<img src="assets/images/expression/<%=entry.getValue()%>" alt="<%=entry.getKey()%>" />');
+		<%}%>
+		return html;
 	}
 	$(document).ready(function() {
 		$("#messageContent").bind("change keyup", function() {

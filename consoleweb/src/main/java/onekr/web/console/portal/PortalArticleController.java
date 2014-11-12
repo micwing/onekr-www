@@ -3,7 +3,7 @@ package onekr.web.console.portal;
 import java.io.IOException;
 import java.util.Collections;
 
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.portalservice.article.intf.ArticleBiz;
@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/console/article")
-public class PortalArticleController extends BaseController {
+public class PortalArticleController extends ConsoleBaseController {
 	
 	@Autowired
 	private ArticleBiz articleBiz;

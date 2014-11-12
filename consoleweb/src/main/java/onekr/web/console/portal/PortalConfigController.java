@@ -7,7 +7,7 @@ import java.util.Map;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.result.Result;
 import onekr.framework.spring.web.annotation.RequestJsonParam;
 import onekr.portalservice.utils.GlobalConstants;
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/console/config")
-public class PortalConfigController extends BaseController {
+public class PortalConfigController extends ConsoleBaseController {
 	@Autowired
 	private ConfigBiz configBiz;
 	

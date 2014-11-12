@@ -6,7 +6,7 @@ import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardFileBiz;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.FileStore;
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.identityservice.model.User;
@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/card/music")
-public class CardMusicController extends BaseController {
+public class CardMusicController extends ConsoleBaseController {
 	
 	@Autowired
 	private CardBiz cardBiz;

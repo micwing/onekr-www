@@ -41,6 +41,18 @@
 		<poi-version>3.8</poi-version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>org.springframework.maven.milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- additional repository declarations -->
+	</repositories>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- app begin -->
@@ -158,6 +170,7 @@
 				<artifactId>spring-security-core</artifactId>
 				<version>${spring.security.version}</version>
 			</dependency>
+			
 			<!-- bytecode aop -->
 			<dependency>
 				<groupId>aopalliance</groupId>
@@ -179,8 +192,11 @@
 				<artifactId>cglib-nodep</artifactId>
 				<version>2.2.2</version>
 			</dependency>
-			<!-- <dependency> <groupId>asm</groupId> <artifactId>asm</artifactId> 
-				<version>3.3.1</version> </dependency> -->
+			<dependency>
+				<groupId>asm</groupId>
+				<artifactId>asm</artifactId>
+				<version>3.3.1</version>
+			</dependency>
 			<dependency>
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
@@ -201,6 +217,7 @@
 				<artifactId>objenesis</artifactId>
 				<version>1.2</version>
 			</dependency>
+
 			<!-- apache commons -->
 			<dependency>
 				<groupId>commons-lang</groupId>
@@ -247,6 +264,8 @@
 				<artifactId>commons-pool</artifactId>
 				<version>1.6</version>
 			</dependency>
+
+			<!-- apache http -->
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
@@ -259,6 +278,7 @@
 				<version>${httpcomponents.version}</version>
 				<scope>${profile.scope}</scope>
 			</dependency>
+
 			<!-- logger -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -332,7 +352,8 @@
 				<artifactId>jboss-logging</artifactId>
 				<version>3.1.2.GA</version>
 			</dependency>
-			<!-- web begin -->
+
+			<!-- velocity-->
 			<dependency>
 				<groupId>velocity</groupId>
 				<artifactId>velocity</artifactId>
@@ -344,17 +365,20 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			<!-- freemarker -->
 			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
 				<version>2.3.19</version>
 			</dependency>
+			<!-- sitemesh -->
 			<dependency>
 				<groupId>org.sitemesh</groupId>
 				<artifactId>sitemesh</artifactId>
 				<version>3.0-alpha-2</version>
 			</dependency>
-			<!-- j2ee web spec -->
+			
+			<!-- j2ee web -->
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
@@ -377,7 +401,7 @@
 				<artifactId>jstl</artifactId>
 				<version>1.2</version>
 			</dependency>
-			<!-- email -->
+			<!-- mail -->
 			<dependency>
 				<groupId>javax.mail</groupId>
 				<artifactId>mail</artifactId>
@@ -388,6 +412,7 @@
 				<artifactId>activation</artifactId>
 				<version>1.1.1</version>
 			</dependency>
+			
 			<!-- xml -->
 			<dependency>
 				<groupId>dom4j</groupId>
@@ -426,6 +451,7 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			
 			<!-- json -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
@@ -437,6 +463,7 @@
 				<artifactId>jackson-mapper-asl</artifactId>
 				<version>1.7.1</version>
 			</dependency>
+			
 			<!--hibernate -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
@@ -479,6 +506,7 @@
 				<artifactId>validation-api</artifactId>
 				<version>1.0.0.GA</version>
 			</dependency>
+			
 			<!-- cache -->
 			<dependency>
 				<groupId>net.sf.ehcache</groupId>
@@ -511,6 +539,7 @@
 				<artifactId>kryo</artifactId>
 				<version>2.19</version>
 			</dependency>
+			
 			<!-- other -->
 			<dependency>
 				<groupId>com.google.code.findbugs</groupId>
@@ -527,24 +556,12 @@
 				<artifactId>hessian</artifactId>
 				<version>4.0.7</version>
 			</dependency>
-			<!-- jdbc -->
+			
+			<!-- jdbc,driver -->
 			<dependency>
 				<groupId>com.jolbox</groupId>
 				<artifactId>bonecp</artifactId>
 				<version>0.7.1.RELEASE</version>
-				<scope>${profile.scope}</scope>
-			</dependency>
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.21</version>
-				<scope>${profile.scope}</scope>
-			</dependency>
-			<!-- sql server driver -->
-			<dependency>
-				<groupId>com.microsoft.sqlserver</groupId>
-				<artifactId>sqljdbc4</artifactId>
-				<version>4.0</version>
 				<scope>${profile.scope}</scope>
 			</dependency>
 			<dependency>
@@ -553,6 +570,19 @@
 				<version>0.9.1.2</version>
 				<scope>${profile.scope}</scope>
 			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.21</version>
+				<scope>${profile.scope}</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.microsoft.sqlserver</groupId>
+				<artifactId>sqljdbc4</artifactId>
+				<version>4.0</version>
+				<scope>${profile.scope}</scope>
+			</dependency>
+			
 			<!-- test -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -564,6 +594,7 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
 				<version>${spring.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.easymock</groupId>
@@ -1084,15 +1115,4 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>org.springframework.maven.milestone</id>
-			<name>Spring Maven Milestone Repository</name>
-			<url>http://maven.springframework.org/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<!-- additional repository declarations -->
-	</repositories>
 </project>

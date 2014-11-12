@@ -2,7 +2,7 @@ package onekr.web.console.portal;
 
 import java.util.Date;
 
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.result.Result;
 import onekr.portalservice.leaveComment.intf.LeaveCommentBiz;
 
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/console/leaveComment")
-public class PortalLeaveCommentController extends BaseController {
+public class PortalLeaveCommentController extends ConsoleBaseController {
 	
 	@Autowired
 	private LeaveCommentBiz commentBiz;

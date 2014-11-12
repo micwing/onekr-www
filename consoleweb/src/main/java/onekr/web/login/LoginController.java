@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.identityservice.user.intf.UserLoginBiz;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/login")
-public class LoginController extends BaseController {
+public class LoginController extends ConsoleBaseController {
 	
 	@Autowired
 	private UserLoginBiz userLoginBiz;

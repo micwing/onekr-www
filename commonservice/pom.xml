@@ -14,6 +14,7 @@
 	<description>The Common Service</description>
 	
 	<dependencies>
+		<!-- module -->
 		<dependency>
 			<groupId>onekr</groupId>
 			<artifactId>framework</artifactId>

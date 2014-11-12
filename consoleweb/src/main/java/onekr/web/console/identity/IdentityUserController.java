@@ -23,7 +23,7 @@ package onekr.web.console.identity;
 //
 //@Controller
 //@RequestMapping(value = "/user")
-//public class UserController extends BaseController {
+//public class UserController extends ConsoleBaseController {
 //	
 //	@Autowired
 //	private UserBiz userBiz;

@@ -14,24 +14,23 @@
 	<description>The Card Web</description>
 
 	<dependencies>
-		<!-- app begin -->
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>commonservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>identityservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>cardservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>framework</artifactId>
-			</dependency>
-		<!-- app end -->
+		<!-- module -->
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>commonservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>identityservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>cardservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>framework</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -50,6 +49,31 @@
 			<artifactId>spring-test</artifactId>
 		</dependency>
 		
+		<!-- logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		
+		<!-- ehcache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+		</dependency>
+		
+		<!-- DB -->
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

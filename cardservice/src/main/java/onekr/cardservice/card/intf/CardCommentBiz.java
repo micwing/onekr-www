@@ -1,6 +1,5 @@
 package onekr.cardservice.card.intf;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Min;
@@ -15,8 +14,8 @@ import org.springframework.validation.annotation.Validated;
 public interface CardCommentBiz {
 
 	Comment saveCardComment(@NotNull @Min(1) Long cardId, Long commentId,
-			@NotBlank String userName, @NotBlank String content,
-			@NotNull Date createAt);
+			@NotNull @Min(1) Long userId,
+			@NotBlank String userName, @NotBlank String content, String json);
 
 	List<Comment> listAll(@NotNull Long cardId);
 

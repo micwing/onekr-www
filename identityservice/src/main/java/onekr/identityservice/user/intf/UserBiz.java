@@ -12,4 +12,6 @@ public interface UserBiz {
 	User findById(@NotNull Long id);
 	
 	User getAnonymous();
+	
+	Long getAnonymousId();
 }

@@ -14,6 +14,7 @@
 	<description>The card service</description>
 
 	<dependencies>
+		<!-- module -->
 		<dependency>
 			<groupId>onekr</groupId>
 			<artifactId>framework</artifactId>
@@ -25,6 +26,11 @@
 		<dependency>
 			<groupId>onekr</groupId>
 			<artifactId>commonservice</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
 		</dependency>
 	</dependencies>
 

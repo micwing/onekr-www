@@ -43,7 +43,7 @@ public class CommentBizImpl implements CommentBiz {
 	
 	@Override
 	public List<Comment> findComments(Biz biz, String owner) {
-		return commentDao.findByBizAndOwner(biz.name(), owner);
+		return commentDao.findByBizAndOwnerOrderByCreateAtDesc(biz.name(), owner);
 	}
 	
 	@Override

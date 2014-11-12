@@ -21,7 +21,6 @@
 	
 	<import resource="datasource.xml" /> 
 	<import resource="service.xml" />
-	<import resource="shiro.xml" />
 	
 	<context:annotation-config />
 	<context:component-scan base-package="onekr">

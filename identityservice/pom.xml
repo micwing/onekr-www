@@ -14,9 +14,16 @@
 	<description>The identity service</description>
 
 	<dependencies>
+		<!-- module -->
 		<dependency>
 			<groupId>onekr</groupId>
-			<artifactId>framework</artifactId>
+			<artifactId>commonservice</artifactId>
+		</dependency>
+		
+		<!-- shiro -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -7,7 +7,7 @@ import java.util.Map;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.portalservice.utils.GlobalConstants;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/console/domain")
-public class PortalDomainController extends BaseController {
+public class PortalDomainController extends ConsoleBaseController {
 	@Autowired
 	private ConfigBiz configBiz;
 	

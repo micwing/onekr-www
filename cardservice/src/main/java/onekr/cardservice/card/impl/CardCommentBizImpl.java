@@ -2,19 +2,15 @@ package onekr.cardservice.card.impl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Observable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
-import javax.mail.internet.MimeMessage;
 
 import onekr.cardservice.card.dao.CardDao;
 import onekr.cardservice.card.intf.CardCommentBiz;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.CommentBiz;
-import onekr.commonservice.filestore.intf.FileBiz;
 import onekr.commonservice.model.Comment;
 import onekr.commonservice.model.Status;
 import onekr.framework.exception.AppException;
@@ -28,11 +24,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CardCommentBizImpl implements CardCommentBiz {
-
+	
 	@Autowired
 	private CardDao cardDao;
-	@Autowired
-	private FileBiz fileBiz;
 	@Autowired
 	private CommentBiz commentBiz;
 
@@ -61,7 +55,8 @@ public class CardCommentBizImpl implements CardCommentBiz {
 
 	@Override
 	public Comment saveCardComment(Long cardId, Long commentId,
-			String userName, String content, Date createAt) {
+			Long userId, String userName, String content, String reply) {
+		Date now = new Date();
 		Card card = cardDao.findOne(cardId);
 		if (card == null)
 			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
@@ -82,9 +77,11 @@ public class CardCommentBizImpl implements CardCommentBiz {
 				throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
 		}
 		comment.setContent(content);
-		comment.setCreateAt(createAt);
+		comment.setCreateAt(now);
+		comment.setUserId(userId);
 		comment.setUserName(userName);
 		comment.setUserId(0L);
+		comment.setJson(reply);
 
 		return commentBiz.saveComment(comment);
 	}

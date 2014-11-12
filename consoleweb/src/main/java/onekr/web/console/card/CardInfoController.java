@@ -4,7 +4,7 @@ import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.model.Card;
 import onekr.cardservice.model.CardType;
 import onekr.commonservice.model.Status;
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.contstants.Constants;
 import onekr.identityservice.model.User;
 
@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/card/info")
-public class CardInfoController extends BaseController {
+public class CardInfoController extends ConsoleBaseController {
 	
 	@Autowired
 	private CardBiz cardBiz;

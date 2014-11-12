@@ -5,7 +5,7 @@ import java.util.List;
 
 import onekr.commonservice.model.Script;
 import onekr.commonservice.model.ScriptType;
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.result.Result;
 import onekr.framework.spring.web.annotation.RequestJsonParam;
 import onekr.portalservice.article.intf.ScriptBiz;
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/console/script")
-public class PortalScriptController extends BaseController {
+public class PortalScriptController extends ConsoleBaseController {
 	
 	@Autowired
 	private ScriptBiz scriptBiz;

@@ -2,7 +2,7 @@ package onekr.web.console.card;
 
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.model.Card;
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.identityservice.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/card/map")
-public class CardMapController extends BaseController {
+public class CardMapController extends ConsoleBaseController {
 	
 	@Autowired
 	private CardBiz cardBiz;

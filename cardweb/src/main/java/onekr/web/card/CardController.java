@@ -72,9 +72,9 @@ public class CardController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/listComments",method=RequestMethod.GET)
+	@RequestMapping(value="/listComments",method=RequestMethod.POST)
 	@ResponseBody
-	public Result listComments(@PathVariable("cardId") Long cardId) {
+	public Result listComments(@RequestParam("cardId") Long cardId) {
 		List<Comment> list = cardCommentBiz.listAll(cardId);
 		Result result = new Result();
 		result.setValue(list);
@@ -85,7 +85,7 @@ public class CardController {
 	public String doUploadMemontPhoto(
     		@RequestParam("file") CommonsMultipartFile[] mfiles, 
     		@RequestParam("cardId") Long cardId) {
-		Long uid = userBiz.getAnonymous().getId();
+		Long uid = userBiz.getAnonymousId();
 		FileStore[] thumbs = cardFileBiz.saveMomentPhotoThumb(cardId, mfiles, uid);
 		cardFileBiz.saveMomentPhoto(cardId, mfiles,thumbs, uid);
         return "redirect:/card/main/"+cardId;
@@ -98,7 +98,8 @@ public class CardController {
 			@RequestParam("reply") String reply,
 			@RequestParam("content") String content,
 			@RequestParam("cardId") Long cardId) {
-		cardCommentBiz.saveCardComment(cardId, null, userName, content, new Date());
+		Long uid = userBiz.getAnonymousId();
+		cardCommentBiz.saveCardComment(cardId, null, uid, userName, content, reply);
 		return new Result();
 	}
 }

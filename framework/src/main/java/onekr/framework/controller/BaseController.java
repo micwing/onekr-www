@@ -25,8 +25,6 @@ import javax.servlet.http.HttpSession;
 
 import onekr.framework.lang.NormalDateEditor;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.WebDataBinder;
@@ -59,11 +57,6 @@ public abstract class BaseController {
 	
 	protected Locale getLocale() {
 		return (Locale) getSession().getAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
-	}
-	
-	protected Object getCurrentUser() {
-		PrincipalCollection pc = SecurityUtils.getSubject().getPrincipals();
-		return pc.getPrimaryPrincipal();
 	}
 	
 	protected String getMessage(String messageKey) {

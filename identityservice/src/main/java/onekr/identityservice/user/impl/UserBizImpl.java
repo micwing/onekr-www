@@ -25,4 +25,9 @@ public class UserBizImpl implements UserBiz {
 	public User getAnonymous() {
 		return userDao.findOne(anonymousId);
 	}
+	
+	@Override
+	public Long getAnonymousId() {
+		return anonymousId;
+	}
 }

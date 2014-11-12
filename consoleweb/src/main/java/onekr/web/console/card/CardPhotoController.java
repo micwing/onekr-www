@@ -7,7 +7,7 @@ import onekr.cardservice.card.intf.CardFileBiz;
 import onekr.cardservice.card.intf.CardPhotoDto;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.FileStore;
-import onekr.framework.controller.BaseController;
+import onekr.web.console.ConsoleBaseController;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.identityservice.model.User;
@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/card/photo")
-public class CardPhotoController extends BaseController {
+public class CardPhotoController extends ConsoleBaseController {
 	
 	public static final String CARD_COVER_PHOTO_DESC = "cover";
 	public static final String CARD_PEOPLE1_PHOTO_DESC = "people1";

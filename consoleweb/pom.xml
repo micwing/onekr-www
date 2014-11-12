@@ -14,29 +14,29 @@
 	<description>The console web</description>
 
 	<dependencies>
-		<!-- app begin -->
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>commonservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>identityservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>portalservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>cardservice</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>framework</artifactId>
-			</dependency>
-		<!-- app end -->
+		<!-- module -->
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>commonservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>identityservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>portalservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>cardservice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>onekr</groupId>
+			<artifactId>framework</artifactId>
+		</dependency>
 
+		<!-- javax -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -49,11 +49,80 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		
+		<!-- text -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
 		
+		<!-- shiro -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+		</dependency>
+
+		<!-- tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-el</artifactId>
+		</dependency>	
+		
+		<!-- IKAnalyzer -->
+		<dependency>
+			<groupId>IKAnalyzer</groupId>
+			<artifactId>IKAnalyzer</artifactId>
+		</dependency>
+		
+		<!-- logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		
+		<!-- ehcache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+		</dependency>
+		
+		<!-- DB -->
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

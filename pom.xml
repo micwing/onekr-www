@@ -17,6 +17,7 @@
 		<module>cardservice</module>
 		<module>portalweb</module>
 		<module>consoleweb</module>
+		<module>identityweb</module>
 		<module>cardweb</module>
 	</modules>
 
@@ -94,6 +95,11 @@
 			<dependency>
 				<groupId>onekr</groupId>
 				<artifactId>consoleweb</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>onekr</groupId>
+				<artifactId>identityweb</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!-- app end -->

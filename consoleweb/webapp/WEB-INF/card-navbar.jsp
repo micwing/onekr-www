@@ -9,8 +9,16 @@
 		</li>
 		<li class="nav-header">请柬</li>
 		<li
-			class="${fn:startsWith(requestServletPath, '/card/info/add/')?'active':''}">
-			<a href="card/info/add"><i class="icon-pencil"></i> 新增请柬</a>
+			class="${fn:startsWith(requestServletPath, '/card/makecode/generate')?'active':''}">
+			<a href="card/makecode/generate"><i class="icon-star"></i> 申请制作码</a>
+		</li>
+		<li
+			class="${fn:startsWith(requestServletPath, '/card/makecode/list')?'active':''}">
+			<a href="card/makecode/list"><i class="icon-tasks"></i> 制作码列表</a>
+		</li>
+		<li
+			class="${fn:startsWith(requestServletPath, '/card/info/makecodeinput/')?'active':''}">
+			<a href="card/info/makecodeinput"><i class="icon-pencil"></i> 新增请柬</a>
 		</li>
 		<li
 			class="${fn:startsWith(requestServletPath, '/card/info/list/')?'active':''}">

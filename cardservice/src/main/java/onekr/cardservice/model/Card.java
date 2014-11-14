@@ -101,9 +101,6 @@ public class Card implements Serializable {
 	@Column(name = "map_url", length = 2000)
 	private String mapUrl;
 	
-	@Column(name = "taobao_id")
-	private String taobaoId;
-	
 	/**
 	 * templetId的前2位表示jspId
 	 */
@@ -304,14 +301,6 @@ public class Card implements Serializable {
 
 	public void setTempletId(String templetId) {
 		this.templetId = templetId;
-	}
-
-	public String getTaobaoId() {
-		return taobaoId;
-	}
-
-	public void setTaobaoId(String taobaoId) {
-		this.taobaoId = taobaoId;
 	}
 
 	public String getMapPicUrl() {

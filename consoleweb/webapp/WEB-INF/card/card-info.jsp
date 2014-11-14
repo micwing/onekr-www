@@ -23,6 +23,7 @@
 	<div class="tab-pane active" id="tab1">
 		<form class="form-horizontal" id="card-form" method="post" action="card/info/doSave">
 			<input type="hidden" name="id" value="${card.id}">
+			<input type="hidden" name="makecode" value="${makecode}">
 			<input type="hidden" name="cardType" value="WED_CARD" />
 			<fieldset>
 				<legend>新人</legend>
@@ -112,13 +113,6 @@
 					</div>
 				</div>
 				
-				<div class="control-group">
-					<label class="control-label">描述预览</label>
-					<div class="controls">
-						<div id="preview">
-						</div>
-					</div>
-				</div>
 			</fieldset>
 
 			<fieldset>
@@ -129,13 +123,6 @@
 						<select name="templetId">
 							<option value="10001" ${card.templetId == 10001 ? 'selected':'' }>浪漫爱情</option>
 						</select>
-						<button type="button" class="btn" id="updateTempletList">刷新模版列表</button>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="taobaoId">淘宝ID</label>
-					<div class="controls">
-						<input type="text" name="taobaoId" placeholder="taobaoId" value="${card.taobaoId}">
 					</div>
 				</div>
 				<div class="control-group">
@@ -172,18 +159,69 @@
 			ns.updateTitle = function() {
 				$('#card-form input[name=title]').val('我们结婚啦！'+$('#card-form input[name=people1Name]').val()+'&'+$('#card-form input[name=people2Name]').val());
 			};
-			ns.updatePreview = function() {
-				//$('#preview').html('xxx');
-			};
 			
 			$('#card-form').validate({
 				rules : {
+					people1Name : {
+						required : true,
+						maxlength : 20
+					},
+					people1Mobile : {
+						maxlength : 20,
+						number: true
+					},
+					people2Name : {
+						required : true,
+						maxlength : 20
+					},
+					people2Mobile : {
+						maxlength : 20,
+						number: true
+					},
+					partyTime : {
+						required : true,
+						date : true`````
+					},	
+					restaurant : {
+						required : true,
+						maxlength : 50
+					},
+					address : {
+						required : true,
+						maxlength : 50
+					},
+					traffic : {
+						maxlength : 50
+					},
+					remind : {
+						maxlength : 100
+					},
 					title : {
 						required : true,
+						maxlength : 50
+					},
+					beforeInfo : {
+						required : true,
 						maxlength : 255
+					},
+					afterInfo : {
+						required : true,
+						maxlength : 255
+					},
+					templetId : {
+						required : true,
+						maxlength : 50
+					},
+					remark : {
+						required : true,
+						maxlength : 255
+					},
+					status : {
+						required : true,
+						maxlength : 50
 					}
 				},
-				errorClass : "help-inline",
+				errorClass : "help-block",
 				errorElement : "span",
 				highlight : function(element, errorClass, validClass) {
 					$(element).parents('.control-group').removeClass('success');
@@ -197,9 +235,6 @@
 			$(function() {
 				$('#saveCard').click(function(){
 					$('#card-form').submit();
-				});
-				$('#updateTempletList').click(function(){
-					//TODO  
 				});
 				$('#card-form input[name=people1Name]').change(function() {
 					ns.updateTitle();

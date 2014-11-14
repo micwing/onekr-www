@@ -1,12 +1,16 @@
 package onekr.web.console.card;
 
 import onekr.cardservice.card.intf.CardBiz;
+import onekr.cardservice.card.intf.CardMakeCodeBiz;
 import onekr.cardservice.model.Card;
+import onekr.cardservice.model.CardMakeCode;
 import onekr.cardservice.model.CardType;
 import onekr.commonservice.model.Status;
-import onekr.web.console.ConsoleBaseController;
 import onekr.framework.contstants.Constants;
+import onekr.framework.exception.AppException;
+import onekr.framework.exception.ErrorCode;
 import onekr.identityservice.model.User;
+import onekr.web.console.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -26,9 +31,19 @@ public class CardInfoController extends ConsoleBaseController {
 	@Autowired
 	private CardBiz cardBiz;
 	
+	@Autowired
+	private CardMakeCodeBiz cardMakeCodeBiz;
+	
+	@RequestMapping(value = "/makecodeinput", method = RequestMethod.GET)
+	public ModelAndView makecodeinput() {
+		ModelAndView mav = new ModelAndView("card:card-makecodeinput");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public ModelAndView add() {
+	public ModelAndView add(@RequestParam(value = "makecode") String makecode) {
 		ModelAndView mav = new ModelAndView("card:card-info");
+		mav.addObject("makecode", makecode);
 		return mav;
 	}
 	
@@ -40,9 +55,15 @@ public class CardInfoController extends ConsoleBaseController {
 	}
 	
 	@RequestMapping(value = "/doSave", method = RequestMethod.POST)
-	public String doSave(Card card) {
+	public String doSave(Card card, String makecode) {
 		User user = (User) getCurrentUser();
+		if (card.getId() == null) {			
+			CardMakeCode code = cardMakeCodeBiz.findNoUseCode(makecode);
+			if (code == null)
+				throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "您的制作码已失效");
+		}
 		card = cardBiz.saveCard(card, user.getId());
+		cardMakeCodeBiz.useCode(makecode, card.getId());
 		return "redirect:/card/info/modify/"+card.getId();
 	}
 	

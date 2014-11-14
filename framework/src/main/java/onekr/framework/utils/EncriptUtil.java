@@ -38,4 +38,7 @@ public abstract class EncriptUtil {
 			return passwordEncoder.encodePassword(painTxt,null);
 	}
 
+	public static void main(String[] args) {
+		System.out.println(encript("发的萨芬的撒2014-11-11 11:11:11"));
+	}
 }

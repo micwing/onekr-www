@@ -1,8 +1,9 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.cardservice.model.CardType"%>
 <%@include file="../common/includes.jsp"%>
-<h4>请柬列表</h4>
-<hr>
+<h3>请柬列表</h3>
+<hr class="head-hr">
+
 <div class="row-fluid">
 	<div class="span12">
 		<form class="form-search">

@@ -1,14 +1,15 @@
 package onekr.web.console;
 
 import onekr.framework.controller.BaseController;
+import onekr.identityservice.model.User;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.PrincipalCollection;
 
 public class ConsoleBaseController extends BaseController {
 
-	protected Object getCurrentUser() {
+	protected User getCurrentUser() {
 		PrincipalCollection pc = SecurityUtils.getSubject().getPrincipals();
-		return pc.getPrimaryPrincipal();
+		return (User) pc.getPrimaryPrincipal();
 	}
 }

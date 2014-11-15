@@ -14,6 +14,8 @@
 </h3>
 <hr class="head-hr">
 
+<jsp:include page="_message.jsp"/>
+
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab1" data-toggle="tab"><%=CardType.WED_CARD.getLabel() %></a></li>
 	<%-- <li><a href="#tab2" data-toggle="tab"><%=CardType.BABY_CARD.getLabel() %></a></li>
@@ -58,7 +60,7 @@
 				<div class="control-group">
 					<label class="control-label" for="partyTime"><span class="star">*</span> 典礼时间</label>
 					<div class="controls">
-						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:ns.updatePartyTimeInfo})" value="${card.partyTime}"/>
+						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/>"/>
 						<span class="help-block">使用时间控件选择</span>
 					</div>
 				</div>
@@ -99,14 +101,14 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="beforeInfo">前置语句</label>
+					<label class="control-label" for="beforeInfo"><span class="star">*</span> 前置语句</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="beforeInfo" placeholder="beforeInfo" value="${empty card.beforeInfo ? '沉浸在幸福中的我们&lt;br/&gt;谨定于' : card.beforeInfo}">
 						<span class="help-block">示例：沉浸在幸福中的我们&lt;br/&gt;谨定于</span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="afterInfo">后置语句</label>
+					<label class="control-label" for="afterInfo"><span class="star">*</span> 后置语句</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="afterInfo" placeholder="afterInfo" value="${empty card.afterInfo ? '举行典礼&lt;br/&gt;敬备喜宴 恭请光临' : card.afterInfo}">
 						<span class="help-block">示例：举行典礼&lt;br/&gt;敬备喜宴 恭请光临</span>
@@ -152,10 +154,6 @@
 		</form>
 		<script>
 			var ns = ns || {};
-			ns.updatePartyTimeInfo = function() {
-				var date = $dp.cal.newdate;
-				$('#card-form input[name=partyTimeInfo]').val(date.y+'年'+date.M+'月'+date.d+'日 '+date.H+'时'+date.m+'分');
-			};
 			ns.updateTitle = function() {
 				$('#card-form input[name=title]').val('我们结婚啦！'+$('#card-form input[name=people1Name]').val()+'&'+$('#card-form input[name=people2Name]').val());
 			};
@@ -179,15 +177,13 @@
 						number: true
 					},
 					partyTime : {
-						required : true,
-						date : true`````
+						required : true
 					},	
 					restaurant : {
 						required : true,
 						maxlength : 50
 					},
 					address : {
-						required : true,
 						maxlength : 50
 					},
 					traffic : {
@@ -213,7 +209,6 @@
 						maxlength : 50
 					},
 					remark : {
-						required : true,
 						maxlength : 255
 					},
 					status : {
@@ -241,9 +236,6 @@
 				});
 				$('#card-form input[name=people2Name]').change(function() {
 					ns.updateTitle();
-				});
-				$('#card-form input[name=partyTime]').change(function() {
-					ns.updatePartyTimeInfo();
 				});
 			});
 		</script>

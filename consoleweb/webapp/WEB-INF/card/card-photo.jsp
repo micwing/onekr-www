@@ -11,6 +11,8 @@
 </h3>
 <hr class="head-hr">
 
+<jsp:include page="_message.jsp"/>
+
 <div class="row-fluid">
 	<div class="span12">
 		<form class="form-horizontal" action="card/photo/doUploadFile"
@@ -26,12 +28,21 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<input class="btn btn-primary" type="submit" id="uploadButton" value="上传照片" />
+					<input class="btn btn-primary" type="button" id="uploadButton" value="上传照片" />
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+$('#uploadButton').click(function() {
+	if ($('#file-form input[name=file]').val() == '') {
+		alert('请选择照片！');
+		return;
+	}
+	$('#file-form').submit();
+});
+</script>
 
 <hr>
 

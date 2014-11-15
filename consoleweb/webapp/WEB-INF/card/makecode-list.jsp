@@ -4,6 +4,8 @@
 <h3>制作码列表</h3>
 <hr class="head-hr">
 
+<jsp:include page="_message.jsp"/>
+
 <div class="row-fluid">
 	<div class="span12">
 		<table class="table table-bordered">

@@ -14,6 +14,8 @@
 </h3>
 <hr class="head-hr">
 
+<jsp:include page="_message.jsp"/>
+
 <div class="row-fluid">
 	<div class="span12">
 		<form class="form-horizontal" action="card/music/doUploadFile"
@@ -28,12 +30,21 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<input class="btn btn-primary" type="submit" id="uploadButton" value="上传音乐" />
+					<input class="btn btn-primary" type="button" id="uploadButton" value="上传音乐" />
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+$('#uploadButton').click(function() {
+	if ($('#file-form input[name=file]').val() == '') {
+		alert('请选择音乐！');
+		return;
+	}
+	$('#file-form').submit();
+});
+</script>
 
 <div class="row-fluid">
 	<div class="span12">

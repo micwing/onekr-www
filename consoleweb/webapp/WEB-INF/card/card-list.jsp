@@ -4,6 +4,8 @@
 <h3>请柬列表</h3>
 <hr class="head-hr">
 
+<jsp:include page="_message.jsp"/>
+
 <div class="row-fluid">
 	<div class="span12">
 		<form class="form-search">
@@ -30,7 +32,6 @@
 				<th>标题</th>
 				<th>新郎</th>
 				<th>新娘</th>
-				<th>淘宝ID</th>
 				<th>备注</th>
 				<th>操作</th>
 			</tr>
@@ -42,7 +43,6 @@
 					<td>${card.title}</td>
 					<td>${card.people1Name}</td>
 					<td>${card.people2Name}</td>
-					<td>${card.taobaoId}</td>
 					<td>${catd.remark}</td>
 					<td>
 						 <a href="card/music/manager/${card.id}">展示</a> <a

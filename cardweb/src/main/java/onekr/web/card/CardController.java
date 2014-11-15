@@ -1,6 +1,5 @@
 package onekr.web.card;
 
-import java.util.Date;
 import java.util.List;
 
 import onekr.cardservice.card.intf.CardBiz;
@@ -10,6 +9,8 @@ import onekr.cardservice.card.intf.CardPhotoDto;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.Comment;
 import onekr.commonservice.model.FileStore;
+import onekr.framework.exception.AppException;
+import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.identityservice.user.intf.UserBiz;
 
@@ -43,6 +44,8 @@ public class CardController {
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
+		if (card == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
 		CardPhotoDto coverPhoto = cardFileBiz.getCardPhotoCover(cardId);
 		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/cover");
 		mav.addObject("card", card);
@@ -54,6 +57,8 @@ public class CardController {
 	@RequestMapping(value = "/main/{cardId}", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
+		if (card == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
 		CardPhotoDto coverPhoto = cardFileBiz.getCardPhotoCover(cardId);
 		CardPhotoDto people1Photo = cardFileBiz.getCardPhotoPeople1(cardId);
 		CardPhotoDto people2Photo = cardFileBiz.getCardPhotoPeople2(cardId);

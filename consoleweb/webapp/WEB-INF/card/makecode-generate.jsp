@@ -4,6 +4,8 @@
 <h3>申请制作码</h3>
 <hr class="head-hr">
 
+<jsp:include page="_message.jsp"/>
+
 <div class="row-fluid">
 	<div class="span12">
 		<form class="form-search" action="" method="post">

@@ -9,6 +9,7 @@ import onekr.commonservice.model.Status;
 import onekr.framework.contstants.Constants;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
+import onekr.framework.result.Result;
 import onekr.identityservice.model.User;
 import onekr.web.console.ConsoleBaseController;
 
@@ -17,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,23 +50,27 @@ public class CardInfoController extends ConsoleBaseController {
 	}
 	
 	@RequestMapping(value = "/modify/{cardId}", method = RequestMethod.GET)
-	public ModelAndView modify(@PathVariable("cardId") Long cardId) {
-		ModelAndView mav = new ModelAndView("card:card-info");
+	public ModelAndView modify(ModelMap model, @PathVariable("cardId") Long cardId) {
+		ModelAndView mav = new ModelAndView("card:card-info", model);
 		mav.addObject("card", cardBiz.findById(cardId));
 		return mav;
 	}
 	
 	@RequestMapping(value = "/doSave", method = RequestMethod.POST)
-	public String doSave(Card card, String makecode) {
+	public ModelAndView doSave(Card card, String makecode) {
 		User user = (User) getCurrentUser();
-		if (card.getId() == null) {			
+		boolean createFlag = false;
+		if (card.getId() == null) {
 			CardMakeCode code = cardMakeCodeBiz.findNoUseCode(makecode);
 			if (code == null)
-				throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "您的制作码已失效");
+				throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "您的制作码已失效！");
+			createFlag = true;
 		}
 		card = cardBiz.saveCard(card, user.getId());
-		cardMakeCodeBiz.useCode(makecode, card.getId());
-		return "redirect:/card/info/modify/"+card.getId();
+		if (createFlag) {
+			cardMakeCodeBiz.useCode(makecode, card.getId());
+		}
+		return modify(new ModelMap("result",new Result("保存成功！")),card.getId());
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

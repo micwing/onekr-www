@@ -9,10 +9,12 @@ import onekr.commonservice.model.FileStore;
 import onekr.web.console.ConsoleBaseController;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
+import onekr.framework.result.Result;
 import onekr.identityservice.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,8 +34,8 @@ public class CardMusicController extends ConsoleBaseController {
 	private CardFileBiz cardFileBiz;
 	
 	@RequestMapping(value = "/cardmusic/{cardId}", method = RequestMethod.GET)
-	public ModelAndView cardmusic(@PathVariable("cardId") Long cardId) {
-		ModelAndView mav = new ModelAndView("card:card-music");
+	public ModelAndView cardmusic(ModelMap model, @PathVariable("cardId") Long cardId) {
+		ModelAndView mav = new ModelAndView("card:card-music",model);
 		Card card = cardBiz.findById(cardId);
 		if (card == null)
 			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
@@ -44,29 +46,29 @@ public class CardMusicController extends ConsoleBaseController {
 	}
 	
 	@RequestMapping(value="/doUploadFile",method=RequestMethod.POST)
-    public String doUploadFile(
+    public ModelAndView doUploadFile(
     		@RequestParam("file") MultipartFile mfiles, 
     		@RequestParam("cardId") Long cardId) {
 		User user = (User) getCurrentUser();
 		cardFileBiz.saveCardMusic(cardId, mfiles, user.getId());
-        return "redirect:/card/music/cardmusic/"+cardId;
+		return cardmusic(new ModelMap("result", new Result("上传成功！")), cardId);
     }
 	
 	@RequestMapping(value="/doSetMusic",method=RequestMethod.GET)
-    public String doSetMusic(
+    public ModelAndView doSetMusic(
     		@RequestParam("fileStoreId") Long fileStoreId,
     		@RequestParam("cardId") Long cardId) {
 		User user = (User) getCurrentUser();
 		cardFileBiz.useMusic(cardId, fileStoreId, user.getId());
-        return "redirect:/card/music/cardmusic/"+cardId;
+		return cardmusic(new ModelMap("result", new Result("设置成功！")), cardId);
     }
 	
 	@RequestMapping(value="/doDeleteMusic",method=RequestMethod.GET)
-    public String doDeleteMusic(
+    public ModelAndView doDeleteMusic(
     		@RequestParam("fileStoreId") Long fileStoreId,
     		@RequestParam("cardId") Long cardId) {
 		User user = (User) getCurrentUser();
 		cardFileBiz.deleteCardMusic(cardId, fileStoreId, user.getId());
-        return "redirect:/card/music/cardmusic/"+cardId;
+		return cardmusic(new ModelMap("result", new Result("删除成功！")), cardId);
     }
 }

@@ -1,12 +1,13 @@
 package onekr.web.console.card;
 
 import onekr.cardservice.card.intf.CardBiz;
-import onekr.cardservice.model.Card;
-import onekr.web.console.ConsoleBaseController;
+import onekr.framework.result.Result;
 import onekr.identityservice.model.User;
+import onekr.web.console.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,17 +22,17 @@ public class CardMapController extends ConsoleBaseController {
 	private CardBiz cardBiz;
 	
 	@RequestMapping(value = "/cardmap/{cardId}", method = RequestMethod.GET)
-	public ModelAndView cardmap(@PathVariable("cardId") Long cardId) {
-		ModelAndView mav = new ModelAndView("card:card-map");
+	public ModelAndView cardmap(ModelMap model, @PathVariable("cardId") Long cardId) {
+		ModelAndView mav = new ModelAndView("card:card-map", model);
 		mav.addObject("card", cardBiz.findById(cardId));
 		return mav;
 	}
 	
 	@RequestMapping(value = "/doUpdateMap", method = RequestMethod.POST)
-	public String doUpdateMap(Long cardId, String mapUrl, String mapPicUrl) {
+	public ModelAndView doUpdateMap(Long cardId, String mapUrl, String mapPicUrl) {
 		User user = (User) getCurrentUser();
-		Card card = cardBiz.updateCardMap(cardId, mapPicUrl, mapUrl, user.getId());
-		return "redirect:/card/map/cardmap/"+card.getId();
+		cardBiz.updateCardMap(cardId, mapPicUrl, mapUrl, user.getId());
+		return cardmap(new ModelMap("result", new Result("保存成功！")), cardId);
 	}
 	
 }

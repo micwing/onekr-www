@@ -1,5 +1,7 @@
 package onekr.identityservice.user.intf;
 
+import java.util.Set;
+
 import onekr.identityservice.model.User;
 import onekr.identityservice.model.UserPassword;
 
@@ -14,5 +16,7 @@ public interface UserLoginBiz {
 	User findUserByName(@NotBlank String loginName);
 	
 	UserPassword findUserPasswordByName(@NotBlank String loginName);
+	
+	Set<String> findUserRoles(Long userId);
 }
 

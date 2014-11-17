@@ -38,7 +38,7 @@ public class UserAuthorizingRealm extends AuthorizingRealm {
 		User user = (User) getAvailablePrincipal(principals);
 		if (user != null) {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-//			info.setRoles(userLoginBiz.findUserRoleStr(user));
+			info.setRoles(userLoginBiz.findUserRoles(user.getId()));
 //			info.setStringPermissions(userLoginBiz.findUserRolePermissionsStr(user));
 			return info;
 		}

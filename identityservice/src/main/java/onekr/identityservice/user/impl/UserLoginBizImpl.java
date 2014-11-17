@@ -1,5 +1,8 @@
 package onekr.identityservice.user.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.identityservice.model.User;
@@ -32,7 +35,7 @@ public class UserLoginBizImpl implements UserLoginBiz {
 			token.setRememberMe(true);
 		}
 		
-		Subject currentUser = SecurityUtils.getSubject();  
+		Subject currentUser = SecurityUtils.getSubject();
 		try {
 			currentUser.login(token);
 		} catch (AuthenticationException e) {
@@ -51,5 +54,22 @@ public class UserLoginBizImpl implements UserLoginBiz {
 		if (user == null)
 			throw new AppException(ErrorCode.USER_NOT_EXIST);
 		return userPasswordDao.findOne(user.getId());
+	}
+	
+	@Override
+	public Set<String> findUserRoles(Long userId) {
+		User user = userDao.findOne(userId);
+		if (user == null)
+			throw new AppException(ErrorCode.USER_NOT_EXIST);
+		Set<String> set = new HashSet<String>();
+		switch(user.getGroup()) {
+			case ADMINISTRATOR : 
+				set.add("ADMINISTRATOR");
+			case SELLER : 
+				set.add("SELLER");
+			case USER :
+				set.add("USER");
+		}
+		return set;
 	}
 }

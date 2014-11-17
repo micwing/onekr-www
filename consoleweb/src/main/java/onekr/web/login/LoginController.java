@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import onekr.web.console.ConsoleBaseController;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
+import onekr.identityservice.model.Group;
+import onekr.identityservice.model.User;
+import onekr.identityservice.user.intf.UserBiz;
 import onekr.identityservice.user.intf.UserLoginBiz;
+import onekr.web.console.ConsoleBaseController;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -28,9 +31,17 @@ public class LoginController extends ConsoleBaseController {
 	@Autowired
 	private UserLoginBiz userLoginBiz;
 	
+	@Autowired
+	private UserBiz userBiz;
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public String redirect() {
+	public String index() {
 		return "single:login/login";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register() {
+		return "single:login/register";
 	}
 	
 	@RequestMapping(value = "/doSignin", method = RequestMethod.POST)
@@ -46,11 +57,18 @@ public class LoginController extends ConsoleBaseController {
 		return new Result(ErrorCode.SUCCEED);
 	}
 	
-//	@RequestMapping(value = "/redirect", method = RequestMethod.GET)
-//	public String redirect() {
-//		return "redirect:/home/index";
-//	}
-
+	@RequestMapping(value = "/doRegister", method = RequestMethod.POST)
+	@ResponseBody
+	public Result doRegister(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("username") String username,
+			@RequestParam("password") String password,
+			@RequestParam("email") String email) {
+		
+		userBiz.register(username, password, email, null, Group.USER);
+		return new Result(ErrorCode.SUCCEED);
+	}
+	
 	@RequestMapping(value = "/doSignout", method = RequestMethod.GET)
 	public String doSignout() {
 		Subject currentUser = SecurityUtils.getSubject();
@@ -68,9 +86,11 @@ public class LoginController extends ConsoleBaseController {
 	}
 	
 	
-//	@RequestMapping(value = "/signfind", method = RequestMethod.GET)
-//	public String signfind() {
-//		return "console/signin/signfind";
-//	}
+	@RequestMapping(value = "/registerNameAvailable", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean registerNameAvailable(@RequestParam("username") String username) {
+		User user = userLoginBiz.findUserByName(username);
+		return user == null;
+	}
 	
 }

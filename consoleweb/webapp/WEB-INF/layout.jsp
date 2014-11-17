@@ -24,11 +24,6 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.json.js"></script>
 
-<script src="assets/js/validate/jquery.validate.js"
-	type="text/javascript"></script>
-<script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
-<script src="assets/js/validate/message_cn.js" type="text/javascript"></script>
-
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="assets/ico/apple-touch-icon-144-precomposed.png">
@@ -57,8 +52,7 @@
 					
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="${fn:startsWith(requestServletPath, '/center/')?'active':''}"><a href="#">通知中心</a></li>
-							<li class="${fn:startsWith(requestServletPath, '/console/')?'active':''}"><a href="console/dashboard">门户管理</a></li>
+							<%-- <li class="${fn:startsWith(requestServletPath, '/console/')?'active':''}"><a href="console/dashboard">门户管理</a></li> --%>
 							<li class="${fn:startsWith(requestServletPath, '/card/')?'active':''}"><a href="card/index">请柬管理</a></li>
 							<li class="${fn:startsWith(requestServletPath, '/identity')?'active':''}"><a href="#contact">用户管理</a></li>
 						</ul>

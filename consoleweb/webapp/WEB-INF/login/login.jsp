@@ -74,12 +74,14 @@
         <button class="btn btn-large btn-primary" type="button" id="login-btn">登录</button>
         <hr>
         <div class="pull-right">
-        	<a href="/">返回首页</a>
+        	<a href="/">返回首页</a> | <a href="login/register">注册新用户</a>
         </div>
       </form>
 
-    </div> <!-- /container -->
+    </div>
+    
     <script src="assets/js/jquery.js"></script>
+    
 	<script type="text/javascript">
     var ns = ns || {};
     ns.checkInput = function() {

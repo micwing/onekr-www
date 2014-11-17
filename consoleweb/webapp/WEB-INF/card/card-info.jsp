@@ -1,7 +1,11 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.cardservice.model.CardType" %>
 <%@include file="../common/includes.jsp"%>
-<script language="javascript" type="text/javascript" src="assets/js/My97DatePicker/WdatePicker.js"></script>
+<script src="assets/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+
+<script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
+<script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
+<script src="assets/js/validate/message_cn.js" type="text/javascript"></script>
 <style>
 .star{
 	color: red;

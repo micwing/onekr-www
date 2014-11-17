@@ -2,19 +2,13 @@ package onekr.identityservice.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Map;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,49 +26,46 @@ public class User implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(name = "name", unique = true)
 	private String name;
-	
+
 	@Column(name = "email", unique = true)
 	private String email;
-	
+
 	@Column(name = "mobile", unique = true)
 	private String mobile;
-	
+
 	@Enumerated
 	@Column(name = "gender")
 	private Gender gender;
-	
+
 	@Column(name = "birthday")
 	private Date birthday;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "photo")
 	private String photo;
-	
+
 	@Column(name = "tel")
 	private String tel;
-	
+
 	@Column(name = "qq")
 	private String qq;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "create_at", nullable = false)
 	private Date createAt;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "update_at", nullable = false)
 	private Date updateAt;
-	
-	@ElementCollection(fetch = FetchType.LAZY)
-	@JoinTable(name = IdentityConstants.TABLE_PREFIX_NAMING + "user_attr", 
-			joinColumns = @JoinColumn(name = "user_id"))
-	@MapKeyColumn(length = 255, name = "attr_key")
-	@Column(name = "attr_value", length = 3000)
-	private Map<String, String> attributes;
+
+	@Enumerated 
+	@Column(name = "user_group")
+	private Group group;
 
 	public Long getId() {
 		return id;
@@ -172,14 +163,14 @@ public class User implements Serializable {
 		this.updateAt = updateAt;
 	}
 
-	public Map<String, String> getAttributes() {
-		return attributes;
+	public Group getGroup() {
+		return group;
 	}
 
-	public void setAttributes(Map<String, String> attributes) {
-		this.attributes = attributes;
+	public void setGroup(Group group) {
+		this.group = group;
 	}
-	
+
 	@Override
 	public String toString() {
 		return getName();

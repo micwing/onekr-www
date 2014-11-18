@@ -1,4 +1,4 @@
-package onekr.commonservice.common.dao;
+package onekr.commonservice.message.dao;
 
 import java.util.Collection;
 import java.util.List;

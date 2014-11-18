@@ -10,11 +10,11 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td>您申请了重置登录账号的密码，如非您本人操作，请忽略此邮件。</td>
+			<td>您申请了重置密码，如非您本人操作，请忽略此邮件。</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td>立即重置密码，请点击：<a href="http://www.onekr.com/password/reset/${passwordUrl}" target="_blank">http://www.onekr.com/password/reset/${passwordUrl}</a></td>
+			<td>立即重置密码，请点击：<a href="http://console.onekr.com/login/resetpassword?username=${username}&code=${code}" target="_blank">http://console.onekr.com/login/resetpassword?username=${username}&code=${code}</a></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
@@ -31,7 +31,7 @@
 				<p></p>
 				<p style="text-align: -webkit-right;">
 					<span style="color: #999999;">本邮件是系统自动发送的，请勿直接回复！如果您在使用者遇到任何问题，请发邮件到：<a
-						href="mailto:service@onekr.com">service@onekr.com</a></span>
+						href="mailto:onekrstudio@163.com">onekrstudio@163.com</a></span>
 				</p>
 				<p style="text-align: left;">
 					<span style="color: #999999;">感谢您的访问，祝您使用愉快！</span>

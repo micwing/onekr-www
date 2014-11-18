@@ -1,11 +1,11 @@
-package onekr.commonservice.common.impl;
+package onekr.commonservice.message.impl;
 
 import java.util.Collection;
 import java.util.List;
 
 import onekr.commonservice.biz.Biz;
-import onekr.commonservice.common.dao.MessageDao;
-import onekr.commonservice.common.intf.MessageBiz;
+import onekr.commonservice.message.dao.MessageDao;
+import onekr.commonservice.message.intf.MessageBiz;
 import onekr.commonservice.model.Message;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;

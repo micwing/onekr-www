@@ -3,7 +3,7 @@ package onekr.commonservice.biz;
 public enum Biz {
 	
 	/**系统*/
-	PORTAL_SYSTEM,
+	SYSTEM,
 	
 	/**文章评论*/
 	PORTAL_ARTICLE_COMMENTS,

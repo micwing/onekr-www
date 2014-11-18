@@ -1,4 +1,4 @@
-package onekr.commonservice.common.intf;
+package onekr.commonservice.message.intf;
 
 import java.util.Collection;
 import java.util.List;

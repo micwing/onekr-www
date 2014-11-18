@@ -60,3 +60,7 @@ jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {
     }
     return this.optional(element) || (length >= param[0] && length <= param[1]);
 }, $.validator.format("请确保输入的值在{0}-{1}个字节之间(一个中文字算2个字节)"));
+//已阅读接受条款
+$.validator.addMethod("readpaper", function(value, element) {      
+   return $(element).attr('checked');
+}, '您还没有接受条款！');

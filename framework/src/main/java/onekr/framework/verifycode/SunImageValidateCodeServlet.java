@@ -27,6 +27,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
@@ -43,9 +44,15 @@ public class SunImageValidateCodeServlet extends HttpServlet {
 
     /** Session存放验证码的Key */
     public static final String                 SESSION_KEY      = "_image_validate_code";
+    /** Session存放验证码次数的Key */
+    public static final String                 SESSION_TIMES_KEY        = "_image_validate_code_time";
 
     /** 请求参数存放验证码的Key */
-    public static final String                 PARAM_KEY        = "paptcha";
+    public static final String                 PARAM_KEY        = "verifycode";
+    
+    
+    /** 不用检验验证码的次数 */
+    public static final int                   MAX_NO_VALIDATE_TIME     = 3;
 
     /** 牛X验证码 */
     public static final String                 NX_CODE          = "@G)+";
@@ -58,6 +65,53 @@ public class SunImageValidateCodeServlet extends HttpServlet {
 
     /** 验证码输出流缓存 */
     private Map<String, ByteArrayOutputStream> cache;
+    
+    /**
+     * 本次是否免校验
+     * @param req 请求
+     * @return 验证结果，true：通过校验，false：校验失败
+     */
+    public static boolean noValidateTimes(HttpServletRequest req) {
+    	HttpSession session = req.getSession();
+    	
+    	//初始化session字段值
+    	if (session.getAttribute(SESSION_TIMES_KEY) == null) {
+    		session.setAttribute(SESSION_TIMES_KEY, 0);
+    	}
+    	
+    	//为本次请求增加计数
+    	session.setAttribute(SESSION_TIMES_KEY, ((Integer) session.getAttribute(SESSION_TIMES_KEY))+1);
+    	
+    	//判断本次请求是否要检测校验码
+    	int times = (Integer) session.getAttribute(SESSION_TIMES_KEY);
+        return times <= MAX_NO_VALIDATE_TIME;
+    }
+    
+    /**
+     * 获取校验次数
+     * @param req 请求
+     * @return 验证结果，true：通过校验，false：校验失败
+     */
+    public static int getNoValidateTimes(HttpServletRequest req) {
+    	HttpSession session = req.getSession();
+    	
+    	//初始化session字段值
+    	if (session.getAttribute(SESSION_TIMES_KEY) == null) {
+    		session.setAttribute(SESSION_TIMES_KEY, 0);
+    	}
+    	
+    	return (Integer) session.getAttribute(SESSION_TIMES_KEY);
+    }
+    
+    /**
+     * 重置免校验
+     * @param req 请求
+     * @return 验证结果，true：通过校验，false：校验失败
+     */
+    public static void noValidateTimesReset(HttpServletRequest req) {
+    	HttpSession session = req.getSession();
+    	session.setAttribute(SESSION_TIMES_KEY, 0);
+    }
 
     /**
      * 验证

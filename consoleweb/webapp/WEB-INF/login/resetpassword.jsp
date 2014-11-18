@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8">
-<title>登录</title>
+<title>重置密码</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -31,56 +31,54 @@
 <div class="container">
 	<div class="row">
 		<div class="span6 offset3">
-			<h3>登录</h3>
+			<h3>重置密码</h3>
 			<hr>
 			<form class="form-horizontal form-signin" id="main-form">
 				<div class="control-group">
-					<label class="control-label" for="username">用户名 / 邮箱</label>
+					<label class="control-label" for="username">用户名</label>
 					<div class="controls">
-						<input type="text" id="username" value="" name="username">
+						<input type="text" id="username" name="username" value="${username}" readonly="readonly">
+						<input type="hidden" id="username" name="code" value="${code}" >
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="password">密码</label>
+					<label class="control-label" for="password">新密码</label>
 					<div class="controls">
 						<input type="password" id="password" value="" name="password">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="remember">记住我</label>
+					<label class="control-label" for="password2">重复密码</label>
 					<div class="controls">
-						<input type="checkbox" value="remember-me" id="remember" name="remember">
+						<input type="password" id="password2" value="" name="password2">
 					</div>
 				</div>
-				<div id="verifycode-div" style="display: none">
-					<div class="control-group">
-						<label class="control-label" for="verifycode"></label>
-						<div class="controls">
-							<img id="verifycode-img" style="cursor: pointer;width: 108px;height: 30px;" src="<%=basePath%>verifyCode" alt="验证码"  onclick="this.src=this.src+'?'+Math.random()">
-						</div>
+				<div class="control-group">
+					<label class="control-label" for="verifycode"></label>
+					<div class="controls">
+						<img id="verifycode-img" style="cursor: pointer;width: 108px;height: 30px;" src="<%=basePath%>verifyCode" alt="验证码"  onclick="this.src=this.src+'?'+Math.random()">
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="">验证码</label>
-						<div class="controls">
-							<input type="text" id="verifycode" name="verifycode" value="" placeholder="验证码" class="login" style="width: 80px;" />
-						</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="">验证码</label>
+					<div class="controls">
+						<input type="text" id="verifycode" name="verifycode" value="" placeholder="验证码" class="login" style="width: 80px;" />
 					</div>
 				</div>
 				<div class="control-group">
 					<div class="controls">
-						<button class="btn btn-large btn-primary" type="button" id="main-btn">登录</button>
-						<span id="msg"></span>
+						<button class="btn btn-large btn-primary" type="button" id="main-btn">保存</button>
 					</div>
 				</div>
 			</form>
 			<hr>
 			<div class="pull-right">
-				<a href="/">返回首页</a> | <a href="login/register">新用户注册</a> | <a href="login/findpassword">找回密码</a>
+				<a href="/">返回首页</a> | <a href="login">用户登录</a> | <a href="login/register">新用户注册</a>
 			</div>
 		</div>
 	</div>
 </div>
-  
+
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
 <script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
@@ -90,48 +88,50 @@
 var ns = ns || {};
 var validator = $('#main-form').validate({
 	rules : {
-		username : {
-			required : true
-		},
 		password : {
-			required : true
+			required : true,
+			minlength : 6,
+			maxlength : 30
+		},
+		password2 : {
+			required : true,
+			minlength : 6,
+			maxlength : 30,
+			equalTo : '#password'
 		},
 		verifycode : {
 			required : true
 		}
 	},
   	errorClass : "help-block",
-	errorElement : "span",
+	errorElement : "div",
 	highlight : function(element, errorClass, validClass) {
 		$(element).parents('.control-group').removeClass('success');
 		$(element).parents('.control-group').addClass('error');
-		$('#msg').html('');
 	},
 	unhighlight : function(element, errorClass, validClass) {
 		$(element).parents('.control-group').removeClass('error');
 		$(element).parents('.control-group').addClass('success');
-		$('#msg').html('');
 	}
 });
-ns.doLogin = function(btnId) {
+ns.doResetPassword = function(btnId) {
 	$(btnId).attr('disabled', true);
 	if (!$('#main-form').valid()) {
 		$(btnId).attr('disabled', false);
 		return;
 	}
 	$.ajax({
-		url : "login/doSignin",
+		url : "login/doResetPassword",
 		type : 'post',
-		dataType : 'json',
+			dataType : 'json',
 		data : $('#main-form').serialize(),
 		success : function(data) {
 			if (data.code == 0) {
-				$('#msg').html('<span style="color:green">登录成功，正在跳转...</span>');
-				location.href = 'card/index';
+				alert('重置成功，请立即登录！');
+				location.href='login';
 				return;
 			}
 			
-			ns.getNoValidateTimes();
 			$('#verifycode-img').trigger('click');
 			$('#verifycode').val('');
 			
@@ -140,38 +140,26 @@ ns.doLogin = function(btnId) {
 					"verifycode": "验证码错误，请重新输入！"
 				});
 				$('#verifycode').focus();
-			} else if(data.code == 12) {
+			} else if(data.code == 101) {
 				validator.showErrors({
-					"username": "",
-					"password": data.message
+					"password": "用户不存在，请联系管理员！"
 				});
 				$('#password').focus();
+			} else if(data.code == 6) {
+				validator.showErrors({
+					"password": "您没有权限操作！"
+				});
+				$('#password').focus();
+			} else {
+				alert('操作失败，请重试！');
 			}
 			$(btnId).attr('disabled', false);
 		}
 	});
-	
 };
-ns.getNoValidateTimes = function() {
-	$.ajax({
-		url : "login/getNoValidateTimes",
-		type : 'post',
-			dataType : 'json',
-		data : $('#main-form').serialize(),
-		success : function(data) {
-			if (data.code == 0) {
-				if (data.value >= 3) {
-					$('#verifycode-div').show();
-				}
-			}
-		}
-	});
-};
-$(function() {
-	ns.getNoValidateTimes();
-	$('#main-btn').click(function() {
-		ns.doLogin('#main-btn');
-	});
+$('#main-btn').click(function() {
+	ns.doResetPassword('#main-btn');
+	$('#password').focus();
 });
 </script>
 </body>

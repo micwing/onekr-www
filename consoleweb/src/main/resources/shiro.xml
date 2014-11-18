@@ -24,6 +24,7 @@
 				/login/** = anon
 				/assets/** = anon
 				/attached/** = anon
+				/verifyCode/** = anon
 				/** = authc
 			</value>
 		</property>

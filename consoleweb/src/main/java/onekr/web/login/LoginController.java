@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
+import onekr.framework.verifycode.SunImageValidateCodeServlet;
 import onekr.identityservice.model.Group;
 import onekr.identityservice.model.User;
 import onekr.identityservice.user.intf.UserBiz;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -44,6 +47,25 @@ public class LoginController extends ConsoleBaseController {
 		return "single:login/register";
 	}
 	
+	@RequestMapping(value = "/findpassword", method = RequestMethod.GET)
+	public String findpassword() {
+		return "single:login/findpassword";
+	}
+	
+	@RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
+	public ModelAndView resetpassword(
+			@RequestParam("username") String username,
+			@RequestParam("code") String code) {
+		ModelAndView mav = new ModelAndView("single:login/resetpassword");
+		
+		if (!userBiz.validateFindPasswordCode(username, code)) {
+			throw new AppException(ErrorCode.NO_PERMISSON);
+		}
+		mav.addObject("username", username);
+		mav.addObject("code", code);
+		return mav;
+	}
+	
 	@RequestMapping(value = "/doSignin", method = RequestMethod.POST)
 	@ResponseBody
 	public Result doSignin(HttpServletRequest request,
@@ -52,7 +74,15 @@ public class LoginController extends ConsoleBaseController {
 			@RequestParam("password") String password,
 			@RequestParam(value="remember",required=false) String remember) {
 		
+		if (!SunImageValidateCodeServlet.noValidateTimes(request) && !SunImageValidateCodeServlet.validate(request)) {
+			//超过了免校验的次数，并且验证码错误，则提示错误结果
+			return new Result(ErrorCode.VALIDATE_ERROR);
+		}
+		
 		userLoginBiz.login(credential, password, remember);
+		
+		//重置免校验次数
+		SunImageValidateCodeServlet.noValidateTimesReset(request);
 		
 		return new Result(ErrorCode.SUCCEED);
 	}
@@ -65,7 +95,39 @@ public class LoginController extends ConsoleBaseController {
 			@RequestParam("password") String password,
 			@RequestParam("email") String email) {
 		
+		if (!SunImageValidateCodeServlet.validate(request)) {
+			return new Result(ErrorCode.VALIDATE_ERROR);
+		}
 		userBiz.register(username, password, email, null, Group.USER);
+		return new Result(ErrorCode.SUCCEED);
+	}
+	
+	@RequestMapping(value = "/doFindPassword", method = RequestMethod.POST)
+	@ResponseBody
+	public Result doFindPassword(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("username") String username,
+			@RequestParam("email") String email) {
+		
+		if (!SunImageValidateCodeServlet.validate(request)) {
+			return new Result(ErrorCode.VALIDATE_ERROR);
+		}
+		userBiz.findPassword(username, email);
+		return new Result(ErrorCode.SUCCEED);
+	}
+	
+	@RequestMapping(value = "/doResetPassword", method = RequestMethod.POST)
+	@ResponseBody
+	public Result doResetPassword(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("username") String username,
+			@RequestParam("code") String code,
+			@RequestParam("password") String password) {
+		
+		if (!SunImageValidateCodeServlet.validate(request)) {
+			return new Result(ErrorCode.VALIDATE_ERROR);
+		}
+		userBiz.resetPassword(username, password, code);
 		return new Result(ErrorCode.SUCCEED);
 	}
 	
@@ -85,6 +147,22 @@ public class LoginController extends ConsoleBaseController {
 		return "redirect:/login";
 	}
 	
+	@RequestMapping(value = "/getNoValidateTimes", method = RequestMethod.POST)
+	@ResponseBody
+	public Result getNoValidateTimes(HttpServletRequest request,
+			HttpServletResponse response) {
+		int times = SunImageValidateCodeServlet.getNoValidateTimes(request);
+		Result result =  new Result();
+		result.setValue(times);
+		return result;
+	}
+	
+	@RequestMapping(value = "/registerEmailAvailable", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean registerEmailAvailable(@RequestParam("email") String email) {
+		User user = userLoginBiz.findUserByEmail(email);
+		return user == null;
+	}
 	
 	@RequestMapping(value = "/registerNameAvailable", method = RequestMethod.POST)
 	@ResponseBody
@@ -92,5 +170,4 @@ public class LoginController extends ConsoleBaseController {
 		User user = userLoginBiz.findUserByName(username);
 		return user == null;
 	}
-	
 }

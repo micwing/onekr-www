@@ -20,4 +20,9 @@ public interface UserBiz {
 	
 	User register(@NotBlank String name,@NotBlank String pwd, String email, String mobile,@NotNull Group group);
 	
+	User findPassword(@NotBlank String name, @NotBlank String email);
+	
+	boolean validateFindPasswordCode(@NotBlank String name,@NotBlank String code);
+	
+	User resetPassword(@NotBlank String name, @NotBlank String pwd, String code);
 }

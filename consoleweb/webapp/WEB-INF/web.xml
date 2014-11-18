@@ -60,12 +60,12 @@
 	<!-- verification code -->
 	<servlet>
 		<servlet-name>verifyCodeServle</servlet-name>
-		<servlet-class>onekr.framework.verifycode.ImageIOVerifyCodeServlet</servlet-class>
+		<servlet-class>onekr.framework.verifycode.SunImageValidateCodeServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>verifyCodeServle</servlet-name>
-		<url-pattern>/verifyCode/*</url-pattern>
+		<url-pattern>/verifyCode</url-pattern>
 	</servlet-mapping>
 	
 	<!-- SpringMVC core dispatcher-->

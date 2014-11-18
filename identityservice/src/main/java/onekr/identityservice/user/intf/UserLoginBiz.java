@@ -15,6 +15,8 @@ public interface UserLoginBiz {
 	
 	User findUserByName(@NotBlank String loginName);
 	
+	User findUserByEmail(@NotBlank String email);
+	
 	UserPassword findUserPasswordByName(@NotBlank String loginName);
 	
 	Set<String> findUserRoles(Long userId);

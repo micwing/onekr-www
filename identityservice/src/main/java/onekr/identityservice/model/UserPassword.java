@@ -22,6 +22,9 @@ public class UserPassword implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "user_id", nullable = false, unique = true)
+	private Long userId;
+	
 	@Column(name = "password", nullable = false)
 	private String password;
 
@@ -31,6 +34,14 @@ public class UserPassword implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getPassword() {

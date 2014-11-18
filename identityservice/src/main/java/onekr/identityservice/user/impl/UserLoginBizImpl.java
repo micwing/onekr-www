@@ -49,11 +49,16 @@ public class UserLoginBizImpl implements UserLoginBiz {
 	}
 	
 	@Override
+	public User findUserByEmail(String email) {
+		return userDao.findByEmail(email);
+	}
+	
+	@Override
 	public UserPassword findUserPasswordByName(String loginName) {
 		User user = userDao.findByName(loginName);
 		if (user == null)
 			throw new AppException(ErrorCode.USER_NOT_EXIST);
-		return userPasswordDao.findOne(user.getId());
+		return userPasswordDao.findByUserId(user.getId());
 	}
 	
 	@Override

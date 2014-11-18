@@ -15,4 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserPasswordDao extends JpaRepository<UserPassword, Long> {
 	
+	UserPassword findByUserId(Long userId);
 }

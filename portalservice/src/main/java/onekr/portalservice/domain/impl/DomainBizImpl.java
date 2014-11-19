@@ -61,7 +61,7 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 	
 	private DomainSeach getJudgeSearcher() {
 		Config config = configBiz.findConfig(
-				Biz.PORTAL_SYSTEM, GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME);
+				Biz.SYSTEM, GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME);
 		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
 		if (config != null) {
 			seacherName = config.getValue();
@@ -71,7 +71,7 @@ public class DomainBizImpl implements DomainBiz,InitializingBean {
 	
 	private DomainSeach getWhoisSearcher() {
 		Config config = configBiz.findConfig(
-				Biz.PORTAL_SYSTEM, GlobalConstants.OWNER_DOMAIN_WHOIS_SEARCHER_NAME);
+				Biz.SYSTEM, GlobalConstants.OWNER_DOMAIN_WHOIS_SEARCHER_NAME);
 		String seacherName = GlobalConstants.DOMAIN_DEFAULT_DOMAIN_SEARCHER_NAME;
 		if (config != null) {
 			seacherName = config.getValue();

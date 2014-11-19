@@ -3,5 +3,6 @@ package onekr.commonservice.message.intf;
 
 public interface EmailBiz {
 
-	void sendTextEmail(String sendTo, String text);
+	void sendEmail(String sendTo,String title, String html);
+	
 }

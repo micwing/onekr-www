@@ -10,6 +10,15 @@
 		<put-attribute name="content" expression="/WEB-INF/portal/{1}/{2}.jsp"/>
 	</definition>
 	
+	<definition name="system:*" template="/WEB-INF/layout.jsp">
+		<put-attribute name="navbar" expression="/WEB-INF/system-navbar.jsp"/>
+		<put-attribute name="content" expression="/WEB-INF/system/{1}.jsp"/>
+	</definition>
+	<definition name="system:*/*" template="/WEB-INF/layout.jsp">
+		<put-attribute name="navbar" expression="/WEB-INF/system-navbar.jsp"/>
+		<put-attribute name="content" expression="/WEB-INF/system/{1}/{2}.jsp"/>
+	</definition>
+	
 	<definition name="card:*" template="/WEB-INF/layout.jsp">
 		<put-attribute name="navbar" expression="/WEB-INF/card-navbar.jsp"/>
 		<put-attribute name="content" expression="/WEB-INF/card/{1}.jsp"/>
@@ -17,15 +26,6 @@
 	<definition name="card:*/*" template="/WEB-INF/layout.jsp">
 		<put-attribute name="navbar" expression="/WEB-INF/card-navbar.jsp"/>
 		<put-attribute name="content" expression="/WEB-INF/card/{1}/{2}.jsp"/>
-	</definition>
-	
-	<definition name="identity:*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/identity-navbar.jsp"/>
-		<put-attribute name="content" expression="/WEB-INF/identity/{1}.jsp"/>
-	</definition>
-	<definition name="identity:*/*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/identity-navbar.jsp"/>
-		<put-attribute name="content" expression="/WEB-INF/identity/{1}/{2}.jsp"/>
 	</definition>
 	
 	<definition name="single:*/*/*" templateExpression="/WEB-INF/{1}/{2}/{3}.jsp"/>

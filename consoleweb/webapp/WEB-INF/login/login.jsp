@@ -37,13 +37,13 @@
 				<div class="control-group">
 					<label class="control-label" for="username">用户名 / 邮箱</label>
 					<div class="controls">
-						<input type="text" id="username" value="" name="username">
+						<input type="text" id="username" value="admin" name="username">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="password">密码</label>
 					<div class="controls">
-						<input type="password" id="password" value="" name="password">
+						<input type="password" id="password" value="1" name="password">
 					</div>
 				</div>
 				<div class="control-group">
@@ -127,7 +127,7 @@ ns.doLogin = function(btnId) {
 		success : function(data) {
 			if (data.code == 0) {
 				$('#msg').html('<span style="color:green">登录成功，正在跳转...</span>');
-				location.href = 'card/index';
+				location.href = 'card/info';
 				return;
 			}
 			

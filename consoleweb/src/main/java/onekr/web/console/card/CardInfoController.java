@@ -36,6 +36,11 @@ public class CardInfoController extends ConsoleBaseController {
 	@Autowired
 	private CardMakeCodeBiz cardMakeCodeBiz;
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public String index() {
+		return "redirect:/card/info/list";
+	}
+	
 	@RequestMapping(value = "/makecodeinput", method = RequestMethod.GET)
 	public ModelAndView makecodeinput() {
 		ModelAndView mav = new ModelAndView("card:card-makecodeinput");
@@ -86,6 +91,19 @@ public class CardInfoController extends ConsoleBaseController {
 		mav.addObject("page", page);
 		mav.addObject("cardType", cardType);
 		mav.addObject("status", status);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/pausedlist", method = RequestMethod.GET)
+	public ModelAndView pausedlist(CardType cardType, Pageable pageable) {
+		if (cardType == null)
+			cardType = CardType.WED_CARD;
+		if (pageable == null)
+			pageable = new PageRequest(0, Constants.PAGE_DEFAULT_SIZE);
+		Page<Card> page = cardBiz.listCard(cardType, Status.PAUSED, pageable);
+		ModelAndView mav = new ModelAndView("card:card-pausedlist");
+		mav.addObject("page", page);
+		mav.addObject("cardType", cardType);
 		return mav;
 	}
 }

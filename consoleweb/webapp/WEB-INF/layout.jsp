@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8">
-<title>控制台</title>
+<title>管理中心</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -23,6 +23,10 @@
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.json.js"></script>
+
+<script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
+<script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
+<script src="assets/js/validate/message_cn.js" type="text/javascript"></script>
 
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
@@ -48,30 +52,26 @@
 					<span class="icon-bar"></span>
 					</a>
 					
-					<a class="brand" href="#">ONEKR CONSOLE</a>
+					<a class="brand" href="#">管理中心</a>
 					
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<%-- <li class="${fn:startsWith(requestServletPath, '/console/')?'active':''}"><a href="console/dashboard">门户管理</a></li> --%>
-							<li class="${fn:startsWith(requestServletPath, '/card/')?'active':''}"><a href="card/index">请柬管理</a></li>
-							<li class="${fn:startsWith(requestServletPath, '/identity')?'active':''}"><a href="#contact">用户管理</a></li>
+							<li class="${fn:startsWith(requestServletPath, '/card/')?'active':''}"><a href="card/info">请柬管理</a></li>
+							<shiro:hasRole name="ADMINISTRATOR">
+							<li class="${fn:startsWith(requestServletPath, '/system/')?'active':''}"><a href="system/config">系统设置</a></li>
+							</shiro:hasRole>
 						</ul>
 						<ul class="nav pull-right">
 							<li class="divider-vertical"></li>
-							
 							<li class="dropdown">
 		                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><shiro:principal /> <b class="caret"></b></a>
 		                        <ul class="dropdown-menu">
 		                          <li><a href="console/account/accountInfo">我的账号</a></li>
-		                          <li><a href="/" target="_blank">查看前台</a></li>
-		                          <li><a href="https://login.secureserver.net" target="_blank">系统邮箱</a></li>
-		                          <li class="divider"></li>
 		                          <li><a href="login/doSignout">安全退出</a></li>
 		                        </ul>
 	                      	</li>
 						</ul>
 					</div>
-					<!--/.nav-collapse -->
 				</div>
 			</div>
 		</div>
@@ -79,23 +79,18 @@
 		<div class="row">
 			<div class="span3">
 				<tiles:insertAttribute name="navbar" />
-
 			</div>
-			<!--/span-->
-
 			<div class="span9">
 				<div class="well" style="background-color: transparent;">
 					<tiles:insertAttribute name="content" />
 				</div>
 			</div>
-			<!--/span-->
 		</div>
-		<!--/row-->
 
 		<hr>
 		
 		<footer>
-		  <p>&copy; ONEKR.com 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
+		  <p>&copy; www.ONEKR.com 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
 		</footer>
 
 	</div>

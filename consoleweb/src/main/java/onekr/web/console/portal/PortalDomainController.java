@@ -30,7 +30,7 @@ public class PortalDomainController extends ConsoleBaseController {
 		owners.add(GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME);
 		owners.add(GlobalConstants.OWNER_DOMAIN_WHOIS_SEARCHER_NAME);
 		
-		Map<String, Config> configs = configBiz.findConfigs(Biz.PORTAL_SYSTEM, owners);
+		Map<String, Config> configs = configBiz.findConfigs(Biz.SYSTEM, owners);
 		String searchName = "";
 		String whoisSearchName = "";
 		if (configs.containsKey(GlobalConstants.OWNER_DOMAIN_SEARCHER_NAME)) {			

@@ -1,9 +1,11 @@
 package onekr.identityservice.user.impl;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import onekr.commonservice.message.intf.EmailBiz;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.type.Gender;
@@ -19,17 +21,34 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 @Service
 public class UserBizImpl implements UserBiz {
 	@Value("#{systemConfig['user.anonymousId']}")
 	private Long anonymousId;
 	
+	@Value("#{systemConfig['site.root.url']}")
+	private String siteRootUrl;
+	
+	@Value("#{systemConfig['site.console.url']}")
+	private String siteConsoleUrl;
+	
 	@Autowired
 	private UserDao userDao;
 	
 	@Autowired
 	private UserPasswordDao userPasswordDao;
+	
+	@Autowired
+	private EmailBiz emailBiz;
+	
+	@Autowired
+	private FreeMarkerConfigurer freeMarkerConfigurer;
 	
 	private Map<String, String> resetPasswordCodeMap = new HashMap<String, String>();
 	
@@ -85,7 +104,17 @@ public class UserBizImpl implements UserBiz {
 		if (user.getEmail().equals(email)) {
 			String code = new Md5Hash(System.currentTimeMillis()+user.getName()).toHex();
 			System.out.println(user.getName()+":"+code);
-			//TODO send email www.onekr.com/login/resetpassword?code=fdsaf7yd89sa6f7dsa6f8ds9a8f77f89dat7fdsy93h2
+			try {
+				Template tpl=freeMarkerConfigurer.getConfiguration().getTemplate("findUserPassword.ftl"); 
+				Map<String, String> map=new HashMap<String, String>();
+				map.put("username",user.getName());
+				map.put("url", siteConsoleUrl+"/login/resetpassword?username="+user.getName()+"&code="+code);
+				emailBiz.sendEmail(user.getEmail(), "重置密码", FreeMarkerTemplateUtils.processTemplateIntoString(tpl,map));
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (TemplateException e) {
+				e.printStackTrace();
+			}
 			resetPasswordCodeMap.put(user.getName(), code);
 		} else {
 			throw new AppException(ErrorCode.UN_SUPPORTED);

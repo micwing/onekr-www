@@ -42,6 +42,11 @@ public class LoginController extends ConsoleBaseController {
 		return "single:login/login";
 	}
 	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test() {
+		return "single:login/test";
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register() {
 		return "single:login/register";

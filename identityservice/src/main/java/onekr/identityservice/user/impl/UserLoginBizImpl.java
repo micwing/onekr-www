@@ -5,6 +5,7 @@ import java.util.Set;
 
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
+import onekr.identityservice.model.Group;
 import onekr.identityservice.model.User;
 import onekr.identityservice.model.UserPassword;
 import onekr.identityservice.user.dao.UserDao;
@@ -69,11 +70,11 @@ public class UserLoginBizImpl implements UserLoginBiz {
 		Set<String> set = new HashSet<String>();
 		switch(user.getGroup()) {
 			case ADMINISTRATOR : 
-				set.add("ADMINISTRATOR");
+				set.add(Group.ADMINISTRATOR.name());
 			case SELLER : 
-				set.add("SELLER");
+				set.add(Group.SELLER.name());
 			case USER :
-				set.add("USER");
+				set.add(Group.USER.name());
 		}
 		return set;
 	}

@@ -3,9 +3,6 @@
 <%@include file="../common/includes.jsp"%>
 <script src="assets/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 
-<script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
-<script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
-<script src="assets/js/validate/message_cn.js" type="text/javascript"></script>
 <style>
 .star{
 	color: red;

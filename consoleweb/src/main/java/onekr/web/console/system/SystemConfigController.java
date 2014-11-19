@@ -1,16 +1,16 @@
-package onekr.web.console.portal;
+package onekr.web.console.system;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import onekr.commonservice.biz.Biz;
+import onekr.commonservice.biz.ConfigOwner;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
-import onekr.web.console.ConsoleBaseController;
 import onekr.framework.result.Result;
 import onekr.framework.spring.web.annotation.RequestJsonParam;
-import onekr.portalservice.utils.GlobalConstants;
+import onekr.web.console.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,16 +21,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/console/config")
-public class PortalConfigController extends ConsoleBaseController {
+@RequestMapping(value = "/system/config")
+public class SystemConfigController extends ConsoleBaseController {
 	@Autowired
 	private ConfigBiz configBiz;
 	
-	@RequestMapping(value = "/baseConfig", method = RequestMethod.GET)
-	public ModelAndView baseConfig() {
-		ModelAndView mav = new ModelAndView("portal:baseConfig");
+	@RequestMapping(method = RequestMethod.GET)
+	public String index() {
+		return "redirect:/system/config/normalConfig";
+	}
+	
+	@RequestMapping(value = "/normalConfig", method = RequestMethod.GET)
+	public ModelAndView normalConfig() {
+		ModelAndView mav = new ModelAndView("system:normalConfig");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/emailConfig", method = RequestMethod.GET)
+	public ModelAndView emailConfig() {
+		ModelAndView mav = new ModelAndView("system:emailConfig");
 		List<String> owners = new ArrayList<String>();
-		owners.add(GlobalConstants.OWNER_HOME_SLIDER);
+		owners.add(ConfigOwner.SYSTEM_EMAIL_DEFAULTENCODING.name());
+		owners.add(ConfigOwner.SYSTEM_EMAIL_PASSWORD.name());
+		owners.add(ConfigOwner.SYSTEM_EMAIL_PORT.name());
+		owners.add(ConfigOwner.SYSTEM_EMAIL_SERVER.name());
+		owners.add(ConfigOwner.SYSTEM_EMAIL_USERNAME.name());
 		Map<String, Config> configs = configBiz.findConfigs(Biz.SYSTEM, owners);
 		mav.addObject("configs", configs);
 		return mav;

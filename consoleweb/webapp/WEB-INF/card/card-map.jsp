@@ -34,7 +34,7 @@
 </h3>
 <hr class="head-hr">
 
-<jsp:include page="_message.jsp"/>
+<jsp:include page="../util/message.jsp"/>
 
 <c:if test="${!empty card.mapPicUrl}">
 <div class="row-fluid" id="baiduMapDiv">

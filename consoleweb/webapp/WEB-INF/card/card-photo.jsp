@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
-<%@page import="onekr.cardservice.card.intf.CardFileBiz" %>
+<%@page import="onekr.cardservice.card.intf.CardPhotoFileBiz" %>
 <h3>请柬照片
 <span class="pull-right">
     <span class="btn-group">
@@ -11,7 +11,7 @@
 </h3>
 <hr class="head-hr">
 
-<jsp:include page="_message.jsp"/>
+<jsp:include page="../util/message.jsp"/>
 
 <div class="row-fluid">
 	<div class="span12">
@@ -23,7 +23,7 @@
 					<input type="hidden" name="cardId" value="${card.id}" /> <input
 						type="file" id="file" name="file" multiple value="选择文件"
 						placeholder="file" />
-					<span class="help-block">系统自动等比例压缩宽高大于<%=CardFileBiz.SQUARE_IMAGE_PHOTO_MAX_WIDTH %>px的图片，并生成宽高<%=CardFileBiz.SQUARE_IMAGE_THUMB_WIDTH %>px的缩略图</span>
+					<span class="help-block">系统自动等比例压缩宽高大于<%=CardPhotoFileBiz.SQUARE_IMAGE_PHOTO_MAX_WIDTH%>px的图片，并生成宽高<%=CardPhotoFileBiz.SQUARE_IMAGE_THUMB_WIDTH%>px的缩略图</span>
 				</div>
 			</div>
 			<div class="control-group">

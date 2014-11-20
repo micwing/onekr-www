@@ -4,8 +4,9 @@ import java.util.List;
 
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardCommentBiz;
-import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardMusicFileBiz;
 import onekr.cardservice.card.intf.CardPhotoDto;
+import onekr.cardservice.card.intf.CardPhotoFileBiz;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.Comment;
 import onekr.commonservice.model.FileStore;
@@ -31,7 +32,10 @@ public class CardController {
 	private CardBiz cardBiz;
 	
 	@Autowired
-	private CardFileBiz cardFileBiz;
+	private CardPhotoFileBiz cardPhotoFileBiz;
+	
+	@Autowired
+	private CardMusicFileBiz cardMusicFileBiz;
 	
 	@Autowired
 	private CardCommentBiz cardCommentBiz;
@@ -42,7 +46,7 @@ public class CardController {
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
-		CardPhotoDto coverPhoto = cardFileBiz.getCardPhotoCover(cardId);
+		CardPhotoDto coverPhoto = cardPhotoFileBiz.getCardPhotoCover(cardId);
 		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/cover");
 		mav.addObject("card", card);
 		mav.addObject("coverPhoto", coverPhoto);
@@ -53,12 +57,12 @@ public class CardController {
 	@RequestMapping(value = "/main/{cardId}", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
-		CardPhotoDto coverPhoto = cardFileBiz.getCardPhotoCover(cardId);
-		CardPhotoDto people1Photo = cardFileBiz.getCardPhotoPeople1(cardId);
-		CardPhotoDto people2Photo = cardFileBiz.getCardPhotoPeople2(cardId);
-		List<CardPhotoDto> photos = cardFileBiz.listCardPhoto(cardId);
-		List<CardPhotoDto> moments = cardFileBiz.listMomentPhoto(cardId);
-		FileStore music = cardFileBiz.getUseMusic(cardId);
+		CardPhotoDto coverPhoto = cardPhotoFileBiz.getCardPhotoCover(cardId);
+		CardPhotoDto people1Photo = cardPhotoFileBiz.getCardPhotoPeople1(cardId);
+		CardPhotoDto people2Photo = cardPhotoFileBiz.getCardPhotoPeople2(cardId);
+		List<CardPhotoDto> photos = cardPhotoFileBiz.listCardPhoto(cardId);
+		List<CardPhotoDto> moments = cardPhotoFileBiz.listMomentPhoto(cardId);
+		FileStore music = cardMusicFileBiz.getUseMusic(cardId);
 		
 		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/main");
 		mav.addObject("card", card);
@@ -85,8 +89,8 @@ public class CardController {
     		@RequestParam("file") CommonsMultipartFile[] mfiles, 
     		@RequestParam("cardId") Long cardId) {
 		Long uid = userBiz.getAnonymousId();
-		FileStore[] thumbs = cardFileBiz.saveMomentPhotoThumb(cardId, mfiles, uid);
-		cardFileBiz.saveMomentPhoto(cardId, mfiles,thumbs, uid);
+		FileStore[] thumbs = cardPhotoFileBiz.saveMomentPhotoThumb(cardId, mfiles, uid);
+		cardPhotoFileBiz.saveMomentPhoto(cardId, mfiles,thumbs, uid);
         return "redirect:/card/main/"+cardId;
 	}
 	

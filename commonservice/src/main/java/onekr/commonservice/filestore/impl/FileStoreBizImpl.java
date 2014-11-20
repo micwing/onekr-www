@@ -52,6 +52,12 @@ public class FileStoreBizImpl implements FileStoreBiz {
 		
 		return fileStoreDao.save(entity);
 	}
+	
+	@Override
+	public List<FileStore> listFileStore(Biz biz) {
+		List<FileStore> list = fileStoreDao.findByBizOrderByRankDesc(biz.name());
+		return list;
+	}
 
 	@Override
 	public List<FileStore> listFileStore(Biz biz, String owner) {

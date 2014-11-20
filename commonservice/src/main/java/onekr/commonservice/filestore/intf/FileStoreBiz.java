@@ -15,6 +15,8 @@ public interface FileStoreBiz {
 
 	FileStore saveFileStore(@NotNull FileStore fileStore);
 	
+	List<FileStore> listFileStore(@NotNull Biz biz);
+	
 	List<FileStore> listFileStore(@NotNull Biz biz, @NotNull String owner);
 	
 	FileStore findById(@NotNull @Min(1) Long fileStoreId);

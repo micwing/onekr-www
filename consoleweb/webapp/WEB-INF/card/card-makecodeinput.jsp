@@ -4,7 +4,7 @@
 <h3>请输入制作码</h3>
 <hr class="head-hr">
 
-<jsp:include page="_message.jsp"/>
+<jsp:include page="../util/message.jsp"/>
 
 <div class="row-fluid">
 	<div class="span12">

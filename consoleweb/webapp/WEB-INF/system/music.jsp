@@ -2,23 +2,18 @@
 <%@page import="java.util.List" %>
 <%@page import="onekr.commonservice.model.FileStore" %>
 <%@page import="onekr.framework.utils.FileUtil" %>
+<%@page import="com.alibaba.fastjson.JSONObject" %>
+<%@page import="onekr.cardservice.card.intf.CardPhotoFileBiz" %>
 <%@page import="onekr.cardservice.model.Card" %>
-<%@page import="onekr.cardservice.card.intf.CardMusicFileBiz" %>
 <%@include file="../common/includes.jsp"%>
-<h3>请柬音乐
-<span class="pull-right">
-    <span class="btn-group">
-		<a class="btn" href="card/map/cardmap/${card.id}">上一步设置地图</a>
-    </span>
-</span>
-</h3>
+<h3>系统音乐</h3>
 <hr class="head-hr">
 
 <jsp:include page="../util/message.jsp"/>
 
 <div class="row-fluid">
 	<div class="span12">
-		<form class="form-horizontal" action="card/music/doUploadFile"
+		<form class="form-horizontal" action="system/music/doUploadSystemMusic"
 			method="post" enctype="multipart/form-data" id="file-form">
 			<div class="control-group">
 				<label class="control-label" for="file">选择音乐文件</label>
@@ -55,21 +50,10 @@ $('#uploadButton').click(function() {
 		for (FileStore fs : list) {
 		%>
 			<tr>
-				<td>
-				<%=fs.getOwner().equals(CardMusicFileBiz.SYSTEM_MUSIC_FILE_STORE_OWNER) ? "<span class='label'>系统音乐</span>" : "<span class='label label-info'>我的音乐</span>"%>
-				<%=fs.getOriginalName()%></td>
+				<td><%=fs.getOriginalName()%></td>
 				<td><%=FileUtil.formetFileSize(fs.getSize())%></td>
 				<td>
-				<%
-				if (card.getMusicFileStore() != null && fs.getId().equals(card.getMusicFileStore().getId())) {
-				%>
-				<span class="label label-success">已选中</span>
-				<% } else { %>
-				<a href="card/music/doSetMusic?cardId=${card.id}&fileStoreId=<%=fs.getId() %>">选择</a>
-				<% } %>
-				</td>
-				<td>
-				<a href="card/music/doDeleteMusic?cardId=${card.id}&fileStoreId=<%=fs.getId() %>">删除</a>
+				<a href="system/music/doDeleteMusic?fileStoreId=<%=fs.getId() %>">删除</a>
 				</td>
 			</tr>
 		<% } %>

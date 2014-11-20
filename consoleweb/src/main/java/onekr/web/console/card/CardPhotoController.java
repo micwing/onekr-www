@@ -3,7 +3,7 @@ package onekr.web.console.card;
 import java.util.List;
 
 import onekr.cardservice.card.intf.CardBiz;
-import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardPhotoFileBiz;
 import onekr.cardservice.card.intf.CardPhotoDto;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.FileStore;
@@ -36,7 +36,7 @@ public class CardPhotoController extends ConsoleBaseController {
 	private CardBiz cardBiz;
 	
 	@Autowired
-	private CardFileBiz cardFileBiz;
+	private CardPhotoFileBiz cardFileBiz;
 	
 	@RequestMapping(value = "/cardphoto/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cardphoto(ModelMap model, @PathVariable("cardId") Long cardId) {

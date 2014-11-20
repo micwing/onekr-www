@@ -31,17 +31,17 @@ public class CardPhotoDto {
 		this.photo = fs;
 		JSONObject json = JSON.parseObject(fs.getJson());
 		if (json != null) {
-			this.setThumbId(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB) ? 
-					json.getLong(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB)
+			this.setThumbId(json.containsKey(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB) ? 
+					json.getLong(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB)
 					: null);
-			this.setCover(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER) ? 
-					json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER)
+			this.setCover(json.containsKey(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER) ? 
+					json.getBooleanValue(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER)
 					: false);
-			this.setPeople1Photo(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1) ? 
-					json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1)
+			this.setPeople1Photo(json.containsKey(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1) ? 
+					json.getBooleanValue(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1)
 					: false);
-			this.setPeople2Photo(json.containsKey(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2) ? 
-					json.getBooleanValue(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2)
+			this.setPeople2Photo(json.containsKey(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2) ? 
+					json.getBooleanValue(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2)
 					: false);
 		}
 	}
@@ -86,7 +86,7 @@ public class CardPhotoDto {
 		JSONObject json = JSON.parseObject(photo.getJson());
 		if (json == null)
 			json = new JSONObject();
-		json.put(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER, isCover);
+		json.put(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_COVER, isCover);
 		this.photo.setJson(json.toJSONString());
 		this.isCover = isCover;
 	}
@@ -99,7 +99,7 @@ public class CardPhotoDto {
 		JSONObject json = JSON.parseObject(photo.getJson());
 		if (json == null)
 			json = new JSONObject();
-		json.put(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1, isPeople1Photo);
+		json.put(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE1, isPeople1Photo);
 		this.photo.setJson(json.toJSONString());
 		this.isPeople1Photo = isPeople1Photo;
 	}
@@ -112,7 +112,7 @@ public class CardPhotoDto {
 		JSONObject json = JSON.parseObject(photo.getJson());
 		if (json == null)
 			json = new JSONObject();
-		json.put(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2, isPeople2Photo);
+		json.put(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_PEOPLE2, isPeople2Photo);
 		this.photo.setJson(json.toJSONString());
 		this.isPeople2Photo = isPeople2Photo;
 	}

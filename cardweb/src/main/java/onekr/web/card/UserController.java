@@ -1,7 +1,7 @@
 package onekr.web.card;
 
 import onekr.cardservice.card.intf.CardBiz;
-import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardPhotoFileBiz;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class UserController {
 	private CardBiz cardBiz;
 	
 	@Autowired
-	private CardFileBiz cardFileBiz;
+	private CardPhotoFileBiz cardFileBiz;
 	
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public ModelAndView index() {

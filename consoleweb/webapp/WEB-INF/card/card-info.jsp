@@ -15,7 +15,7 @@
 </h3>
 <hr class="head-hr">
 
-<jsp:include page="_message.jsp"/>
+<jsp:include page="../util/message.jsp"/>
 
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab1" data-toggle="tab"><%=CardType.WED_CARD.getLabel() %></a></li>

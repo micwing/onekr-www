@@ -3,14 +3,14 @@ package onekr.web.console.card;
 import java.util.List;
 
 import onekr.cardservice.card.intf.CardBiz;
-import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardMusicFileBiz;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.FileStore;
-import onekr.web.console.ConsoleBaseController;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.identityservice.model.User;
+import onekr.web.console.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +31,7 @@ public class CardMusicController extends ConsoleBaseController {
 	private CardBiz cardBiz;
 	
 	@Autowired
-	private CardFileBiz cardFileBiz;
+	private CardMusicFileBiz cardMusicFileBiz;
 	
 	@RequestMapping(value = "/cardmusic/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cardmusic(ModelMap model, @PathVariable("cardId") Long cardId) {
@@ -39,7 +39,7 @@ public class CardMusicController extends ConsoleBaseController {
 		Card card = cardBiz.findById(cardId);
 		if (card == null)
 			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
-		List<FileStore> list = cardFileBiz.listCardMusic(cardId);
+		List<FileStore> list = cardMusicFileBiz.listCardMusic(cardId);
 		mav.addObject("list", list);
 		mav.addObject("card", card);
 		return mav;
@@ -50,7 +50,7 @@ public class CardMusicController extends ConsoleBaseController {
     		@RequestParam("file") MultipartFile mfiles, 
     		@RequestParam("cardId") Long cardId) {
 		User user = (User) getCurrentUser();
-		cardFileBiz.saveCardMusic(cardId, mfiles, user.getId());
+		cardMusicFileBiz.saveCardMusic(cardId, mfiles, user.getId());
 		return cardmusic(new ModelMap("result", new Result("上传成功！")), cardId);
     }
 	
@@ -59,7 +59,7 @@ public class CardMusicController extends ConsoleBaseController {
     		@RequestParam("fileStoreId") Long fileStoreId,
     		@RequestParam("cardId") Long cardId) {
 		User user = (User) getCurrentUser();
-		cardFileBiz.useMusic(cardId, fileStoreId, user.getId());
+		cardMusicFileBiz.useMusic(cardId, fileStoreId, user.getId());
 		return cardmusic(new ModelMap("result", new Result("设置成功！")), cardId);
     }
 	
@@ -68,7 +68,7 @@ public class CardMusicController extends ConsoleBaseController {
     		@RequestParam("fileStoreId") Long fileStoreId,
     		@RequestParam("cardId") Long cardId) {
 		User user = (User) getCurrentUser();
-		cardFileBiz.deleteCardMusic(cardId, fileStoreId, user.getId());
+		cardMusicFileBiz.deleteCardMusic(cardId, fileStoreId, user.getId());
 		return cardmusic(new ModelMap("result", new Result("删除成功！")), cardId);
     }
 }

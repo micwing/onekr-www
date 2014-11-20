@@ -3,16 +3,20 @@ package onekr.cardservice.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import onekr.cardservice.utils.CardConstants;
+import onekr.commonservice.model.FileStore;
 import onekr.commonservice.model.Status;
 
 import org.hibernate.annotations.Cache;
@@ -107,6 +111,10 @@ public class Card implements Serializable {
 	@Column(name = "templet_id")
 	private String templetId;
 	
+	@ManyToOne(cascade=CascadeType.REFRESH,optional=true)
+	@JoinColumn(name = "music_file_store_id")
+	private FileStore musicFileStore;
+	
 	@Column(name = "remark", length = 500)
 	private String remark;
 	
@@ -126,7 +134,7 @@ public class Card implements Serializable {
 	
 	@Column(name = "update_by")
 	private Long updateBy;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -253,6 +261,14 @@ public class Card implements Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	
+	public FileStore getMusicFileStore() {
+		return musicFileStore;
+	}
+
+	public void setMusicFileStore(FileStore musicFileStore) {
+		this.musicFileStore = musicFileStore;
 	}
 
 	public Date getCreateAt() {

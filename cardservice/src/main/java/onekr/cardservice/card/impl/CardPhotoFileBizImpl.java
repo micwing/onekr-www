@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import onekr.cardservice.card.intf.CardFileBiz;
+import onekr.cardservice.card.intf.CardPhotoFileBiz;
 import onekr.cardservice.card.intf.CardPhotoDto;
 import onekr.cardservice.utils.Converter;
 import onekr.commonservice.biz.Biz;
@@ -26,109 +26,17 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 
 @Service
-public class CardFileBizImpl implements CardFileBiz {
+public class CardPhotoFileBizImpl implements CardPhotoFileBiz {
+	
+	public static final String SYSTEM_MUSIC_FILE_STORE_OWNER = "SYSTEM";
 	
 	@Autowired
 	private FileBiz fileBiz;
 	@Autowired
 	private FileStoreBiz fileStoreBiz;
 	
-	@Override
-	public FileStore saveCardMusic(Long cardId, MultipartFile mfile, Long uid) {
-		String originalFilename = mfile.getOriginalFilename();
-		String path = File.separator+"card"+File.separator+cardId;
-		String name;
-		try {
-			name = fileBiz.saveMultipartFile(mfile, path);
-		} catch (Exception e) {
-			throw new AppException(ErrorCode.SERVER_ERROR);
-		}
-		
-		Date now = new Date();
-		
-		FileStore fileStore = new FileStore();
-		fileStore.setBiz(Biz.CARD_MUSIC_FILE_STORE.name());
-		fileStore.setCreateAt(now);
-		fileStore.setCreateBy(uid);
-		fileStore.setDescription("");
-		fileStore.setOriginalName(mfile.getOriginalFilename());
-		fileStore.setOwner(cardId+"");
-		fileStore.setRank(getNewRank4Card(cardId));
-		fileStore.setSize(mfile.getSize());
-		fileStore.setStatus(Status.NORMAL);
-		fileStore.setStorePath(path+File.separator+name);
-		fileStore.setSuffixName(FileUtil.getPathOrUrlSuffix(originalFilename));
-		fileStore.setType(Converter.getFileType(originalFilename));
-		fileStore.setUpdateAt(now);
-		fileStore.setUpdateBy(uid);
-		
-		return fileStoreBiz.saveFileStore(fileStore);
-	}
-	
-	@Override
-	public List<FileStore> listCardMusic(Long cardId) {
-		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_MUSIC_FILE_STORE, cardId+"");
-		return list;
-	}
-	
-	@Override
-	public void useMusic(Long cardId, Long fileStoreId, Long uid) {
-		Date now = new Date();
-		
-		List<FileStore> list = listCardMusic(cardId);
-		for (FileStore fs : list) {
-			JSONObject json = JSON.parseObject(fs.getJson());
-			boolean using = false;
-			if (json != null) {
-				using = json.getBoolean(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE);
-			} else {
-				json = new JSONObject();
-			}
-			
-			if (fs.getId().equals(fileStoreId) && !using) {
-				json.put(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE, true);
-				fs.setJson(JSON.toJSONString(json));
-				fs.setUpdateAt(now);
-				fs.setUpdateBy(uid);
-				fileStoreBiz.saveFileStore(fs);
-			}
-			if (!fs.getId().equals(fileStoreId) && using) {
-				json.put(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE, false);
-				fs.setJson(JSON.toJSONString(json));
-				fs.setUpdateAt(now);
-				fs.setUpdateBy(uid);
-				fileStoreBiz.saveFileStore(fs);
-			}
-		}
-	}
-	
-	@Override
-	public void deleteCardMusic(Long cardId, Long fileStoreId, Long uid) {
-		FileStore fs = fileStoreBiz.findById(fileStoreId);
-		CardPhotoDto dto = new CardPhotoDto(fs);
-		
-		fileBiz.deleteFile(dto.getPhoto().getStorePath());
-		fileStoreBiz.delete(dto.getPhoto().getId());
-	}
-	
-	@Override
-	public FileStore getUseMusic(Long cardId) {
-		List<FileStore> list = listCardMusic(cardId);
-		if (CollectionUtils.isEmpty(list))
-			return null;
-		
-		for (FileStore fs : list) {
-			JSONObject json = JSON.parseObject(fs.getJson());
-			if (json.getBooleanValue(CardFileBiz.CARD_MUSIC_JSON_ATTR_KEY_USE)) {
-				return fs;
-			}
-		}
-		return null;
-	}
-
 	@Override
 	public FileStore[] saveMomentPhotoThumb(Long cardId,
 			MultipartFile[] mfiles, Long uid) {
@@ -159,7 +67,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		String path = File.separator+"card"+File.separator+cardId;
 		String name;
 		try {
-			name = fileBiz.saveMultipartImage(mfile, CardFileBiz.SQUARE_IMAGE_PHOTO_MAX_WIDTH, path);
+			name = fileBiz.saveMultipartImage(mfile, CardPhotoFileBiz.SQUARE_IMAGE_PHOTO_MAX_WIDTH, path);
 		} catch (Exception e) {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}
@@ -172,7 +80,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		fileStore.setCreateBy(uid);
 		fileStore.setDescription("");
 		Map<String, Object> attr = new HashMap<String, Object>();
-		attr.put(CardFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB, cardPhotoThumb.getId());
+		attr.put(CardPhotoFileBiz.CARD_PHOTO_JSON_ATTR_KEY_THUMB, cardPhotoThumb.getId());
 		fileStore.setJson(JSON.toJSONString(attr));
 		fileStore.setOriginalName(mfile.getOriginalFilename());
 		fileStore.setOwner(cardId+"");
@@ -193,7 +101,7 @@ public class CardFileBizImpl implements CardFileBiz {
 		String path = File.separator+"card"+File.separator+cardId+File.separator+"thumb";
 		String name;
 		try {
-			name = fileBiz.saveMultipartImageThumb(mfile, CardFileBiz.SQUARE_IMAGE_THUMB_WIDTH, path);
+			name = fileBiz.saveMultipartImageThumb(mfile, CardPhotoFileBiz.SQUARE_IMAGE_THUMB_WIDTH, path);
 		} catch (Exception e) {
 			throw new AppException(ErrorCode.SERVER_ERROR);
 		}

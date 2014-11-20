@@ -70,7 +70,7 @@ $(document).ready(function(){
 	
 	<div class="header">
 		<h1>
-		<img class="logo" src="assets/cardtpl/${card.templetId}/images/53fbef21978bb.jpg">                    
+		<img class="logo" src="assets/cardtpl/${card.templetId}/images/banner.jpg">                    
 		</h1>
 	</div>
 

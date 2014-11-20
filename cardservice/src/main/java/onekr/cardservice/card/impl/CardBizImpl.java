@@ -43,26 +43,39 @@ public class CardBizImpl implements CardBiz {
 			if (entity == null)
 				throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
 
-			card.setCreateAt(entity.getCreateAt());
-			card.setCreateBy(entity.getCreateBy());
-			card.setCardType(entity.getCardType());
-			card.setStatus(entity.getStatus());
 		} else {
+			entity.setPeople1Name(card.getPeople1Name());
+			entity.setPeople2Name(card.getPeople2Name());
+			
 			card.setCreateAt(now);
 			card.setCreateBy(uid);
+			// 默认值
+			if (card.getCardType() == null) {
+				entity.setCardType(CardType.WED_CARD);
+			}
+			if (card.getStatus() == null) {
+				entity.setStatus(Status.NORMAL);
+			}
 		}
+		
+		entity.setAddress(card.getAddress());
+		entity.setAfterInfo(card.getAfterInfo());
+		entity.setBeforeInfo(card.getBeforeInfo());
+		entity.setPartyTime(card.getPartyTime());
+		entity.setPeople1Mobile(card.getPeople1Mobile());
+		entity.setPeople2Mobile(card.getPeople2Mobile());
+		entity.setRemark(card.getRemark());
+		entity.setRemind(card.getRemind());
+		entity.setRestaurant(card.getRestaurant());
+		entity.setStatus(card.getStatus());
+		entity.setTempletId(card.getTempletId());
+		entity.setTitle(card.getTitle());
+		entity.setTraffic(card.getTraffic());
 
-		// 默认值
-		if (card.getCardType() == null) {
-			card.setCardType(CardType.WED_CARD);
-		}
-		if (card.getStatus() == null) {
-			card.setStatus(Status.NORMAL);
-		}
-		card.setUpdateAt(now);
-		card.setUpdateBy(uid);
+		entity.setUpdateAt(now);
+		entity.setUpdateBy(uid);
 
-		return cardDao.save(card);
+		return cardDao.save(entity);
 	}
 
 	@Override

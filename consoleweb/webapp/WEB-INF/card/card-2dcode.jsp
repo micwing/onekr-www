@@ -17,7 +17,9 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 
 <div class="row-fluid">
 	<div class="span12">
-		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/card/cover/${card.id}&w=300&h=300" />
+		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/card/cover/${card.id}&w=300&h=300" /><br>
+		用微信扫描该二维码，在手机上查看效果<br>
+		通过浏览器预览请点击<a href="<%=siteRootUrl%>/card/cover/${card.id}" target="_blank"><%=siteRootUrl%>/card/cover/${card.id}</a>
 	</div>
 </div>
 

@@ -55,7 +55,7 @@
 			</c:forEach>
 		</table>
 		<jsp:include page="../util/paging.jsp">
-			<jsp:param name="_paging_base_url" value="card/info/list?cardType=WED_CARD&status=PAUSED" />
+			<jsp:param name="_paging_base_url" value="card/info/pausedlist?cardType=WED_CARD&status=PAUSED" />
 			<jsp:param name="_paging_size" value="20" />
 			<jsp:param name="_paging_range" value="3" />
 		</jsp:include>

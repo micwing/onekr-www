@@ -1,5 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.cardservice.model.CardType" %>
+<%@page import="onekr.cardservice.model.Template" %>
 <%@include file="../common/includes.jsp"%>
 <script src="assets/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 
@@ -33,7 +34,8 @@
 				<div class="control-group">
 					<label class="control-label" for="people1Name"><span class="star">*</span> 新郎姓名</label>
 					<div class="controls">
-						<input type="text" name="people1Name" placeholder="people1Name" value="${card.people1Name}">
+						<input type="text" name="people1Name" placeholder="people1Name" value="${card.people1Name}" ${!empty card.people1Name ? 'readonly' : ''}>
+						<span class="help-block">新郎姓名保存后不可更改，请务必输入正确</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -45,7 +47,8 @@
 				<div class="control-group">
 					<label class="control-label" for="people2Name"><span class="star">*</span> 新娘姓名</label>
 					<div class="controls">
-						<input type="text" name="people2Name" placeholder="people2Name" value="${card.people2Name}">
+						<input type="text" name="people2Name" placeholder="people2Name" value="${card.people2Name}" ${!empty card.people2Name ? 'readonly' : ''}>
+						<span class="help-block">新娘姓名保存后不可更改，请务必输入正确</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -124,7 +127,13 @@
 					<label class="control-label" for="templetId"><span class="star">*</span> 选择模板</label>
 					<div class="controls">
 						<select name="templetId">
-							<option value="10001" ${card.templetId == 10001 ? 'selected':'' }>浪漫爱情</option>
+							<%
+							for (Template template : Template.values()) {
+							%>
+							<c:set var="tmpId" value="<%=template.name()%>"/>
+							<c:set var="tmpName" value="<%=template.getLabel()%>"/>
+							<option value="${tmpId}" ${card.templetId == tmpId ? 'selected':'' }>${tmpName}</option>
+							<%}%>
 						</select>
 					</div>
 				</div>

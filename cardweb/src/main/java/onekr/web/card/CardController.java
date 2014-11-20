@@ -47,7 +47,7 @@ public class CardController {
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
 		CardPhotoDto coverPhoto = cardPhotoFileBiz.getCardPhotoCover(cardId);
-		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/cover");
+		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,3)+"/cover");
 		mav.addObject("card", card);
 		mav.addObject("coverPhoto", coverPhoto);
 		
@@ -64,7 +64,7 @@ public class CardController {
 		List<CardPhotoDto> moments = cardPhotoFileBiz.listMomentPhoto(cardId);
 		FileStore music = cardMusicFileBiz.getUseMusic(cardId);
 		
-		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,2)+"/main");
+		ModelAndView mav = new ModelAndView("single:card/"+card.getTempletId().substring(0,3)+"/main");
 		mav.addObject("card", card);
 		mav.addObject("coverPhoto", coverPhoto);
 		mav.addObject("people1Photo", people1Photo);

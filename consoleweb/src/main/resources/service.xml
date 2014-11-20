@@ -129,20 +129,6 @@
 	<!-- ExceptionResolver 	-->
 	<bean class="onekr.framework.spring.web.resolver.AppExceptionResolver"></bean>
 
-	<!-- email sender -->
-	<!-- <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" scope="singleton">
-		<property name="host" value="${email.sender.host}" />
-		<property name="port" value="${email.sender.port}" />
-		<property name="username" value="${email.sender.username}" />
-		<property name="password" value="${email.sender.password}" />
-		<property name="defaultEncoding" value="${email.sender.defaultEncoding}" />
-		<property name="javaMailProperties">
-			<props>
-				<prop key="mail.smtp.auth">true</prop>
-			</props>
-		</property>
-	</bean> -->
-	
 	<!-- freemarker -->
 	<bean id="freeMarkerConfigurer"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">

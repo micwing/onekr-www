@@ -59,13 +59,24 @@
 	
 	<!-- verification code -->
 	<servlet>
-		<servlet-name>verifyCodeServle</servlet-name>
+		<servlet-name>verifyCodeServlet</servlet-name>
 		<servlet-class>onekr.framework.verifycode.SunImageValidateCodeServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>verifyCodeServle</servlet-name>
+		<servlet-name>verifyCodeServlet</servlet-name>
 		<url-pattern>/verifyCode</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 2d code -->
+	<servlet>
+		<servlet-name>qr2dCodeServlet</servlet-name>
+		<servlet-class>onekr.framework.code2d.QrCodeServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>qr2dCodeServlet</servlet-name>
+		<url-pattern>/qr2dCode</url-pattern>
 	</servlet-mapping>
 	
 	<!-- SpringMVC core dispatcher-->
@@ -76,7 +87,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:/servlet.xml</param-value>
 		</init-param>
-		<load-on-startup>3</load-on-startup>
+		<load-on-startup>5</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>

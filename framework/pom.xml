@@ -180,6 +180,11 @@
 			<groupId>pinyin4j</groupId>
 			<artifactId>pinyin4j</artifactId>
 		</dependency>
+		
+		<dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+        </dependency>
 	</dependencies>
 	<build>
 		<finalName>framework</finalName>

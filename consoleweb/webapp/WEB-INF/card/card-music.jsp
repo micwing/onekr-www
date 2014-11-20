@@ -10,6 +10,9 @@
     <span class="btn-group">
 		<a class="btn" href="card/map/cardmap/${card.id}">上一步设置地图</a>
     </span>
+    <span class="btn-group">
+		<a class="btn" href="card/2dcode/index/${card.id}">下一步查看二维码</a>
+    </span>
 </span>
 </h3>
 <hr class="head-hr">

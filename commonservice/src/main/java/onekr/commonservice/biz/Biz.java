@@ -37,6 +37,8 @@ public enum Biz {
 	/**婚礼现场照片存储*/
 	MOMENT_PHOTO_FILE_STORE,
 	/**婚礼现场照片缩略图存储*/
-	MOMENT_PHOTO_THUMB_FILE_STORE;
+	MOMENT_PHOTO_THUMB_FILE_STORE,
 	
+	/**card二维码存储*/
+	CARD_2DCODE_FILE_STORE;
 }

@@ -45,7 +45,7 @@
 				<img src="${card.mapPicUrl}" alt="baiduMapPicture"/>
 			</section>
 			<section>
-				<button type="button" class="btn btn-danger" id="modifyMapurl">重新选择</button>
+				<button type="button" class="btn btn-danger btn-large" id="modifyMapurl">重新选择</button>
 			</section>
 		</fieldset>
 	</div>
@@ -78,9 +78,9 @@ $('#modifyMapurl').click(function() {
 				<input type="hidden" name="mapUrl">
 				<input type="hidden" name="cardId" value="${cardId}">
 				<span>请拖拽地图，把红色标记对准酒店所在位置</span>
-				<button type="button" class="btn btn-primary" id="updateMapUrl">确定</button>
+				<button type="button" class="btn btn-primary btn-large" id="updateMapUrl">确定</button>
 				<c:if test="${!empty card.mapPicUrl}">
-				<button type="button" class="btn" id="cancelMapUrl">取消</button>
+				<button type="button" class="btn btn-large" id="cancelMapUrl">取消</button>
 				<script type="text/javascript">
 				$('#cancelMapUrl').click(function() {
 					$('#baiduMapDiv').show();
@@ -210,16 +210,15 @@ $(function() {
 	$('#updateMapUrl').click(function() {
 		var lng = marker.getPosition().lng;
 		var lat = marker.getPosition().lat;
-		//var rest = encodeURIComponent('${card.restaurant}').toUpperCase();
 		var rest = encodeURIComponent('婚礼位置').toUpperCase();
 		var addr = encodeURIComponent('${card.address}').toUpperCase();
 		var zoom = map.getZoom();
 		var mapPicUrl = 'http://api.map.baidu.com/staticimage?center='+lng+','+lat+'&markers='+lng+','+lat+'&width=600&height=330&zoom='+zoom;
-		//var mapUrl = 'http://map.baidu.com/?latlng='+lat+','+lng+'&title='+rest+'&content='+addr+'&autoOpen=true&l';
 		var mapUrl = 'http://api.map.baidu.com/marker?location='+lat+','+lng+'&title='+rest+'&content='+addr+'&output=html';
 		$('#map-form input[name=mapPicUrl]').val(mapPicUrl);
 		$('#map-form input[name=mapUrl]').val(mapUrl);
 		$('#map-form').submit();
+		$('#updateMapUrl').attr('disabled', true);
 	});
 });
 </script>

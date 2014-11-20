@@ -25,12 +25,13 @@
 				<div class="controls">
 					<input type="hidden" name="cardId" value="${card.id}" /> <input
 						type="file" id="file" name="file" multiple value="选择文件"
+						accept="audio/*"
 						placeholder="file" />
 				</div>
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<input class="btn btn-primary" type="button" id="uploadButton" value="上传音乐" />
+					<input class="btn btn-primary btn-large" type="button" id="uploadButton" value="上传音乐" />
 				</div>
 			</div>
 		</form>
@@ -43,6 +44,7 @@ $('#uploadButton').click(function() {
 		return;
 	}
 	$('#file-form').submit();
+	$('#uploadButton').attr('disabled', true);
 });
 </script>
 

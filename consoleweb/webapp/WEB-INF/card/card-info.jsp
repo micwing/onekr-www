@@ -148,7 +148,7 @@
 			<br> <br>
 			<div class="control-group">
 				<div class="controls">
-					<button type="button" class="btn btn-primary" id="saveCard">保存</button>
+					<button type="button" class="btn btn-primary btn-large" id="saveCard">保存</button>
 				</div>
 			</div>
 
@@ -230,7 +230,13 @@
 			});
 			$(function() {
 				$('#saveCard').click(function(){
+					$('#saveCard').attr('disabled',true);
+					if (!$('#card-form').valid()) {
+						$('#saveCard').attr('disabled',false);
+						return;
+					}
 					$('#card-form').submit();
+					
 				});
 				$('#card-form input[name=people1Name]').change(function() {
 					ns.updateTitle();

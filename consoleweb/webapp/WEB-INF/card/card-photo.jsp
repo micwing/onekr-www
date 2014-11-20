@@ -22,13 +22,14 @@
 				<div class="controls">
 					<input type="hidden" name="cardId" value="${card.id}" /> <input
 						type="file" id="file" name="file" multiple value="选择文件"
+						accept="image/*"
 						placeholder="file" />
 					<span class="help-block">系统自动等比例压缩宽高大于<%=CardPhotoFileBiz.SQUARE_IMAGE_PHOTO_MAX_WIDTH%>px的图片，并生成宽高<%=CardPhotoFileBiz.SQUARE_IMAGE_THUMB_WIDTH%>px的缩略图</span>
 				</div>
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<input class="btn btn-primary" type="button" id="uploadButton" value="上传照片" />
+					<input class="btn btn-primary btn-large" type="button" id="uploadButton" value="上传照片" />
 				</div>
 			</div>
 		</form>
@@ -41,6 +42,7 @@ $('#uploadButton').click(function() {
 		return;
 	}
 	$('#file-form').submit();
+	$('#uploadButton').attr('disabled', true);
 });
 </script>
 

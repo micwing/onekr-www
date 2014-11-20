@@ -10,7 +10,7 @@
 	<div class="span12">
 		<form class="form-search" action="" method="get">
 			<input type="text" class="input-xxlarge search-query" placeholder="请输入制作码" id="makecode">
-			<button type="button" class="btn" onclick="doUseCode()">确定</button>
+			<button type="button" class="btn btn-primary" onclick="doUseCode()">确定</button>
 		</form>
 	</div>
 </div>

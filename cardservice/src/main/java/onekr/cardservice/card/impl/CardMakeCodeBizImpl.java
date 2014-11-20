@@ -48,6 +48,8 @@ public class CardMakeCodeBizImpl implements CardMakeCodeBiz {
 	@Override
 	public CardMakeCode useCode(String code, Long cardId) {
 		CardMakeCode entity = cardMakeCodeDao.findByCodeAndCardIsNull(code);
+		if (entity == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "制作码不存在或者已被使用！");
 		Card card = cardDao.findOne(cardId);
 		entity.setCard(card);
 		entity.setMakeAt(new Date());

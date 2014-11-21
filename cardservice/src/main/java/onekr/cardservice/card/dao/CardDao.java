@@ -20,4 +20,7 @@ public interface CardDao extends JpaRepository<Card, Long> {
 
 	Page<Card> findByCardTypeAndStatusOrderByCreateAtDesc(CardType cardType,
 			Status status, Pageable pageable);
+	
+	Page<Card> findByCardTypeAndStatusAndCreateByOrderByCreateAtDesc(CardType cardType,
+			Status status, Long uid, Pageable pageable);
 }

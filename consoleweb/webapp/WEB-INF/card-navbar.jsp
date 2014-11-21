@@ -13,6 +13,7 @@
 			<a href="card/info/pausedlist"><i class="icon-remove"></i> 已停用</a>
 		</li>
 		
+		<shiro:hasRole name="ADMINISTRATOR">
 		<li class="nav-header">制作码</li>
 		<li>
 			<a href="card/makecode/generate"><i class="icon-certificate"></i> 申请制作码</a>
@@ -20,7 +21,14 @@
 		<li>
 			<a href="card/makecode/list"><i class="icon-list-alt"></i> 制作码列表</a>
 		</li>
+		</shiro:hasRole>
 		
-		
+		<li class="nav-header">账号</li>
+		<li class="${fn:startsWith(requestServletPath, '/identity/account/accountInfo/')?'active':''}">
+			<a href="identity/account/accountInfo"><i class="icon-user"></i> 账号信息</a>
+		</li>
+		<li class="${fn:startsWith(requestServletPath, '/identity/account/modifyPassword/')?'active':''}">
+			<a href="identity/account/modifyPassword"><i class="icon-certificate"></i> 修改密码</a>
+		</li>
 	</ul>
 </div>

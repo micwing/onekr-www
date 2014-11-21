@@ -22,6 +22,10 @@ public interface CardBiz {
 //	CardDto findCardInfo(@NotNull @Min(1) Long cardId);
 
 	Card findById(@NotNull @Min(1) Long cardId);
+	
+	Page<Card> listCard(@NotNull CardType cardType, @NotNull Status status,
+			@NotNull  @Min(1) Long uid,
+			@NotNull Pageable pageable);
 
 	Page<Card> listCard(@NotNull CardType cardType, @NotNull Status status,
 			@NotNull Pageable pageable);

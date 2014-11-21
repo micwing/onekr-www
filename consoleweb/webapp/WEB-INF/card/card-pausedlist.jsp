@@ -6,7 +6,7 @@
 
 <jsp:include page="../util/message.jsp"/>
 
-<div class="row-fluid">
+<%-- <div class="row-fluid">
 	<div class="span12">
 		<form class="form-search">
 			<select id="queryCartType">
@@ -21,7 +21,7 @@
 			<button type="submit" class="btn">Search</button>
 		</form>
 	</div>
-</div>
+</div> --%>
 <div class="row-fluid">
 	<div class="span12">
 		<table class="table table-bordered">
@@ -45,12 +45,8 @@
 					<td>${card.people2Name}</td>
 					<td>${catd.remark}</td>
 					<td>
-						 <a href="card/music/manager/${card.id}">展示</a> <a
-						href="card/info/modify/${card.id}">信息</a> <a
-						href="card/photo/cardphoto/${card.id}">照片</a> <br> <a
-						href="card/map/cardmap/${card.id}">地图</a> <a
-						href="card/music/cardmusic/${card.id}">音乐</a> <a
-						href="card/music/manager/${card.id}">二维码</a></td>
+						<a
+						href="card/info/modify/${card.id}">修改</a>
 				</tr>
 			</c:forEach>
 		</table>

@@ -25,6 +25,11 @@
 				/assets/** = anon
 				/attached/** = anon
 				/verifyCode/** = anon
+				/global/** = anon
+				
+				/console/** = roles[ADMINISTRATOR]
+				/card/makecode/** = roles[ADMINISTRATOR]
+				/system/** = roles[ADMINISTRATOR]
 				/** = authc
 			</value>
 		</property>

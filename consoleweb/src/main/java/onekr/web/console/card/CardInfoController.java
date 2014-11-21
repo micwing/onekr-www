@@ -10,6 +10,7 @@ import onekr.framework.contstants.Constants;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
+import onekr.identityservice.model.Group;
 import onekr.identityservice.model.User;
 import onekr.web.console.ConsoleBaseController;
 
@@ -50,6 +51,9 @@ public class CardInfoController extends ConsoleBaseController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView add(@RequestParam(value = "makecode") String makecode) {
 		ModelAndView mav = new ModelAndView("card:card-info");
+		CardMakeCode code = cardMakeCodeBiz.findNoUseCode(makecode);
+		if (code == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "制作码不存在或已失效！");
 		mav.addObject("makecode", makecode);
 		return mav;
 	}
@@ -68,7 +72,7 @@ public class CardInfoController extends ConsoleBaseController {
 		if (card.getId() == null) {
 			CardMakeCode code = cardMakeCodeBiz.findNoUseCode(makecode);
 			if (code == null)
-				throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "您的制作码已失效！");
+				throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "制作码不存在或已失效！");
 			createFlag = true;
 		}
 		card = cardBiz.saveCard(card, user.getId());
@@ -86,7 +90,13 @@ public class CardInfoController extends ConsoleBaseController {
 			status = Status.NORMAL;
 		if (pageable == null)
 			pageable = new PageRequest(0, Constants.PAGE_DEFAULT_SIZE);
-		Page<Card> page = cardBiz.listCard(cardType, status, pageable);
+		User user = getCurrentUser();
+		Page<Card> page = null;
+		if (user.getGroup().equals(Group.ADMINISTRATOR)) {
+			page = cardBiz.listCard(cardType, status, pageable);
+		} else {
+			page = cardBiz.listCard(cardType, status, user.getId(), pageable);
+		}
 		ModelAndView mav = new ModelAndView("card:card-list");
 		mav.addObject("page", page);
 		mav.addObject("cardType", cardType);
@@ -100,7 +110,13 @@ public class CardInfoController extends ConsoleBaseController {
 			cardType = CardType.WED_CARD;
 		if (pageable == null)
 			pageable = new PageRequest(0, Constants.PAGE_DEFAULT_SIZE);
-		Page<Card> page = cardBiz.listCard(cardType, Status.PAUSED, pageable);
+		User user = getCurrentUser();
+		Page<Card> page = null;
+		if (user.getGroup().equals(Group.ADMINISTRATOR)) {
+			page = cardBiz.listCard(cardType, Status.PAUSED, pageable);
+		} else {
+			page = cardBiz.listCard(cardType, Status.PAUSED, user.getId(), pageable);
+		}
 		ModelAndView mav = new ModelAndView("card:card-pausedlist");
 		mav.addObject("page", page);
 		mav.addObject("cardType", cardType);

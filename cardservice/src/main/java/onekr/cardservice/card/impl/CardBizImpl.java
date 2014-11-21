@@ -32,6 +32,13 @@ public class CardBizImpl implements CardBiz {
 		return cardDao.findByCardTypeAndStatusOrderByCreateAtDesc(cardType,
 				status, pageable);
 	}
+	
+	@Override
+	public Page<Card> listCard(CardType cardType, Status status, Long uid,
+			Pageable pageable) {
+		return cardDao.findByCardTypeAndStatusAndCreateByOrderByCreateAtDesc(cardType,
+				status, uid, pageable);
+	}
 
 	@Override
 	public Card saveCard(Card card, Long uid) {
@@ -47,17 +54,18 @@ public class CardBizImpl implements CardBiz {
 			entity.setPeople1Name(card.getPeople1Name());
 			entity.setPeople2Name(card.getPeople2Name());
 			
-			card.setCreateAt(now);
-			card.setCreateBy(uid);
+			entity.setCreateAt(now);
+			entity.setCreateBy(uid);
 			// 默认值
 			if (card.getCardType() == null) {
-				entity.setCardType(CardType.WED_CARD);
+				card.setCardType(CardType.WED_CARD);
 			}
 			if (card.getStatus() == null) {
-				entity.setStatus(Status.NORMAL);
+				card.setStatus(Status.NORMAL);
 			}
 		}
 		
+		entity.setCardType(card.getCardType());
 		entity.setAddress(card.getAddress());
 		entity.setAfterInfo(card.getAfterInfo());
 		entity.setBeforeInfo(card.getBeforeInfo());

@@ -52,7 +52,7 @@
 					<span class="icon-bar"></span>
 					</a>
 					
-					<a class="brand" href="#">管理中心</a>
+					<a class="brand" href="card/info/list">管理中心</a>
 					
 					<div class="nav-collapse collapse">
 						<ul class="nav">

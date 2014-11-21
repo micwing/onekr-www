@@ -18,8 +18,8 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 <div class="row-fluid">
 	<div class="span12">
 		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/card/cover/${card.id}&w=300&h=300" /><br>
-		用微信扫描该二维码，在手机上查看效果<br>
-		通过浏览器预览请点击<a href="<%=siteRootUrl%>/card/cover/${card.id}" target="_blank"><%=siteRootUrl%>/card/cover/${card.id}</a>
+		<h5>用微信扫描该二维码，在手机上查看请柬效果</h5><br>
+		提示：如果修改了请柬信息、照片、模板等，只要在手机上刷新即可查看效果，不需要重新扫描二维码。
 	</div>
 </div>
 

@@ -37,9 +37,9 @@
 			<p class="subtitle">${card.people1Name}  & ${card.people2Name} </p>
 			<p><fmt:formatDate value="${card.partyTime}" type="date" pattern="yyyy年M月d日"/></p>
 		</div>
-		<p class="subtitle-comment">
+		<%-- <p class="subtitle-comment">
 			<a href="card/main/${card.id}"></a>
-		</p>
+		</p> --%>
 	</div> 
 </div>
 

@@ -43,7 +43,7 @@ public class GlobalController extends BaseController{
 	
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
 	public String error() {
-		return "singlecommon/error";
+		return "single:common/error";
 	}
 
 }

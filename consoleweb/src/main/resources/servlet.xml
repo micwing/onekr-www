@@ -47,7 +47,7 @@
 		</property>
 	</bean> -->
 
-	<context:component-scan base-package="onekr.web" />
+	<context:component-scan base-package="onekr.web,onekr.framework.controller" />
 
 	<mvc:default-servlet-handler />
 	

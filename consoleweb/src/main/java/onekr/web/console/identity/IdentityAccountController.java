@@ -9,18 +9,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/console/account")
+@RequestMapping(value = "/identity/account")
 public class IdentityAccountController extends ConsoleBaseController {
 	
 	@RequestMapping(value = "/accountInfo", method = RequestMethod.GET)
 	public ModelAndView accountInfo() {
-		ModelAndView mav = new ModelAndView("portal:accountInfo");
+		ModelAndView mav = new ModelAndView("card:identity-accountInfo");
 		return mav;
 	}
 	
 	@RequestMapping(value = "/modifyPassword", method = RequestMethod.GET)
 	public ModelAndView modifyPassword() {
-		ModelAndView mav = new ModelAndView("portal:modifyPassword");
+		ModelAndView mav = new ModelAndView("card:identity-modifyPassword");
 		return mav;
 	}
 	

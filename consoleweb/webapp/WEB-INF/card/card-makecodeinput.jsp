@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.cardservice.model.CardType" %>
 <%@include file="../common/includes.jsp"%>
-<h3>请输入制作码</h3>
+<h3>申请制作码</h3>
 <hr class="head-hr">
 
 <jsp:include page="../util/message.jsp"/>
@@ -9,7 +9,10 @@
 <div class="row-fluid">
 	<div class="span12">
 		<form class="form-search" action="" method="get">
-			<input type="text" class="input-xxlarge search-query" placeholder="请输入制作码" id="makecode">
+			<div class="input-prepend">
+				<span class="add-on">请输入制作码</span>
+				<input type="text" class="input-xlarge" id="makecode">
+			</div>
 			<button type="button" class="btn btn-primary" onclick="doUseCode()">确定</button>
 		</form>
 	</div>

@@ -41,7 +41,8 @@ public class AppExceptionResolver implements HandlerExceptionResolver {
 					try {
 						PrintWriter writer = response.getWriter();
 						Result result = new Result(aex);
-						result.setMessage(messageSource.getMessage(Constants.ERROR_MESSAGE_PREFIX+result.getCode(),null, Locale.CHINESE));
+//						result.setMessage(messageSource.getMessage(Constants.ERROR_MESSAGE_PREFIX+result.getCode(),null, Locale.CHINESE));
+						result.setMessage(aex.getMessage());
 						writer.write(JSON.toJSONString(result));
 						writer.flush();
 					} catch (IOException e) {
@@ -65,7 +66,8 @@ public class AppExceptionResolver implements HandlerExceptionResolver {
 				if (ex instanceof AppException) {
 					AppException aex = (AppException)ex;
 					Result result = new Result(aex);
-					result.setMessage(messageSource.getMessage(Constants.ERROR_MESSAGE_PREFIX+result.getCode(),null, Locale.CHINESE));
+//					result.setMessage(messageSource.getMessage(Constants.ERROR_MESSAGE_PREFIX+result.getCode(),null, Locale.CHINESE));
+					result.setMessage(aex.getMessage());
 					ModelAndView mav = new ModelAndView("single:common/error");
 					mav.addObject("result", result);
 					return mav;

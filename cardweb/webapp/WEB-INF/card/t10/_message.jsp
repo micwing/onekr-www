@@ -57,13 +57,21 @@ express.put("钞票", "chaopiao.png");
 <div class="imgcontent">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr bgcolor="#FF3300" style="color: #FFF">
-			<td width="50%" align="center"><img
-				src="attached${fn:replace(people1Photo.photo.storePath, '\\', '/')}"
-				width="50%"></td>
+			<td width="50%" align="center">
+				<c:if test="${!empty people1Photo.photo}">
+				<img
+					src="attached${fn:replace(people1Photo.photo.storePath, '\\', '/')}"
+					width="50%">
+				</c:if>
+			</td>
 
-			<td width="50%" align="center"><img
-				src="attached${fn:replace(people2Photo.photo.storePath, '\\', '/')}"
-				width="50%"></td>
+			<td width="50%" align="center">
+				<c:if test="${!empty people2Photo.photo}">
+				<img
+					src="attached${fn:replace(people2Photo.photo.storePath, '\\', '/')}"
+					width="50%">
+				</c:if>
+			</td>
 		</tr>
 	</table>
 </div>

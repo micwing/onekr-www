@@ -60,7 +60,7 @@ public class FileBizImpl implements FileBiz {
 		
 		
 		if ( StringUtils.isEmpty(dirName) )
-			throw new AppException(ErrorCode.ILLEGAL_PARAM, "dirName");
+			throw new AppException(ErrorCode.ILLEGAL_PARAM, "dirName不能为空");
 		
 		File uploadPathFile = new File(fileUploadDir+dirName);
         if (!uploadPathFile.exists()) {
@@ -111,7 +111,7 @@ public class FileBizImpl implements FileBiz {
 		}
 		
 		if ( StringUtils.isEmpty(dirName) )
-			throw new AppException(ErrorCode.ILLEGAL_PARAM, "dirName");
+			throw new AppException(ErrorCode.ILLEGAL_PARAM, "dirName不能为空");
 		
 		File uploadPathFile = new File(fileUploadDir+dirName);
         if (!uploadPathFile.exists()) {

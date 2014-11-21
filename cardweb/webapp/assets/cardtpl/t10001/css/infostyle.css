@@ -155,7 +155,7 @@ footer {
 	margin-top:-10px;
 }
 .invitext {
-	background:url(images/slider-outer-title.png) repeat-x bottom;
+	/* background:url(images/slider-outer-title.png) repeat-x bottom; */
 	padding-bottom:20px;
 	margin-bottom:-20px;
 }

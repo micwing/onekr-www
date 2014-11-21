@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
 <h4>修改密码</h4>
-	<form class="form-horizontal">
+	<!-- <form class="form-horizontal">
 		<div class="control-group">
 			<label class="control-label" for="inputEmail">Email</label>
 			<div class="controls">
@@ -22,7 +22,7 @@
 				<button type="submit" class="btn">Sign in</button>
 			</div>
 		</div>
-	</form>
+	</form> -->
 
 
 

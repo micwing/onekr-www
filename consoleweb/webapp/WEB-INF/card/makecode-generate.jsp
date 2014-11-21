@@ -36,7 +36,7 @@ function doGenerateCode() {
            success: function(result){
            	if (result.code == 0) {
             	alert('申请成功！\n制作码为:'+result.value);
-            	location.href='card/makecode/list';
+            	location.href='${ctx}/card/makecode/list';
            	} else {
            		alert('操作失败！');
            		$('#main-btn').attr('disabled', false);

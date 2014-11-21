@@ -52,11 +52,14 @@
 					<span class="icon-bar"></span>
 					</a>
 					
-					<a class="brand" href="card/info/list">管理中心</a>
+					<a class="brand" href="card/info/list">一氪工作室 | 管理中心</a>
 					
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="${fn:startsWith(requestServletPath, '/card/')?'active':''}"><a href="card/info">请柬管理</a></li>
+							<li class="${(
+							fn:startsWith(requestServletPath, '/card/') ||
+							fn:startsWith(requestServletPath, '/identity/')
+							)?'active':''}"><a href="card/info">请柬管理</a></li>
 							<shiro:hasRole name="ADMINISTRATOR">
 							<li class="${fn:startsWith(requestServletPath, '/system/')?'active':''}"><a href="system/config">系统设置</a></li>
 							</shiro:hasRole>
@@ -66,8 +69,10 @@
 							<li class="dropdown">
 		                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><shiro:principal /> <b class="caret"></b></a>
 		                        <ul class="dropdown-menu">
-		                          <li><a href="console/account/accountInfo">我的账号</a></li>
-		                          <li><a href="login/doSignout">安全退出</a></li>
+		                          <li><a href="identity/account/accountInfo"><i class="icon-user"></i> 账户信息</a></li>
+		                          <li><a href="identity/account/modifyPassword"><i class="icon-edit"></i> 修改密码</a></li>
+		                          <li class="divider"></li>
+		                          <li><a href="login/doSignout"><i class="icon-share-alt"></i> 安全退出</a></li>
 		                        </ul>
 	                      	</li>
 						</ul>

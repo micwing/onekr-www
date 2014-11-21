@@ -5,17 +5,25 @@
 <%@page import="onekr.cardservice.model.Card" %>
 <%@page import="onekr.cardservice.card.intf.CardMusicFileBiz" %>
 <%@include file="../common/includes.jsp"%>
-<h3>请柬音乐
+<h3>选择音乐
 <span class="pull-right">
-    <span class="btn-group">
-		<a class="btn" href="card/map/cardmap/${card.id}">上一步设置地图</a>
-    </span>
-    <span class="btn-group">
-		<a class="btn" href="card/2dcode/index/${card.id}">下一步查看二维码</a>
-    </span>
+    <span class="pull-right">
+	    <span class="btn-group">
+			<a class="btn" href="card/map/cardmap/${card.id}">上一步设置地图</a>
+			<a class="btn" href="card/2dcode/index/${card.id}">下一步扫描二维码</a>
+	    </span>
+	</span>
 </span>
 </h3>
 <hr class="head-hr">
+
+<div class="alert">
+	<strong>温馨提示</strong><br>
+	请在本页面进行<strong>第4步</strong>，<strong>选择背景音乐</strong>；<br>
+	您可以选择系统为您准备的音乐，也可以自己上传音乐文件；<br>
+	建议上传较小的音乐文件，上传之前请保证音乐大小不超过<strong>10M</strong>；<br>
+	点击对应音乐的<strong>选择</strong>按钮完成设置。<br>
+</div>
 
 <jsp:include page="../util/message.jsp"/>
 

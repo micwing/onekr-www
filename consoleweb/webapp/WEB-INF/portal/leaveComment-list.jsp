@@ -153,7 +153,7 @@
 			success: function(data) {
 				alert(data.message);
 				if (data.code == 0) {					
-					location.href='/console/leaveComment/list';
+					location.href='${ctx}/console/leaveComment/list';
 				}
 			}
 		});

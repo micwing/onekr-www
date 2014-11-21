@@ -1,7 +1,7 @@
 body {
 	padding-top: 20px;
 	padding-bottom: 20px;
-	font-family: "verdana","ms song","ËÎÌå","Arial","Î¢ÈíÑÅºÚ","Helvetica","sans-serif";
+	font-family: "sans-serif","Microsoft YaHei";
 	font-size: 13px;
 }
 
@@ -24,4 +24,8 @@ fieldset legend {
 
 section {
 	margin-bottom: 10px;
+}
+
+.help-block, .help-inline {
+    color: #ADADAD;
 }

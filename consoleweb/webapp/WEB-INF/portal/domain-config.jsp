@@ -79,7 +79,7 @@ ns.formSubmit = function() {
 		data : {configs: $.toJSON(params)},
 		success : function(data) {
 			alert(data.message);
-			location.href="console/domain/config";
+			location.href="${ctx}/console/domain/config";
 		}
 	});
 };

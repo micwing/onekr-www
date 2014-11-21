@@ -81,7 +81,7 @@ ns.formSubmit = function() {
 		data : {configs: $.toJSON(params)},
 		success : function(data) {
 			alert(data.message);
-			location.href="console/config/baseConfig";
+			location.href="${ctx}/console/config/baseConfig";
 		}
 	});
 };

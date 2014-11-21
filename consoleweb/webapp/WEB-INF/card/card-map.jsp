@@ -24,7 +24,7 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nBM1MoOPrltzt4VC8AFoYA6D"></script>
 
 <h3>
-	请柬地图 
+	设置地图
 	<span class="pull-right">
 	    <span class="btn-group">
 			<a class="btn" href="card/photo/cardphoto/${card.id}">上一步管理照片</a>
@@ -33,6 +33,13 @@
 	</span>
 </h3>
 <hr class="head-hr">
+
+<div class="alert">
+	<strong>温馨提示</strong><br>
+	请在本页面进行<strong>第3步</strong>，<strong>设置地图</strong>；<br>
+	在地图中查找并选择举办婚礼的地点，方便收到请柬的亲友<strong>一键导航</strong>到该处；<br>
+	请<strong>拖拽地图</strong>，让<strong>红色标记</strong>对准举办婚礼的地点。<br>
+</div>
 
 <jsp:include page="../util/message.jsp"/>
 
@@ -77,8 +84,7 @@ $('#modifyMapurl').click(function() {
 				<input type="hidden" name="mapPicUrl">
 				<input type="hidden" name="mapUrl">
 				<input type="hidden" name="cardId" value="${cardId}">
-				<span>请拖拽地图，把红色标记对准酒店所在位置</span>
-				<button type="button" class="btn btn-primary btn-large" id="updateMapUrl">确定</button>
+				<button type="button" class="btn btn-primary btn-large" id="updateMapUrl">保存</button>
 				<c:if test="${!empty card.mapPicUrl}">
 				<button type="button" class="btn btn-large" id="cancelMapUrl">取消</button>
 				<script type="text/javascript">

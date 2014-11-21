@@ -127,7 +127,7 @@ ns.doLogin = function(btnId) {
 		success : function(data) {
 			if (data.code == 0) {
 				$('#msg').html('<span style="color:green">登录成功，正在跳转...</span>');
-				location.href = 'card/info';
+				location.href = '${ctx}/card/info';
 				return;
 			}
 			

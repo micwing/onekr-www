@@ -128,7 +128,7 @@ ns.doResetPassword = function(btnId) {
 		success : function(data) {
 			if (data.code == 0) {
 				alert('重置成功，请立即登录！');
-				location.href='login';
+				location.href='${ctx}/login';
 				return;
 			}
 			

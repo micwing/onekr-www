@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
 <%@page import="onekr.cardservice.card.intf.CardPhotoFileBiz" %>
-<h3>请柬照片
+<h3>管理照片
 <span class="pull-right">
     <span class="btn-group">
 		<a class="btn" href="card/info/modify/${card.id}">上一步请柬信息</a>
@@ -10,6 +10,13 @@
 </span>
 </h3>
 <hr class="head-hr">
+
+<div class="alert">
+	<strong>温馨提示</strong><br>
+	请在本页面进行<strong>第2步</strong>，<strong>管理照片</strong>；<br>
+	上传之前请保证每张照片大小不超过<strong>10M</strong>；您可以一次性上传多张照片，但是速度较慢，请您耐心等待；<br>
+	上传完成之后请在照片列表中设置一张照片为<strong>封面</strong>、设置一张照片为<strong>新郎独照</strong>、设置一张照片为<strong>新娘独照</strong>。<br>
+</div>
 
 <jsp:include page="../util/message.jsp"/>
 
@@ -71,7 +78,7 @@ $('#uploadButton').click(function() {
 		<table class="table">
 		<c:forEach items="${photos}" var="dto" varStatus="st">
 			<tr>
-				<td>
+				<td style="text-align: left;width: 200px">
 					<c:if test="${dto.isCover}">
 					<div><span class="label label-success">请柬封面</span></div>
 					</c:if>
@@ -83,35 +90,36 @@ $('#uploadButton').click(function() {
 					</c:if>
 					<div><span class="label">请柬相册</span></div>
 				</td>
-				<td><a
+				<td style="text-align: center;"><a 
 					href="attached${fn:replace(dto.photo.storePath, '\\', '/')}"
 					class="fancybox" rel="group1"> <img
 						src="attached${fn:replace(dto.thumb.storePath, '\\', '/')}"
-						class="img-polaroid" height="200px" width="200px">
+						class="img-polaroid" height="200px" width="200px"><br><i class="icon-search" style="font-size: 40px">&nbsp;</i> 
 				</a></td>
-				<td>
+				<td style="text-align: right;width: 200px">
 					<div>
 						<c:if test="${!dto.isCover}">
-						<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=cover&fileStoreId=${dto.photo.id}">设为封面</a> </div>
+						<div><button class="btn" type="button" onclick="ns.doUseWay('${card.id}','cover','${dto.photo.id}', this);">设为封面</button> </div>
 						</c:if>
 						<c:if test="${dto.isCover}">
-						<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=cover&fileStoreId=${dto.photo.id}">取消封面</a> </div>
+						<div><button class="btn btn-info" type="button" onclick="ns.doCancelWay('${card.id}','cover','${dto.photo.id}', this);">取消封面</button> </div>
 						</c:if>
-						
+						<br>
 						<c:if test="${!dto.isPeople1Photo}">
-						<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people1&fileStoreId=${dto.photo.id}">设为新郎独照</a> </div>
+						<div><button class="btn" type="button" onclick="ns.doUseWay('${card.id}','people1','${dto.photo.id}', this);">设为新郎独照</button> </div>
 						</c:if>
 						<c:if test="${dto.isPeople1Photo}">
-						<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people1&fileStoreId=${dto.photo.id}">取消新郎独照</a> </div>
+						<div><button class="btn btn-info" type="button" onclick="ns.doCancelWay('${card.id}','people1','${dto.photo.id}', this);">取消新郎独照</button> </div>
 						</c:if>
-						
+						<br>
 						<c:if test="${!dto.isPeople2Photo}">
-						<div><a href="card/photo/doUseWay?cardId=${card.id}&desc=people2&fileStoreId=${dto.photo.id}">设为新娘独照</a> </div>
+						<div><button class="btn" type="button" onclick="ns.doUseWay('${card.id}','people2','${dto.photo.id}', this);">设为新娘独照</button> </div>
 						</c:if> 
 						<c:if test="${dto.isPeople2Photo}">
-						<div><a href="card/photo/doCancelWay?cardId=${card.id}&desc=people2&fileStoreId=${dto.photo.id}">取消新娘独照</a> </div>
+						<div><button class="btn btn-info" type="button" onclick="ns.doCancelWay('${card.id}','people2','${dto.photo.id}', this);">取消新娘独照</button> </div>
 						</c:if>
-						<div><a href="card/photo/doDelete?fileStoreId=${dto.photo.id}&cardId=${card.id}">删除</a> </div>
+						<br>
+						<div><button class="btn btn-danger" type="button" onclick="ns.doDelete('${card.id}','${dto.photo.id}', this);">删除</button> </div>
 					</div>
 				</td>
 			</tr>
@@ -121,6 +129,54 @@ $('#uploadButton').click(function() {
 </div>
 <script type="text/javascript">
 var ns = ns || {};
+ns.doUseWay = function(cardId,desc,fileStoreId, obj) {
+	$(obj).attr('disabled', true);
+	$.ajax({
+		url : "card/photo/doUseWay",
+		type : 'post',
+        dataType : 'json',
+		data : {cardId: cardId,desc:desc,fileStoreId:fileStoreId},
+		success : function(data) {
+			if (data.code == 0) {
+				location.href='${ctx}/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
+			}
+			$(obj).attr('disabled', false);
+		}
+	});
+};
+ns.doCancelWay = function(cardId,desc,fileStoreId, obj) {
+	$(obj).attr('disabled', true);
+	$.ajax({
+		url : "card/photo/doCancelWay",
+		type : 'post',
+        dataType : 'json',
+		data : {cardId: cardId,desc:desc,fileStoreId:fileStoreId},
+		success : function(data) {
+			if (data.code == 0) {
+				location.href='${ctx}/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
+			}
+			$(obj).attr('disabled', false);
+		}
+	});
+};
+ns.doDelete = function(cardId,fileStoreId, obj) {
+	if (!confirm('确定要删除该照片吗？')) {
+		return;
+	}
+	$(obj).attr('disabled', true);
+	$.ajax({
+		url : "card/photo/doDelete",
+		type : 'post',
+        dataType : 'json',
+		data : {cardId: cardId,fileStoreId:fileStoreId},
+		success : function(data) {
+			if (data.code == 0) {
+				location.href='${ctx}/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
+			}
+			$(obj).attr('disabled', false);
+		}
+	});
+};
 
 $(function() {
 	

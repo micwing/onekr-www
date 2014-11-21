@@ -30,23 +30,19 @@
 				<th>请柬类型</th>
 				<th>模版</th>
 				<th>标题</th>
-				<th>新郎</th>
-				<th>新娘</th>
-				<th>备注</th>
+				<th>新郎、新娘</th>
 				<th>操作</th>
 			</tr>
 			<c:forEach items="${page.content}" var="card" varStatus="st">
 				<tr>
 					<td>${card.id}</td>
-					<td>${card.cardType}</td>
+					<td>${card.cardType.label}</td>
 					<td>${card.templetId}</td>
 					<td>${card.title}</td>
-					<td>${card.people1Name}</td>
-					<td>${card.people2Name}</td>
-					<td>${catd.remark}</td>
-					<td>
-						<a
+					<td>${card.people1Name}、${card.people2Name}</td>
+					<td><a
 						href="card/info/modify/${card.id}">修改</a>
+						</td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -100,7 +100,7 @@ ns.doExceuteScript = function() {
 		data : params,
 		success : function(data) {
 			alert(data.message);
-			location.href="console/script/executeScript/${script.id}";
+			location.href="${ctx}/console/script/executeScript/${script.id}";
 		}
 	});
 };

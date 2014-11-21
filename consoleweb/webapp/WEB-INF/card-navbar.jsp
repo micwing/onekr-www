@@ -24,11 +24,11 @@
 		</shiro:hasRole>
 		
 		<li class="nav-header">账号</li>
-		<li class="${fn:startsWith(requestServletPath, '/identity/account/accountInfo/')?'active':''}">
-			<a href="identity/account/accountInfo"><i class="icon-user"></i> 账号信息</a>
+		<li>
+			<a href="identity/account/accountInfo"><i class="icon-user"></i> 账户信息</a>
 		</li>
-		<li class="${fn:startsWith(requestServletPath, '/identity/account/modifyPassword/')?'active':''}">
-			<a href="identity/account/modifyPassword"><i class="icon-certificate"></i> 修改密码</a>
+		<li>
+			<a href="identity/account/modifyPassword"><i class="icon-edit"></i> 修改密码</a>
 		</li>
 	</ul>
 </div>

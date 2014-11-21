@@ -72,7 +72,7 @@ function doDeleteCode(code) {
            success: function(result){
            	if (result.code == 0) {
            		alert('删除成功！');
-            	location.href='card/makecode/list';
+            	location.href='${ctx}/card/makecode/list';
            	} else {
            		alert('操作失败！');
            	}

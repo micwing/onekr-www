@@ -180,7 +180,7 @@ ns.doRegister = function(btnId) {
 		success : function(data) {
 			if (data.code == 0) {
 				alert('注册成功，请立即登录！');
-				location.href='login';
+				location.href='${ctx}/login';
 				return;
 			}
 			

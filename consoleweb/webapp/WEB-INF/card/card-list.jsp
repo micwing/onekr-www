@@ -34,9 +34,7 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 				<th>请柬类型</th>
 				<th>模版</th>
 				<th>标题</th>
-				<th>新郎</th>
-				<th>新娘</th>
-				<th>备注</th>
+				<th>新郎、新娘</th>
 				<th>操作</th>
 			</tr>
 			<c:forEach items="${page.content}" var="card" varStatus="st">
@@ -45,16 +43,13 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 					<td>${card.cardType.label}</td>
 					<td>${card.templetId}</td>
 					<td>${card.title}</td>
-					<td>${card.people1Name}</td>
-					<td>${card.people2Name}</td>
-					<td>${catd.remark}</td>
+					<td>${card.people1Name}、${card.people2Name}</td>
 					<td><a
 						href="card/info/modify/${card.id}">信息</a> <a
 						href="card/photo/cardphoto/${card.id}">照片</a> <a
 						href="card/map/cardmap/${card.id}">地图</a> <br> <a
 						href="card/music/cardmusic/${card.id}">音乐</a> <a
 						href="card/2dcode/index/${card.id}">二维码</a>
-						<a href="<%=siteRootUrl%>/card/cover/${card.id}" target="_blank">预览</a>
 						</td>
 				</tr>
 			</c:forEach>

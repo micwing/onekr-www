@@ -16,6 +16,15 @@
 </h3>
 <hr class="head-hr">
 
+<div class="alert">
+	<strong>温馨提示</strong><br>
+	请柬制作需要5步：<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;“<strong>请柬信息</strong>”、“<strong>管理照片</strong>”、“<strong>设置地图</strong>”、“<strong>选择音乐</strong>”、“<strong>扫描二维码</strong>”；<br>
+	请在本页面进行<strong>第1步</strong>，<strong>输入请柬信息</strong>，然后点击<strong>保存</strong>按钮，再进入下一步操作；<br>
+	带有<span class="star">*</span>的选项表示不能为空；<br>
+	新郎、新娘的姓名<strong>不能修改</strong>，请在第一次输入时确保正确！
+</div>
+
 <jsp:include page="../util/message.jsp"/>
 
 <ul class="nav nav-tabs">
@@ -42,6 +51,7 @@
 					<label class="control-label" for="people1Mobile">新郎手机号码</label>
 					<div class="controls">
 						<input type="text" name="people1Mobile" placeholder="people1Mobile" value="${card.people1Mobile}">
+						<span class="help-block">手机号码会显示在请柬中，方便亲友直接拨打电话联系</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -55,6 +65,7 @@
 					<label class="control-label" for="people2Mobile">新娘手机号码</label>
 					<div class="controls">
 						<input type="text" name="people2Mobile" placeholder="people2Mobile" value="${card.people2Mobile}">
+						<span class="help-block">手机号码会显示在请柬中，方便亲友直接拨打电话联系</span>
 					</div>
 				</div>
 			</fieldset>
@@ -65,32 +76,35 @@
 					<label class="control-label" for="partyTime"><span class="star">*</span> 典礼时间</label>
 					<div class="controls">
 						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/>"/>
-						<span class="help-block">使用时间控件选择</span>
+						<span class="help-block">点击输入框，使用时间控件选择</span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="restaurant"><span class="star">*</span> 酒店名称</label>
+					<label class="control-label" for="restaurant"><span class="star">*</span> 举办地点</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="restaurant" placeholder="restaurant" value="${card.restaurant}">
+						<span class="help-block">请输入酒店名称</span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="address">酒店地址</label>
+					<label class="control-label" for="address">举办地址</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="address" placeholder="address" value="${card.address}">
+						<span class="help-block">请输入酒店地址</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="traffic">交通方式</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="traffic" placeholder="traffic" value="${card.traffic}">
+						<span class="help-block">到达酒店的公共交通方式，例如：乘坐1路、2路、3路公交车在天安门站下车向北100米</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="remind">温馨提醒</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="remind" placeholder="remind" value="${empty card.remind ? '喝酒不开车，开车不喝酒' : card.remind}">
-						<span class="help-block">示例：喝酒不开车，开车不喝酒</span>
+						<span class="help-block">例如：喝酒不开车，开车不喝酒</span>
 					</div>
 				</div>
 			</fieldset>
@@ -101,21 +115,21 @@
 					<label class="control-label" for="title"><span class="star">*</span> 标题</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="title" placeholder="title" value="${card.title}">
-						<span class="help-block">标题根据已经填写的内容自动生成，也可以手动修改。</span>
+						<span class="help-block">系统会根据新郎、新娘的姓名自动生成一个标题，您也可以手动修改该标题。</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="beforeInfo"><span class="star">*</span> 前置语句</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="beforeInfo" placeholder="beforeInfo" value="${empty card.beforeInfo ? '沉浸在幸福中的我们&lt;br/&gt;谨定于' : card.beforeInfo}">
-						<span class="help-block">示例：沉浸在幸福中的我们&lt;br/&gt;谨定于</span>
+						<span class="help-block">自定义前置语句，建议使用默认。示例：沉浸在幸福中的我们&lt;br/&gt;谨定于</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="afterInfo"><span class="star">*</span> 后置语句</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="afterInfo" placeholder="afterInfo" value="${empty card.afterInfo ? '举行典礼&lt;br/&gt;敬备喜宴 恭请光临' : card.afterInfo}">
-						<span class="help-block">示例：举行典礼&lt;br/&gt;敬备喜宴 恭请光临</span>
+						<span class="help-block">自定义前置语句，建议使用默认。示例：举行典礼&lt;br/&gt;敬备喜宴 恭请光临</span>
 					</div>
 				</div>
 				
@@ -135,6 +149,7 @@
 							<option value="${tmpId}" ${card.templetId == tmpId ? 'selected':'' }>${tmpName}</option>
 							<%}%>
 						</select>
+						<span class="help-block">选择一个模板，不用担心，模板不喜欢可以随时修改</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -150,6 +165,7 @@
 							<option value="NORMAL" ${card.status == 'NORMAL' ? 'selected':'' }>正常</option>
 							<option value="PAUSED" ${card.status == 'PAUSED' ? 'selected':'' }>停用</option>
 						</select>
+						<span class="help-block">如果您不再想让任何人访问该请柬，请把状态改为停用</span>
 					</div>
 				</div>
 			</fieldset>
@@ -227,7 +243,7 @@
 					}
 				},
 				errorClass : "help-block",
-				errorElement : "span",
+				errorElement : "div",
 				highlight : function(element, errorClass, validClass) {
 					$(element).parents('.control-group').removeClass('success');
 					$(element).parents('.control-group').addClass('error');

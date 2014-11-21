@@ -94,7 +94,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- <error-page>
+	<error-page>
 		<error-code>401</error-code>
 		<location>/WEB-INF/common/error.jsp</location>
 	</error-page>
@@ -109,7 +109,7 @@
 	<error-page>
 		<error-code>500</error-code>
 		<location>/WEB-INF/common/error.jsp</location>
-	</error-page> -->
+	</error-page>
 
 	<display-name>consoleweb</display-name>
 	<description>consolewebApplication</description>

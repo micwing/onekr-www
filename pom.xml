@@ -17,7 +17,6 @@
 		<module>cardservice</module>
 		<module>portalweb</module>
 		<module>consoleweb</module>
-		<module>cardweb</module>
 	</modules>
 
 	<properties>
@@ -84,11 +83,6 @@
 			<dependency>
 				<groupId>onekr</groupId>
 				<artifactId>portalweb</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>onekr</groupId>
-				<artifactId>cardweb</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

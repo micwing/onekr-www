@@ -29,14 +29,14 @@ function doGenerateCode() {
 	$.ajax({
            type: "post",//使用get方法访问后台
            dataType: "json",//返回json格式的数据
-           url: "card/makecode/doGenerate",//要访问的后台地址
+           url: "console/card/makecode/doGenerate",//要访问的后台地址
            data: {
            	'maker' : $("#maker").val()
            },
            success: function(result){
            	if (result.code == 0) {
             	alert('申请成功！\n制作码为:'+result.value);
-            	location.href='${ctx}/card/makecode/list';
+            	location.href='${ctx}/console/card/makecode/list';
            	} else {
            		alert('操作失败！');
            		$('#main-btn').attr('disabled', false);

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/card/map")
+@RequestMapping(value = "/console/card/map")
 public class CardMapController extends ConsoleBaseController {
 	
 	@Autowired

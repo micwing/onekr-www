@@ -13,7 +13,7 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<form class="form-horizontal" action="system/music/doUploadSystemMusic"
+		<form class="form-horizontal" action="console/system/music/doUploadSystemMusic"
 			method="post" enctype="multipart/form-data" id="file-form">
 			<div class="control-group">
 				<label class="control-label" for="file">选择音乐文件</label>
@@ -53,7 +53,7 @@ $('#uploadButton').click(function() {
 				<td><%=fs.getOriginalName()%></td>
 				<td><%=FileUtil.formetFileSize(fs.getSize())%></td>
 				<td>
-				<a href="system/music/doDeleteMusic?fileStoreId=<%=fs.getId() %>">删除</a>
+				<a href="console/system/music/doDeleteMusic?fileStoreId=<%=fs.getId() %>">删除</a>
 				</td>
 			</tr>
 		<% } %>

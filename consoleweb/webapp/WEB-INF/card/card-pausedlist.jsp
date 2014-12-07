@@ -41,13 +41,13 @@
 					<td>${card.title}</td>
 					<td>${card.people1Name}、${card.people2Name}</td>
 					<td><a
-						href="card/info/modify/${card.id}">修改</a>
+						href="console/card/info/modify/${card.id}">修改</a>
 						</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<jsp:include page="../util/paging.jsp">
-			<jsp:param name="_paging_base_url" value="card/info/pausedlist?cardType=WED_CARD&status=PAUSED" />
+			<jsp:param name="_paging_base_url" value="console/card/info/pausedlist?cardType=WED_CARD&status=PAUSED" />
 			<jsp:param name="_paging_size" value="20" />
 			<jsp:param name="_paging_range" value="3" />
 		</jsp:include>

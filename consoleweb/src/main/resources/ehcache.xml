@@ -6,7 +6,7 @@
 	<!-- <diskStore path="java.io.tmpdir"/> -->
 
 	<!-- 配置缓存文件存放路径 -->
-	<diskStore path="/onekrtmp/ehcache/consoleweb" />
+	<diskStore path="/onekrtmp/ehcache/web" />
 
 	<defaultCache
 		maxElementsInMemory="10000"

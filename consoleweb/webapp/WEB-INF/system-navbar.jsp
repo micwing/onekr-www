@@ -5,15 +5,15 @@
 		<shiro:hasRole name="ADMINISTRATOR">
 		<li class="nav-header">系统配置</li>
 		<li>
-			<a href="system/config/normalConfig"><i class="icon-cog"></i> 常规配置</a>
+			<a href="console/system/config/normalConfig"><i class="icon-cog"></i> 常规配置</a>
 		</li>
 		<li>
-			<a href="system/config/emailConfig"><i class="icon-envelope"></i> 邮件服务器</a>
+			<a href="console/system/config/emailConfig"><i class="icon-envelope"></i> 邮件服务器</a>
 		</li>
 		
 		<li class="nav-header">文件管理</li>
 		<li>
-			<a href="system/music/list"><i class="icon-music"></i> 系统音乐</a>
+			<a href="console/system/music/list"><i class="icon-music"></i> 系统音乐</a>
 		</li>
 		</shiro:hasRole>
 	</ul>

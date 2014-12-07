@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/system/music")
+@RequestMapping(value = "/console/system/music")
 public class SystemMusicController extends ConsoleBaseController {
 	
 	@Autowired

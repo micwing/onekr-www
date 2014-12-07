@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/identity/account")
+@RequestMapping(value = "/console/identity/account")
 public class IdentityAccountController extends ConsoleBaseController {
 	
 	@RequestMapping(value = "/accountInfo", method = RequestMethod.GET)

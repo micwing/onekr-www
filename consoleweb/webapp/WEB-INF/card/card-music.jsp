@@ -9,8 +9,8 @@
 <span class="pull-right">
     <span class="pull-right">
 	    <span class="btn-group">
-			<a class="btn" href="card/map/cardmap/${card.id}">上一步设置地图</a>
-			<a class="btn" href="card/2dcode/index/${card.id}">下一步扫描二维码</a>
+			<a class="btn" href="console/card/map/cardmap/${card.id}">上一步设置地图</a>
+			<a class="btn" href="console/card/2dcode/index/${card.id}">下一步扫描二维码</a>
 	    </span>
 	</span>
 </span>
@@ -29,7 +29,7 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<form class="form-horizontal" action="card/music/doUploadFile"
+		<form class="form-horizontal" action="console/card/music/doUploadFile"
 			method="post" enctype="multipart/form-data" id="file-form">
 			<div class="control-group">
 				<label class="control-label" for="file">选择音乐文件</label>
@@ -78,11 +78,11 @@ $('#uploadButton').click(function() {
 				%>
 				<span class="label label-success">已选中</span>
 				<% } else { %>
-				<a href="card/music/doSetMusic?cardId=${card.id}&fileStoreId=<%=fs.getId() %>">选择</a>
+				<a href="console/card/music/doSetMusic?cardId=${card.id}&fileStoreId=<%=fs.getId() %>">选择</a>
 				<% } %>
 				</td>
 				<td>
-				<a href="card/music/doDeleteMusic?cardId=${card.id}&fileStoreId=<%=fs.getId() %>">删除</a>
+				<a href="console/card/music/doDeleteMusic?cardId=${card.id}&fileStoreId=<%=fs.getId() %>">删除</a>
 				</td>
 			</tr>
 		<% } %>

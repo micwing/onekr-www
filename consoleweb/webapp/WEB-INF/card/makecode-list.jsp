@@ -48,7 +48,7 @@
 			</c:forEach>
 		</table>
 		<jsp:include page="../util/paging.jsp">
-			<jsp:param name="_paging_base_url" value="card/makecode" />
+			<jsp:param name="_paging_base_url" value="console/card/makecode" />
 			<jsp:param name="_paging_size" value="20" />
 			<jsp:param name="_paging_range" value="3" />
 		</jsp:include>
@@ -65,14 +65,14 @@ function doDeleteCode(code) {
 	$.ajax({
            type: "post",//使用get方法访问后台
            dataType: "json",//返回json格式的数据
-           url: "card/makecode/doDelete",//要访问的后台地址
+           url: "console/card/makecode/doDelete",//要访问的后台地址
            data: {
            	'makecode' : code
            },
            success: function(result){
            	if (result.code == 0) {
            		alert('删除成功！');
-            	location.href='${ctx}/card/makecode/list';
+            	location.href='${ctx}/console/card/makecode/list';
            	} else {
            		alert('操作失败！');
            	}

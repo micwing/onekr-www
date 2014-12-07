@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/card/photo")
+@RequestMapping(value = "/console/card/photo")
 public class CardPhotoController extends ConsoleBaseController {
 	
 	public static final String CARD_COVER_PHOTO_DESC = "cover";

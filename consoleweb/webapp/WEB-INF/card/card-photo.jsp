@@ -4,8 +4,8 @@
 <h3>管理照片
 <span class="pull-right">
     <span class="btn-group">
-		<a class="btn" href="card/info/modify/${card.id}">上一步请柬信息</a>
-		<a class="btn" href="card/map/cardmap/${card.id}">下一步设置地图</a>
+		<a class="btn" href="console/card/info/modify/${card.id}">上一步请柬信息</a>
+		<a class="btn" href="console/card/map/cardmap/${card.id}">下一步设置地图</a>
     </span>
 </span>
 </h3>
@@ -22,7 +22,7 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<form class="form-horizontal" action="card/photo/doUploadFile"
+		<form class="form-horizontal" action="console/card/photo/doUploadFile"
 			method="post" enctype="multipart/form-data" id="file-form">
 			<div class="control-group">
 				<label class="control-label" for="file">选择照片</label>
@@ -132,13 +132,13 @@ var ns = ns || {};
 ns.doUseWay = function(cardId,desc,fileStoreId, obj) {
 	$(obj).attr('disabled', true);
 	$.ajax({
-		url : "card/photo/doUseWay",
+		url : "console/card/photo/doUseWay",
 		type : 'post',
         dataType : 'json',
 		data : {cardId: cardId,desc:desc,fileStoreId:fileStoreId},
 		success : function(data) {
 			if (data.code == 0) {
-				location.href='${ctx}/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
+				location.href='${ctx}/console/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
 			}
 			$(obj).attr('disabled', false);
 		}
@@ -147,13 +147,13 @@ ns.doUseWay = function(cardId,desc,fileStoreId, obj) {
 ns.doCancelWay = function(cardId,desc,fileStoreId, obj) {
 	$(obj).attr('disabled', true);
 	$.ajax({
-		url : "card/photo/doCancelWay",
+		url : "console/card/photo/doCancelWay",
 		type : 'post',
         dataType : 'json',
 		data : {cardId: cardId,desc:desc,fileStoreId:fileStoreId},
 		success : function(data) {
 			if (data.code == 0) {
-				location.href='${ctx}/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
+				location.href='${ctx}/console/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
 			}
 			$(obj).attr('disabled', false);
 		}
@@ -165,13 +165,13 @@ ns.doDelete = function(cardId,fileStoreId, obj) {
 	}
 	$(obj).attr('disabled', true);
 	$.ajax({
-		url : "card/photo/doDelete",
+		url : "console/card/photo/doDelete",
 		type : 'post',
         dataType : 'json',
 		data : {cardId: cardId,fileStoreId:fileStoreId},
 		success : function(data) {
 			if (data.code == 0) {
-				location.href='${ctx}/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
+				location.href='${ctx}/console/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
 			}
 			$(obj).attr('disabled', false);
 		}

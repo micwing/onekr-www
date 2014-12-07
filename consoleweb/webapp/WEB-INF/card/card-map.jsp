@@ -27,8 +27,8 @@
 	设置地图
 	<span class="pull-right">
 	    <span class="btn-group">
-			<a class="btn" href="card/photo/cardphoto/${card.id}">上一步管理照片</a>
-			<a class="btn" href="card/music/cardmusic/${card.id}">下一步选择音乐</a>
+			<a class="btn" href="console/card/photo/cardphoto/${card.id}">上一步管理照片</a>
+			<a class="btn" href="console/card/music/cardmusic/${card.id}">下一步选择音乐</a>
 	    </span>
 	</span>
 </h3>
@@ -80,7 +80,7 @@ $('#modifyMapurl').click(function() {
 		</section>
 		<section>
 		<div class="pull-right">
-			<form id="map-form" action="card/map/doUpdateMap" method="post">
+			<form id="map-form" action="console/card/map/doUpdateMap" method="post">
 				<input type="hidden" name="mapPicUrl">
 				<input type="hidden" name="mapUrl">
 				<input type="hidden" name="cardId" value="${cardId}">

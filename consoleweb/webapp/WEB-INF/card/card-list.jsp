@@ -45,17 +45,17 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 					<td>${card.title}</td>
 					<td>${card.people1Name}、${card.people2Name}</td>
 					<td><a
-						href="card/info/modify/${card.id}">信息</a> <a
-						href="card/photo/cardphoto/${card.id}">照片</a> <a
-						href="card/map/cardmap/${card.id}">地图</a> <br> <a
-						href="card/music/cardmusic/${card.id}">音乐</a> <a
-						href="card/2dcode/index/${card.id}">二维码</a>
+						href="console/card/info/modify/${card.id}">信息</a> <a
+						href="console/card/photo/cardphoto/${card.id}">照片</a> <a
+						href="console/card/map/cardmap/${card.id}">地图</a> <br> <a
+						href="console/card/music/cardmusic/${card.id}">音乐</a> <a
+						href="console/card/2dcode/index/${card.id}">二维码</a>
 						</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<jsp:include page="../util/paging.jsp">
-			<jsp:param name="_paging_base_url" value="card/info/list?cardType=WED_CARD&status=NORMAL" />
+			<jsp:param name="_paging_base_url" value="console/card/info/list?cardType=WED_CARD&status=NORMAL" />
 			<jsp:param name="_paging_size" value="20" />
 			<jsp:param name="_paging_range" value="3" />
 		</jsp:include>

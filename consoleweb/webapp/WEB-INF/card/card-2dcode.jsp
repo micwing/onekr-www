@@ -8,7 +8,7 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 
 <h3>扫描二维码
 <c:if test="${!empty card}">
-	<span class="pull-right"><a class="btn" href="card/music/cardmusic/${card.id}">上一步选择音乐</a></span>
+	<span class="pull-right"><a class="btn" href="console/card/music/cardmusic/${card.id}">上一步选择音乐</a></span>
 </c:if>
 </h3>
 <hr class="head-hr">
@@ -25,7 +25,7 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 
 <div class="row-fluid">
 	<div class="span12">
-		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/card/cover/${card.id}&w=300&h=300" /><br>
+		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/console/card/cover/${card.id}&w=300&h=300" /><br>
 	</div>
 </div>
 

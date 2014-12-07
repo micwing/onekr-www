@@ -28,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/card/info")
+@RequestMapping(value = "/console/card/info")
 public class CardInfoController extends ConsoleBaseController {
 	
 	@Autowired
@@ -36,11 +36,6 @@ public class CardInfoController extends ConsoleBaseController {
 	
 	@Autowired
 	private CardMakeCodeBiz cardMakeCodeBiz;
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public String index() {
-		return "redirect:/card/info/list";
-	}
 	
 	@RequestMapping(value = "/makecodeinput", method = RequestMethod.GET)
 	public ModelAndView makecodeinput() {

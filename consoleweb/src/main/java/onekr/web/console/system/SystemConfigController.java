@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/system/config")
+@RequestMapping(value = "/console/system/config")
 public class SystemConfigController extends ConsoleBaseController {
 	@Autowired
 	private ConfigBiz configBiz;

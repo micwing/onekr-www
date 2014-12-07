@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/card/2dcode")
+@RequestMapping(value = "/console/card/2dcode")
 public class Card2dCodeController extends ConsoleBaseController {
 	
 	@Autowired

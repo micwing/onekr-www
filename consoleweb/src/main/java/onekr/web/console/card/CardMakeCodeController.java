@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value = "/card/makecode")
+@RequestMapping(value = "/console/card/makecode")
 public class CardMakeCodeController extends ConsoleBaseController {
 	
 	@Autowired

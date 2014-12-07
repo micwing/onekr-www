@@ -35,9 +35,6 @@ public class UserBizImpl implements UserBiz {
 	@Value("#{systemConfig['site.root.url']}")
 	private String siteRootUrl;
 	
-	@Value("#{systemConfig['site.console.url']}")
-	private String siteConsoleUrl;
-	
 	@Autowired
 	private UserDao userDao;
 	
@@ -108,7 +105,7 @@ public class UserBizImpl implements UserBiz {
 				Template tpl=freeMarkerConfigurer.getConfiguration().getTemplate("findUserPassword.ftl"); 
 				Map<String, String> map=new HashMap<String, String>();
 				map.put("username",user.getName());
-				map.put("url", siteConsoleUrl+"/login/resetpassword?username="+user.getName()+"&code="+code);
+				map.put("url", siteRootUrl+"/login/resetpassword?username="+user.getName()+"&code="+code);
 				emailBiz.sendEmail(user.getEmail(), "重置密码", FreeMarkerTemplateUtils.processTemplateIntoString(tpl,map));
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -11,7 +11,7 @@
 </style>
 <h3>请柬信息
 <c:if test="${!empty card}">
-	<span class="pull-right"><a class="btn" href="card/photo/cardphoto/${card.id}">下一步管理照片</a></span>
+	<span class="pull-right"><a class="btn" href="console/card/photo/cardphoto/${card.id}">下一步管理照片</a></span>
 </c:if>
 </h3>
 <hr class="head-hr">
@@ -34,7 +34,7 @@
 </ul>
 <div class="tab-content">
 	<div class="tab-pane active" id="tab1">
-		<form class="form-horizontal" id="card-form" method="post" action="card/info/doSave">
+		<form class="form-horizontal" id="card-form" method="post" action="console/card/info/doSave">
 			<input type="hidden" name="id" value="${card.id}">
 			<input type="hidden" name="makecode" value="${makecode}">
 			<input type="hidden" name="cardType" value="WED_CARD" />

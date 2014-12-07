@@ -32,7 +32,7 @@ function doUseCode() {
 	if (!confirm('确定要使用该制作码吗？')) {
 		return;
 	}
-	location.href="${ctx}/card/info/add?makecode="+$("#makecode").val();
+	location.href="${ctx}/console/card/info/add?makecode="+$("#makecode").val();
 }
 </script>
 

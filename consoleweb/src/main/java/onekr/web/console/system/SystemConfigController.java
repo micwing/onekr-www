@@ -28,7 +28,7 @@ public class SystemConfigController extends ConsoleBaseController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
-		return "redirect:/system/config/normalConfig";
+		return "redirect:/console/system/config/normalConfig";
 	}
 	
 	@RequestMapping(value = "/normalConfig", method = RequestMethod.GET)

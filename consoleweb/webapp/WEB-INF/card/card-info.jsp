@@ -207,13 +207,13 @@
 					},	
 					restaurant : {
 						required : true,
-						maxlength : 50
+						maxlength : 100
 					},
 					address : {
-						maxlength : 50
+						maxlength : 100
 					},
 					traffic : {
-						maxlength : 50
+						maxlength : 100
 					},
 					remind : {
 						maxlength : 100

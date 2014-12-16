@@ -13,7 +13,7 @@
         <property name="ignoreResourceNotFound" value="true" />
         <property name="locations">
             <list>
-                <value>classpath:system.properties</value>
+                <value>classpath:*.properties</value>
             </list>
         </property>
     </bean>

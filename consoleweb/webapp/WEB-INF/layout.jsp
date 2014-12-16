@@ -59,7 +59,7 @@
 							<li class="${(
 							fn:startsWith(requestServletPath, '/console/card/') ||
 							fn:startsWith(requestServletPath, '/console/identity/')
-							)?'active':''}"><a href="console/card/info">请柬管理</a></li>
+							)?'active':''}"><a href="console/card/info/list">请柬管理</a></li>
 							<shiro:hasRole name="ADMINISTRATOR">
 							<li class="${fn:startsWith(requestServletPath, '/console/system/')?'active':''}"><a href="console/system/config">系统设置</a></li>
 							</shiro:hasRole>

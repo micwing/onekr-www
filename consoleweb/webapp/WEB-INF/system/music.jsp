@@ -19,7 +19,7 @@
 				<label class="control-label" for="file">选择音乐文件</label>
 				<div class="controls">
 					<input type="hidden" name="cardId" value="${card.id}" /> <input
-						type="file" id="file" name="file" multiple value="选择文件"
+						type="file" id="file" name="file" value="选择文件"
 						placeholder="file" />
 				</div>
 			</div>

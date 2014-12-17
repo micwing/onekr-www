@@ -1,22 +1,17 @@
 package onekr.framework.spring.context;
 
-import java.util.Properties;
+import java.io.File;
 
 import javax.servlet.ServletContext;
 
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.support.PropertiesLoaderUtils;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
 public class AppContextLoaderListener extends ContextLoaderListener {
 	
-	private static final String SYSCONFIG_FILE_LOCATION = "classpath:system.properties";
+	private static final String PROFILE_PRODUCT_FILE_DIR = "/_onekr_pro.txt";
 	
 	private static final String SPRING_PROFILES_ACTIVE = "spring.profiles.active";
-	
-	private static final String PROPERTIES_KEY_PROFILE = "profile";
 	
 	@Override
 	public WebApplicationContext initWebApplicationContext(
@@ -27,9 +22,8 @@ public class AppContextLoaderListener extends ContextLoaderListener {
 
 	private void init(ServletContext context) {
 		try {
-			Properties properties = PropertiesLoaderUtils.loadProperties(
-					new FileSystemResource(ResourceUtils.getFile(SYSCONFIG_FILE_LOCATION)));
-			System.setProperty(SPRING_PROFILES_ACTIVE, properties.getProperty(PROPERTIES_KEY_PROFILE));
+			File file = new File(PROFILE_PRODUCT_FILE_DIR);
+			System.setProperty(SPRING_PROFILES_ACTIVE, file.exists() ? "pro" : "dev");
 		} catch (Exception e) {
 			return;
 		}

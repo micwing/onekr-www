@@ -23,6 +23,7 @@
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.json.js"></script>
+<script src="assets/js/scrolltotop.js"></script>
 
 <script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
 <script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
@@ -95,7 +96,7 @@
 		<hr>
 		
 		<footer>
-		  <p>&copy; www.ONEKR.com 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
+		  <p>&copy; www.onekr.com 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
 		</footer>
 
 	</div>

@@ -25,7 +25,7 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 
 <div class="row-fluid">
 	<div class="span12">
-		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/console/card/cover/${card.id}&w=300&h=300" /><br>
+		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/card/cover/${card.id}&w=300&h=300" /><br>
 	</div>
 </div>
 

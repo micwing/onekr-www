@@ -28,8 +28,8 @@
 		<ul>
 			<c:if test="${!page.firstPage}">
 				<li title="首页"><a
-					href="<%=pagingUrl%>&page.page=1&page.size=<%=pagingSize%>">&lt;&lt;</a></li>
-				<%-- <li title="上一页"><a href="<%=pagingUrl%>&page.page=${page.number}&page.size=<%=pagingSize%>">&lt;上一页</a></li> --%>
+					href="<%=pagingUrl%><%=pagingUrl.contains("?")?"&":"?"%>page.page=1&page.size=<%=pagingSize%>">&lt;&lt;</a></li>
+				<%-- <li title="上一页"><a href="<%=pagingUrl%><%=pagingUrl.contains("?")?"&":"?"%>page.page=${page.number}&page.size=<%=pagingSize%>">&lt;上一页</a></li> --%>
 			</c:if>
 			<%-- <c:if test="${page.firstPage}">
 				<li title="首页"><span>首页</span></li>
@@ -38,16 +38,16 @@
 			<c:forEach begin="<%=min%>" end="<%=max%>" step="1" var="i">
 				<c:if test="${i != (page.number+1)}">
 					<li title="第${i}页"><a
-						href="<%=pagingUrl%>&page.page=${i}&page.size=<%=pagingSize%>">${i}</a></li>
+						href="<%=pagingUrl%><%=pagingUrl.contains("?")?"&":"?"%>page.page=${i}&page.size=<%=pagingSize%>">${i}</a></li>
 				</c:if>
 				<c:if test="${i == (page.number+1)}">
 					<li title="第${i}页"><span style="font-weight: bold;">${i}</span></li>
 				</c:if>
 			</c:forEach>
 			<c:if test="${!page.lastPage}">
-				<%-- <li title="下一页"><a href="<%=pagingUrl%>&page.page=${page.number+2}&page.size=<%=pagingSize%>">下一页&gt;</a></li> --%>
+				<%-- <li title="下一页"><a href="<%=pagingUrl%><%=pagingUrl.contains("?")?"&":"?"%>page.page=${page.number+2}&page.size=<%=pagingSize%>">下一页&gt;</a></li> --%>
 				<li title="尾页"><a
-					href="<%=pagingUrl%>&page.page=${page.totalPages}&page.size=<%=pagingSize%>">&gt;&gt;</a></li>
+					href="<%=pagingUrl%><%=pagingUrl.contains("?")?"&":"?"%>page.page=${page.totalPages}&page.size=<%=pagingSize%>">&gt;&gt;</a></li>
 			</c:if>
 			<%-- <c:if test="${page.lastPage}">
 				<li title="下一页"><span>下一页&gt;</span></li>

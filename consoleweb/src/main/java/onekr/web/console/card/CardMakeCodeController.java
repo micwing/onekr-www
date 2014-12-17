@@ -11,6 +11,7 @@ import onekr.web.console.ConsoleBaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +31,7 @@ public class CardMakeCodeController extends ConsoleBaseController {
 	public ModelAndView list(
 			@RequestParam(value = "start", required = false) Date start,
 			@RequestParam(value = "end", required = false) Date end, 
-			Pageable pageable) {
+			@PageableDefaults(value = 20) Pageable pageable) {
 		ModelAndView mav = new ModelAndView("card:makecode-list");
 		if (start == null) {
 			start = new Date(0);

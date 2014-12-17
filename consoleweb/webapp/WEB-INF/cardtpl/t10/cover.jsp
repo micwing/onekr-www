@@ -34,8 +34,9 @@
 				<a class="ir" id='page_link' href="card/main/${card.id}">^</a>
 			</div>
 			<h1 class="title"><a href="#">${card.title}</a></h1>
-			<p class="subtitle">${card.people1Name}  & ${card.people2Name} </p>
+			<%-- <p class="subtitle">${card.people1Name}  & ${card.people2Name} </p> --%>
 			<p><fmt:formatDate value="${card.partyTime}" type="date" pattern="yyyy年M月d日"/></p>
+			<p>${card.restaurant}</p>
 		</div>
 		<%-- <p class="subtitle-comment">
 			<a href="card/main/${card.id}"></a>

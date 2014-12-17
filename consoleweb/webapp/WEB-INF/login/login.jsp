@@ -28,6 +28,11 @@
 <link rel="shortcut icon" href="assets/ico/favicon.png">
 </head>
 <body>
+<shiro:user>
+<script type="text/javascript">
+location.href = '${ctx}/console/card/info/list';
+</script>
+</shiro:user>
 <div class="container">
 	<div class="row">
 		<div class="span6 offset3">
@@ -37,13 +42,13 @@
 				<div class="control-group">
 					<label class="control-label" for="username">用户名 / 邮箱</label>
 					<div class="controls">
-						<input type="text" id="username" value="admin" name="username">
+						<input type="text" id="username" value="" name="username">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="password">密码</label>
 					<div class="controls">
-						<input type="password" id="password" value="1" name="password">
+						<input type="password" id="password" value="" name="password">
 					</div>
 				</div>
 				<div class="control-group">

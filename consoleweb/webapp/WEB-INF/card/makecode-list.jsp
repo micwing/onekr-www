@@ -48,7 +48,7 @@
 			</c:forEach>
 		</table>
 		<jsp:include page="../util/paging.jsp">
-			<jsp:param name="_paging_base_url" value="console/card/makecode" />
+			<jsp:param name="_paging_base_url" value="console/card/makecode/list" />
 			<jsp:param name="_paging_size" value="20" />
 			<jsp:param name="_paging_range" value="3" />
 		</jsp:include>

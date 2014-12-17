@@ -58,17 +58,17 @@ express.put("钞票", "chaopiao.png");
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr bgcolor="#FF3300" style="color: #FFF">
 			<td width="50%" align="center">
-				<c:if test="${!empty people1Photo.photo}">
+				<c:if test="${!empty people1Photo.thumb}">
 				<img
-					src="attached${fn:replace(people1Photo.photo.storePath, '\\', '/')}"
+					src="attached${fn:replace(people1Photo.thumb.storePath, '\\', '/')}"
 					width="50%">
 				</c:if>
 			</td>
 
 			<td width="50%" align="center">
-				<c:if test="${!empty people2Photo.photo}">
+				<c:if test="${!empty people2Photo.thumb}">
 				<img
-					src="attached${fn:replace(people2Photo.photo.storePath, '\\', '/')}"
+					src="attached${fn:replace(people2Photo.thumb.storePath, '\\', '/')}"
 					width="50%">
 				</c:if>
 			</td>

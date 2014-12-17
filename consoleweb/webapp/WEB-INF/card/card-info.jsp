@@ -8,6 +8,9 @@
 .star{
 	color: red;
 }
+.template-image-ul img {
+	width: 30%
+}
 </style>
 <h3>请柬信息
 <c:if test="${!empty card}">
@@ -150,6 +153,10 @@
 							<%}%>
 						</select>
 						<span class="help-block">选择一个模板，不用担心，模板不喜欢可以随时修改</span>
+						<div>示例：</div>
+						<div class="template-image-ul">
+							<img src="assets/images/template_example/${tmpId}_1.png"/><img src="assets/images/template_example/${tmpId}_2.png"/><img src="assets/images/template_example/${tmpId}_3.png"/>
+						</div>
 					</div>
 				</div>
 				<div class="control-group">
@@ -182,6 +189,12 @@
 			var ns = ns || {};
 			ns.updateTitle = function() {
 				$('#card-form input[name=title]').val('我们结婚啦！'+$('#card-form input[name=people1Name]').val()+'&'+$('#card-form input[name=people2Name]').val());
+			};
+			ns.resetTemplateImage = function() {
+				var templateId = $('#card-form select[name=templetId]').val();
+				$('.template-image-ul img:eq(0)').attr('src', 'assets/images/template_example/'+templateId+'_1.png');
+				$('.template-image-ul img:eq(1)').attr('src', 'assets/images/template_example/'+templateId+'_2.png');
+				$('.template-image-ul img:eq(2)').attr('src', 'assets/images/template_example/'+templateId+'_3.png');
 			};
 			
 			$('#card-form').validate({
@@ -268,6 +281,9 @@
 				});
 				$('#card-form input[name=people2Name]').change(function() {
 					ns.updateTitle();
+				});
+				$('#card-form select[name=templetId]').change(function() {
+					ns.resetTemplateImage();
 				});
 			});
 		</script>

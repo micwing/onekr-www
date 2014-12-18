@@ -96,17 +96,15 @@ public class CardMusicFileBizImpl implements CardMusicFileBiz {
 	}
 	
 	@Override
-	public List<FileStore> listCardMusic(Long cardId) {
+	public List<FileStore> listSystemMusic() {
 		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_MUSIC_FILE_STORE, SYSTEM_MUSIC_FILE_STORE_OWNER);
-		List<FileStore> list2 = fileStoreBiz.listFileStore(Biz.CARD_MUSIC_FILE_STORE, cardId+"");
-		list.addAll(list2);
 		return list;
 	}
 	
 	@Override
-	public List<FileStore> listSysteMusic() {
-		List<FileStore> list = fileStoreBiz.listFileStore(Biz.CARD_MUSIC_FILE_STORE, SYSTEM_MUSIC_FILE_STORE_OWNER);
-		return list;
+	public List<FileStore> listUserUploadMusic(Long cardId) {
+		List<FileStore> list2 = fileStoreBiz.listFileStore(Biz.CARD_MUSIC_FILE_STORE, cardId+"");
+		return list2;
 	}
 	
 	@Override

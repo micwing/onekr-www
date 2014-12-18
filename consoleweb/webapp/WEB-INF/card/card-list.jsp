@@ -32,27 +32,32 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 			<tr>
 				<th>ID</th>
 				<th>请柬类型</th>
-				<th>模版</th>
 				<th>标题</th>
-				<th>新郎、新娘</th>
+				<th>创建时间</th>
 				<th>操作</th>
 			</tr>
+			<c:if test="${empty page.content}">
+				<tr>
+					<td colspan="0"><span style="font-style: italic;">空</span></td>
+				</tr>
+			</c:if>
+			<c:if test="${!empty page.content}">
 			<c:forEach items="${page.content}" var="card" varStatus="st">
 				<tr>
 					<td>${card.id}</td>
 					<td>${card.cardType.label}</td>
-					<td>${card.templetId}</td>
 					<td>${card.title}</td>
-					<td>${card.people1Name}、${card.people2Name}</td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.createAt}" type="both"/></td>
 					<td><a
 						href="console/card/info/modify/${card.id}">信息</a> <a
 						href="console/card/photo/cardphoto/${card.id}">照片</a> <a
-						href="console/card/map/cardmap/${card.id}">地图</a> <br> <a
+						href="console/card/map/cardmap/${card.id}">地图</a> <a
 						href="console/card/music/cardmusic/${card.id}">音乐</a> <a
 						href="console/card/2dcode/index/${card.id}">二维码</a>
 						</td>
 				</tr>
 			</c:forEach>
+			</c:if>
 		</table>
 		<jsp:include page="../util/paging.jsp">
 			<jsp:param name="_paging_base_url" value="console/card/info/list?cardType=WED_CARD&status=NORMAL" />

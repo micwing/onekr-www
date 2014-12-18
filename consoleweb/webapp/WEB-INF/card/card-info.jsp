@@ -14,7 +14,16 @@
 </style>
 <h3>请柬信息
 <c:if test="${!empty card}">
-	<span class="pull-right"><a class="btn" href="console/card/photo/cardphoto/${card.id}">下一步管理照片</a></span>
+<span class="pull-right">
+	<span class="btn-group">
+		<a class="btn btn-info" href="console/card/info/modify/${card.id}">请柬信息</a>
+		<a class="btn" href="console/card/photo/cardphoto/${card.id}">管理照片</a>
+		<a class="btn" href="console/card/map/cardmap/${card.id}">设置地图</a>
+		<a class="btn" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
+		<a class="btn" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
+    </span>
+	<a class="btn btn-large" href="console/card/photo/cardphoto/${card.id}">下一步</a>
+</span>
 </c:if>
 </h3>
 <hr class="head-hr">
@@ -153,8 +162,11 @@
 							<%}%>
 						</select>
 						<span class="help-block">选择一个模板，不用担心，模板不喜欢可以随时修改</span>
-						<div>示例：</div>
+						<div>模板风格示例：</div>
 						<div class="template-image-ul">
+							<c:if test="${empty card.templetId}">
+							<c:set var="tmpId" value="t10001"/>
+							</c:if>
 							<img src="assets/images/template_example/${tmpId}_1.png"/><img src="assets/images/template_example/${tmpId}_2.png"/><img src="assets/images/template_example/${tmpId}_3.png"/>
 						</div>
 					</div>

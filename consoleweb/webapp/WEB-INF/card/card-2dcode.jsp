@@ -7,9 +7,16 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 <script src="assets/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 
 <h3>扫描二维码
-<c:if test="${!empty card}">
-	<span class="pull-right"><a class="btn" href="console/card/music/cardmusic/${card.id}">上一步选择音乐</a></span>
-</c:if>
+<span class="pull-right">
+	<span class="btn-group">
+		<a class="btn" href="console/card/info/modify/${card.id}">请柬信息</a>
+		<a class="btn" href="console/card/photo/cardphoto/${card.id}">管理照片</a>
+		<a class="btn" href="console/card/map/cardmap/${card.id}">设置地图</a>
+		<a class="btn" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
+		<a class="btn btn-info" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
+	</span>
+	<a class="btn btn-large" href="console/card/info/list">完&nbsp;&nbsp;成</a>
+</span>
 </h3>
 <hr class="head-hr">
 

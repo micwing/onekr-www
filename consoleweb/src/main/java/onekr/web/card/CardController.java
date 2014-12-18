@@ -10,6 +10,9 @@ import onekr.cardservice.card.intf.CardPhotoFileBiz;
 import onekr.cardservice.model.Card;
 import onekr.commonservice.model.Comment;
 import onekr.commonservice.model.FileStore;
+import onekr.commonservice.model.Status;
+import onekr.framework.exception.AppException;
+import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.identityservice.user.intf.UserBiz;
 
@@ -46,6 +49,10 @@ public class CardController {
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
+		if (card == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "未找到对应的请柬");
+		if (card.getStatus().equals(Status.PAUSED))
+			throw new AppException(ErrorCode.ILLEGAL_STATE, "该请柬不可见");
 		CardPhotoDto coverPhoto = cardPhotoFileBiz.getCardPhotoCover(cardId);
 		ModelAndView mav = new ModelAndView("single:cardtpl/"+card.getTempletId().substring(0,3)+"/cover");
 		mav.addObject("card", card);
@@ -57,6 +64,10 @@ public class CardController {
 	@RequestMapping(value = "/main/{cardId}", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
+		if (card == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "未找到对应的请柬");
+		if (card.getStatus().equals(Status.PAUSED))
+			throw new AppException(ErrorCode.ILLEGAL_STATE, "该请柬不可见");
 		CardPhotoDto coverPhoto = cardPhotoFileBiz.getCardPhotoCover(cardId);
 		CardPhotoDto people1Photo = cardPhotoFileBiz.getCardPhotoPeople1(cardId);
 		CardPhotoDto people2Photo = cardPhotoFileBiz.getCardPhotoPeople2(cardId);

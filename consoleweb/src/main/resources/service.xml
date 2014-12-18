@@ -127,6 +127,7 @@
 	</bean>
 
 	<!-- ExceptionResolver 	-->
+	<bean class="onekr.web.card.FileUploadExceptionResolver"></bean>
 	<bean class="onekr.framework.spring.web.resolver.AppExceptionResolver"></bean>
 
 	<!-- freemarker -->

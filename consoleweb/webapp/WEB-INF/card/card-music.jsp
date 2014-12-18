@@ -7,12 +7,14 @@
 <%@include file="../common/includes.jsp"%>
 <h3>选择音乐
 <span class="pull-right">
-    <span class="pull-right">
-	    <span class="btn-group">
-			<a class="btn" href="console/card/map/cardmap/${card.id}">上一步设置地图</a>
-			<a class="btn" href="console/card/2dcode/index/${card.id}">下一步扫描二维码</a>
-	    </span>
-	</span>
+	<span class="btn-group">
+		<a class="btn" href="console/card/info/modify/${card.id}">请柬信息</a>
+		<a class="btn" href="console/card/photo/cardphoto/${card.id}">管理照片</a>
+		<a class="btn" href="console/card/map/cardmap/${card.id}">设置地图</a>
+		<a class="btn btn-info" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
+		<a class="btn" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
+    </span>
+    <a class="btn btn-large" href="console/card/2dcode/index/${card.id}">下一步</a>
 </span>
 </h3>
 <hr class="head-hr">
@@ -20,8 +22,8 @@
 <div class="alert">
 	<strong>温馨提示</strong><br>
 	请在本页面进行<strong>第4步</strong>，<strong>选择背景音乐</strong>；<br>
-	您可以选择系统为您准备的音乐，也可以自己上传音乐文件；<br>
-	建议上传较小的音乐文件，上传之前请保证音乐大小不超过<strong>10M</strong>；<br>
+	您可以选择系统为您准备的音乐，也可以自己上传音乐文件，最多可以上传<strong>3个</strong>；<br>
+	建议上传较小的音乐文件，上传之前请保证音乐大小不超过<strong>5M</strong>；<br>
 	点击对应音乐的<strong>选择</strong>按钮完成设置。<br>
 </div>
 
@@ -82,7 +84,9 @@ $('#uploadButton').click(function() {
 				<% } %>
 				</td>
 				<td>
+				<% if (!fs.getOwner().equals(CardMusicFileBiz.SYSTEM_MUSIC_FILE_STORE_OWNER)) {%>				
 				<a href="console/card/music/doDeleteMusic?cardId=${card.id}&fileStoreId=<%=fs.getId() %>">删除</a>
+				<%}%>
 				</td>
 			</tr>
 		<% } %>

@@ -28,7 +28,7 @@ public class SystemMusicController extends ConsoleBaseController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(ModelMap model) {
 		ModelAndView mav = new ModelAndView("system:music",model);
-		List<FileStore> list = cardMusicFileBiz.listSysteMusic();
+		List<FileStore> list = cardMusicFileBiz.listSystemMusic();
 		mav.addObject("list", list);
 		return mav;
 	}

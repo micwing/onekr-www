@@ -65,7 +65,7 @@ public class CardPhotoController extends ConsoleBaseController {
 	@RequestMapping(value="/doUploadFile",method=RequestMethod.POST)
     public ModelAndView doUploadFile(
     		@RequestParam("file") CommonsMultipartFile[] mfiles, 
-    		@RequestParam("cardId") Long cardId) {       
+    		@RequestParam("cardId") Long cardId) {
 		User user = (User) getCurrentUser();
 		FileStore[] thumbs = cardFileBiz.saveCardPhotoThumb(cardId, mfiles, user.getId());
 		cardFileBiz.saveCardPhoto(cardId, mfiles,thumbs, user.getId());

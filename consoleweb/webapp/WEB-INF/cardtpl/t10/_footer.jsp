@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../../common/includes.jsp" %>
 <div style="width:100%;color:#666; font-size:small; line-height:12px; padding-top:5px; text-align: center;">
-<a href="http://onekr.taobao.com" target="_blank" style="color:#666;text-decoration:none">一氪工作室淘宝店 onekr.taobao.com</a>
+<a href="http://wap.koudaitong.com/v2/showcase/tag?alias=1isz8ptci&from=kdt" target="_blank" style="color:#666;text-decoration:none">一氪软件工作室微信店</a>
 </div>
 <script type="text/javascript">
 var contentModel = {    

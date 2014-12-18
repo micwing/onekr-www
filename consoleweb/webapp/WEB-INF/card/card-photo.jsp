@@ -4,9 +4,13 @@
 <h3>管理照片
 <span class="pull-right">
     <span class="btn-group">
-		<a class="btn" href="console/card/info/modify/${card.id}">上一步请柬信息</a>
-		<a class="btn" href="console/card/map/cardmap/${card.id}">下一步设置地图</a>
+		<a class="btn" href="console/card/info/modify/${card.id}">请柬信息</a>
+		<a class="btn btn-info" href="console/card/photo/cardphoto/${card.id}">管理照片</a>
+		<a class="btn" href="console/card/map/cardmap/${card.id}">设置地图</a>
+		<a class="btn" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
+		<a class="btn" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
     </span>
+    <a class="btn btn-large" href="console/card/map/cardmap/${card.id}">下一步</a>
 </span>
 </h3>
 <hr class="head-hr">
@@ -14,7 +18,7 @@
 <div class="alert">
 	<strong>温馨提示</strong><br>
 	请在本页面进行<strong>第2步</strong>，<strong>管理照片</strong>；<br>
-	上传之前请保证每张照片大小不超过<strong>10M</strong>；您可以一次性上传多张照片，但是速度较慢，请您耐心等待；<br>
+	上传之前请保证每张照片大小不超过<strong>5M</strong>；您每次至多上传<strong>5张</strong>照片，同时上传多张照片时速度较慢请您耐心等待；<br>
 	上传完成之后请在照片列表中设置一张照片为<strong>封面</strong>、设置一张照片为<strong>新郎独照</strong>、设置一张照片为<strong>新娘独照</strong>。<br>
 </div>
 
@@ -46,6 +50,11 @@
 $('#uploadButton').click(function() {
 	if ($('#file-form input[name=file]').val() == '') {
 		alert('请选择照片！');
+		return;
+	}
+	var fileCount = document.getElementById('file').files.length;
+	if (fileCount > 5) {
+		alert('一次至多选择5张照片上传！');
 		return;
 	}
 	$('#file-form').submit();

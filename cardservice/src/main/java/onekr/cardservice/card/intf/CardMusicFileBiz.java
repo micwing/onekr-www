@@ -71,17 +71,17 @@ public interface CardMusicFileBiz {
 	FileStore getUseMusic(@NotNull @Min(1) Long cardId);
 	
 	/**
-	 * 请柬音乐列表
-	 * @param cardId
-	 * @return
-	 */
-	List<FileStore> listCardMusic(@NotNull @Min(1) Long cardId);
-	
-	/**
 	 * 系统音乐列表
 	 * @param cardId
 	 * @return
 	 */
-	List<FileStore> listSysteMusic();
+	List<FileStore> listSystemMusic();
+	
+	/**
+	 * 用户音乐列表
+	 * @param cardId
+	 * @return
+	 */
+	List<FileStore> listUserUploadMusic(@NotNull @Min(1) Long cardId);
 	
 }

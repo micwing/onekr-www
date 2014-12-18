@@ -53,7 +53,7 @@
 					<span class="icon-bar"></span>
 					</a>
 					
-					<a class="brand" href="console/card/info/list">一氪工作室 | 管理中心</a>
+					<a class="brand" href="console/card/info/list">一氪软件工作室 | 管理中心</a>
 					
 					<div class="nav-collapse collapse">
 						<ul class="nav">

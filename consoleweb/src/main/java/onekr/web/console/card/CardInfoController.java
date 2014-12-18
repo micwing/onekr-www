@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,7 +79,7 @@ public class CardInfoController extends ConsoleBaseController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(CardType cardType, Status status, Pageable pageable) {
+	public ModelAndView list(CardType cardType, Status status,@PageableDefaults(value = 20) Pageable pageable) {
 		if (cardType == null)
 			cardType = CardType.WED_CARD;
 		if (status == null)
@@ -100,7 +101,7 @@ public class CardInfoController extends ConsoleBaseController {
 	}
 	
 	@RequestMapping(value = "/pausedlist", method = RequestMethod.GET)
-	public ModelAndView pausedlist(CardType cardType, Pageable pageable) {
+	public ModelAndView pausedlist(CardType cardType,@PageableDefaults(value = 20) Pageable pageable) {
 		if (cardType == null)
 			cardType = CardType.WED_CARD;
 		if (pageable == null)

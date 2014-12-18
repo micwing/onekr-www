@@ -6,7 +6,7 @@
             <table width="800" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#00a1cc" height="48" style="font-family:'Microsoft YaHei';">
               <tr>
                 <td width="104" height="26" border="0" align="center" valign="middle" style="padding-left:15px;">
-                	<a href="http://www.onekr.com" target="_blank" style="color:#ffffff;text-decoration:none;font-family:'Microsoft YaHei';">一氪工作室</a>
+                	<a href="http://www.onekr.com" target="_blank" style="color:#ffffff;text-decoration:none;font-family:'Microsoft YaHei';">一氪软件工作室</a>
                 </td>
                 <td width="703" height="48" colspan="2" align="right" valign="middle" style="color:#ffffff; padding-right:20px;">                  
                 </td>

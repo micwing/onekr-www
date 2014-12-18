@@ -25,15 +25,15 @@
 					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${makecode.createAt}" type="both"/></td>
 					<td>
 						<c:if test="${empty makecode.card}">
-							<span class="label label-success">未使用</span>
+							<span class="label label-success">未用</span>
 						</c:if>
 						<c:if test="${!empty makecode.card}">
-							<span class="label label-important">已使用</span>
+							<span class="label label-important">已用</span>
 						</c:if>
 					</td>
 					<td>
 						<c:if test="${!empty makecode.card}">
-							${makecode.card.title}
+							<a href="console/card/info/modify/${makecode.card.id}">${makecode.card.id}</a>
 						</c:if>
 					</td>
 					<td>

@@ -177,6 +177,11 @@ $(function() {
 	$('#main-btn').click(function() {
 		ns.doLogin('#main-btn');
 	});
+	$('#main-form input').keyup(function(e) {
+		if(e.keyCode == 13){
+			$('#main-btn').trigger('click');
+	   	}
+	});
 });
 </script>
 </body>

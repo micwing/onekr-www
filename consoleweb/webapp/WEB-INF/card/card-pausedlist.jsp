@@ -26,21 +26,14 @@
 	<div class="span12">
 		<table class="table table-bordered">
 			<tr>
-				<th>ID</th>
 				<th>请柬类型</th>
 				<th>标题</th>
 				<th>创建时间</th>
 				<th>操作</th>
 			</tr>
-			<c:if test="${empty page.content}">
-				<tr>
-					<td colspan="0"><span style="font-style: italic;">空</span></td>
-				</tr>
-			</c:if>
 			<c:if test="${!empty page.content}">
 				<c:forEach items="${page.content}" var="card" varStatus="st">
-				<tr>
-					<td>${card.id}</td>
+				<tr cardId="${card.id}">
 					<td>${card.cardType.label}</td>
 					<td>${card.title}</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.createAt}" type="both"/></td>
@@ -51,6 +44,9 @@
 				</c:forEach>
 			</c:if>
 		</table>
+		<c:if test="${empty page.content}">
+			<span style="font-style: italic;">空</span>
+		</c:if>
 		<jsp:include page="../util/paging.jsp">
 			<jsp:param name="_paging_base_url" value="console/card/info/pausedlist?cardType=WED_CARD&status=PAUSED" />
 			<jsp:param name="_paging_size" value="20" />

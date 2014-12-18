@@ -99,7 +99,7 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="address">举办地址</label>
+					<label class="control-label" for="address"><span class="star">*</span> 举办地址</label>
 					<div class="controls">
 						<input type="text" class="input-block-level" name="address" placeholder="address" value="${card.address}">
 						<span class="help-block">请输入酒店地址</span>
@@ -235,6 +235,7 @@
 						maxlength : 100
 					},
 					address : {
+						required : true,
 						maxlength : 100
 					},
 					traffic : {

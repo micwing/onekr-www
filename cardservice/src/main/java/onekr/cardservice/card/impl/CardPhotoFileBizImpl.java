@@ -159,6 +159,16 @@ public class CardPhotoFileBizImpl implements CardPhotoFileBiz {
 		return max;
 	}
 	
+	private CardPhotoDto getCardPhotoDto(Long fileStoreId) {
+		FileStore photoFileStore = fileStoreBiz.findById(fileStoreId);
+		CardPhotoDto dto = new CardPhotoDto(photoFileStore);
+		if (dto.getThumbId() != null) {
+			FileStore thumbFileStore = fileStoreBiz.findById(dto.getThumbId());
+			dto.setThumb(thumbFileStore);
+		}
+		return dto;
+	}
+	
 	private List<CardPhotoDto> listCardPhoto(Long cardId, Biz photoBiz, Biz thumbBiz) {
 		//原图
 		List<FileStore> list = fileStoreBiz.listFileStore(photoBiz, cardId+"");
@@ -188,6 +198,27 @@ public class CardPhotoFileBizImpl implements CardPhotoFileBiz {
 	@Override
 	public List<CardPhotoDto> listCardPhoto(Long cardId) {
 		return listCardPhoto(cardId, Biz.CARD_PHOTO_FILE_STORE, Biz.CARD_PHOTO_THUMB_FILE_STORE);
+	}
+	
+	@Override
+	public void rotatePhoto(Long cardId, Long fileStoreId, Long uid) {
+		CardPhotoDto dto = getCardPhotoDto(fileStoreId);
+		File photoFile = fileBiz.getFile(dto.getPhoto().getStorePath());
+		try {
+			fileBiz.rotate(photoFile, 90d, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new AppException(ErrorCode.SERVER_ERROR, "处理图片旋转时出错");
+		}
+		if (dto.getThumb() != null) {
+			File thumbFile = fileBiz.getFile(dto.getThumb().getStorePath());
+			try {
+				fileBiz.rotate(thumbFile, 90d, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new AppException(ErrorCode.SERVER_ERROR, "处理缩略图旋转时出错");
+			}
+		}
 	}
 	
 	@Override

@@ -44,6 +44,12 @@ public class CardMakeCodeController extends ConsoleBaseController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/buy",method = RequestMethod.GET)
+	public ModelAndView buy() {
+		ModelAndView mav = new ModelAndView("card:makecode-buy");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/generate",method = RequestMethod.GET)
 	public ModelAndView generate() {
 		ModelAndView mav = new ModelAndView("card:makecode-generate");

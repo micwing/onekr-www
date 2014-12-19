@@ -184,6 +184,7 @@ $(function() {
 	});
 });
 </script>
+<jsp:include page="../common/analytics.jsp"></jsp:include>
 </body>
 </html>
 

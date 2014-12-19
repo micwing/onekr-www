@@ -128,12 +128,12 @@ public class LoginController extends ConsoleBaseController {
 			@RequestParam("username") String username,
 			@RequestParam("code") String code,
 			@RequestParam("password") String password) {
-		doSignout();
 		
 		if (!SunImageValidateCodeServlet.validate(request)) {
 			return new Result(ErrorCode.VALIDATE_ERROR);
 		}
 		userBiz.resetPassword(username, password, code);
+		
 		return new Result(ErrorCode.SUCCEED);
 	}
 	

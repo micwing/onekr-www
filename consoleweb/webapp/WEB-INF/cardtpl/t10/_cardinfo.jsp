@@ -1,5 +1,16 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
+<%@page import="onekr.cardservice.model.Card" %>
 <%@include file="../../common/includes.jsp" %>
+<%
+String p1name = ((Card)request.getAttribute("card")).getPeople1Name();
+if (p1name.length() == 2) {
+	p1name = p1name.substring(0, 1) + "&nbsp;&nbsp;"+ p1name.substring(1,2);
+}
+String p2name = ((Card)request.getAttribute("card")).getPeople2Name();
+if (p2name.length() == 2) {
+	p2name = p2name.substring(0, 1) + "&nbsp;&nbsp;"+ p2name.substring(1,2);
+}
+%>
 <div class="">
 	<div class="mid">
 		<div class="invitext">
@@ -11,12 +22,12 @@
 					<div class="text clearfix">
 						<h1 class="h-left">
 							<div>
-								${card.people1Name}<span>新郎</span>
+								<%=p1name %><span>新郎</span>
 							</div>
 						</h1>
 						<h1 class="h-right">
 							<div>
-								${card.people2Name}<span>新娘</span>
+								<%=p2name %><span>新娘</span>
 							</div>
 						</h1>
 					</div>

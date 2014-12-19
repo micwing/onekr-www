@@ -149,6 +149,6 @@ $(document).ready(function(){
 <jsp:include page="_music.jsp"></jsp:include>
 
 <jsp:include page="_footer.jsp"></jsp:include>
-
+<jsp:include page="../../common/analytics.jsp"></jsp:include>
 </body>
 </html>

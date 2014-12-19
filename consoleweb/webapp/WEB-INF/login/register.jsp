@@ -204,6 +204,7 @@ $('#main-btn').click(function() {
 	$('#username').focus();
 });
 </script>
+<jsp:include page="../common/analytics.jsp"></jsp:include>
 </body>
 </html>
 

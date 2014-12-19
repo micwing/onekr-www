@@ -32,7 +32,7 @@
 	<strong>温馨提示</strong><br>
 	请柬制作需要5步：<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;“<strong style="color: red">请柬信息</strong>”、“<strong style="color: red">管理照片</strong>”、“<strong style="color: red">设置地图</strong>”、“<strong style="color: red">选择音乐</strong>”、“<strong style="color: red">扫描二维码</strong>”；<br>
-	请在本页面进行<strong>第1步</strong>，<strong>输入请柬信息</strong>，然后点击<strong>保存</strong>按钮，再进入下一步操作；<br>
+	请在本页面输入请柬信息，然后点击<strong>保存</strong>按钮，再进入下一步操作；<br>
 	带有<span class="star">*</span>的选项表示不能为空；<br>
 	新郎、新娘的姓名<strong>不能修改</strong>，请在第一次输入时确保正确！
 </div>
@@ -87,8 +87,8 @@
 				<div class="control-group">
 					<label class="control-label" for="partyTime"><span class="star">*</span> 典礼时间</label>
 					<div class="controls">
-						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/>"/>
-						<span class="help-block">点击输入框，使用时间控件选择</span>
+						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/>"/>
+						<span class="help-block">点击输入框，使用时间控件选择；如果无法显示控件，请手动输入，格式为:yyyy-MM-dd HH:mm:ss</span>
 					</div>
 				</div>
 				<div class="control-group">

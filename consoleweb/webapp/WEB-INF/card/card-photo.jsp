@@ -17,8 +17,8 @@
 
 <div class="alert">
 	<strong>温馨提示</strong><br>
-	请在本页面进行<strong>第2步</strong>，<strong>管理照片</strong>；<br>
 	上传之前请保证每张照片大小不超过<strong>5M</strong>；您每次至多上传<strong>5张</strong>照片，同时上传多张照片时速度较慢请您耐心等待；<br>
+	如果您的单张照片大小超过5M，请点击下载<a href="assets/other/图片缩小器.zip" target="_blank"><i class="icon-download-alt"></i>图片缩小器</a>，把您的照片缩小后再上传；<br>
 	上传完成之后请在照片列表中设置一张照片为<strong>封面</strong>、设置一张照片为<strong>新郎独照</strong>、设置一张照片为<strong>新娘独照</strong>。<br>
 </div>
 
@@ -84,60 +84,90 @@ $('#uploadButton').click(function() {
 
 <div class="row-fluid">
 	<div class="span12">
-		<table class="table">
+		<div class="pull-right">已上传${empty photos ? 0 : fn:length(photos)}张</div>
+	</div>
+</div>
+
+<style>
+.thumbnails .span4 {
+	margin-left: 0px;
+	margin-right: 5px;
+}
+</style>
+<div class="row-fluid">
+	<ul class="thumbnails">
 		<c:forEach items="${photos}" var="dto" varStatus="st">
-			<tr>
-				<td style="text-align: left;width: 200px">
+		<li class="span4" >
+			<div class="thumbnail" style="text-align: center;">
+				<p>
 					<c:if test="${dto.isCover}">
-					<div><span class="label label-success">请柬封面</span></div>
+					<span class="label label-success">请柬封面</span>&nbsp;
 					</c:if>
 					<c:if test="${dto.isPeople1Photo}">
-					<div><span class="label label-info">新郎独照</span></div>
+					<span class="label label-info">新郎独照</span>&nbsp;
 					</c:if>
 					<c:if test="${dto.isPeople2Photo}">
 					<span class="label label-important">新娘独照</span>
 					</c:if>
-					<div><span class="label">请柬相册</span></div>
-				</td>
-				<td style="text-align: center;"><a 
-					href="attached${fn:replace(dto.photo.storePath, '\\', '/')}"
+					<span class="label">请柬相册</span>&nbsp;
+				</p>
+				<a href="attached${fn:replace(dto.photo.storePath, '\\', '/')}?timestemp=<%=new java.util.Date().getTime()%>"
 					class="fancybox" rel="group1"> <img
-						src="attached${fn:replace(dto.thumb.storePath, '\\', '/')}"
-						class="img-polaroid" height="200px" width="200px"><br><i class="icon-search" style="font-size: 40px">&nbsp;</i> 
-				</a></td>
-				<td style="text-align: right;width: 200px">
-					<div>
-						<c:if test="${!dto.isCover}">
-						<div><button class="btn" type="button" onclick="ns.doUseWay('${card.id}','cover','${dto.photo.id}', this);">设为封面</button> </div>
-						</c:if>
-						<c:if test="${dto.isCover}">
-						<div><button class="btn btn-info" type="button" onclick="ns.doCancelWay('${card.id}','cover','${dto.photo.id}', this);">取消封面</button> </div>
-						</c:if>
-						<br>
-						<c:if test="${!dto.isPeople1Photo}">
-						<div><button class="btn" type="button" onclick="ns.doUseWay('${card.id}','people1','${dto.photo.id}', this);">设为新郎独照</button> </div>
-						</c:if>
-						<c:if test="${dto.isPeople1Photo}">
-						<div><button class="btn btn-info" type="button" onclick="ns.doCancelWay('${card.id}','people1','${dto.photo.id}', this);">取消新郎独照</button> </div>
-						</c:if>
-						<br>
-						<c:if test="${!dto.isPeople2Photo}">
-						<div><button class="btn" type="button" onclick="ns.doUseWay('${card.id}','people2','${dto.photo.id}', this);">设为新娘独照</button> </div>
-						</c:if> 
-						<c:if test="${dto.isPeople2Photo}">
-						<div><button class="btn btn-info" type="button" onclick="ns.doCancelWay('${card.id}','people2','${dto.photo.id}', this);">取消新娘独照</button> </div>
-						</c:if>
-						<br>
-						<div><button class="btn btn-danger" type="button" onclick="ns.doDelete('${card.id}','${dto.photo.id}', this);">删除</button> </div>
-					</div>
-				</td>
-			</tr>
+						src="attached${fn:replace(dto.thumb.storePath, '\\', '/')}?timestemp=<%=new java.util.Date().getTime()%>"
+						data-src="holder.js/270x270"></a>
+				<p>
+					<a href="attached${fn:replace(dto.photo.storePath, '\\', '/')}?timestemp=<%=new java.util.Date().getTime()%>"
+					class="fancybox" rel="group2"><i class="icon-search" style="font-size: 40px">&nbsp;</i>查看</a> 
+					<a href="javascript:;" onclick="ns.doRotate('${card.id}','${dto.photo.id}', this);"><i class="icon-repeat" style="font-size: 40px">&nbsp;</i>旋转90度</a>
+				</p>
+				<p>
+					<c:if test="${!dto.isCover}">
+					<a href="javascript:;" onclick="ns.doUseWay('${card.id}','cover','${dto.photo.id}', this);">设为封面</a>&nbsp;
+					</c:if>
+					<c:if test="${dto.isCover}">
+					<a href="javascript:;" onclick="ns.doCancelWay('${card.id}','cover','${dto.photo.id}', this);" style="color: red">取消封面</a>&nbsp;
+					</c:if>
+					<c:if test="${!dto.isPeople1Photo}">
+					<a href="javascript:;" onclick="ns.doUseWay('${card.id}','people1','${dto.photo.id}', this);">设为新郎独照</a>&nbsp;
+					</c:if>
+					<c:if test="${dto.isPeople1Photo}">
+					<a href="javascript:;" onclick="ns.doCancelWay('${card.id}','people1','${dto.photo.id}', this);" style="color: red">取消新郎独照</a>&nbsp;
+					</c:if>
+					<c:if test="${!dto.isPeople2Photo}">
+					<a href="javascript:;" onclick="ns.doUseWay('${card.id}','people2','${dto.photo.id}', this);">设为新娘独照</a>&nbsp;
+					</c:if> 
+					<c:if test="${dto.isPeople2Photo}">
+					<a href="javascript:;" onclick="ns.doCancelWay('${card.id}','people2','${dto.photo.id}', this);" style="color: red">取消新娘独照</a>&nbsp;
+					</c:if>
+				</p>
+				<p>
+					<a href="javascript:;" onclick="ns.doDelete('${card.id}','${dto.photo.id}', this);" style="color: red"><i class="icon-remove" style="font-size: 40px;">&nbsp;</i>删除</a>
+				</p>
+			</div>
+		</li>
 		</c:forEach>
-		</table>
-	</div>
+	</ul>
 </div>
 <script type="text/javascript">
 var ns = ns || {};
+ns.doRotate = function(cardId, fileStoreId, obj) {
+	if (!confirm('确定要旋转该照片吗？')) {
+		return;
+	}
+	$(obj).attr('disabled', true);
+	$.ajax({
+		url : "console/card/photo/doRotate",
+		type : 'post',
+        dataType : 'json',
+		data : {cardId: cardId,fileStoreId:fileStoreId},
+		success : function(data) {
+			if (data.code == 0) {
+				location.href='${ctx}/console/card/photo/cardphoto/${card.id}?msg='+encodeURIComponent(data.message);
+			}
+			$(obj).attr('disabled', false);
+		}
+	});
+};
 ns.doUseWay = function(cardId,desc,fileStoreId, obj) {
 	$(obj).attr('disabled', true);
 	$.ajax({

@@ -2,6 +2,7 @@ package onekr.commonservice.filestore.impl;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import onekr.commonservice.filestore.intf.FileBiz;
@@ -27,6 +28,20 @@ public class FileBizImpl implements FileBiz {
 		return null;
 	}
 	
+	@Override
+	public File getFile(String relativeDirFile) {
+		File file = new File(fileUploadDir+relativeDirFile);
+		return file;
+	}
+	
+	@Override
+	public void rotate(File file, Double angle, Integer[] color)
+			throws Exception {
+		BufferedImage image = ImageUtil.readImage(new FileInputStream(file));
+		BufferedImage rotateImage = ImageUtil.rotate(image, angle, color);
+		ImageUtil.writeImage(rotateImage, FileUtil.getFileSuffix(file), file);
+	}
+	
 	public String saveMultipartImageThumb(MultipartFile file, int squareThumbMaxHeight, String dirName) throws Exception {
 		BufferedImage bufferedImage = ImageUtil.readImage(file.getInputStream());
 		
@@ -41,23 +56,7 @@ public class FileBizImpl implements FileBiz {
 			squareBufferedImage = ImageUtil.cut(bufferedImage, (width - height)/2, 0, height, height);
 		}
 		
-//		BufferedImage thumb = ImageUtil.scaleByWidthAndHeight(squareBufferedImage, squareThumbMaxHeight, squareThumbMaxHeight, false, false);
 		BufferedImage thumb = ImageUtil.zoom(squareBufferedImage, squareThumbMaxHeight, squareThumbMaxHeight);
-		
-//		BufferedImage thumb = ImageUtil.scaleByWidthAndHeight(bufferedImage, thumbWidth, thumbHeight, false, false, suffix);
-//		
-//		int height = ImageUtil.getHeight(thumb);
-//		int width = ImageUtil.getWidth(thumb);
-//		
-//		if ((thumb.getHeight() > height) || (thumb.getWidth() > width)) {
-//			
-//			if (height > width) {
-//				ImageUtil.cut(thumb, 0, (height - thumbHeight)/2, width, thumbHeight);
-//			} else if (height < width) {
-//				ImageUtil.cut(thumb, (width - thumbWidth)/2, 0, thumbWidth, height);
-//			}
-//		} 
-		
 		
 		if ( StringUtils.isEmpty(dirName) )
 			throw new AppException(ErrorCode.ILLEGAL_PARAM, "dirName不能为空");

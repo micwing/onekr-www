@@ -162,6 +162,7 @@ $('#main-btn').click(function() {
 	$('#password').focus();
 });
 </script>
+<jsp:include page="../common/analytics.jsp"></jsp:include>
 </body>
 </html>
 

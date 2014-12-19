@@ -40,7 +40,6 @@
 
 <div class="alert">
 	<strong>温馨提示</strong><br>
-	请在本页面进行<strong>第3步</strong>，<strong>设置地图</strong>；<br>
 	在地图中查找并选择举办婚礼的地点，方便收到请柬的亲友<strong>一键导航</strong>到该处；<br>
 	请<strong>拖拽地图</strong>，让<strong>红色标记</strong>对准举办婚礼的地点。<br>
 </div>

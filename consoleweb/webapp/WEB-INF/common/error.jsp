@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8" isErrorPage="true"%>
+<%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.framework.exception.AppException"%>
 <%@page import="onekr.framework.result.Result"%>
 <%@include file="../common/includes.jsp" %>
@@ -46,9 +46,13 @@ if (result != null) {
 			<div class="pull-right">
 				<a href="javascript:;" onclick="history.go(-1)">返回</a>
 			</div>
+			<footer>
+			  <p>&copy; www.onekr.com 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
+			</footer>
 		</div>
 	</div>
 </div>
+<jsp:include page="analytics.jsp"></jsp:include>
 </body>
 </html>
 

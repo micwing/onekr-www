@@ -74,6 +74,17 @@ public interface CardPhotoFileBiz {
 	 * @return
 	 */
 	List<CardPhotoDto> listCardPhoto(@NotNull @Min(1) Long cardId);
+	
+	/**
+	 * 把cardId的fileStoreId的照片顺时针旋转90度
+	 * @param cardId
+	 * @param fileStoreId
+	 * @param cardPhotoAs
+	 * @param uid
+	 * @return
+	 */
+	void rotatePhoto(@NotNull @Min(1) Long cardId, @NotNull @Min(1) Long fileStoreId,
+			@NotNull @Min(1) Long uid);
 
 	/**
 	 * 把cardId的fileStoreId的照片设为封面

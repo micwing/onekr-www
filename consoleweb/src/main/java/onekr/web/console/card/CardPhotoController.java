@@ -72,6 +72,15 @@ public class CardPhotoController extends ConsoleBaseController {
         return cardphoto(new ModelMap("result", new Result("上传成功！")), cardId, null);
     }
 	
+	@RequestMapping(value="/doRotate",method=RequestMethod.POST)
+	@ResponseBody
+    public Result doRotate(@RequestParam("cardId") Long cardId, 
+    		@RequestParam("fileStoreId") Long fileStoreId) {       
+		User user = (User) getCurrentUser();
+		cardFileBiz.rotatePhoto(cardId, fileStoreId, user.getId());
+		return new Result("旋转成功！");
+    }
+	
 	@RequestMapping(value="/doUseWay",method=RequestMethod.POST)
 	@ResponseBody
     public Result doUseWay(@RequestParam("cardId") Long cardId, 

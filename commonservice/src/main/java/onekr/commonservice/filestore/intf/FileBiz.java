@@ -1,5 +1,8 @@
 package onekr.commonservice.filestore.intf;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public interface FileBiz {
@@ -26,22 +29,34 @@ public interface FileBiz {
 	/**
 	 * 保存图片
 	 * @param file
-	 * @param squareThumbMaxHeight
+	 * @param max 最大宽高
 	 * @param dirName
 	 * @return
 	 * @throws Exception
 	 */
-	String saveMultipartImage(MultipartFile file, int maxHeight, String dirName) throws Exception;
+	String saveMultipartImage(MultipartFile file, int max, String dirName) throws Exception;
 	
 	/**
-	 * 保存图片缩略图
+	 * 保存图片缩略图（正方形缩略图）
 	 * @param file
-	 * @param squareThumbMaxHeight
+	 * @param squareThumbMaxHeight 最大边长
 	 * @param dirName
 	 * @return
 	 * @throws Exception
 	 */
 	String saveMultipartImageThumb(MultipartFile file, int squareThumbMaxHeight, String dirName) throws Exception;
+	
+	/**
+	 * 旋转指定图片
+	 * @param file
+	 * @param angle 旋转角度
+	 * @param color 填充颜色，null表示白色
+	 * @return
+	 * @throws Exception
+	 */
+	void rotate(File file, Double angle,Integer[] color) throws Exception;
+	
+	File getFile(String relativeDir);
 	
 	void deleteFile(String filePath);
 }

@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-	<definition name="portal:*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/portal-navbar.jsp"/>
+	<!-- common layout -->
+	<definition name="portal:*" template="/WEB-INF/_layout.jsp">
+		<put-attribute name="topmenu" expression="/WEB-INF/_topmenu.jsp"/>
+		<put-attribute name="footer" expression="/WEB-INF/_footer.jsp"/>
+		<put-attribute name="navbar" expression="/WEB-INF/_portal-navbar.jsp"/>
 		<put-attribute name="content" expression="/WEB-INF/portal/{1}.jsp"/>
+		
 	</definition>
-	<definition name="portal:*/*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/portal-navbar.jsp"/>
-		<put-attribute name="content" expression="/WEB-INF/portal/{1}/{2}.jsp"/>
-	</definition>
-	
-	<definition name="system:*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/system-navbar.jsp"/>
+	<definition name="system:*" template="/WEB-INF/_layout.jsp">
+		<put-attribute name="topmenu" expression="/WEB-INF/_topmenu.jsp"/>
+		<put-attribute name="footer" expression="/WEB-INF/_footer.jsp"/>
+		<put-attribute name="navbar" expression="/WEB-INF/_system-navbar.jsp"/>
 		<put-attribute name="content" expression="/WEB-INF/system/{1}.jsp"/>
 	</definition>
-	<definition name="system:*/*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/system-navbar.jsp"/>
-		<put-attribute name="content" expression="/WEB-INF/system/{1}/{2}.jsp"/>
-	</definition>
-	
-	<definition name="card:*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/card-navbar.jsp"/>
+	<definition name="card:*" template="/WEB-INF/_layout.jsp">
+		<put-attribute name="topmenu" expression="/WEB-INF/_topmenu.jsp"/>
+		<put-attribute name="footer" expression="/WEB-INF/_footer.jsp"/>
+		<put-attribute name="navbar" expression="/WEB-INF/_card-navbar.jsp"/>
 		<put-attribute name="content" expression="/WEB-INF/card/{1}.jsp"/>
 	</definition>
-	<definition name="card:*/*" template="/WEB-INF/layout.jsp">
-		<put-attribute name="navbar" expression="/WEB-INF/card-navbar.jsp"/>
-		<put-attribute name="content" expression="/WEB-INF/card/{1}/{2}.jsp"/>
+	
+	<!-- portalweb layout -->
+	<definition name="portalweb:*" template="/WEB-INF/portalweb/_layout.jsp">
+		<put-attribute name="topmenu" expression="/WEB-INF/_topmenu.jsp"/>
+		<put-attribute name="footer" expression="/WEB-INF/_footer.jsp"/>
+		<!-- <put-attribute name="footer" expression="/WEB-INF/portalweb/_footer.jsp"/> -->
+		<put-attribute name="content" expression="/WEB-INF/portalweb/{1}.jsp"/>
 	</definition>
 	
+	<!-- single page -->
 	<definition name="single:*/*/*" templateExpression="/WEB-INF/{1}/{2}/{3}.jsp"/>
 	<definition name="single:*/*" templateExpression="/WEB-INF/{1}/{2}.jsp"/>
 	<definition name="single:*" templateExpression="/WEB-INF/{1}.jsp"/>

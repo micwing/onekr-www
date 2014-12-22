@@ -93,11 +93,11 @@
 	</aop:config>
 
 	<!-- 启用缓存注解功能 -->
-	<!-- <cache:annotation-driven cache-manager="cacheManager" /> -->
+	<cache:annotation-driven cache-manager="cacheManager" />
 
 	<!-- 声明cacheManager -->
-	<!-- bean id="cacheManager" class="onekr.framework.cache.ehcache.SimpleEhCacheCacheManager"
-		p:cacheManager-ref="ehcache" /> -->
+	<bean id="cacheManager" class="onekr.framework.cache.ehcache.SimpleEhCacheCacheManager"
+		p:cacheManager-ref="ehCacheManagerFactory" />
 
 	<!-- cacheManager工厂类，指定ehcache.xml的位置 -->
 	<bean id="ehCacheManagerFactory"
@@ -127,7 +127,7 @@
 	</bean>
 
 	<!-- ExceptionResolver 	-->
-	<bean class="onekr.web.card.FileUploadExceptionResolver"></bean>
+	<bean class="onekr.web.base.FileUploadExceptionResolver"></bean>
 	<bean class="onekr.framework.spring.web.resolver.AppExceptionResolver"></bean>
 
 	<!-- freemarker -->

@@ -1,4 +1,4 @@
-package onekr.web.card;
+package onekr.web.base;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

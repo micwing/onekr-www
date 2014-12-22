@@ -3,7 +3,7 @@ package onekr.web.console.portal;
 import java.io.IOException;
 import java.util.Collections;
 
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.portalservice.article.intf.ArticleBiz;

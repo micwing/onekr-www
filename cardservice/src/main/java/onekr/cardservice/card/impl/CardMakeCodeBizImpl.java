@@ -1,6 +1,7 @@
 package onekr.cardservice.card.impl;
 
 import java.util.Date;
+import java.util.Random;
 
 import onekr.cardservice.card.dao.CardDao;
 import onekr.cardservice.card.dao.CardMakeCodeDao;
@@ -29,7 +30,8 @@ public class CardMakeCodeBizImpl implements CardMakeCodeBiz {
 	@Override
 	public String generateNewCode(String buyerName, Long uid) {
 		Date createtime = new Date();
-		String md5 = EncriptUtil.encript(buyerName+DateUtil.cnvDate2StrF1(createtime));
+		
+		String md5 = EncriptUtil.encript(buyerName+DateUtil.cnvDate2StrF1(createtime)+new Random().nextInt(1000));
 		CardMakeCode entity = new CardMakeCode();
 		entity.setMaker(buyerName);
 		entity.setCode(md5);

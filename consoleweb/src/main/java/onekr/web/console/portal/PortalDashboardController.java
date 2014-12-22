@@ -1,6 +1,6 @@
 package onekr.web.console.portal;
 
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

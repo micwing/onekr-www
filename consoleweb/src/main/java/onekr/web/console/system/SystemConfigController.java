@@ -10,7 +10,7 @@ import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
 import onekr.framework.result.Result;
 import onekr.framework.spring.web.annotation.RequestJsonParam;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

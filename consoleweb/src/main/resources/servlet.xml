@@ -33,15 +33,15 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/console/**" />
-			<bean class="onekr.framework.controller.BaseInterceptor" />
-		</mvc:interceptor>
-		<mvc:interceptor>
-			<mvc:mapping path="/console/**" />
-			<bean class="onekr.web.card.ConsoleInterceptor" />
+			<bean class="onekr.web.base.ConsoleInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/card/**" />
-			<bean class="onekr.web.card.WebCardInterceptor" />
+			<bean class="onekr.web.base.WebCardInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/portal/**" />
+			<bean class="onekr.framework.controller.BaseInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
@@ -55,7 +55,7 @@
 		</property>
 	</bean> -->
 
-	<context:component-scan base-package="onekr.web,onekr.framework.controller" />
+	<context:component-scan base-package="onekr.web" />
 
 	<mvc:default-servlet-handler />
 	

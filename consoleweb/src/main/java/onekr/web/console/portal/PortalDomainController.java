@@ -7,7 +7,7 @@ import java.util.Map;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.commonservice.model.Config;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 import onekr.portalservice.utils.GlobalConstants;
 
 import org.springframework.beans.factory.annotation.Autowired;

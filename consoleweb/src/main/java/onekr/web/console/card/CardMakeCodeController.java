@@ -6,7 +6,7 @@ import onekr.cardservice.card.intf.CardMakeCodeBiz;
 import onekr.cardservice.model.CardMakeCode;
 import onekr.framework.result.Result;
 import onekr.identityservice.model.User;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

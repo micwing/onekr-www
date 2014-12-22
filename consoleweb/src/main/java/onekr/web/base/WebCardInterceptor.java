@@ -1,18 +1,18 @@
-package onekr.web.card;
+package onekr.web.base;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.model.Card;
+import onekr.commonservice.model.Status;
+import onekr.framework.controller.BaseInterceptor;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
-public class ConsoleInterceptor implements HandlerInterceptor  {
+public class WebCardInterceptor extends BaseInterceptor {
 	
 	@Autowired
 	private CardBiz cardBiz;
@@ -27,19 +27,10 @@ public class ConsoleInterceptor implements HandlerInterceptor  {
 			Card card = cardBiz.findById(cardId);
 			if (card == null)
 				throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
+			if (card.getStatus().equals(Status.PAUSED))
+				throw new AppException(ErrorCode.UN_SUPPORTED);
 		}
-		return true;
+		return super.preHandle(request, response, handler);
 	}
 	
-	@Override
-	public void postHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-	}
-	
-	@Override
-	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-	}
 }

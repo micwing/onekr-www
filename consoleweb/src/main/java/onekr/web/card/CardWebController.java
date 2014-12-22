@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/card")
-public class CardController {
+public class CardWebController {
 	
 	@Autowired
 	private CardBiz cardBiz;

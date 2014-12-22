@@ -15,7 +15,9 @@
  * All rights reserved in the event of the grant of a invention patent or the
  * registration of a utility model, design or code.
  */
-package onekr.framework.controller;
+package onekr.web.base;
+
+import onekr.framework.controller.BaseController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -2,7 +2,7 @@ package onekr.web.console.identity;
 
 import onekr.identityservice.model.User;
 import onekr.identityservice.user.intf.UserBiz;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

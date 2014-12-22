@@ -15,7 +15,6 @@
 <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="assets/css/site.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="assets/js/html5shiv.js"></script>
 <script src="assets/js/respond.min.js"></script>
@@ -26,9 +25,9 @@
 <script src="assets/js/jquery.json.js"></script>
 <script src="assets/js/scrolltotop.js"></script>
 
-<script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
+<!-- <script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
 <script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
-<script src="assets/js/validate/message_cn.js" type="text/javascript"></script>
+<script src="assets/js/validate/message_cn.js" type="text/javascript"></script> -->
 
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
@@ -43,14 +42,12 @@
 </head>
 
 <body>
-
 <div class="container">
 	<!--[if lt IE 8]>
 	<div class="alert alert-error">
 	您使用的IE浏览器版本太低，建议升级到IE9，或者改用谷歌Chrome、火狐Firefox等浏览器访问本页面！
 	</div>
 	<![endif]-->
-	
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
@@ -60,29 +57,12 @@
 				<span class="icon-bar"></span>
 				</a>
 				
-				<a class="brand" href="console/card/info/list">一氪软件工作室</a>
+				<a class="brand" href="${ctx}">一氪软件工作室</a>
 				
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li><a href="/">首页</a></li>
-						<li class="${(
-						fn:startsWith(requestServletPath, '/console/card/') ||
-						fn:startsWith(requestServletPath, '/console/identity/')
-						)?'active':''}"><a href="console/card/info/list">请柬管理</a></li>
-						<shiro:hasRole name="ADMINISTRATOR">
-						<li class="${fn:startsWith(requestServletPath, '/console/system/')?'active':''}"><a href="console/system/config">系统设置</a></li>
-						</shiro:hasRole>
-					</ul>
-					<ul class="nav pull-right">
-						<li><a href="console/identity/account/accountInfo"><i class="icon-user"></i> <shiro:principal /></a></li>
-						<li class="divider-vertical"></li>
-						<li><a href="login/doSignout">退出</a></li>
-					</ul>
-				</div>
+				<tiles:insertAttribute name="topmenu" />
 			</div>
 		</div>
 	</div>
-
 	<div class="row">
 		<div class="span3">
 			<tiles:insertAttribute name="navbar" />
@@ -93,16 +73,10 @@
 			</div>
 		</div>
 	</div>
-
 	<hr>
-	
-	<footer>
-	  <p>&copy; www.onekr.com 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
-	</footer>
+	<tiles:insertAttribute name="footer" />
 	<jsp:include page="common/analytics.jsp"></jsp:include>
-
 </div>
-
 </body>
 </html>
 

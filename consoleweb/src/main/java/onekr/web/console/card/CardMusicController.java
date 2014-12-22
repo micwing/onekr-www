@@ -10,7 +10,7 @@ import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.identityservice.model.User;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

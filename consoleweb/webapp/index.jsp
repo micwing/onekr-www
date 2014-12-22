@@ -1,2 +1,2 @@
 <%@ page contentType="text/html; charset=GBK"%>
-<jsp:forward page="/login"></jsp:forward>
+<jsp:forward page="/portal"></jsp:forward>

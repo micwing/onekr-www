@@ -6,7 +6,7 @@ import onekr.cardservice.card.intf.CardMusicFileBiz;
 import onekr.commonservice.model.FileStore;
 import onekr.framework.result.Result;
 import onekr.identityservice.model.User;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

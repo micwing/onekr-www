@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8">
-<title>找回密码</title>
+<title>找回密码 | 一氪软件工作室</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -31,7 +31,7 @@
 <div class="container">
 	<div class="row">
 		<div class="span6 offset3">
-			<h3>找回密码</h3>
+			<h3>找回密码 | 一氪软件工作室</h3>
 			<hr>
 			<form class="form-horizontal form-signin" id="main-form">
 				<div class="control-group">

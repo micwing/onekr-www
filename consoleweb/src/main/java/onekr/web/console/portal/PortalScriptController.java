@@ -5,7 +5,7 @@ import java.util.List;
 
 import onekr.commonservice.model.Script;
 import onekr.commonservice.model.ScriptType;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 import onekr.framework.result.Result;
 import onekr.framework.spring.web.annotation.RequestJsonParam;
 import onekr.portalservice.article.intf.ScriptBiz;

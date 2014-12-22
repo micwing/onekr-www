@@ -14,7 +14,7 @@ import onekr.identityservice.model.Group;
 import onekr.identityservice.model.User;
 import onekr.identityservice.user.intf.UserBiz;
 import onekr.identityservice.user.intf.UserLoginBiz;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;

@@ -2,7 +2,7 @@ package onekr.web.console.card;
 
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.model.Card;
-import onekr.web.console.ConsoleBaseController;
+import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8">
-<title>登录</title>
+<title>登录 | 一氪软件工作室</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -36,7 +36,7 @@ location.href = '${ctx}/console/card/info/list';
 <div class="container">
 	<div class="row">
 		<div class="span6 offset3">
-			<h3>登录</h3>
+			<h3>登录 | 一氪软件工作室</h3>
 			<hr>
 			<form class="form-horizontal form-signin" id="main-form">
 				<div class="control-group">

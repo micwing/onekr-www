@@ -1,3 +1,4 @@
+package onekr.portalservice.event;
 //package onekr.commonservice.event;
 //
 //import groovy.lang.GroovyClassLoader;

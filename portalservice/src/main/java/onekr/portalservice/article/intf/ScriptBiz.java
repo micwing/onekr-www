@@ -6,9 +6,9 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
-import onekr.commonservice.model.Script;
-import onekr.commonservice.model.ScriptType;
 import onekr.framework.result.Result;
+import onekr.portalservice.model.Script;
+import onekr.portalservice.model.ScriptType;
 
 import org.springframework.validation.annotation.Validated;
 

@@ -1,4 +1,4 @@
-package onekr.commonservice.model;
+package onekr.portalservice.model;
 
 import java.io.Serializable;
 

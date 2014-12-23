@@ -3,14 +3,14 @@ package onekr.portalservice.article.impl;
 import java.util.Collection;
 import java.util.List;
 
-import onekr.commonservice.model.Script;
-import onekr.commonservice.model.ScriptLanguage;
-import onekr.commonservice.model.ScriptType;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 import onekr.framework.result.Result;
 import onekr.portalservice.article.dao.ScriptDao;
 import onekr.portalservice.article.intf.ScriptBiz;
+import onekr.portalservice.model.Script;
+import onekr.portalservice.model.ScriptLanguage;
+import onekr.portalservice.model.ScriptType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

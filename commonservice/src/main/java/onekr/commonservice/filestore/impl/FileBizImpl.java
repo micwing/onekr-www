@@ -129,7 +129,7 @@ public class FileBizImpl implements FileBiz {
 	
 	@Override
 	public String saveMultipartFile(MultipartFile file) throws Exception {
-        return saveMultipartFile(file, FileBiz.fileUploadDirMore);
+        return FileBiz.fileUploadDirMore+saveMultipartFile(file, FileBiz.fileUploadDirMore);
 	}
 	
 	@Override
@@ -157,7 +157,8 @@ public class FileBizImpl implements FileBiz {
 	@Override
 	public void deleteFile(String filePath) {
 		
-		File file = new File(fileUploadDir+filePath);
+//		File file = new File(fileUploadDir+filePath);
+		File file = new File(filePath);
 		if(file.isFile()){
 			file.delete();
 		} else {

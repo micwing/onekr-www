@@ -25,9 +25,9 @@
 <script src="assets/js/jquery.json.js"></script>
 <script src="assets/js/scrolltotop.js"></script>
 
-<!-- <script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
+<script src="assets/js/validate/jquery.validate.js" type="text/javascript"></script>
 <script src="assets/js/validate/more_rules.js" type="text/javascript"></script>
-<script src="assets/js/validate/message_cn.js" type="text/javascript"></script> -->
+<script src="assets/js/validate/message_cn.js" type="text/javascript"></script>
 
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144"

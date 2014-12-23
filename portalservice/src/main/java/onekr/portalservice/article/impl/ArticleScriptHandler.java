@@ -9,11 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import onekr.commonservice.filestore.intf.FileBiz;
-import onekr.commonservice.model.Script;
 import onekr.framework.result.Result;
 import onekr.framework.utils.FileUtil;
 import onekr.portalservice.article.intf.ArticleBiz;
 import onekr.portalservice.model.Article;
+import onekr.portalservice.model.Script;
 
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;

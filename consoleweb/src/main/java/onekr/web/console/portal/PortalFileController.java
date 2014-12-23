@@ -39,7 +39,7 @@ public class PortalFileController extends FileUploadSupportController {
     @RequestMapping(value="/doUploadFile2",method=RequestMethod.POST)
     public String doUploadFile2(@RequestParam("file") CommonsMultipartFile file) throws Exception{       
         String path = fileBiz.saveMultipartFile(file);
-        return "redirect:/console/file/list?dir="+FileUtil.getParentOfPathOrUrl(path);
+        return "redirect:/console/file/list?dir="+fileUploadDir+FileUtil.getParentOfPathOrUrl(path);
     }
 	
 	@RequestMapping(value = "/doDelete", method = RequestMethod.POST)

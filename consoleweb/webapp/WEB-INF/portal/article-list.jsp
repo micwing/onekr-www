@@ -31,7 +31,7 @@
 			<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${article.createAt}" type="both"/></td>
 			<td>
 			<div class="btn-group">
-				<a href="article/detail/${article.id}" class="btn" target="_blank"><i class="icon-eye-open"></i> 查看</a>
+				<a href="portal/article/detail/${article.id}" class="btn" target="_blank"><i class="icon-eye-open"></i> 查看</a>
 				<a href="console/article/modify/${article.id}" class="btn" onclick=""><i class="icon-pencil"></i> 修改</a>
 				<a href="console/article/doDelete/${article.id}" class="btn btn-danger" onclick="return window.confirm('确定要删除吗?');"><i class="icon-remove"></i> 删除</a>
 			</div>

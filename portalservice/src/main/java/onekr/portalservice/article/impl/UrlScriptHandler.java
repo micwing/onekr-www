@@ -9,8 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import onekr.commonservice.model.Script;
 import onekr.framework.result.Result;
+import onekr.portalservice.model.Script;
 
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;

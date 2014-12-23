@@ -25,34 +25,34 @@ Map<String,Config> configs = (Map<String,Config>) request.getAttribute("configs"
 <hr>
 <h4>示例</h4>
 <pre>
-&lt;ul class="slides">
-	&lt;li>
-        &lt;div class="span7 animated fadeInLeftBig">
-            &lt;img src="assets/more/images/1121174058.png">
-        &lt;/div>
-        &lt;div class="span4 margintop10p animated fadeInDownBig">
-
-            &lt;h3>&lt;i class="icon-tablet">&lt;/i>&lt;i class="icon-mobile-phone">&lt;/i>&lt;i class="icon-desktop">&lt;/i>&lt;br />onekr-basic让您快速搭建J2EE项目&lt;/h3>
-        &lt;/div>
-    &lt;/li>
-    &lt;li>
-        &lt;div class="span4 margintop10p animated fadeInDownBig">
-
-            &lt;h3>&lt;i class="icon-tablet">&lt;/i>&lt;i class="icon-mobile-phone">&lt;/i>&lt;i class="icon-desktop">&lt;/i>&lt;br />Hi！ 您可以通过本站了解我和我的软件！&lt;/h3>
-        &lt;/div>
-        &lt;div class="span7 animated fadeInLeftBig">
-            &lt;img src="assets/more/images/1121174058.png">
-        &lt;/div>
-    &lt;/li>
-	&lt;li>
-        &lt;div class="span7 animated fadeInLeftBig">
-            &lt;img src="assets/images/responsive.png">
-        &lt;/div>
-        &lt;div class="span4 margintop10p animated fadeInDownBig">
-            &lt;h3>&lt;i class="icon-tablet">&lt;/i>&lt;i class="icon-mobile-phone">&lt;/i>&lt;i class="icon-desktop">&lt;/i>&lt;br />本站可以在各种分辨率屏幕上浏览&lt;/h3>
-        &lt;/div>
-    &lt;/li>
-&lt;/ul>
+&lt;div class="item active">
+	&lt;img alt="" src="assets/images/sky1.jpg" style="width: 1170px">
+	&lt;div class="carousel-caption">
+	&lt;h4>会设计的程序员和会编程的设计师&lt;/h4>
+	&lt;p>优秀的设计师和程序员统治着网络–毕竟是他们创建的网站。而那些创建最好玩和最有用的网站的人，往往都是两种技能兼而有之，他们可以将两种完全不同的视觉语言和技术语言运用自如。&lt;/p>
+	&lt;/div>
+&lt;/div>
+&lt;div class="item">
+	&lt;img alt="" src="/assets/img/2.jpg" style="width: 1170px">
+	&lt;div class="carousel-caption">
+	&lt;h4>程序猿的工资级别，请对号入座&lt;/h4>
+	&lt;p>码畜：年入低于3万；码奴：年入3万到6万；码农：年入6万到10万；IT民工：年入10万；IT工程师：年入20万；IT人才：年入50万；IT精英：年入百万......&lt;/p>
+	&lt;/div>
+&lt;/div>
+&lt;div class="item">
+	&lt;img alt="" src="/assets/img/3.jpg" style="width: 1170px">
+	&lt;div class="carousel-caption">
+	&lt;h4>别懒&lt;/h4>
+	&lt;p>想想吧，因为我们的懒惰，总想着来日方长，做何事都能拖则拖，竟致那么多的计划、旅行、恋爱、对人生的探究未见实行！大难不至，我们就会什么也不做，我们会发现自己又回到日复一日的平庸生活，生活的欲望被消磨殆尽。&lt;/p>
+	&lt;/div>
+&lt;/div>
+&lt;div class="item">
+	&lt;img alt="" src="/assets/img/4.jpg" style="width: 1170px">
+	&lt;div class="carousel-caption">
+	&lt;h4>不争，不辩，不急，不燥&lt;/h4>
+	&lt;p>淡泊就是对世间事洞明后的淡然，不争，不辩，不急，不燥，以平常心的心态去面对生活。&lt;/p>
+	&lt;/div>
+&lt;/div>
 </pre>
 
 <script>

@@ -1,7 +1,7 @@
 package onekr.portalservice.article.impl;
 
-import onekr.commonservice.model.Script;
 import onekr.framework.result.Result;
+import onekr.portalservice.model.Script;
 
 public interface ScriptHandler {
 

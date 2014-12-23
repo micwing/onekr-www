@@ -14,13 +14,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import onekr.commonservice.utils.CommonConstants;
+import onekr.portalservice.utils.PortalConstants;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = CommonConstants.TABLE_PREFIX_NAMING + "article")
+@Table(name = PortalConstants.TABLE_PREFIX_NAMING + "article")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Article implements Serializable {
 

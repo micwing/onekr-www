@@ -1,14 +1,15 @@
-package onekr.commonservice.model;
+package onekr.portalservice.model;
 
 import onekr.framework.type.LabeledEnum;
 
 
-public enum ScriptLanguage implements LabeledEnum {
-	GROOVY("groovy");
+public enum ScriptType implements LabeledEnum {
+	ARTICLE("article"),
+	URL("url");
 	
 	String label;
 	
-	ScriptLanguage(String label){
+	ScriptType(String label){
 		this.label = label;
 	}
 

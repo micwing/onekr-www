@@ -1,22 +1,13 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.portalservice.utils.GlobalConstants" %>
 <%@include file="../common/includes.jsp" %>
+<div class="row">
+	
+	<div class="span9">
+		<div class="well" style="background-color: transparent;">
+			<div class="row-fluid">
 
-        <div id="wrap">
-
-            <!--################ HEADER START ################-->
-
-            <header class="page-title">
-                <div class="container">
-                	<input type="text" class="input-large search-query pull-right margintop10" placeholder="搜本站">
-                    <h2>阅读文章</h2>
-                </div>
-            </header>
-            <section class="single-blog">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="span8">
+                        <div class="span12">
 
                             <div class="blog-post-title">
                                 <h3>${article.title}</h3>
@@ -24,90 +15,33 @@
 
                             <div class="single-blog-meta">
                                 <p class="author">
-                                <c:if test="${empty article.author}">作者 <a href="/about"><%= GlobalConstants.ADMIN_USER_NAME %></a></c:if>
-								<c:if test="${!empty article.author}">来自 <a href="${article.fromUrl}" target="_blank">${article.author}</a></c:if>
+                                <c:if test="${!empty article.author}">作者 ${article.author}</c:if>
+								<c:if test="${!empty article.fromUrl}">来自 <a href="${article.fromUrl}" target="_blank">${article.fromUrl}</a></c:if>
 								</p>
 
-                                <div class="socials">
-                                	<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${article.createAt}" type="both"/>
-                                </div>
                             </div>
 
                             <div class="post-content">
                             	${article.content}
                             </div>
-							<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到网易微博" href="#" class="bds_t163" data-cmd="t163"></a></div>
-							<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","t163"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","t163"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
-                        </div>
-
-
-                        <div class="span4">  
-                            <div class="sidebar">
-                                <div class="widget">
-                                    <h4>Polls</h4>
-                                    <h5>Poll: Where do you usually browse</h5>
-
-                                    <strong>Mac</strong><span class="pull-right">40%</span>
-                                    <div class="progress progress-info active">
-                                        <div class="bar" style="width: 40%;"></div>
-                                    </div>
-                                    <strong>iPad/iPhone</strong><span class="pull-right">10%</span>
-                                    <div class="progress progress-striped active">
-                                        <div class="bar" style="width: 10%;"></div>
-                                    </div>
-                                    <strong>Android</strong><span class="pull-right">5%</span>
-                                    <div class="progress progress-success active">
-                                        <div class="bar" style="width: 5%;"></div>
-                                    </div>
-                                    <strong>Others</strong><span class="pull-right">15%</span>
-                                    <div class="progress progress-warning active">
-                                        <div class="bar" style="width: 15%;"></div>
-                                    </div>
-                                    <p>
-                                        <a href="#" class="btn btn-normal">Vote</a>
-                                        <a href="#" class="pull-right">View detailed results</a>
-                                    </p>
-
-
-
-                                </div>
-
-                                <div class="widget">
-                                    <h4>订阅</h4>
-
-                                    <form accept-charset="UTF-8" action="" method="post">
-
-                                        <input class="span3" name="username" placeholder="Email" type="text">
-                                        <br />
-                                        <button class="btn btn-normal" type="submit">提交</button>
-                                    </form>
-
-
-
-                                </div>
-
-                                <div class="widget">
-                                    <h4>关于</h4>
-                                    <p>Nulla facilisi. Sed justo dui, id erat. Morbi auctor adipiscing tempor. Phasellus condimentum rutrum aliquet. Quisque eu consectetur erat. Proin rutrum, erat eget posuere semper, <em>arcu mauris posuere tortor</em>,velit at <a href="#">magna sollicitudin cursus</a> ac ultrices magna. Aliquam consequat, purus vitae auctor ullamcorper, sem velit convallis quam, a pharetra justo nunc et mauris. </p>
-                                </div>
+                            <div class="pull-right">
+                            	<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${article.createAt}" type="both"/>
                             </div>
+                            
+                            <jsp:include page="../common/baidushare.jsp"></jsp:include>
                         </div>
-                    </div>
 
-                </div>
-            </section>
-            
-			<section class="single-blog rev last">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="span9">
+			</div>
+			
+			<div class="row-fluid">
+                        <div class="span12">
 
                             <div class="comments">
-                                <h2>文章的评论</h2>
+                                <h3>评论</h3>
                                 <c:if test="${empty comments}">
                                 	<div class="comment">
-                                		<div class="row">
+                                		<div class="row-fluid">
                                 			<div class="span12">
                                 			暂无评论
                                 			</div>
@@ -117,7 +51,7 @@
                                 <c:if test="${!empty comments}">
                                 	<c:forEach items="${comments}" var="comment" varStatus="st">
 	                                <div class="comment">
-	                                    <div class="row">
+	                                    <div class="row-fluid">
 	                                        <div class="span2">
 	                                            <img src="/assets/images/default-user.jpg" class="img-circle author_pic">
 	
@@ -164,21 +98,16 @@
 
                         </div>
                     </div>
-                </div>
-            </section>
-            
-            <section class="single-blog comments-section">
 
-                <div class="container">
-                    <div class="row">
+			<div class="row-fluid">
                         <div class="span8">
-                            <h2>写评论</h2>
+                            <h3>写评论</h3>
                             <br />
                             <form class="form-comments" _lpchecked="1" action="/article/comment/${article.id}" method="post">
 
                                 <fieldset>
 
-                                    <div class="row">
+                                    <div class="row-fluid">
                                         <div class="span3">
                                             <label for="name"><span>名称:</span></label>
                                             <div class="input">
@@ -205,7 +134,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="row">
+                                    <div class="row-fluid">
                                         <div class="span8">
                                             <label for="name"><span>验证码:</span></label>
                                             <div class="input">
@@ -225,6 +154,35 @@
                         </div>
                         <div class="span4"></div>
                     </div>
+		</div>
+	</div>
+	
+	<div class="span3">
+		<div class="well" style="background-color: transparent;">
+			<ul class="nav nav-list">
+				<li class="nav-header">教程</li>
+				<li>
+					<a href="console/card/info/makecodeinput"><i class="icon-plus"></i> 制作电子请柬</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+        <div id="wrap">
+
+			<section class="single-blog rev last">
+
+                <div class="container">
+                    
+                </div>
+            </section>
+            
+            <section class="single-blog comments-section">
+
+                <div class="container">
+                    
                 </div>
 
             </section>

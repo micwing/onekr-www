@@ -210,12 +210,19 @@ express.put("钞票", "chaopiao.png");
 	}
 
 	function doSaveComment() {
+		$("#commentForm input[type=button]").attr('disabled', true);
 		if ($("#commentForm input[name=userName]").val() == '') {
 			alert("请留下你的大名！");
+			$("#commentForm input[type=button]").attr('disabled', false);
 			return false;
 		}
 		if ($("#messageContent").val() == '') {
 			alert("内容不能为空！");
+			$("#commentForm input[type=button]").attr('disabled', false);
+			return false;
+		}
+		if (!confirm('确定要发表该祝福吗？')) {
+			$("#commentForm input[type=button]").attr('disabled', false);
 			return false;
 		}
 		$.ajax({
@@ -232,9 +239,13 @@ express.put("钞票", "chaopiao.png");
             	if (result.code == 0) {
 	            	alert('发表成功！');
 	                reloadCommentList();
+	                $('#commentForm input[name=userName]').val('');
+	                $('#commentForm select option[value=1]').attr('selected', true);
+	                $('#commentForm textarea[name=content]').val('');
             	} else {
             		alert('操作失败！');
             	}
+            	$("#commentForm input[type=button]").attr('disabled', false);
             }
 		});
 	}

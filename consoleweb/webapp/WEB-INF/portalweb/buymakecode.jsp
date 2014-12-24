@@ -1,12 +1,11 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp" %>
 <div class="row">
-	
 	<div class="span9">
-		<div class="well" style="background-color: transparent;">
+		<div class="well" style="background-color: #FFF;">
 			<div class="row">
 				<div class="span4">
-					<img class="img-polaroid" alt="" src="assets/images/sky1.jpg">
+					<img class="img-polaroid" alt="" src="assets/images/hlqjads/hlqj.jpg">
 				</div>
 				<div class="span4">
 					<h3>婚礼请柬制作码</h3>
@@ -53,28 +52,60 @@
 				</div>
 			</div>
 		</div>
-		<div class="well" style="background-color: transparent;">
-			图文详情
-		</div>
-		<div class="well" style="background-color: transparent;">
-			<a href="/" style="margin-left: 0px;margin-right: 20px">第一次购买制作码？购买教程</a>|
-			<a href="/" style="margin-left: 20px;margin-right: 20px">如何制作电子请柬？制作教程</a>|
-			<a href="/" style="margin-left: 20px;margin-right: 20px">如何查看电子请柬？使用教程</a>|
-			<a href="/" style="margin-left: 20px;margin-right: 20px">第一次访问本站？关于一氪</a>
+		<div class="well" style="background-color: #FFF;">
+			<div class="row-fluid">
+				<div class="span12">
+					<div>
+						<h3>宝贝详情</h3>
+					</div>
+					<hr>
+				</div>
+				<div class="span12" style="text-align: center;">
+					<div>
+						<img alt="" src="assets/images/hlqjads/01.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/02.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/03.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/04.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/05.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/06.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/07.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/08.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/09.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/10.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/11.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/12.jpg">
+					</div>
+					<div>
+						<img alt="" src="assets/images/hlqjads/13.jpg">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
 	<div class="span3">
-		<div class="well" style="background-color: transparent;">
-			<ul class="nav nav-list">
-				<li class="nav-header">制作码</li>
-				<li>
-					<a href="console/card/info/makecodeinput"><i class="icon-plus"></i> 零售制作码</a>
-				</li>
-				<li>
-					<a href="console/card/info/makecodeinput"><i class="icon-plus"></i> 批发制作码</a>
-				</li>
-			</ul>
-		</div>
+		<jsp:include page="_sidebar.jsp" ></jsp:include>
 	</div>
 </div>

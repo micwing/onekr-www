@@ -87,13 +87,6 @@
 	</div>
 	
 	<div class="span3">
-		<div class="well" style="background-color: transparent;">
-			<ul class="nav nav-list">
-				<li class="nav-header">教程</li>
-				<li>
-					<a href="console/card/info/makecodeinput"><i class="icon-plus"></i> 制作电子请柬</a>
-				</li>
-			</ul>
-		</div>
+		<jsp:include page="_sidebar.jsp" ></jsp:include>
 	</div>
 </div>

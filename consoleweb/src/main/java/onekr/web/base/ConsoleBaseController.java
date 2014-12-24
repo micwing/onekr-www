@@ -9,6 +9,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 public class ConsoleBaseController extends BaseController {
 
 	protected User getCurrentUser() {
+		if (SecurityUtils.getSubject() == null)
+			return null;
 		PrincipalCollection pc = SecurityUtils.getSubject().getPrincipals();
 		return (User) pc.getPrimaryPrincipal();
 	}

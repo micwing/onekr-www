@@ -19,7 +19,7 @@
 	</c:if>
 
 	<h4>请您婚礼当日为新人拍照留下精彩瞬间。点击无反应请点右上角选在浏览器中打开</h4>
-	<form enctype="multipart/form-data" method="post" 
+	<form id="moment-form" enctype="multipart/form-data" method="post" 
 		action="card/doUploadMemontPhoto" onsubmit="return check_img();">
 		<table border="0" cellSpacing="0" cellPadding="0" width="95%">
 			<tr>
@@ -38,12 +38,15 @@
 </div>
 <script type="text/javascript">
 	function check_img() {
-		if ($("input[name=file]").val() == '') {
+		$("#moment-form input[type=submit]").attr('disabled', true);
+		if ($("#moment-form input[name=file]").val() == '') {
 			alert("请选择您要上传的图片!");
+			$("#moment-form input[type=submit]").attr('disabled', false);
 			return false;
 		} else {
 			if (!/\.(JPG|jpg|JPEG|jpeg)$/.test($("input[name=file]").val())) {
 				alert("上传格式不正确,请上传JPG,JPEG格式图片");
+				$("#moment-form input[type=submit]").attr('disabled', false);
 				return false;
 			}
 		}

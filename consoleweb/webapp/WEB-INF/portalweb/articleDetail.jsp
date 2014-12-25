@@ -4,7 +4,7 @@
 <div class="row">
 	
 	<div class="span9">
-		<div class="well" style="background-color: transparent;">
+		<div class="well">
 			<div class="row-fluid">
 
                         <div class="span12">
@@ -158,7 +158,7 @@
 	</div>
 	
 	<div class="span3">
-		<div class="well" style="background-color: transparent;">
+		<div class="well">
 			<ul class="nav nav-list">
 				<li class="nav-header">教程</li>
 				<li>

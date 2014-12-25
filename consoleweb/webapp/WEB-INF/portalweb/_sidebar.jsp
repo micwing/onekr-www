@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp" %>
-<div class="well" style="background-color: transparent;">
+<div class="well">
 	<ul class="nav nav-list">
 		<li class="nav-header">请柬教程</li>
 		<li>
@@ -17,7 +17,7 @@
 		</li>
 	</ul>
 </div>
-<div class="well" style="background-color: transparent;">
+<div class="well">
 	<ul class="nav nav-list">
 		<li class="nav-header">购买制作码</li>
 		<li>
@@ -45,7 +45,7 @@
 		</li>
 	</ul>
 </div>
-<div class="well" style="background-color: transparent;">
+<div class="well">
 	<ul class="nav nav-list">
 		<li class="nav-header">联系客服</li>
 		<li>

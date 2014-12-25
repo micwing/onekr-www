@@ -17,7 +17,7 @@
 		<form class="form-search" action="" method="get">
 			<div class="input-prepend">
 				<span class="add-on">制作码</span>
-				<input type="text" class="input-xlarge" id="makecode">
+				<input type="text" class="input-xlarge" id="makecode" value="${makecode}">
 			</div>
 			<button type="button" class="btn btn-primary" onclick="doUseCode()">开始制作</button>
 		</form>

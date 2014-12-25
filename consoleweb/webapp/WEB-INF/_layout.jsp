@@ -42,13 +42,14 @@
 </head>
 
 <body>
-<div class="container">
 	<!--[if lt IE 8]>
+	<div class="container">
 	<div class="alert alert-error">
 	您使用的IE浏览器版本太低，建议升级到IE9，或者改用谷歌Chrome、火狐Firefox等浏览器访问本页面！
 	</div>
+	</div>
 	<![endif]-->
-	<div class="navbar">
+	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -63,20 +64,21 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="span3">
-			<tiles:insertAttribute name="navbar" />
-		</div>
-		<div class="span9">
-			<div class="well" style="background-color: transparent;">
-				<tiles:insertAttribute name="content" />
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<tiles:insertAttribute name="navbar" />
+			</div>
+			<div class="span9">
+				<div class="well">
+					<tiles:insertAttribute name="content" />
+				</div>
 			</div>
 		</div>
 	</div>
-	<hr>
+	
 	<tiles:insertAttribute name="footer" />
 	<jsp:include page="common/analytics.jsp"></jsp:include>
-</div>
 </body>
 </html>
 

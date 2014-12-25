@@ -40,7 +40,7 @@
 	</ul>
 	<ul class="nav pull-right">
 		<shiro:user>
-			<li><a href="console/identity/account/accountInfo"><i class="icon-user"></i> <shiro:principal /></a></li>
+			<li><a href="console/identity/account/accountInfo"><i class="icon-user icon-white"></i> <shiro:principal /></a></li>
 			<li class="divider-vertical"></li>
 			<li><a href="login/doSignout">退出</a></li>
 		</shiro:user>

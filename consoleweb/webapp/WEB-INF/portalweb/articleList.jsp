@@ -4,7 +4,7 @@
 <div class="row">
 	
 	<div class="span9">
-		<div class="well" style="background-color: transparent;">
+		<div class="well">
 			<div class="row-fluid">
 				<div class="span12">
 					<c:forEach items="${page.content}" var="article" varStatus="st">

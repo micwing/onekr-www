@@ -15,7 +15,7 @@
 		
 		<li class="nav-header">制作码</li>
 		<li>
-			<a href="console/card/makecode/buy"><i class="icon-shopping-cart"></i> 购买制作码</a>
+			<a href="portal/buymakecode"><i class="icon-shopping-cart"></i> 购买制作码</a>
 		</li>
 		<shiro:hasRole name="ADMINISTRATOR">
 		<li>

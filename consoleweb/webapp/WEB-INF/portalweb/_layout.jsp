@@ -48,7 +48,7 @@
 	您使用的IE浏览器版本太低，建议升级到IE9，或者改用谷歌Chrome、火狐Firefox等浏览器访问本页面！
 	</div>
 	<![endif]-->
-	<div class="navbar">
+	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

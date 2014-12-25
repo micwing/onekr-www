@@ -10,7 +10,7 @@
 				<div class="span4">
 					<h3>婚礼请柬制作码</h3>
 					<hr>
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="console/order/payAtOnce" method="post">
 					<div class="control-group">
 						<label class="control-label" for="">价格</label>
 						<div class="controls">
@@ -26,19 +26,18 @@
 					<div class="control-group">
 						<label class="control-label" for="">数量</label>
 						<div class="controls">
-							<select class="span1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 件
+							<label class="checkbox">1 件</label>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for=""></label>
 						<div class="controls">
-							<button type="button" class="btn btn-large btn-primary">立即购买</button>
+							<shiro:guest>
+							<a href="login" class="btn btn-large btn-primary">请先登录</a>
+							</shiro:guest>
+							<shiro:user>
+							<a href="console/order/payAtOnce" class="btn btn-large btn-primary">立即购买</a>
+							</shiro:user>
 						</div>
 					</div>
 					</form>

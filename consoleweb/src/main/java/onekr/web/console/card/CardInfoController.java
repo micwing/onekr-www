@@ -39,8 +39,9 @@ public class CardInfoController extends ConsoleBaseController {
 	private CardMakeCodeBiz cardMakeCodeBiz;
 	
 	@RequestMapping(value = "/makecodeinput", method = RequestMethod.GET)
-	public ModelAndView makecodeinput() {
+	public ModelAndView makecodeinput(@RequestParam(value="makecode", required=false) String makecode) {
 		ModelAndView mav = new ModelAndView("card:card-makecodeinput");
+		mav.addObject("makecode", makecode);
 		return mav;
 	}
 	

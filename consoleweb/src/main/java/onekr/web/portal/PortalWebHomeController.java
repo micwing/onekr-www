@@ -31,7 +31,7 @@ public class PortalWebHomeController extends BaseController {
 	
 	@RequestMapping(value = "/buymakecode", method = RequestMethod.GET)
 	public ModelAndView contact() {
-		ModelAndView mav = new ModelAndView("portalweb:buymakecode");
+		ModelAndView mav = new ModelAndView("portalweb:order-buy-makecode");
 		return mav;
 	}
 	

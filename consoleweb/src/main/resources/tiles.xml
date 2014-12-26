@@ -2,11 +2,11 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 	<!-- common layout -->
-	<definition name="portal:*" template="/WEB-INF/_layout.jsp">
+	<definition name="account:*" template="/WEB-INF/_layout.jsp">
 		<put-attribute name="topmenu" expression="/WEB-INF/_topmenu.jsp"/>
 		<put-attribute name="footer" expression="/WEB-INF/_footer.jsp"/>
-		<put-attribute name="navbar" expression="/WEB-INF/_portal-navbar.jsp"/>
-		<put-attribute name="content" expression="/WEB-INF/portal/{1}.jsp"/>
+		<put-attribute name="navbar" expression="/WEB-INF/_account-navbar.jsp"/>
+		<put-attribute name="content" expression="/WEB-INF/account/{1}.jsp"/>
 		
 	</definition>
 	<definition name="system:*" template="/WEB-INF/_layout.jsp">

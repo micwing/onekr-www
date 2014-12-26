@@ -2,23 +2,6 @@
 <%@include file="../common/includes.jsp" %>
 <div class="well">
 	<ul class="nav nav-list">
-		<li class="nav-header">请柬教程</li>
-		<li>
-			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 什么是电子请柬？查看介绍</a>
-		</li>
-		<li>
-			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 如何制作电子请柬？制作教程</a>
-		</li>
-		<li>
-			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 第一次购买制作码？购买教程</a>
-		</li>
-		<li>
-			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 第一次访问本站？关于一氪</a>
-		</li>
-	</ul>
-</div>
-<div class="well">
-	<ul class="nav nav-list">
 		<li class="nav-header">购买制作码</li>
 		<li>
 			<a href="portal/buymakecode"><i class="icon-shopping-cart"></i> 在线购买</a>
@@ -42,6 +25,23 @@
 					<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 				</div>
 			</div>
+		</li>
+	</ul>
+</div>
+<div class="well">
+	<ul class="nav nav-list">
+		<li class="nav-header">请柬教程</li>
+		<li>
+			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 什么是电子请柬？</a>
+		</li>
+		<li>
+			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 如何制作电子请柬？</a>
+		</li>
+		<li>
+			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 第一次购买制作码？</a>
+		</li>
+		<li>
+			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 第一次访问本站？</a>
 		</li>
 	</ul>
 </div>

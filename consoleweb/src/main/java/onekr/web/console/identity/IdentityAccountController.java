@@ -20,7 +20,7 @@ public class IdentityAccountController extends ConsoleBaseController {
 	
 	@RequestMapping(value = "/accountInfo", method = RequestMethod.GET)
 	public ModelAndView accountInfo() {
-		ModelAndView mav = new ModelAndView("card:identity-accountInfo");
+		ModelAndView mav = new ModelAndView("account:identity-accountInfo");
 		User user = userBiz.findById(getCurrentUser().getId());
 		mav.addObject("user", user);
 		return mav;
@@ -28,7 +28,7 @@ public class IdentityAccountController extends ConsoleBaseController {
 	
 	@RequestMapping(value = "/modifyPassword", method = RequestMethod.GET)
 	public ModelAndView modifyPassword() {
-		ModelAndView mav = new ModelAndView("card:identity-modifyPassword");
+		ModelAndView mav = new ModelAndView("account:identity-modifyPassword");
 		return mav;
 	}
 	

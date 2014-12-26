@@ -64,6 +64,9 @@ var weChatBridgeReady={
 
 	,bindShareWithApp:function(){
 		var a=document.location.href;
+		if (contentModel.link) {
+			a=contentModel.link;
+		}
 		WeixinJSBridge.on("menu:share:appmessage",function(b){
 			WeixinJSBridge.invoke("sendAppMessage",{
 				appid:"",img_url:contentModel.img_url,img_width:"65",img_height:"65",link:a,desc:contentModel.src,title:contentModel.title
@@ -75,6 +78,9 @@ var weChatBridgeReady={
 	}
 	,bindShareWithTimeline:function(){
 		var a=document.location.href;
+		if (contentModel.link) {
+			a=contentModel.link;
+		}
 		WeixinJSBridge.on("menu:share:timeline",function(b){
 			WeixinJSBridge.invoke("shareTimeline",{
 				img_url:contentModel.img_url,img_width:"65",img_height:"65",link:a,desc:"view.inews.qq.com",title:contentModel.title

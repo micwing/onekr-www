@@ -61,7 +61,7 @@
 											'"',
 											'&quot;'
 						                )}...</p>
-		                                <a href="/portal/article/detail/${article.id}" class="pull-right">详情 <i class="icon-chevron-right"></i></a>
+		                                <a href="/portal/article/detail/${article.id}" class="pull-right">详情<i class="icon-chevron-right"></i></a>
 		
 		                            </div>
 		                        </div>

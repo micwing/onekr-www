@@ -46,6 +46,20 @@ public class CardWebController {
 	@Autowired
 	private UserBiz userBiz;
 	
+	@RequestMapping(value = "/adlist", method = RequestMethod.GET)
+	public ModelAndView adlist() {
+		ModelAndView mav = new ModelAndView("single:cardtpl/frame");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/frame/{cardId}", method = RequestMethod.GET)
+	public ModelAndView frame(@PathVariable("cardId") Long cardId) {
+		Card card = cardBiz.findById(cardId);
+		ModelAndView mav = new ModelAndView("single:cardtpl/frame");
+		mav.addObject("card", card);
+		return mav;
+	}
+	
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);

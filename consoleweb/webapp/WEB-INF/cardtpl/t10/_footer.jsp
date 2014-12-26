@@ -9,8 +9,9 @@
 <script type="text/javascript">
 var contentModel = {    
 	"img_url": "<%=basePath %>attached${fn:replace(coverPhoto.thumb.storePath, '\\', '/')}",     
-	"title": "${card.title} ",     
-	"src": "诚挚邀请您共同分享幸福与喜悦" 
+	"title": "${card.title}",     
+	"src": "诚挚邀请您共同分享幸福与喜悦", 
+	"link": "<%=basePath %>card/cover/${card.id}"
 };
 </script>
 <script type="text/javascript" src="assets/js/share.js"  ></script> 

@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="common/includes.jsp" %>
-<div class="well sidebar-nav">
+<div class="well">
 	<ul class="nav nav-list">
 		<shiro:hasRole name="ADMINISTRATOR">
 		<li class="nav-header">系统配置</li>

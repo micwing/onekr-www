@@ -19,8 +19,6 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public interface CardBiz {
 
-//	CardDto findCardInfo(@NotNull @Min(1) Long cardId);
-
 	Card findById(@NotNull @Min(1) Long cardId);
 	
 	Page<Card> listCard(@NotNull CardType cardType, @NotNull Status status,

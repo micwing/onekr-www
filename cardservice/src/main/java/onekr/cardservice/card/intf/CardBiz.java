@@ -19,8 +19,6 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public interface CardBiz {
 
-//	CardDto findCardInfo(@NotNull @Min(1) Long cardId);
-
 	Card findById(@NotNull @Min(1) Long cardId);
 	
 	Page<Card> listCard(@NotNull CardType cardType, @NotNull Status status,
@@ -32,5 +30,13 @@ public interface CardBiz {
 
 	Card saveCard(@NotNull Card card, @NotNull  @Min(1) Long uid);
 
+	/**
+	 * 更新请柬地图
+	 * @param cardId
+	 * @param mapPicUrl
+	 * @param mapUrl
+	 * @param uid
+	 * @return
+	 */
 	Card updateCardMap(Long cardId, String mapPicUrl, String mapUrl, Long uid);
 }

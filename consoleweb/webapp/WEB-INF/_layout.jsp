@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8">
-<title>管理中心</title>
+<title>一氪软件工作室</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">

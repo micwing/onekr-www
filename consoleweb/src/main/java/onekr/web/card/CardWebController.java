@@ -26,7 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
+/**
+ * 手机端访问的请柬页面
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping(value = "/card")
 public class CardWebController {
@@ -49,14 +53,6 @@ public class CardWebController {
 	@RequestMapping(value = "/adlist", method = RequestMethod.GET)
 	public ModelAndView adlist() {
 		ModelAndView mav = new ModelAndView("single:cardtpl/frame");
-		return mav;
-	}
-	
-	@RequestMapping(value = "/frame/{cardId}", method = RequestMethod.GET)
-	public ModelAndView frame(@PathVariable("cardId") Long cardId) {
-		Card card = cardBiz.findById(cardId);
-		ModelAndView mav = new ModelAndView("single:cardtpl/frame");
-		mav.addObject("card", card);
 		return mav;
 	}
 	

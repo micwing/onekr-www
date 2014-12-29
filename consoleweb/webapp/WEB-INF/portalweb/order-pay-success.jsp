@@ -8,7 +8,7 @@
 	<div class="span12">
 		<div class="well">
 			<h3 style="color: green">恭喜您，支付成功！</h3>
-			<div class="well" style="background-color: #FFF;">
+			<div class="well">
 			    <form class="form-horizontal">
 				    <div class="control-group">
 					    <label class="control-label" for="">订单号</label>

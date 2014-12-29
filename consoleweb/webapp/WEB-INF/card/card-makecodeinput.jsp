@@ -7,7 +7,6 @@
 <div class="alert">
 	<strong>温馨提示</strong><br>
 	您需要输入一个32位的制作码才能开始制作请柬<br>
-	制作码可以访问<a href="http://onekr.taobao.com" target="_blank">一氪软件工作室淘宝店</a>购买，或者联系<a target=blank href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes">客服QQ</a>购买
 </div>
 
 <jsp:include page="../util/message.jsp"/>

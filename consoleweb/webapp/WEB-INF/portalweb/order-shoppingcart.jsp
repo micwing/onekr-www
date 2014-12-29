@@ -8,7 +8,7 @@
 	<div class="span12">
 		<div class="well">
 			<h3>购物车</h3>
-			<div class="well" style="background-color: #FFF;">
+			<div class="well">
 				
 				<table class="table">
 					<thead>

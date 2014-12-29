@@ -2,7 +2,7 @@
 <%@include file="../common/includes.jsp" %>
 <div class="row">
 	<div class="span9">
-		<div class="well" style="background-color: #FFF;">
+		<div class="well">
 			<div class="row">
 				<div class="span4">
 					<img class="img-polaroid" alt="" src="assets/images/hlqjads/hlqj.jpg">
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="well" style="background-color: #FFF;">
+		<div class="well">
 			<div class="row-fluid">
 				<div class="span12">
 					<div>

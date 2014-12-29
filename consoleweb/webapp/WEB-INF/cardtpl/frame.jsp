@@ -7,6 +7,8 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <meta name="keywords" content="微信请柬,手机请柬,电子请柬,一氪软件工作室" />
 <meta name="description" content="一氪软件工作室" />
+
+<!-- 手机端跳转 -->
 <script src="http://siteapp.baidu.com/static/webappservice/uaredirect.js" type="text/javascript"></script>
 <script type="text/javascript">uaredirect("<%=basePath%>");</script>
 

@@ -86,7 +86,7 @@ $('#modifyMapurl').click(function() {
 			<form id="map-form" action="console/card/map/doUpdateMap" method="post">
 				<input type="hidden" name="mapPicUrl">
 				<input type="hidden" name="mapUrl">
-				<input type="hidden" name="cardId" value="${cardId}">
+				<input type="hidden" name="cardId" value="${card.id}">
 				<button type="button" class="btn btn-primary btn-large" id="updateMapUrl">保存</button>
 				<c:if test="${!empty card.mapPicUrl}">
 				<button type="button" class="btn btn-large" id="cancelMapUrl">取消</button>

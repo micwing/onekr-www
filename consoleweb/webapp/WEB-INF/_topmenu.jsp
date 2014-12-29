@@ -6,6 +6,8 @@
         
         <%-- <li ${fn:startsWith(requestServletPath, '/article/') ? 'class=active' : ''}><a href="article">文章</a></li> --%>
         
+        <li ${fn:startsWith(requestServletPath, '/portal/templatelist/') ? 'class=active' : ''}><a href="portal/templatelist">模板列表</a></li>
+        
         <li ${fn:startsWith(requestServletPath, '/portal/buymakecode/') ? 'class=active' : ''}><a href="portal/buymakecode">购买制作码</a></li>
         
         <%-- <li ${fn:startsWith(requestServletPath, '/portal/article/') ? 'class=active' : ''}><a href="portal/article">请柬教程</a></li> --%>

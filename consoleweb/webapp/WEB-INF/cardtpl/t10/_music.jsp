@@ -36,7 +36,7 @@ if (music != null) { %>
 </a>
 </span>
 <script type="text/javascript">
-	/* $(document).ready(function() {
+	$(document).ready(function() {
 
 		$(document).one('touchstart', function(e) {
 			var music = document.getElementById("audio_play");
@@ -45,7 +45,7 @@ if (music != null) { %>
 			}
 		});
 
-	}); */
+	});
 	function play_music() {
 		if ($('#mc_play').hasClass('on')) {
 			$('#mc_play audio').get(0).pause();
@@ -55,10 +55,13 @@ if (music != null) { %>
 			$('#mc_play').attr('class', 'on');
 		}
 	}
-	$(function() {
-		setTimeout(function() {
-			$('#mc_play audio').get(0).play();
-		}, 5000);
-	});
+	function pause_music() {
+		$('#mc_play audio').get(0).pause();
+		$('#mc_play').attr('class', 'stop');
+	}
+	function start_music() {
+		$('#mc_play audio').get(0).play();
+		$('#mc_play').attr('class', 'on');
+	}
 </script>
 <%}%>

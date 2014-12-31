@@ -22,7 +22,7 @@
 <div class="alert">
 	<strong>温馨提示</strong><br>
 	您可以选择系统为您准备的音乐，也可以自己上传音乐文件，最多可以上传<strong>3个</strong>；<br>
-	建议上传较小的音乐文件，上传之前请保证音乐大小不超过<strong>5M</strong>；<br>
+	建议上传较小的音乐文件，上传之前请保证音乐大小不超过<strong>10M</strong>；<br>
 	点击对应音乐的<strong>选择</strong>按钮完成设置。<br>
 </div>
 
@@ -58,6 +58,24 @@ $('#uploadButton').click(function() {
 	$('#file-form').submit();
 	$('#uploadButton').attr('disabled', true);
 });
+
+
+function play_music(obj) {
+	$('.mc_play audio').each(function() {
+		$(this)[0].pause();
+	});
+	$('.mc_play').show();
+	$('.mc_pause').hide();
+	$(obj).find('audio').get(0).play();
+	$(obj).hide().next('.mc_pause').show();
+	
+}
+function pause_music(obj) {
+	$('.mc_play audio').each(function() {
+		$(this)[0].pause();
+	});
+	$(obj).hide().prev('.mc_play').show();
+}
 </script>
 
 <div class="row-fluid">
@@ -73,6 +91,18 @@ $('#uploadButton').click(function() {
 				<%=fs.getOwner().equals(CardMusicFileBiz.SYSTEM_MUSIC_FILE_STORE_OWNER) ? "<span class='label'>系统音乐</span>" : "<span class='label label-info'>我的音乐</span>"%>
 				<%=fs.getOriginalName()%></td>
 				<td><%=FileUtil.formetFileSize(fs.getSize())%></td>
+				<td>
+				<a class="mc_play" onclick="play_music(this)" title="播放" style="cursor:pointer;">
+					<audio loop>
+						<source src="<%=basePath%>attached<%=fs.getStorePath().replace("\\", "/")%>" type="audio/mpeg"></source>
+					</audio><span><i class="icon-play"></i></span>
+				</a>
+				<a class="mc_pause" onclick="pause_music(this)" style="display: none;cursor:pointer;" title="暂停">
+					<audio loop>
+						<source src="<%=basePath%>attached<%=fs.getStorePath().replace("\\", "/")%>" type="audio/mpeg"></source>
+					</audio><span><i class="icon-pause"></i></span>
+				</a>
+				</td>
 				<td>
 				<%
 				if (card.getMusicFileStore() != null && fs.getId().equals(card.getMusicFileStore().getId())) {

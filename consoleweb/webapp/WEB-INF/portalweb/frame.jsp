@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<div id="con_right_lj">
-		<iframe src="<%=basePath%>/card/cover/${card.id}" name="cont_iframe"  frameborder="none" id="cont_iframe" width="100%" height="100%">
+		<iframe src="<%=basePath%>card/cover/${card.id}" name="cont_iframe"  frameborder="none" id="cont_iframe" width="100%" height="100%">
 		</iframe>
 	</div>
 </div>

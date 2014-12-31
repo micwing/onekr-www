@@ -17,8 +17,8 @@
 
 <div class="alert">
 	<strong>温馨提示</strong><br>
-	上传之前请保证每张照片大小不超过<strong>5M</strong>；您每次至多上传<strong>5张</strong>照片，同时上传多张照片时速度较慢请您耐心等待；<br>
-	如果您的单张照片大小超过5M，请点击下载<a href="assets/other/图片缩小器.zip" target="_blank"><i class="icon-download-alt"></i>图片缩小器</a>，把您的照片缩小后再上传；<br>
+	上传之前请保证每张照片大小不超过<strong>10M</strong>；您每次至多上传<strong>5张</strong>照片，同时上传多张照片时速度较慢请您耐心等待；<br>
+	如果您的单张照片大小超过10M，请点击下载<a href="assets/other/图片缩小器.zip" target="_blank"><i class="icon-download-alt"></i>图片缩小器</a>，把您的照片缩小后再上传；<br>
 	上传完成之后请在照片列表中设置一张照片为<strong>封面</strong>、设置一张照片为<strong>新郎独照</strong>、设置一张照片为<strong>新娘独照</strong>。<br>
 </div>
 

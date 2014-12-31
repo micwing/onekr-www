@@ -1,8 +1,10 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
+<%@page import="onekr.framework.utils.DateUtil" %>
+<%@page import="java.util.Date" %>
+<%@page import="java.text.NumberFormat" %>
 <%@page import="onekr.cardservice.model.CardType" %>
 <%@page import="onekr.cardservice.model.Template" %>
 <%@include file="../common/includes.jsp"%>
-<script src="assets/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 
 <style>
 .star{
@@ -55,28 +57,28 @@
 				<div class="control-group">
 					<label class="control-label" for="people1Name"><span class="star">*</span> 新郎姓名</label>
 					<div class="controls">
-						<input type="text" name="people1Name" placeholder="people1Name" value="${card.people1Name}" ${!empty card.people1Name ? 'readonly' : ''}>
+						<input type="text" name="people1Name" value="${card.people1Name}" ${!empty card.people1Name ? 'readonly' : ''}>
 						<span class="help-block">新郎姓名保存后不可更改，请务必输入正确</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="people1Mobile">新郎手机号码</label>
 					<div class="controls">
-						<input type="text" name="people1Mobile" placeholder="people1Mobile" value="${card.people1Mobile}">
+						<input type="text" name="people1Mobile" value="${card.people1Mobile}">
 						<span class="help-block">手机号码会显示在请柬中，方便亲友直接拨打电话联系</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="people2Name"><span class="star">*</span> 新娘姓名</label>
 					<div class="controls">
-						<input type="text" name="people2Name" placeholder="people2Name" value="${card.people2Name}" ${!empty card.people2Name ? 'readonly' : ''}>
+						<input type="text" name="people2Name" value="${card.people2Name}" ${!empty card.people2Name ? 'readonly' : ''}>
 						<span class="help-block">新娘姓名保存后不可更改，请务必输入正确</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="people2Mobile">新娘手机号码</label>
 					<div class="controls">
-						<input type="text" name="people2Mobile" placeholder="people2Mobile" value="${card.people2Mobile}">
+						<input type="text" name="people2Mobile" value="${card.people2Mobile}">
 						<span class="help-block">手机号码会显示在请柬中，方便亲友直接拨打电话联系</span>
 					</div>
 				</div>
@@ -87,35 +89,71 @@
 				<div class="control-group">
 					<label class="control-label" for="partyTime"><span class="star">*</span> 典礼时间</label>
 					<div class="controls">
-						<input type="text" class="Wdate" name="partyTime" placeholder="partyTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/>"/>
-						<span class="help-block">点击输入框，使用时间控件选择；如果无法显示控件，请手动输入，格式为:yyyy-MM-dd HH:mm:ss</span>
+						日期：<select class="span2" id="year">
+						<%
+						Date now = new Date();
+						NumberFormat nf = NumberFormat.getInstance();
+						nf.setMinimumIntegerDigits(2);
+						
+						int year = DateUtil.getYear(now);
+						for (int i = 2013; i < 2018; i++) {
+							%><option value="<%=i%>"  <%=year==i?"selected":""%>  ><%=i%>年</option><%
+						}%>
+						</select>
+						<select class="span1" id="month">
+						<%
+						int month = DateUtil.getMonth(now)+1;
+						for (int i = 1; i <= 12; i++) {
+							%><option value="<%=nf.format(i)%>"  <%=month==i?"selected":""%>  ><%=nf.format(i)%>月</option><%
+						}%>
+						</select>
+						<select class="span1" id="day" name="day">
+						<%
+						int day = DateUtil.getDayofMonth(now);
+						for (int i = 1; i <= 31; i++) {
+							%><option value="<%=nf.format(i)%>"  <%=day==i?"selected":""%>  ><%=nf.format(i)%>日</option><%
+						}%>
+						</select><br>
+						时间：<select class="span1" id="hour">
+						<%
+						for (int i = 0; i <= 23; i++) {
+							%><option value="<%=nf.format(i)%>"><%=nf.format(i)%>时</option><%
+						}%>
+						</select>
+						<select class="span1" id="min">
+						<%
+						for (int i = 0; i <= 59; i++) {
+							%><option value="<%=nf.format(i)%>"><%=nf.format(i)%>分</option><%
+						}%>
+						</select>
+						<input type="hidden" name="partyTime" value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/>"/>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="restaurant"><span class="star">*</span> 举办地点</label>
 					<div class="controls">
-						<input type="text" class="input-block-level" name="restaurant" placeholder="restaurant" value="${card.restaurant}">
+						<input type="text" class="input-block-level" name="restaurant" value="${card.restaurant}">
 						<span class="help-block">请输入酒店名称</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="address"><span class="star">*</span> 举办地址</label>
 					<div class="controls">
-						<input type="text" class="input-block-level" name="address" placeholder="address" value="${card.address}">
+						<input type="text" class="input-block-level" name="address" value="${card.address}">
 						<span class="help-block">请输入酒店地址</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="traffic">交通方式</label>
 					<div class="controls">
-						<input type="text" class="input-block-level" name="traffic" placeholder="traffic" value="${card.traffic}">
+						<input type="text" class="input-block-level" name="traffic" value="${card.traffic}">
 						<span class="help-block">到达酒店的公共交通方式，例如：乘坐1路、2路、3路公交车在天安门站下车向北100米</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="remind">温馨提醒</label>
 					<div class="controls">
-						<input type="text" class="input-block-level" name="remind" placeholder="remind" value="${empty card.remind ? '喝酒不开车，开车不喝酒' : card.remind}">
+						<input type="text" class="input-block-level" name="remind" value="${empty card.remind ? '喝酒不开车，开车不喝酒' : card.remind}">
 						<span class="help-block">例如：喝酒不开车，开车不喝酒</span>
 					</div>
 				</div>
@@ -126,21 +164,21 @@
 				<div class="control-group">
 					<label class="control-label" for="title"><span class="star">*</span> 标题</label>
 					<div class="controls">
-						<input type="text" class="input-block-level" name="title" placeholder="title" value="${card.title}">
+						<input type="text" class="input-block-level" name="title" value="${card.title}">
 						<span class="help-block">系统会根据新郎、新娘的姓名自动生成一个标题，您也可以手动修改该标题。</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="beforeInfo"><span class="star">*</span> 前置语句</label>
 					<div class="controls">
-						<input type="text" class="input-block-level" name="beforeInfo" placeholder="beforeInfo" value="${empty card.beforeInfo ? '沉浸在幸福中的我们&lt;br/&gt;谨定于' : card.beforeInfo}">
+						<input type="text" class="input-block-level" name="beforeInfo" value="${empty card.beforeInfo ? '沉浸在幸福中的我们&lt;br/&gt;谨定于' : card.beforeInfo}">
 						<span class="help-block">自定义前置语句，建议使用默认。示例：沉浸在幸福中的我们&lt;br/&gt;谨定于</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="afterInfo"><span class="star">*</span> 后置语句</label>
 					<div class="controls">
-						<input type="text" class="input-block-level" name="afterInfo" placeholder="afterInfo" value="${empty card.afterInfo ? '举行典礼&lt;br/&gt;敬备喜宴 恭请光临' : card.afterInfo}">
+						<input type="text" class="input-block-level" name="afterInfo" value="${empty card.afterInfo ? '举行典礼&lt;br/&gt;敬备喜宴 恭请光临' : card.afterInfo}">
 						<span class="help-block">自定义前置语句，建议使用默认。示例：举行典礼&lt;br/&gt;敬备喜宴 恭请光临</span>
 					</div>
 				</div>
@@ -148,7 +186,7 @@
 			</fieldset>
 
 			<fieldset>
-				<legend>系统</legend>
+				<legend>设置</legend>
 				<div class="control-group">
 					<label class="control-label" for="templetId"><span class="star">*</span> 选择模板</label>
 					<div class="controls">
@@ -168,12 +206,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="control-group">
+				<%-- <div class="control-group">
 					<label class="control-label" for="remark">备注</label>
 					<div class="controls">
-						<textarea name="remark" class="input-block-level" placeholder="remark">${card.remark}</textarea>
+						<textarea name="remark" class="input-block-level">${card.remark}</textarea>
 					</div>
-				</div>
+				</div> --%>
 				<div class="control-group">
 					<label class="control-label" for="status"><span class="star">*</span> 状态</label>
 					<div class="controls">
@@ -207,7 +245,13 @@
 				$('.template-image-ul img:eq(2)').attr('src', 'assets/images/template_example/'+templateId+'_3.png'); */
 			};
 			
+			//判断日期是否是有效日期，参数date可以格式化为xx-xx-xx或xxxx-xx-xx或用/分割
+			$.validator.addMethod("checkTrueDate", function(value, element) {  
+				var date = $('#year').val()+'-'+$('#month').val()+'-'+$('#day').val();
+				return (new Date(date).getDate()==date.substring(date.length-2));
+			}, "日期设置有误");
 			$('#card-form').validate({
+				ignore: "",
 				rules : {
 					people1Name : {
 						required : true,
@@ -224,6 +268,9 @@
 					people2Mobile : {
 						maxlength : 20,
 						number: true
+					},
+					day : {
+						checkTrueDate : true
 					},
 					partyTime : {
 						required : true
@@ -278,8 +325,20 @@
 				}
 			});
 			$(function() {
+				if ($('#card-form input[name=partyTime]').val()) {
+					var partyTime = $('#card-form input[name=partyTime]').val();
+					var day = partyTime.split(' ')[0].split('-');
+					var time = partyTime.split(' ')[1].split(':');
+					$('#year option[value='+day[0]+']').attr('selected', true);
+					$('#month option[value='+day[1]+']').attr('selected', true);
+					$('#day option[value='+day[2]+']').attr('selected', true);
+					$('#hour option[value='+time[0]+']').attr('selected', true);
+					$('#min option[value='+time[1]+']').attr('selected', true);
+				}
+				
 				$('#saveCard').click(function(){
 					$('#saveCard').attr('disabled',true);
+					$('#card-form input[name=partyTime]').val($('#year').val()+'-'+$('#month').val()+'-'+$('#day').val()+' '+$('#hour').val()+':'+$('#min').val()+':0')
 					if (!$('#card-form').valid()) {
 						$('#saveCard').attr('disabled',false);
 						return;

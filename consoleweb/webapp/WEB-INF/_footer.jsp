@@ -15,15 +15,36 @@
 	        <div class="span2">
 	            <h2>链接 </h2>
 	            <ul class="unstyled">
-            	<li><a href="/">首页</a></li>
-	                <%-- <li><a href="/product/introduce">onekr-basic</a></li> --%>
-	                <%-- <li><a href="/article">文章</a></li> --%>
-	                <%-- <li><a href="/domain/group">组合查询</a></li>
-	                <li><a href="/domain/suffix">多后缀查询</a></li>
-	                <li><a href="/domain/whois">whois查询</a></li> --%>
-	                <%-- <li><a href="/domain/expired">过期域名查询</a></li> --%>
-	                <%-- <li><a href="/contact">留言</a></li> --%>
-                    <li><a href="/portal/about">关于</a></li>
+            		<li><a href="/">首页</a></li>
+	                <li><a href="portal/templatelist">模板列表</a></li>
+	                <li><a href="portal/buymakecode">购买制作码</a></li>
+	                <li><a href="console/card/info/list">我的请柬</a></li>
+	                <li><a href="console/identity/account/accountInfo">我的账户</a></li>
+	                <li><a href="http://onekr.taobao.com" target="_blank">访问淘宝店</a></li>
+	                <li>
+	                <a href="#weixindianModal" role="button" data-toggle="modal">访问微信店</a>
+					<div id="weixindianModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">访问 一氪软件工作室 微信店</h3>
+						</div>
+						<div class="modal-body" style="text-align: center">
+							<p>请使用手机微信扫描该二维码</p>
+							<p><img class="img-polaroid" alt="" src="assets/images/weixindian.png"/></p>
+							<!-- <p><a href="http://wap.koudaitong.com/v2/showcase/homepage?kdt_id=651908" target="_blank">PC查看</a></p> -->
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+						</div>
+					</div>
+	                </li>
+	                <li>
+						<a href="mailto:onekrstudio@163.com">发送邮件</a>
+					</li>
+					<li>
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes">QQ咨询</a>
+					</li>
+                    <li><a href="/portal/about">关于一氪</a></li>
                 </ul>
             </div>
             <div class="span6">

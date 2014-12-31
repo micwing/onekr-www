@@ -1,7 +1,14 @@
 package onekr.web.console.card;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.card.intf.CardMakeCodeBiz;
+import onekr.cardservice.card.intf.CardPhotoDto;
+import onekr.cardservice.card.intf.CardPhotoFileBiz;
 import onekr.cardservice.model.Card;
 import onekr.cardservice.model.CardMakeCode;
 import onekr.cardservice.model.CardType;
@@ -21,6 +28,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,6 +45,9 @@ public class CardInfoController extends ConsoleBaseController {
 	
 	@Autowired
 	private CardMakeCodeBiz cardMakeCodeBiz;
+	
+	@Autowired
+	private CardPhotoFileBiz cardPhotoFileBiz;
 	
 	@RequestMapping(value = "/makecodeinput", method = RequestMethod.GET)
 	public ModelAndView makecodeinput(@RequestParam(value="makecode", required=false) String makecode) {
@@ -80,43 +91,32 @@ public class CardInfoController extends ConsoleBaseController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(CardType cardType, Status status,@PageableDefaults(value = 20) Pageable pageable) {
+	public ModelAndView list(CardType cardType, @PageableDefaults(value = 20) Pageable pageable) {
 		if (cardType == null)
 			cardType = CardType.WED_CARD;
-		if (status == null)
-			status = Status.NORMAL;
 		if (pageable == null)
 			pageable = new PageRequest(0, Constants.PAGE_DEFAULT_SIZE);
 		User user = getCurrentUser();
 		Page<Card> page = null;
 		if (user.getGroup().equals(Group.ADMINISTRATOR)) {
-			page = cardBiz.listCard(cardType, status, pageable);
+			page = cardBiz.listCard(cardType, pageable);
 		} else {
-			page = cardBiz.listCard(cardType, status, user.getId(), pageable);
+			page = cardBiz.listCard(cardType, user.getId(), pageable);
+		}
+		Map<Long, CardPhotoDto> cardPhotoMap = new HashMap<Long, CardPhotoDto>();
+		if (page != null && !CollectionUtils.isEmpty(page.getContent())) {
+			List<Card> content = page.getContent();
+			List<Long> ids = new ArrayList<Long>();
+			for (Card c : content) {
+				ids.add(c.getId());
+			}
+			cardPhotoMap = cardPhotoFileBiz.getCardPhotoCoverMap(ids);
 		}
 		ModelAndView mav = new ModelAndView("card:card-list");
 		mav.addObject("page", page);
+		mav.addObject("cardPhotoMap", cardPhotoMap);
 		mav.addObject("cardType", cardType);
-		mav.addObject("status", status);
 		return mav;
 	}
 	
-	@RequestMapping(value = "/pausedlist", method = RequestMethod.GET)
-	public ModelAndView pausedlist(CardType cardType,@PageableDefaults(value = 20) Pageable pageable) {
-		if (cardType == null)
-			cardType = CardType.WED_CARD;
-		if (pageable == null)
-			pageable = new PageRequest(0, Constants.PAGE_DEFAULT_SIZE);
-		User user = getCurrentUser();
-		Page<Card> page = null;
-		if (user.getGroup().equals(Group.ADMINISTRATOR)) {
-			page = cardBiz.listCard(cardType, Status.PAUSED, pageable);
-		} else {
-			page = cardBiz.listCard(cardType, Status.PAUSED, user.getId(), pageable);
-		}
-		ModelAndView mav = new ModelAndView("card:card-pausedlist");
-		mav.addObject("page", page);
-		mav.addObject("cardType", cardType);
-		return mav;
-	}
 }

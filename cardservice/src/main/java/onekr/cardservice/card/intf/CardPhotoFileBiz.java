@@ -1,12 +1,15 @@
 package onekr.cardservice.card.intf;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import onekr.commonservice.model.FileStore;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -114,6 +117,13 @@ public interface CardPhotoFileBiz {
 	 * @return
 	 */
 	CardPhotoDto getCardPhotoCover(@NotNull @Min(1) Long cardId);
+	
+	/**
+	 * 获取封面照片
+	 * @param cardId
+	 * @return
+	 */
+	Map<Long, CardPhotoDto> getCardPhotoCoverMap(@NotEmpty Collection<Long> cardIds);
 	
 	/**
 	 * 把cardId的fileStoreId的照片设为用户1新郎

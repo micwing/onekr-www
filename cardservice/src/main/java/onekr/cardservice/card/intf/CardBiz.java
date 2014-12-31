@@ -21,11 +21,11 @@ public interface CardBiz {
 
 	Card findById(@NotNull @Min(1) Long cardId);
 	
-	Page<Card> listCard(@NotNull CardType cardType, @NotNull Status status,
+	Page<Card> listCard(@NotNull CardType cardType,
 			@NotNull  @Min(1) Long uid,
 			@NotNull Pageable pageable);
 
-	Page<Card> listCard(@NotNull CardType cardType, @NotNull Status status,
+	Page<Card> listCard(@NotNull CardType cardType,
 			@NotNull Pageable pageable);
 
 	Card saveCard(@NotNull Card card, @NotNull  @Min(1) Long uid);

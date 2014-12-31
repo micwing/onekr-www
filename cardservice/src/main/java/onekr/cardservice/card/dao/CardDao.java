@@ -2,7 +2,6 @@ package onekr.cardservice.card.dao;
 
 import onekr.cardservice.model.Card;
 import onekr.cardservice.model.CardType;
-import onekr.commonservice.model.Status;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,9 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CardDao extends JpaRepository<Card, Long> {
 
-	Page<Card> findByCardTypeAndStatusOrderByCreateAtDesc(CardType cardType,
-			Status status, Pageable pageable);
+	Page<Card> findByCardTypeOrderByCreateAtDesc(CardType cardType, Pageable pageable);
 	
-	Page<Card> findByCardTypeAndStatusAndCreateByOrderByCreateAtDesc(CardType cardType,
-			Status status, Long uid, Pageable pageable);
+	Page<Card> findByCardTypeAndCreateByOrderByCreateAtDesc(CardType cardType, Long uid, Pageable pageable);
 }

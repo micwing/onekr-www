@@ -27,17 +27,17 @@ public class CardBizImpl implements CardBiz {
 	}
 
 	@Override
-	public Page<Card> listCard(CardType cardType, Status status,
+	public Page<Card> listCard(CardType cardType, 
 			Pageable pageable) {
-		return cardDao.findByCardTypeAndStatusOrderByCreateAtDesc(cardType,
-				status, pageable);
+		return cardDao.findByCardTypeOrderByCreateAtDesc(cardType,
+				pageable);
 	}
 	
 	@Override
-	public Page<Card> listCard(CardType cardType, Status status, Long uid,
+	public Page<Card> listCard(CardType cardType, Long uid,
 			Pageable pageable) {
-		return cardDao.findByCardTypeAndStatusAndCreateByOrderByCreateAtDesc(cardType,
-				status, uid, pageable);
+		return cardDao.findByCardTypeAndCreateByOrderByCreateAtDesc(cardType,
+				uid, pageable);
 	}
 
 	@Override

@@ -2,14 +2,15 @@ package onekr.cardservice.card.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import onekr.cardservice.card.intf.CardPhotoFileBiz;
 import onekr.cardservice.card.intf.CardPhotoDto;
+import onekr.cardservice.card.intf.CardPhotoFileBiz;
 import onekr.cardservice.utils.Converter;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.filestore.intf.FileBiz;
@@ -277,6 +278,15 @@ public class CardPhotoFileBizImpl implements CardPhotoFileBiz {
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public Map<Long, CardPhotoDto> getCardPhotoCoverMap(Collection<Long> cardIds) {
+		Map<Long, CardPhotoDto> map = new HashMap<Long, CardPhotoDto>();
+		for (Long cardId : cardIds) {
+			map.put(cardId, getCardPhotoCover(cardId));//TODO 改成查一次数据库而不是循环查数据库
+		}
+		return map;
 	}
 	
 	@Override

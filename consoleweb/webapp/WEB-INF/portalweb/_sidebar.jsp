@@ -52,7 +52,7 @@
 			<a href="mailto:onekrstudio@163.com"><i class="icon-envelope"></i> 发送邮件</a>
 		</li>
 		<li>
-			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes"><i class="icon-user"></i> QQ交谈</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=4990617&site=qq&menu=yes"><i class="icon-user"></i> QQ咨询</a>
 		</li>
 	</ul>
 </div>

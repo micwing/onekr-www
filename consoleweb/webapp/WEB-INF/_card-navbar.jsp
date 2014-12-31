@@ -9,9 +9,6 @@
 		<li class="${fn:startsWith(requestServletPath, '/console/card/info/list/')?'active':''}">
 			<a href="console/card/info/list"><i class="icon-tasks"></i> 请柬列表</a>
 		</li>
-		<li class="${fn:startsWith(requestServletPath, '/console/card/info/pausedlist/')?'active':''}">
-			<a href="console/card/info/pausedlist"><i class="icon-remove"></i> 已停用</a>
-		</li>
 	</ul>
 </div>
 <shiro:hasRole name="ADMINISTRATOR">

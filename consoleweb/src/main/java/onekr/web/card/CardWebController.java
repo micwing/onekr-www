@@ -50,12 +50,21 @@ public class CardWebController {
 	@Autowired
 	private UserBiz userBiz;
 	
-	@RequestMapping(value = "/adlist", method = RequestMethod.GET)
-	public ModelAndView adlist() {
-		ModelAndView mav = new ModelAndView("single:cardtpl/frame");
+	/**
+	 * 手机查看模板列表
+	 * @return
+	 */
+	@RequestMapping(value = "/templatelist", method = RequestMethod.GET)
+	public ModelAndView templatelist() {
+		ModelAndView mav = new ModelAndView("single:cardtpl/templatelist");
 		return mav;
 	}
 	
+	/**
+	 * 请柬封面
+	 * @param cardId
+	 * @return
+	 */
 	@RequestMapping(value = "/cover/{cardId}", method = RequestMethod.GET)
 	public ModelAndView cover(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
@@ -71,6 +80,11 @@ public class CardWebController {
 		return mav;
 	}
 	
+	/**
+	 * 请柬主体
+	 * @param cardId
+	 * @return
+	 */
 	@RequestMapping(value = "/main/{cardId}", method = RequestMethod.GET)
 	public ModelAndView main(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
@@ -96,6 +110,11 @@ public class CardWebController {
 		return mav;
 	}
 	
+	/**
+	 * 请柬留言列表
+	 * @param cardId
+	 * @return
+	 */
 	@RequestMapping(value="/listComments",method=RequestMethod.POST)
 	@ResponseBody
 	public Result listComments(@RequestParam("cardId") Long cardId) {
@@ -105,6 +124,12 @@ public class CardWebController {
 		return result;
 	}
 	
+	/**
+	 * 上传婚礼现场照片
+	 * @param mfiles
+	 * @param cardId
+	 * @return
+	 */
 	@RequestMapping(value="/doUploadMemontPhoto",method=RequestMethod.POST)
 	public String doUploadMemontPhoto(
     		@RequestParam("file") CommonsMultipartFile[] mfiles, 
@@ -115,6 +140,14 @@ public class CardWebController {
         return "redirect:/card/main/"+cardId;
 	}
 	
+	/**
+	 * 保存请柬留言
+	 * @param userName
+	 * @param reply
+	 * @param content
+	 * @param cardId
+	 * @return
+	 */
 	@RequestMapping(value="/doSaveComment",method=RequestMethod.POST)
 	@ResponseBody
 	public Result doSaveComment(

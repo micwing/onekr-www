@@ -28,7 +28,7 @@
 		</li>
 	</ul>
 </div>
-<div class="well">
+<!-- <div class="well">
 	<ul class="nav nav-list">
 		<li class="nav-header">请柬教程</li>
 		<li>
@@ -44,7 +44,7 @@
 			<a href="console/card/info/makecodeinput"><i class="icon-file"></i> 第一次访问本站？</a>
 		</li>
 	</ul>
-</div>
+</div> -->
 <div class="well">
 	<ul class="nav nav-list">
 		<li class="nav-header">联系客服</li>

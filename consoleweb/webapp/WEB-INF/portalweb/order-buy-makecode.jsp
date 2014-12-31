@@ -10,7 +10,7 @@
 				<div class="span4">
 					<h3>婚礼请柬制作码</h3>
 					<hr>
-					<form class="form-horizontal" action="console/order/payAtOnce" method="post">
+					<div class="form-horizontal">
 					<div class="control-group">
 						<label class="control-label" for="">价格</label>
 						<div class="controls">
@@ -36,11 +36,13 @@
 							<a href="login" class="btn btn-large btn-primary">请先登录</a>
 							</shiro:guest>
 							<shiro:user>
-							<a href="console/order/payAtOnce" class="btn btn-large btn-primary">立即购买</a>
+							<form action="console/order/doSubmitAlipay" method="post">
+							<button type="submit" class="btn btn-large btn-primary">立即购买<br>并前往支付宝付款</button>
+							</form>
 							</shiro:user>
 						</div>
 					</div>
-					</form>
+					</div>
 					<p>支付&nbsp;&nbsp;&nbsp;&nbsp;支付宝</p>
 					<p>提醒&nbsp;&nbsp;&nbsp;&nbsp;此商品为定制，不支持7天无理由退货</p>
 				</div>
@@ -87,15 +89,15 @@
 					<div>
 						<img alt="" src="assets/images/hlqjads/09.jpg">
 					</div>
-					<div>
+					<!-- <div>
 						<img alt="" src="assets/images/hlqjads/10.jpg">
-					</div>
+					</div> -->
 					<div>
 						<img alt="" src="assets/images/hlqjads/11.jpg">
 					</div>
-					<div>
+					<!-- <div>
 						<img alt="" src="assets/images/hlqjads/12.jpg">
-					</div>
+					</div> -->
 					<div>
 						<img alt="" src="assets/images/hlqjads/13.jpg">
 					</div>

@@ -1,7 +1,20 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.cardservice.model.Template"%>
+<%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer" %>
+<% 
+String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty("site.root.url");
+%>
 <%@include file="../common/includes.jsp" %>
+
 <div class="row">
+	<div class="span3" style="text-align: center;margin-bottom: 30px;background-color: #FFFFF0">
+		<div class="thumbnail">
+			<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/card/templatelist&w=200&h=200" />
+			<div class="caption">
+				<p>建议您通过<span style="font-weight: bold;color: #6B8E23">手机微信</span><br>扫一扫上面的 二维码<br>在手机上浏览全部模板</p>
+			</div>
+		</div>
+	</div>
 	<%
 	Template[] all = Template.values();
 	

@@ -19,5 +19,5 @@ public interface OrderBiz {
 
 	List<Order> findOrders(@NotNull Biz biz,@NotNull String owner);
 	
-	void saveOrder(@NotNull Order order);
+	Order saveOrder(@NotNull Order order);
 }

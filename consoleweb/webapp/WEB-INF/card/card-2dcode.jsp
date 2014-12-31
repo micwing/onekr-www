@@ -1,9 +1,9 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer" %>
-<%@include file="../common/includes.jsp"%>
 <% 
 String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty("site.root.url");
 %>
+<%@include file="../common/includes.jsp"%>
 <script src="assets/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 
 <h3>扫描二维码

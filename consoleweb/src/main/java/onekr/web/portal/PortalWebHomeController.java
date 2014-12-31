@@ -28,6 +28,10 @@ public class PortalWebHomeController extends BaseController {
 	@Autowired
 	private CardBiz cardBiz;
 	
+	/**
+	 * 首页
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView("portalweb:home");
@@ -36,35 +40,52 @@ public class PortalWebHomeController extends BaseController {
 		return mav;
 	}
 	
+	/**
+	 * 购买制作码
+	 * @return
+	 */
 	@RequestMapping(value = "/buymakecode", method = RequestMethod.GET)
 	public ModelAndView buymakecode() {
 		ModelAndView mav = new ModelAndView("portalweb:order-buy-makecode");
 		return mav;
 	}
 	
+	/**
+	 * 模板列表
+	 * @return
+	 */
 	@RequestMapping(value = "/templatelist", method = RequestMethod.GET)
 	public ModelAndView templatelist() {
 		ModelAndView mav = new ModelAndView("portalweb:template-list");
 		return mav;
 	}
 	
+	/**
+	 * 查看模板示例
+	 * @param cardId
+	 * @return
+	 */
 	@RequestMapping(value = "/frame/{cardId}", method = RequestMethod.GET)
 	public ModelAndView frame(@PathVariable("cardId") Long cardId) {
 		Card card = cardBiz.findById(cardId);
-		ModelAndView mav = new ModelAndView("single:cardtpl/frame");
+		ModelAndView mav = new ModelAndView("single:portalweb/frame");
 		mav.addObject("card", card);
 		return mav;
 	}
 	
+	/**
+	 * 关于我们
+	 * @return
+	 */
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public ModelAndView about() {
 		ModelAndView mav = new ModelAndView("portalweb:about");
 		return mav;
 	}
 	
-	@RequestMapping(value = "/product/introduce", method = RequestMethod.GET)
-	public ModelAndView productIntroduce() {
-		ModelAndView mav = new ModelAndView("portalweb:productIntroduce");
-		return mav;
-	}
+//	@RequestMapping(value = "/product/introduce", method = RequestMethod.GET)
+//	public ModelAndView productIntroduce() {
+//		ModelAndView mav = new ModelAndView("portalweb:productIntroduce");
+//		return mav;
+//	}
 }

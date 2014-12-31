@@ -35,7 +35,7 @@ public class OrderBizImpl implements OrderBiz {
 	}
 
 	@Override
-	public void saveOrder(Order order) {
+	public Order saveOrder(Order order) {
 		Date now = new Date();
 		
 		Order entity = null;
@@ -57,18 +57,38 @@ public class OrderBizImpl implements OrderBiz {
 			if (order.getCreateBy() == null)
 				throw new AppException(ErrorCode.ILLEGAL_PARAM, "参数createBy不能为空");
 			entity.setCreateBy(order.getCreateBy());
+			
+			entity.setService(order.getService());
+			entity.setPartner(order.getPartner());
+			entity.setInputCharset(order.getInputCharset());
+			entity.setPaymentType(order.getPaymentType());
+			
+			entity.setAntiPhishingKey(order.getAntiPhishingKey());
+			entity.setBody(order.getBody());
+			entity.setExterInvokeIp(order.getExterInvokeIp());
+			entity.setNotifyUrl(order.getNotifyUrl());
+			
+			entity.setReturnUrl(order.getReturnUrl());
+			entity.setSellerEmail(order.getSellerEmail());
+			
+			entity.setShowUrl(order.getShowUrl());
+			entity.setSubject(order.getSubject());
+			entity.setTotalFee(order.getTotalFee());
 		}
 		
-		entity.setAlipayNoticeAt(order.getAlipayNoticeAt());
-		entity.setAlipayReturnAt(order.getAlipayReturnAt());
-		entity.setAlipayTradeNo(order.getAlipayTradeNo());
-		entity.setAlipayTradeStatus(order.getAlipayTradeStatus());
+		entity.setNoticeAt(order.getNoticeAt());
+		entity.setReturnAt(order.getReturnAt());
+		entity.setTradeNo(order.getTradeNo());
+		entity.setTradeStatus(order.getTradeStatus());
 		entity.setRemark(order.getRemark());
 		
 		entity.setUpdateAt(now);
 		if (order.getUpdateBy() == null)
 			throw new AppException(ErrorCode.ILLEGAL_PARAM, "参数updateBy不能为空");
 		entity.setUpdateBy(order.getUpdateBy());
+		
+		order = orderDao.save(entity);
+		return order;
 	}
 	
 }

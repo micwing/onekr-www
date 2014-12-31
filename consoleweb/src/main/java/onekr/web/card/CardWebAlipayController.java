@@ -40,6 +40,12 @@ public class CardWebAlipayController extends ConsoleBaseController {
 	@Autowired
 	private UserBiz userBiz;
 	
+	/**
+	 * 支付宝异步通知URL
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/notify_url", method = RequestMethod.GET)
 	@ResponseBody
 	public String notifyUrl(HttpServletRequest request) throws Exception {
@@ -78,9 +84,9 @@ public class CardWebAlipayController extends ConsoleBaseController {
 			User user = userBiz.findById(order.getCreateBy());
 			
 			Date now = new Date();
-			order.setAlipayNoticeAt(now);
-			order.setAlipayTradeNo(trade_no);
-			order.setAlipayTradeStatus(trade_status);
+			order.setNoticeAt(now);
+			order.setTradeNo(trade_no);
+			order.setTradeStatus(trade_status);
 			
 			order.setUpdateAt(now);
 			order.setUpdateBy(user.getId());
@@ -132,6 +138,12 @@ public class CardWebAlipayController extends ConsoleBaseController {
 		return mav;
 	}
 	
+	/**
+	 * 支付宝同步通知URL
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/return_url", method = RequestMethod.GET)
 	public ModelAndView returnUrl(HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("portalweb:order-pay-success");
@@ -179,9 +191,9 @@ public class CardWebAlipayController extends ConsoleBaseController {
 				throw new AppException(ErrorCode.ENTITY_NOT_FOUND, "订单order"+out_trade_no+"没找到");
 			
 			Date now = new Date();
-			order.setAlipayNoticeAt(now);
-			order.setAlipayTradeNo(trade_no);
-			order.setAlipayTradeStatus(trade_status);
+			order.setNoticeAt(now);
+			order.setTradeNo(trade_no);
+			order.setTradeStatus(trade_status);
 			
 			order.setUpdateAt(now);
 			order.setUpdateBy(user.getId());

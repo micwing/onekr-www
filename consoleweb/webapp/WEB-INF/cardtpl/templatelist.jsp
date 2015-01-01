@@ -149,7 +149,7 @@ a{text-decoration:none;}
 </div>
 <div  id="footer"  class="cont_div">
     <p>
-     <a  href="http://www.onekr.com/"  title="返回首页"  class="top">返回首页</a>
+     <a  href="http://onekr.taobao.com"  title="淘宝店址"  class="top">淘宝店址http://onekr.taobao.com</a>  <a  href="<%=basePath %>"  title="返回首页"  class="top">网站首页</a>
     </p>
 </div>
 <script>

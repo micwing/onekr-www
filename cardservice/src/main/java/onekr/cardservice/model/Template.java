@@ -4,10 +4,10 @@ import onekr.framework.type.LabeledEnum;
 
 public enum Template implements LabeledEnum{
 	t10001("t10001.海洋之心", 1, 10, true),
-	t10002("t10002.幸福时光", 2, 10, false),
-	t10003("t10003.喜结连理", 3, 10, false),
-	t10004("t10004.粉红之恋", 4, 10, false),
-	t10005("t10005.默认主题", 5, 10, false),
+	t10002("t10002.幸福时光", 17, 10, false),
+	t10003("t10003.喜结连理", 18, 10, false),
+	t10004("t10004.粉红之恋", 19, 10, false),
+	t10005("t10005.默认主题", 20, 10, false),
 	t10006("t10006.异国情怀", 6, 10, true),
 	t10007("t10007.繁华盛开", 7, 10, true),
 	t10008("t10008.浪漫英伦", 8, 10, true),

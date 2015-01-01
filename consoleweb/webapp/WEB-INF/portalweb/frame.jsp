@@ -10,7 +10,7 @@
 
 <!-- 手机端跳转 -->
 <script src="http://siteapp.baidu.com/static/webappservice/uaredirect.js" type="text/javascript"></script>
-<script type="text/javascript">uaredirect("<%=basePath%>");</script>
+<script type="text/javascript">uaredirect("<%=basePath%>card/cover/${card.id}");</script>
 
 <style>
 .con_actual_effect{text-align: center;font-family: "微软雅黑";font-size: 16px;height: 30px;margin-left: 110px;}

@@ -59,22 +59,8 @@ $('#uploadButton').click(function() {
 	$('#uploadButton').attr('disabled', true);
 });
 
-
-function play_music(obj) {
-	$('.mc_play audio').each(function() {
-		$(this)[0].pause();
-	});
-	$('.mc_play').show();
-	$('.mc_pause').hide();
-	$(obj).find('audio').get(0).play();
-	$(obj).hide().next('.mc_pause').show();
-	
-}
-function pause_music(obj) {
-	$('.mc_play audio').each(function() {
-		$(this)[0].pause();
-	});
-	$(obj).hide().prev('.mc_play').show();
+function openPlay(url) {
+	window.open (url, "newwindow", "height=100, width=500, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
 }
 </script>
 
@@ -92,16 +78,7 @@ function pause_music(obj) {
 				<%=fs.getOriginalName()%></td>
 				<td><%=FileUtil.formetFileSize(fs.getSize())%></td>
 				<td>
-				<a class="mc_play" onclick="play_music(this)" title="播放" style="cursor:pointer;">
-					<audio loop>
-						<source src="<%=basePath%>attached<%=fs.getStorePath().replace("\\", "/")%>" type="audio/mpeg"></source>
-					</audio><span><i class="icon-play"></i></span>
-				</a>
-				<a class="mc_pause" onclick="pause_music(this)" style="display: none;cursor:pointer;" title="暂停">
-					<audio loop>
-						<source src="<%=basePath%>attached<%=fs.getStorePath().replace("\\", "/")%>" type="audio/mpeg"></source>
-					</audio><span><i class="icon-pause"></i></span>
-				</a>
+				<a href="javascript:;" onclick="openPlay('<%=basePath%>attached<%=fs.getStorePath().replace("\\", "/")%>')"><i class="icon-play"></i></a>
 				</td>
 				<td>
 				<%

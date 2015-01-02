@@ -15,7 +15,7 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 		<a class="btn" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
 		<a class="btn btn-info" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
 	</span>
-	<a class="btn btn-large" href="console/card/info/list">完&nbsp;&nbsp;成</a>
+	<a class="btn btn-large" href="console/card/info/list">返回列表</a>
 </span>
 </h3>
 <hr class="head-hr">

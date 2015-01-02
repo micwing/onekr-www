@@ -89,7 +89,13 @@ public class CardCommentBizImpl implements CardCommentBiz {
 	}
 
 	@Override
-	public void deleteComment(Long id) {
-		commentBiz.delete(id);
-	}
+	public void deleteComment(Long cardId, Long commentId) {
+		Comment comment = commentBiz.findById(commentId);
+		if (comment == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
+		if (!comment.getOwner().equals(cardId+"")) {
+			throw new AppException(ErrorCode.ILLEGAL_PARAM);
+		}
+		commentBiz.delete(commentId);
+	};
 }

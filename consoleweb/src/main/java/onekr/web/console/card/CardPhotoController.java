@@ -123,7 +123,7 @@ public class CardPhotoController extends ConsoleBaseController {
     		@RequestParam("cardId") Long cardId,
     		@RequestParam("fileStoreId") Long fileStoreId) { 
 		User user = (User) getCurrentUser();
-		cardFileBiz.deleteCardPhoto(fileStoreId, user.getId());
+		cardFileBiz.deleteCardPhoto(cardId, fileStoreId, user.getId());
 		return new Result("删除成功！");
     }
 	

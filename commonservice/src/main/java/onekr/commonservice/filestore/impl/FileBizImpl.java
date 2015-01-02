@@ -30,6 +30,8 @@ public class FileBizImpl implements FileBiz {
 	
 	@Override
 	public File getFile(String relativeDirFile) {
+		fileUploadDir = fileUploadDir.replace("\\", File.separator).replace("/", File.separator);
+		relativeDirFile = relativeDirFile.replace("\\", File.separator).replace("/", File.separator);
 		File file = new File(fileUploadDir+relativeDirFile);
 		return file;
 	}

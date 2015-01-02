@@ -189,7 +189,7 @@ public interface CardPhotoFileBiz {
 	 * @param fileStoreId
 	 * @param uid
 	 */
-	void deleteCardPhoto(@NotNull @Min(1) Long fileStoreId,
+	void deleteCardPhoto(@NotNull @Min(1) Long cardId,@NotNull @Min(1) Long fileStoreId,
 			@NotNull @Min(1) Long uid);
 
 }

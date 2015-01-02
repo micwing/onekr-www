@@ -14,7 +14,7 @@ if (music != null) { %>
 	z-index: 99999999;
 }
 
-#musicControl a {
+#musicControl span {
 	display: inline-block;
 	width: 52px;
 	height: 52px;
@@ -22,46 +22,41 @@ if (music != null) { %>
 	background: url('assets/images/mcbg.png') no-repeat;
 }
 
-#musicControl a.stop {
+#musicControl span.music-btn-stop {
 	background-position: left bottom;
 }
 </style>
-
-<span id="musicControl"> <a id="mc_play" class="on"
-	onclick="play_music();"> <audio autoplay="autoplay" id="audio_play"
-			loop>
-			<source src="attached${fn:replace(music.storePath, '\\', '/')}"
-				type="audio/mpeg"></source>
-		</audio>
-</a>
-</span>
+<div id="musicControl">
+	<span id="mc_play" class="music-btn-on" onclick="play_music();">
+	<audio autoplay="autoplay" id="audio_play" loop>
+	<source src="attached${fn:replace(music.storePath, '\\', '/')}" type="audio/mpeg"></source>
+	</audio>
+	</span>
+</div>
 <script type="text/javascript">
-	$(document).ready(function() {
-
-		$(document).one('touchstart', function(e) {
-			var music = document.getElementById("audio_play");
-			if (music.paused) {
-				music.play();
-			}
-		});
-
-	});
-	function play_music() {
-		if ($('#mc_play').hasClass('on')) {
-			$('#mc_play audio').get(0).pause();
-			$('#mc_play').attr('class', 'stop');
-		} else {
-			$('#mc_play audio').get(0).play();
-			$('#mc_play').attr('class', 'on');
-		}
-	}
-	function pause_music() {
+function play_music() {
+	if ($('#mc_play').hasClass('music-btn-on')) {
 		$('#mc_play audio').get(0).pause();
-		$('#mc_play').attr('class', 'stop');
-	}
-	function start_music() {
+		$('#mc_play').attr('class', 'music-btn-stop');
+	} else {
 		$('#mc_play audio').get(0).play();
-		$('#mc_play').attr('class', 'on');
+		$('#mc_play').attr('class', 'music-btn-on');
 	}
+}
+function pause_music() {
+	$('#mc_play audio').get(0).pause();
+	$('#mc_play').attr('class', 'music-btn-stop');
+}
+function start_music() {
+	$('#mc_play audio').get(0).play();
+	$('#mc_play').attr('class', 'music-btn-on');
+}
+$(document).ready(function() {
+
+	var music = document.getElementById("audio_play");
+	if (music.paused) {
+		music.play();
+	}
+});
 </script>
 <%}%>

@@ -19,11 +19,9 @@
 
 <!-- This script prevents links from opening in Mobile Safari. -->
 <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-
-<link rel="stylesheet" href="assets/css/normalize.css">
+<!--[if lt IE 9]><script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+<link href="http://cdn.bootcss.com/normalize/3.0.1/normalize.min.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/cardtpl/${card.templetId}/css/main.css">
-<script src="assets/js/respond.min.js"></script>
-<script src="assets/js/snowstorm.js"></script>
     
 </head>
 <body class="home">

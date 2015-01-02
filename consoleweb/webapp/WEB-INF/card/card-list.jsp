@@ -26,6 +26,11 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 		</form>
 	</div>
 </div> --%>
+<style>
+.card-operation a:HOVER {
+	background-color: #C6E2FF;
+}
+</style>
 <div class="row-fluid">
 	<div class="span12">
 			<c:if test="${!empty page.content}">
@@ -46,16 +51,16 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 							<td><span class="label">${card.cardType.label}</span>&nbsp;&nbsp;
 								模板：<span class="label">${card.templetId}</span>&nbsp;&nbsp;
 								状态：<span class="label ${card.status=='NORMAL'?'label-success':'label-important'}">${card.status.label}</span></td></tr>
-						<tr><td>典礼时间：</td><td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/></td></tr>
-						<tr><td>操作：</td><td>
+						<tr><td>邀约时间：</td><td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${card.partyTime}" type="both"/></td></tr>
+						<tr><td>操作：</td><td class="card-operation">
 						<a
 						href="console/card/info/modify/${card.id}">修改信息</a> <a
 						href="console/card/photo/cardphoto/${card.id}">管理照片</a> <a
 						href="console/card/map/cardmap/${card.id}">设置地图</a> <a
 						href="console/card/music/cardmusic/${card.id}">选择音乐</a> <a
 						href="console/card/2dcode/index/${card.id}">扫描二维码</a> <br> <a
-						href="javascript:alert('敬请期待');">管理现场照片</a> <a
-						href="javascript:alert('敬请期待');">管理请柬留言</a>
+						href="console/card/momentphoto/cardphoto/${card.id}">管理现场照片</a> <a
+						href="console/card/comment/list/${card.id}">管理请柬留言</a>
 						</td></tr>
 						<tr><td colspan="2">
 						电脑端预览请柬：<a href="portal/frame/${card.id}" target="_blank"><%=siteRootUrl%>/portal/frame/${card.id}</a><br>

@@ -406,8 +406,13 @@ public class CardPhotoFileBizImpl implements CardPhotoFileBiz {
 	}
 	
 	@Override
-	public void deleteCardPhoto(Long fileStoreId, Long uid) {
+	public void deleteCardPhoto(Long cardId, Long fileStoreId, Long uid) {
 		FileStore fs = fileStoreBiz.findById(fileStoreId);
+		if (fs == null)
+			throw new AppException(ErrorCode.ENTITY_NOT_FOUND);
+		if (!fs.getOwner().equals(cardId+"")) {
+			throw new AppException(ErrorCode.NO_PERMISSON);
+		}
 		CardPhotoDto dto = new CardPhotoDto(fs);
 		
 		if (dto.getThumbId() != null) {

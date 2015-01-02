@@ -19,5 +19,5 @@ public interface CardCommentBiz {
 
 	List<Comment> listAll(@NotNull Long cardId);
 
-	void deleteComment(Long id);
+	void deleteComment(@NotNull @Min(1) Long cardId, Long commentId);
 }

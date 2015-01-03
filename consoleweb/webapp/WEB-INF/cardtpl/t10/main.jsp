@@ -123,7 +123,14 @@ header{margin-top:-10px;}
 </div>
 <!-- MESSAGE END -->
 
+<jsp:include page="_music.jsp"></jsp:include>
 <script type="text/javascript">
+$(".nav ul li").click(function(){
+  var change = $(this).attr('id');
+  $(this).addClass("selected").siblings().removeClass("selected");
+  $("div[name=tags]").hide().siblings("."+change).show();		  
+});
+
 var Accordion1 = new Spry.Widget.Accordion("Accordion1");
 
 (function(window, $, PhotoSwipe){
@@ -135,14 +142,6 @@ var Accordion1 = new Spry.Widget.Accordion("Accordion1");
 		$("#gallery2 a").photoSwipe(options);
 	});
 }(window, window.jQuery, window.Code.PhotoSwipe));
-
-$(document).ready(function(){
-	$(".nav ul li").click(function(){
-	  var change = $(this).attr('id');
-	  $(this).addClass("selected").siblings().removeClass("selected");
-	  $("div[name=tags]").hide().siblings("."+change).show();		  
-	});
-});
 </script>
 	
 <div class="footer">
@@ -152,7 +151,7 @@ $(document).ready(function(){
 </div>
 
 </div>
-<jsp:include page="_music.jsp"></jsp:include>
+
 <jsp:include page="_footer.jsp"></jsp:include>
 <jsp:include page="../../common/analytics.jsp"></jsp:include>
 </body>

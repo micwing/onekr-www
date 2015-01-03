@@ -1,12 +1,12 @@
 function Q(a){
 	if(!a){
-		return null
+		return null;
 	}
 	if(a.constructor==String){
 		var b=document.querySelectorAll(a);
-		return b
+		return b;
 	}
-	return a
+	return a;
 }
 
 var openAppController=function(h){
@@ -14,21 +14,21 @@ var openAppController=function(h){
 	return{
 		callDone:false,showDone:false,init:function(){
 			if(typeof WeixinJSBridge!="undefined"&&WeixinJSBridge.invoke){
-				openAppController.hasNewsApp()
+				openAppController.hasNewsApp();
 			}
 			else{
-				document.addEventListener("WeixinJSBridgeReady",openAppController.hasNewsApp)
+				document.addEventListener("WeixinJSBridgeReady",openAppController.hasNewsApp);
 			}
-			openAppController.reCheck()
+			openAppController.reCheck();
 		}
 		,reCheck:function(){
 			setTimeout(function(){
-				openAppController.showDownload()
+				openAppController.showDownload();
 			}
-			,6000)
+			,6000);
 		}
 
-	}
+	};
 }(window);
 
 
@@ -40,12 +40,12 @@ var showMoreNews={
 			var f=b[a];
 			var d=f.innerHTML;
 			if(showMoreNews.isBeginHide){
-				Q.addClass(f,"showMoreHide")
+				Q.addClass(f,"showMoreHide");
 			}
 			if(/\$\$\$/i.test(d)){
 				f.innerHTML=d.replace(/<\!\-\-\$\$\$\-\->|\$\$\$/ig,"");
 				showMoreNews.createMoreHTML(f);
-				showMoreNews.isBeginHide=true
+				showMoreNews.isBeginHide=true;
 			}
 		}
 	}
@@ -58,13 +58,13 @@ var weChatBridgeReady={
 		var f=Q("img");
 		for(var b=0,d=f.length;b<d;b++){
 			var a=f[b];
-			Q.tap(a,weChatBridgeReady.clickHandler)
+			Q.tap(a,weChatBridgeReady.clickHandler);
 		}
 	}
 
 	,bindShareWithApp:function(){
 		var a=document.location.href;
-		if (contentModel.link) {
+		if (contentModel && contentModel.link) {
 			a=contentModel.link;
 		}
 		WeixinJSBridge.on("menu:share:appmessage",function(b){
@@ -72,13 +72,13 @@ var weChatBridgeReady={
 				appid:"",img_url:contentModel.img_url,img_width:"65",img_height:"65",link:a,desc:contentModel.src,title:contentModel.title
 			}
 			,function(d){
-				WeixinJSBridge.log(d.err_msg)
-			})
-		})
+				WeixinJSBridge.log(d.err_msg);
+			});
+		});
 	}
 	,bindShareWithTimeline:function(){
 		var a=document.location.href;
-		if (contentModel.link) {
+		if (contentModel && contentModel.link) {
 			a=contentModel.link;
 		}
 		WeixinJSBridge.on("menu:share:timeline",function(b){
@@ -86,18 +86,18 @@ var weChatBridgeReady={
 				img_url:contentModel.img_url,img_width:"65",img_height:"65",link:a,desc:"view.inews.qq.com",title:contentModel.title
 			}
 			,function(d){
-				WeixinJSBridge.log(d.err_msg)
-			})
-		})
+				WeixinJSBridge.log(d.err_msg);
+			});
+		});
 	}
 };
 
 //showMoreNews.init();  //dont know what this is .
 //openAppController.init();//dont know what this is .
 if(typeof WeixinJSBridge!="undefined"&&WeixinJSBridge.invoke){
-	weChatBridgeReady.init()
+	weChatBridgeReady.init();
 }
 else{
-	document.addEventListener("WeixinJSBridgeReady",weChatBridgeReady.init)
+	document.addEventListener("WeixinJSBridgeReady",weChatBridgeReady.init);
 }
 //downloadClick.init();/*  //dont know what this is .  */

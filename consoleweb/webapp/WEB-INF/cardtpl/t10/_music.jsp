@@ -51,12 +51,11 @@ function start_music() {
 	$('#mc_play audio').get(0).play();
 	$('#mc_play').attr('class', 'music-btn-on');
 }
-$(document).ready(function() {
-
-	var music = document.getElementById("audio_play");
-	if (music.paused) {
-		music.play();
-	}
+$(document).one('touchstart', function (e) {
+    var music = document.getElementById("audio_play");
+    if (music.paused) {
+    	music.play(); 
+    }
 });
 </script>
 <%}%>

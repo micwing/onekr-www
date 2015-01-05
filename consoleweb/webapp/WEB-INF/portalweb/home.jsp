@@ -8,7 +8,7 @@
 				<img class="img-rounded" alt="" src="assets/images/slider/01.jpg" style="width: 1170px">
 				<div class="carousel-caption">
 				<h4>简单几步，制作自己的微信婚礼请柬</h4>
-				<p>填写资料、上传照片、酒店位置、设置音乐，只需要简单几步就可以制作出微信电子请柬，再扫一扫请柬的二维码，把电子请柬发送给好友们！</p>
+				<p>填写资料、上传照片、设置酒店、设置音乐，只需要简单几步就可以制作出微信电子请柬，再扫一扫请柬的二维码，把电子请柬发送给好友们！</p>
 				</div>
 			</div>
 			<div class="item">

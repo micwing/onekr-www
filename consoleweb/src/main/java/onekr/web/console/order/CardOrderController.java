@@ -2,7 +2,7 @@ package onekr.web.console.order;
 
 import javax.servlet.http.HttpSession;
 
-import onekr.cardservice.utils.CardConstants;
+import onekr.cardservice.model.Template;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.biz.ConfigOwner;
 import onekr.commonservice.common.intf.ConfigBiz;
@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alipay.config.AlipayConfig;
@@ -43,7 +44,7 @@ public class CardOrderController extends ConsoleBaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/doSubmitAlipay", method = RequestMethod.POST)
-	public ModelAndView doSubmitAlipay(HttpSession session) {
+	public ModelAndView doSubmitAlipay(@RequestParam("template") Template template, HttpSession session) {
 		ModelAndView mav = new ModelAndView("portalweb:order-submit-alipay");
 		
 		Config alipayEmailConfig = configBiz.findConfig(Biz.SYSTEM, ConfigOwner.SYSTEM_ORDER_ALIPAY_SELLER_EMAIL.name());
@@ -64,7 +65,7 @@ public class CardOrderController extends ConsoleBaseController {
 		//商户网站订单系统中唯一订单号，必填		//订单名称
 		String subject = "婚礼请柬制作码";
 		//必填		//付款金额
-		String total_fee = CardConstants.CARD_PRICE+"";
+		String total_fee = template.getPrice()+"";
 		//必填		//订单描述		
 		String body = "购买用来在www.onekr.com创建婚礼电子请的制作码";
 		//商品展示地址

@@ -23,9 +23,8 @@ if (result != null) {
 <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="assets/css/site.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script src="assets/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Fav and touch icons -->
@@ -47,7 +46,7 @@ if (result != null) {
 				<a href="javascript:;" onclick="history.go(-1)">返回</a>
 			</div>
 			<footer>
-			  <p>&copy; www.onekr.com 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
+			  <p>&copy; <a href="http://www.onerk.com">www.onekr.com</a> 2013 - <%= onekr.framework.utils.DateUtil.getYear(new java.util.Date()) %></p>
 			</footer>
 		</div>
 	</div>

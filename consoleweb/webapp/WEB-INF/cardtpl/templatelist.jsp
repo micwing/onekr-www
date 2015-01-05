@@ -5,7 +5,8 @@
 <html  xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>一氪微信请柬</title>
+<title>一氪软件工作室</title>
+<meta  name ="keywords" content="一氪软件工作室,电子请柬,电子喜帖,手机请柬,微信请柬">
 <meta  name="description"  content="一氪软件工作室 电子请柬、电子喜帖、微信喜帖、婚纱电子相册制作平台">
 <meta  name="apple-mobile-web-app-capable"  content="yes">
 <meta  name="apple-mobile-web-app-status-bar-style"  content="black">
@@ -124,7 +125,7 @@ a{text-decoration:none;}
 	</div>
 </div>
 <div  id="header"  class="cont_div">
-    <h1>手机微喜帖</h1>
+    <h1>手机婚礼电子请柬模板</h1>
     <p>我的邀请如此与众不同</p>
 </div>
 <div  class="cont_div"  style="background: #C00000">
@@ -149,7 +150,7 @@ a{text-decoration:none;}
 </div>
 <div  id="footer"  class="cont_div">
     <p>
-     <a  href="http://onekr.taobao.com"  title="淘宝店址"  class="top">淘宝店址http://onekr.taobao.com</a>  <a  href="<%=basePath %>"  title="返回首页"  class="top">网站首页</a>
+     <a  href="http://onekr.taobao.com"  title="淘宝店址"  class="top">淘宝店址 onekr.taobao.com</a>  <a  href="<%=basePath %>"  title="一氪软件"  class="top">Power by www.onekr.com</a>
     </p>
 </div>
 <script>

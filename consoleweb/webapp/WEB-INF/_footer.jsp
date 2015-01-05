@@ -22,23 +22,6 @@
 	                <li><a href="console/identity/account/accountInfo">我的账户</a></li>
 	                <li><a href="http://onekr.taobao.com" target="_blank">访问淘宝店</a></li>
 	                <li>
-	                <a href="#weixindianModal" role="button" data-toggle="modal">访问微信店</a>
-					<div id="weixindianModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">访问 一氪软件工作室 微信店</h3>
-						</div>
-						<div class="modal-body" style="text-align: center">
-							<p>请使用手机微信扫描该二维码</p>
-							<p><img class="img-polaroid" alt="" src="assets/images/weixindian.png"/></p>
-							<!-- <p><a href="http://wap.koudaitong.com/v2/showcase/homepage?kdt_id=651908" target="_blank">PC查看</a></p> -->
-						</div>
-						<div class="modal-footer">
-							<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-						</div>
-					</div>
-	                </li>
-	                <li>
 						<a href="mailto:onekrstudio@163.com">发送邮件</a>
 					</li>
 					<li>
@@ -49,7 +32,7 @@
             </div>
             <div class="span6">
             	<h2>站长社交</h2>
-            	<iframe width="100%" height="250" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=250&fansRow=1&ptype=1&speed=0&skin=4&isTitle=1&noborder=1&isWeibo=0&isFans=1&uid=1374641762&verifier=022f8fe1&dpc=1"></iframe>
+            	<iframe width="100%" height="250" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=250&fansRow=1&ptype=1&speed=0&skin=4&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1374641762&verifier=022f8fe1&dpc=1"></iframe>
             </div>
         </div>
     </div>

@@ -6,7 +6,8 @@
 <meta charset="utf-8">
 <title>一氪软件工作室</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name ="keywords" content="一氪软件工作室,电子请柬,电子喜帖,手机请柬,微信请柬">
+<meta name="description"  content="一氪软件工作室 电子请柬、电子喜帖、微信喜帖、婚纱电子相册制作平台">
 <meta name="author" content="">
 <base href="<%=basePath%>" />
 

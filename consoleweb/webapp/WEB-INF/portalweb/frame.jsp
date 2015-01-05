@@ -24,7 +24,7 @@
 <div style="width:980px;margin:0px auto;">
 	<div class="con_actual_effect"><p>部分模板电脑上不兼容html5，用手机微信扫一扫查看实际效果</p></div>
 	<div class="con_left_an">
-		<p><a href="<%=basePath%>" target="_blank">返回网站首页</a></p>
+		<p><a href="<%=basePath%>" style="text-shadow: none;color: #787878">返回网站首页</a></p>
 		<p><a><img src="<%=basePath%>qr2dCode?m=<%=basePath%>/card/cover/${card.id}&w=300&h=300"  class ="con_erweima_xs" style="margin-top: -18;"></a></p>
 		<div  class="con_message" style="font-size: 12px;line-height: 5px;margin-top: -17px;">
 			<p>手机微信扫一扫</p>
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<div id="con_right_lj">
-		<iframe src="<%=basePath%>card/cover/${card.id}" name="cont_iframe"  frameborder="none" id="cont_iframe" width="100%" height="100%">
+		<iframe src="<%=basePath%>card/cover/${card.id}" name="cont_iframe"  frameborder="none" id="cont_iframe" width="101%" height="100%">
 		</iframe>
 	</div>
 </div>

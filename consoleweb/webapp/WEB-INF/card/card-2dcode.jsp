@@ -1,8 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="onekr.framework.spring.property.CustomizedPropertyPlaceholderConfigurer" %>
-<% 
-String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty("site.root.url");
-%>
 <%@include file="../common/includes.jsp"%>
 <script src="assets/js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 
@@ -10,7 +7,7 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 <span class="pull-right">
 	<span class="btn-group">
 		<a class="btn" href="console/card/info/modify/${card.id}">请柬信息</a>
-		<a class="btn" href="console/card/photo/cardphoto/${card.id}">管理照片</a>
+		<a class="btn" href="console/card/photo/cardphoto/${card.id}">管理相册</a>
 		<a class="btn" href="console/card/map/cardmap/${card.id}">设置地图</a>
 		<a class="btn" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
 		<a class="btn btn-info" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
@@ -31,7 +28,7 @@ String siteRootUrl = CustomizedPropertyPlaceholderConfigurer.getContextProperty(
 
 <div class="row-fluid">
 	<div class="span12">
-		<img alt="" src="<%=basePath%>qr2dCode?m=<%=siteRootUrl%>/card/cover/${card.id}&w=300&h=300" /><br>
+		<img alt="" src="<%=basePath%>qr2dCode?m=<%=basePath%>/card/cover/${card.id}&w=300&h=300" /><br>
 	</div>
 </div>
 

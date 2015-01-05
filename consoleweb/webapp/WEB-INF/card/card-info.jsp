@@ -19,7 +19,7 @@
 <span class="pull-right">
 	<span class="btn-group">
 		<a class="btn btn-info" href="console/card/info/modify/${card.id}">请柬信息</a>
-		<a class="btn" href="console/card/photo/cardphoto/${card.id}">管理照片</a>
+		<a class="btn" href="console/card/photo/cardphoto/${card.id}">管理相册</a>
 		<a class="btn" href="console/card/map/cardmap/${card.id}">设置地图</a>
 		<a class="btn" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
 		<a class="btn" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
@@ -33,7 +33,7 @@
 <div class="alert">
 	<strong>温馨提示</strong><br>
 	请柬制作需要5步：<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;“<strong style="color: red">请柬信息</strong>”、“<strong style="color: red">管理照片</strong>”、“<strong style="color: red">设置地图</strong>”、“<strong style="color: red">选择音乐</strong>”、“<strong style="color: red">扫描二维码</strong>”；<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;“<strong style="color: red">请柬信息</strong>”、“<strong style="color: red">管理相册</strong>”、“<strong style="color: red">设置地图</strong>”、“<strong style="color: red">选择音乐</strong>”、“<strong style="color: red">扫描二维码</strong>”；<br>
 	请在本页面输入请柬信息，然后点击<strong>保存</strong>按钮，再进入下一步操作；<br>
 	带有<span class="star">*</span>的选项表示不能为空；<br>
 	新郎、新娘的姓名<strong>不能修改</strong>，请在第一次输入时确保正确！
@@ -84,7 +84,7 @@
 				</div>
 			</fieldset>
 
-			<fieldset>
+			<fieldset name="ceremony-fieldset" id="ceremony-fieldset">
 				<legend>典礼</legend>
 				<div class="control-group">
 					<label class="control-label" for="partyTime"><span class="star">*</span> 典礼时间</label>
@@ -185,10 +185,12 @@
 				
 			</fieldset>
 
-			<fieldset>
+			<fieldset name="set-fieldset" id="set-fieldset">
 				<legend>设置</legend>
 				<div class="control-group">
-					<label class="control-label" for="templetId"><span class="star">*</span> 选择模板</label>
+					<label class="control-label" for="templetId">
+						<span class="star">*</span> 选择模板
+					</label>
 					<div class="controls">
 						<select name="templetId">
 							<%
@@ -248,10 +250,9 @@
 			//判断日期是否是有效日期，参数date可以格式化为xx-xx-xx或xxxx-xx-xx或用/分割
 			$.validator.addMethod("checkTrueDate", function(value, element) {  
 				var date = $('#year').val()+'-'+$('#month').val()+'-'+$('#day').val();
-				return (new Date(date).getDate()==date.substring(date.length-2));
+				return (new Date(date.replace(/-/g, "/")).getDate()==date.substring(date.length-2));
 			}, "日期设置有误");
 			$('#card-form').validate({
-				ignore: "",
 				rules : {
 					people1Name : {
 						required : true,

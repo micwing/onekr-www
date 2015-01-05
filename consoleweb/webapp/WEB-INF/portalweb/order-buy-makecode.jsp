@@ -1,4 +1,5 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
+<%@page import="onekr.cardservice.model.Template" %>
 <%@include file="../common/includes.jsp" %>
 <div class="row">
 	<div class="span9">
@@ -10,11 +11,26 @@
 				<div class="span4">
 					<h3>婚礼请柬制作码</h3>
 					<hr>
-					<div class="form-horizontal">
+					<form class="form-horizontal" action="console/order/doSubmitAlipay" method="post">
+					<div class="control-group">
+						<label class="control-label" for="">模板</label>
+						<div class="controls">
+							<select id="template-select" name="template">
+								<option value="0">请选择模板</option>
+								<%
+								for (Template t : Template.values()) {
+									%>
+									<option value="<%=t.getPrice()%>" templatename="<%=t.name()%>"><%=t.getLabel()%></option>
+									<%
+								}
+								%>
+							</select>
+						</div>
+					</div>
 					<div class="control-group">
 						<label class="control-label" for="">价格</label>
 						<div class="controls">
-							<label class="checkbox">10元</label>
+							<label class="checkbox"><span id="price">0</span>元</label>
 						</div>
 					</div>
 					<div class="control-group">
@@ -36,13 +52,11 @@
 							<a href="login" class="btn btn-large btn-primary">请先登录</a>
 							</shiro:guest>
 							<shiro:user>
-							<form action="console/order/doSubmitAlipay" method="post">
-							<button type="submit" class="btn btn-large btn-primary">立即购买<br>并前往支付宝付款</button>
-							</form>
+							<button type="submit" class="btn btn-large btn-primary" id="main-btn" disabled="disabled">立即购买<br>并付款</button>
 							</shiro:user>
 						</div>
 					</div>
-					</div>
+					</form>
 					<p>支付&nbsp;&nbsp;&nbsp;&nbsp;支付宝</p>
 					<p>提醒&nbsp;&nbsp;&nbsp;&nbsp;此商品为定制，不支持7天无理由退货</p>
 				</div>
@@ -110,3 +124,20 @@
 		<jsp:include page="_sidebar.jsp" ></jsp:include>
 	</div>
 </div>
+<script type="text/javascript">
+$('#template-select option').click(function() {
+	var pri = $(this).val();
+	$('#price').text(pri);
+	if (pri > 0) {
+		$('#main-btn').attr('disabled', false);
+	} else {
+		$('#main-btn').attr('disabled', true);
+	}
+});
+$(function() {
+	var nme = '${template}';
+	if (nme) {
+		$('#template-select option[templatename='+nme+']').attr('selected', true).trigger('click');
+	}
+});
+</script>

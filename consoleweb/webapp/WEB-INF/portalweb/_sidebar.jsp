@@ -9,6 +9,7 @@
 		<li>
 			<a href="http://onekr.taobao.com" target="_blank"><i class="icon-home"></i> 访问淘宝店</a>
 		</li>
+		<%--
 		<li>
 			<a href="#weixindianModal" role="button" data-toggle="modal"><i class="icon-home"></i> 访问微信店</a>
 			<div id="weixindianModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -26,6 +27,7 @@
 				</div>
 			</div>
 		</li>
+		--%>
 	</ul>
 </div>
 <!-- <div class="well">

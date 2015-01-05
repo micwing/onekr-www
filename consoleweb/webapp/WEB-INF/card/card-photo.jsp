@@ -1,11 +1,11 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@include file="../common/includes.jsp"%>
 <%@page import="onekr.cardservice.card.intf.CardPhotoFileBiz" %>
-<h3>管理照片
+<h3>管理相册
 <span class="pull-right">
     <span class="btn-group">
 		<a class="btn" href="console/card/info/modify/${card.id}">请柬信息</a>
-		<a class="btn btn-info" href="console/card/photo/cardphoto/${card.id}">管理照片</a>
+		<a class="btn btn-info" href="console/card/photo/cardphoto/${card.id}">管理相册</a>
 		<a class="btn" href="console/card/map/cardmap/${card.id}">设置地图</a>
 		<a class="btn" href="console/card/music/cardmusic/${card.id}">选择音乐</a>
 		<a class="btn" href="console/card/2dcode/index/${card.id}">扫描二维码</a>
@@ -52,10 +52,13 @@ $('#uploadButton').click(function() {
 		alert('请选择照片！');
 		return;
 	}
-	var fileCount = document.getElementById('file').files.length;
-	if (fileCount > 5) {
-		alert('一次至多选择5张照片上传！');
-		return;
+	var fileArray = $('#file')[0].files;
+	if (fileArray) {
+		var fileCount = fileArray.length;
+		if (fileCount > 5) {
+			alert('一次至多选择5张照片上传！');
+			return;
+		}
 	}
 	$('#file-form').submit();
 	$('#uploadButton').attr('disabled', true);

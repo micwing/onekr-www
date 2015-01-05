@@ -2,6 +2,7 @@ package onekr.web.portal;
 
 import onekr.cardservice.card.intf.CardBiz;
 import onekr.cardservice.model.Card;
+import onekr.cardservice.model.Template;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.common.intf.ConfigBiz;
 import onekr.framework.controller.BaseController;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -45,8 +47,11 @@ public class PortalWebHomeController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/buymakecode", method = RequestMethod.GET)
-	public ModelAndView buymakecode() {
+	public ModelAndView buymakecode(@RequestParam(value = "template", required = false) Template template) {
 		ModelAndView mav = new ModelAndView("portalweb:order-buy-makecode");
+		if (template != null) {
+			mav.addObject("template", template);
+		}
 		return mav;
 	}
 	

@@ -13,6 +13,8 @@ public class ConsoleBaseController extends BaseController {
 		if (SecurityUtils.getSubject() == null)
 			return null;
 		PrincipalCollection pc = SecurityUtils.getSubject().getPrincipals();
+		if (pc == null)
+			return null;
 		return (User) pc.getPrimaryPrincipal();
 	}
 }

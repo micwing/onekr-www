@@ -57,27 +57,38 @@ public class OrderBizImpl implements OrderBiz {
 			if (order.getCreateBy() == null)
 				throw new AppException(ErrorCode.ILLEGAL_PARAM, "参数createBy不能为空");
 			entity.setCreateBy(order.getCreateBy());
-			
-			entity.setService(order.getService());
-			entity.setPartner(order.getPartner());
-			entity.setInputCharset(order.getInputCharset());
-			entity.setPaymentType(order.getPaymentType());
-			
-			entity.setAntiPhishingKey(order.getAntiPhishingKey());
-			entity.setBody(order.getBody());
-			entity.setExterInvokeIp(order.getExterInvokeIp());
-			entity.setNotifyUrl(order.getNotifyUrl());
-			
-			entity.setReturnUrl(order.getReturnUrl());
-			entity.setSellerEmail(order.getSellerEmail());
-			
-			entity.setShowUrl(order.getShowUrl());
-			entity.setSubject(order.getSubject());
-			entity.setTotalFee(order.getTotalFee());
 		}
 		
+		entity.setService(order.getService());
+		entity.setPartner(order.getPartner());
+		entity.setInputCharset(order.getInputCharset());
+		entity.setPaymentType(order.getPaymentType());
+		
+		entity.setBody(order.getBody());
+		entity.setNotifyUrl(order.getNotifyUrl());
+		
+		entity.setReturnUrl(order.getReturnUrl());
+		entity.setSellerEmail(order.getSellerEmail());
+		
+		entity.setShowUrl(order.getShowUrl());
+		entity.setSubject(order.getSubject());
+		
+		entity.setPrice(order.getPrice());
+		entity.setQuantity(order.getQuantity());
+		
+		entity.setLogistics_fee(order.getLogistics_fee());
+		entity.setLogistics_payment(order.getLogistics_payment());
+		entity.setLogistics_type(order.getLogistics_type());
+		entity.setReceive_name(order.getReceive_name());
+		entity.setReceive_address(order.getReceive_address());
+		entity.setReceive_zip(order.getReceive_zip());
+		entity.setReceive_phone(order.getReceive_phone());
+		entity.setReceive_mobile(order.getReceive_mobile());
+		
 		entity.setNoticeAt(order.getNoticeAt());
+		entity.setNotifyUrl(order.getNotifyUrl());
 		entity.setReturnAt(order.getReturnAt());
+		entity.setReturnUrl(order.getReturnUrl());
 		entity.setTradeNo(order.getTradeNo());
 		entity.setTradeStatus(order.getTradeStatus());
 		entity.setRemark(order.getRemark());

@@ -11,7 +11,7 @@
 				<div class="span4">
 					<h3>婚礼请柬制作码</h3>
 					<hr>
-					<form class="form-horizontal" action="console/order/doSubmitAlipay" method="post">
+					<form class="form-horizontal" action="console/card/order/doSubmitAlipay" method="post">
 					<div class="control-group">
 						<label class="control-label" for="">模板</label>
 						<div class="controls">
@@ -20,7 +20,7 @@
 								<%
 								for (Template t : Template.values()) {
 									%>
-									<option value="<%=t.getPrice()%>" templatename="<%=t.name()%>"><%=t.getLabel()%></option>
+									<option price="<%=t.getPrice()%>" value="<%=t.name()%>"><%=t.getLabel()%></option>
 									<%
 								}
 								%>
@@ -126,7 +126,7 @@
 </div>
 <script type="text/javascript">
 $('#template-select option').click(function() {
-	var pri = $(this).val();
+	var pri = $(this).attr('price');
 	$('#price').text(pri);
 	if (pri > 0) {
 		$('#main-btn').attr('disabled', false);
@@ -137,7 +137,7 @@ $('#template-select option').click(function() {
 $(function() {
 	var nme = '${template}';
 	if (nme) {
-		$('#template-select option[templatename='+nme+']').attr('selected', true).trigger('click');
+		$('#template-select option[value='+nme+']').attr('selected', true).trigger('click');
 	}
 });
 </script>

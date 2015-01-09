@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="span12">
 		<div class="well">
-		正在提交...
+		正在发货...
 	<%
 		//建立请求
 		String sHtmlText = AlipaySubmit.buildRequest((Map) request.getAttribute("map"),"post","确认");

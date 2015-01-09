@@ -96,10 +96,34 @@ public class Order implements Serializable {
 	private String subject;
 	
 	/**
-	 * 向支付宝提交的参数：total_fee
+	 * 向支付宝提交的参数：price
 	 */
-	@Column(name = "total_fee")
-	private String totalFee;
+	@Column(name = "price")
+	private String price;
+	
+	/**
+	 * 向支付宝提交的参数：quantity
+	 */
+	@Column(name = "quantity")
+	private String quantity;
+	
+	/**
+	 * 向支付宝提交的参数：logistics_fee
+	 */
+	@Column(name = "logistics_fee")
+	private String logistics_fee;
+	
+	/**
+	 * 向支付宝提交的参数：logistics_type
+	 */
+	@Column(name = "logistics_type")
+	private String logistics_type;
+	
+	/**
+	 * 向支付宝提交的参数：logistics_payment
+	 */
+	@Column(name = "logistics_payment")
+	private String logistics_payment;
 	
 	/**
 	 * 向支付宝提交的参数：body
@@ -114,22 +138,40 @@ public class Order implements Serializable {
 	private String showUrl;
 	
 	/**
-	 * 向支付宝提交的参数：anti_phishing_key
+	 * 向支付宝提交的参数：receive_name
 	 */
-	@Column(name = "anti_phishing_key")
-	private String antiPhishingKey;
+	@Column(name = "receive_name")
+	private String receive_name;
 	
 	/**
-	 * 向支付宝提交的参数：exter_invoke_ip
+	 * 向支付宝提交的参数：receive_address
 	 */
-	@Column(name = "exter_invoke_ip")
-	private String exterInvokeIp;
+	@Column(name = "receive_address")
+	private String receive_address;
+	
+	/**
+	 * 向支付宝提交的参数：receive_zip
+	 */
+	@Column(name = "receive_zip")
+	private String receive_zip;
+	
+	/**
+	 * 向支付宝提交的参数：receive_phone
+	 */
+	@Column(name = "receive_phone")
+	private String receive_phone;
+	
+	/**
+	 * 向支付宝提交的参数：receive_mobile
+	 */
+	@Column(name = "receive_mobile")
+	private String receive_mobile;
 	
 	/**
 	 * 支付宝返回参数：trade_no
 	 */
 	@Column(name = "trade_no")
-	private String TradeNo;
+	private String tradeNo;
 	
 	/**
 	 * 支付宝返回参数：trade_status
@@ -261,12 +303,44 @@ public class Order implements Serializable {
 		this.subject = subject;
 	}
 
-	public String getTotalFee() {
-		return totalFee;
+	public String getPrice() {
+		return price;
 	}
 
-	public void setTotalFee(String totalFee) {
-		this.totalFee = totalFee;
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getLogistics_fee() {
+		return logistics_fee;
+	}
+
+	public void setLogistics_fee(String logistics_fee) {
+		this.logistics_fee = logistics_fee;
+	}
+
+	public String getLogistics_type() {
+		return logistics_type;
+	}
+
+	public void setLogistics_type(String logistics_type) {
+		this.logistics_type = logistics_type;
+	}
+
+	public String getLogistics_payment() {
+		return logistics_payment;
+	}
+
+	public void setLogistics_payment(String logistics_payment) {
+		this.logistics_payment = logistics_payment;
 	}
 
 	public String getBody() {
@@ -285,28 +359,52 @@ public class Order implements Serializable {
 		this.showUrl = showUrl;
 	}
 
-	public String getAntiPhishingKey() {
-		return antiPhishingKey;
+	public String getReceive_name() {
+		return receive_name;
 	}
 
-	public void setAntiPhishingKey(String antiPhishingKey) {
-		this.antiPhishingKey = antiPhishingKey;
+	public void setReceive_name(String receive_name) {
+		this.receive_name = receive_name;
 	}
 
-	public String getExterInvokeIp() {
-		return exterInvokeIp;
+	public String getReceive_address() {
+		return receive_address;
 	}
 
-	public void setExterInvokeIp(String exterInvokeIp) {
-		this.exterInvokeIp = exterInvokeIp;
+	public void setReceive_address(String receive_address) {
+		this.receive_address = receive_address;
+	}
+
+	public String getReceive_zip() {
+		return receive_zip;
+	}
+
+	public void setReceive_zip(String receive_zip) {
+		this.receive_zip = receive_zip;
+	}
+
+	public String getReceive_phone() {
+		return receive_phone;
+	}
+
+	public void setReceive_phone(String receive_phone) {
+		this.receive_phone = receive_phone;
+	}
+
+	public String getReceive_mobile() {
+		return receive_mobile;
+	}
+
+	public void setReceive_mobile(String receive_mobile) {
+		this.receive_mobile = receive_mobile;
 	}
 
 	public String getTradeNo() {
-		return TradeNo;
+		return tradeNo;
 	}
 
 	public void setTradeNo(String tradeNo) {
-		TradeNo = tradeNo;
+		this.tradeNo = tradeNo;
 	}
 
 	public String getTradeStatus() {

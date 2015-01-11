@@ -1,7 +1,6 @@
 package onekr.commonservice.order.impl;
 
 import java.util.Date;
-import java.util.List;
 
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.model.Order;
@@ -11,6 +10,8 @@ import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,13 +26,13 @@ public class OrderBizImpl implements OrderBiz {
 	}
 
 	@Override
-	public List<Order> findOrders(Biz biz) {
-		return orderDao.findByBizOrderByCreateAtDesc(biz.name());
+	public Page<Order> listOrder(Biz biz, Pageable pageable) {
+		return orderDao.findByBizOrderByCreateAtDesc(biz.name(),pageable);
 	}
 
 	@Override
-	public List<Order> findOrders(Biz biz, String owner) {
-		return orderDao.findByBizAndOwnerOrderByCreateAtDesc(biz.name(), owner);
+	public Page<Order> listOrder(Biz biz, String owner, Pageable pageable) {
+		return orderDao.findByBizAndOwnerOrderByCreateAtDesc(biz.name(), owner, pageable);
 	}
 
 	@Override

@@ -34,11 +34,11 @@ public enum Biz {
 	/**card音乐存储*/
 	CARD_MUSIC_FILE_STORE,
 	
-	/**婚礼现场照片存储*/
+	/**现场照片存储*/
 	MOMENT_PHOTO_FILE_STORE,
-	/**婚礼现场照片缩略图存储*/
+	/**现场照片缩略图存储*/
 	MOMENT_PHOTO_THUMB_FILE_STORE,
 	
-	/**婚礼制作码订单*/
-	WEDING_MAKECODE_ORDER;
+	/**制作码订单*/
+	MAKECODE_ORDER;
 }

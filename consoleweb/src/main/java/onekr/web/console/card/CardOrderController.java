@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import onekr.cardservice.model.CardType;
 import onekr.cardservice.model.Template;
 import onekr.commonservice.biz.Biz;
 import onekr.commonservice.biz.ConfigOwner;
@@ -14,11 +15,15 @@ import onekr.commonservice.model.Order;
 import onekr.commonservice.order.intf.OrderBiz;
 import onekr.framework.exception.AppException;
 import onekr.framework.exception.ErrorCode;
+import onekr.identityservice.model.Group;
 import onekr.identityservice.model.User;
 import onekr.web.base.ConsoleBaseController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,6 +45,23 @@ public class CardOrderController extends ConsoleBaseController {
 	
 	@Autowired
 	private ConfigBiz configBiz;
+	
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list(CardType cardType, @PageableDefaults(value = 20) Pageable pageable) {
+		
+		Page<Order> page = null;
+		User user = getCurrentUser();
+		if (user.getGroup().equals(Group.ADMINISTRATOR)) {
+			page = orderBiz.listOrder(Biz.MAKECODE_ORDER, user.getId()+"", pageable);
+		} else {
+			page = orderBiz.listOrder(Biz.MAKECODE_ORDER, pageable);
+		}
+		
+		ModelAndView mav = new ModelAndView("card:card-order-list");
+		mav.addObject("page", page);
+		return mav;
+	}
 	
 	/**
 	 * 提交支付宝
@@ -118,7 +140,7 @@ public class CardOrderController extends ConsoleBaseController {
 		
 		User user = getCurrentUser();
 		Order order = new Order();
-		order.setBiz(Biz.WEDING_MAKECODE_ORDER.name());
+		order.setBiz(Biz.MAKECODE_ORDER.name());
 		order.setOwner(user.getId()+"");
 		order.setCreateBy(user.getId());
 		order.setUpdateBy(user.getId());

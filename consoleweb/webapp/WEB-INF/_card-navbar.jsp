@@ -9,6 +9,10 @@
 		<li class="${fn:startsWith(requestServletPath, '/console/card/info/list/')?'active':''}">
 			<a href="console/card/info/list"><i class="icon-tasks"></i> 请柬列表</a>
 		</li>
+		<li class="nav-header">订单</li>
+		<li>
+			<a href="console/card/order/list"><i class="icon-tasks"></i> 在线订单</a>
+		</li>
 	</ul>
 </div>
 <shiro:hasRole name="ADMINISTRATOR">

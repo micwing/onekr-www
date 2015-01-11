@@ -1,16 +1,16 @@
 package onekr.commonservice.order.dao;
 
-import java.util.List;
-
 import onekr.commonservice.model.Order;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderDao extends JpaRepository<Order, Long> {
 
-	List<Order> findByBizOrderByCreateAtDesc(String biz);
+	Page<Order> findByBizOrderByCreateAtDesc(String biz, Pageable pageable);
 	
-	List<Order> findByBizAndOwnerOrderByCreateAtDesc(String biz, String owner);
+	Page<Order> findByBizAndOwnerOrderByCreateAtDesc(String biz, String owner, Pageable pageable);
 }

@@ -4,17 +4,15 @@
 	<ul class="nav">
 		<li><a href="portal">首页</a></li>
         
-        <%-- <li ${fn:startsWith(requestServletPath, '/article/') ? 'class=active' : ''}><a href="article">文章</a></li> --%>
+        <li class="${fn:startsWith(requestServletPath, '/portal/templatelist/') ? 'active' : ''}"><a href="portal/templatelist">模板列表</a></li>
         
-        <li ${fn:startsWith(requestServletPath, '/portal/templatelist/') ? 'class=active' : ''}><a href="portal/templatelist">模板列表</a></li>
+        <li class="${fn:startsWith(requestServletPath, '/portal/buymakecode/') ? 'active' : ''}"><a href="portal/buymakecode">购买制作码</a></li>
         
-        <li ${fn:startsWith(requestServletPath, '/portal/buymakecode/') ? 'class=active' : ''}><a href="portal/buymakecode">购买制作码</a></li>
-        
-        <%-- <li ${fn:startsWith(requestServletPath, '/portal/article/') ? 'class=active' : ''}><a href="portal/article">请柬教程</a></li> --%>
-          
 		<li class="${fn:startsWith(requestServletPath, '/console/card/')?'active':''}"><a href="console/card/info/list">我的请柬</a></li>
 		
 		<li class="${fn:startsWith(requestServletPath, '/console/identity/')?'active':''}"><a href="console/identity/account/accountInfo">我的账户</a></li>
+		
+		<li class="${fn:startsWith(requestServletPath, '/portal/article/') ? 'active' : ''}"><a href="portal/article">帮助中心</a></li>
 		
 		<shiro:hasRole name="ADMINISTRATOR">
 		<li class="${fn:startsWith(requestServletPath, '/console/system/')?'active':''}"><a href="console/system/config">系统设置</a></li>

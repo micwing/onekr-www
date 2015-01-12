@@ -13,6 +13,7 @@ import onekr.portalservice.model.Article;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class PortalArticleController extends ConsoleBaseController {
 	private SearchArticleBiz searchArticleBiz;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(Pageable pageable) {
+	public ModelAndView list(@PageableDefaults(value = 20) Pageable pageable) {
 		ModelAndView mav = new ModelAndView("portal:article-list");
 		mav.addObject("page", articleBiz.list(pageable));
 		return mav;

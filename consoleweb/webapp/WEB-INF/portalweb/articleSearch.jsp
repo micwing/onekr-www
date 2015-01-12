@@ -10,7 +10,7 @@
                     <div class="pagination" style="text-align: right;width: 380px;float: right !important;margin: 10px 0 0 0">
 	                <jsp:include page="../util/paging.jsp">
 						<jsp:param name="_paging_base_url" value="/article?"/>
-						<jsp:param name="_paging_size" value="10"/>
+						<jsp:param name="_paging_size" value="20"/>
 						<jsp:param name="_paging_range" value="3"/>
 					</jsp:include>
                     </div>
@@ -131,7 +131,7 @@
 		        	<div class="pagination" style="text-align: right;">
 	                <jsp:include page="../util/paging.jsp">
 						<jsp:param name="_paging_base_url" value="/article?"/>
-						<jsp:param name="_paging_size" value="10"/>
+						<jsp:param name="_paging_size" value="20"/>
 						<jsp:param name="_paging_range" value="3"/>
 					</jsp:include>
                     </div>

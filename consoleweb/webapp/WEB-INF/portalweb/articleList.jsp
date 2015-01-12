@@ -7,70 +7,32 @@
 		<div class="well">
 			<div class="row-fluid">
 				<div class="span12">
-					<c:forEach items="${page.content}" var="article" varStatus="st">
-		            <section class="blog">
-		                    <div class="row-fluid">
-		                        <div class="span4">
-		                            <div class="post-image" style="width: 100%">
-		                                <img src="${empty article.imageUrl ? '/assets/images/project1.jpg' : article.imageUrl}" alt="">
-		                            </div>
-		                        </div>
-		                        <div class="span8">
-		                            <div class="row-fluid">
-		                                <h3><a href="/portal/article/detail/${article.id}">${fn:replace(
-											fn:replace(
-								 				fn:replace(
-									 				fn:replace(
-										 				article.title,
-										 				'&',
-										 				'&amp;'
-													),
-									 				'<',
-									 				'&lt;'
-												),
-								 				'>',
-								 				'&gt;'
-											),
-											'"',
-											'&quot;'
-						                )}</a></h3>
-		                            </div>
-		                            <div class="row-fluid">
-		                                
-		                                <p class="span1" title="有${article.totalComment}个评论"><i class="icon-comment"></i> ${article.totalComment}</p>
-		                                <p class="span1" title="浏览${article.totalViewCount}次"><i class="icon-eye-open"></i> ${article.totalViewCount}</p>
-		
-		                            </div>
-		
-		                            <div class="row-fluid">
-		
-		                                <p>${fn:replace(
-											fn:replace(
-								 				fn:replace(
-									 				fn:replace(
-										 				article.summary,
-										 				'&',
-										 				'&amp;'
-													),
-									 				'<',
-									 				'&lt;'
-												),
-								 				'>',
-								 				'&gt;'
-											),
-											'"',
-											'&quot;'
-						                )}...</p>
-		                                <a href="/portal/article/detail/${article.id}" class="pull-right">详情<i class="icon-chevron-right"></i></a>
-		
-		                            </div>
-		                        </div>
-		
-		
-		                    </div>
-		            </section>   
-		            </c:forEach>
-		
+				<div class="accordion" id="accordion2">
+				<c:forEach items="${page.content}" var="article" varStatus="st">
+					<div class="accordion-group">
+						<div class="accordion-heading"><h3>
+						<a class="accordion-toggle" href="portal/article/detail/${article.id}">
+						${fn:replace(
+							fn:replace(
+				 				fn:replace(
+					 				fn:replace(
+						 				article.title,
+						 				'&',
+						 				'&amp;'
+									),
+					 				'<',
+					 				'&lt;'
+								),
+				 				'>',
+				 				'&gt;'
+							),
+							'"',
+							'&quot;'
+		                )}</a></h3>
+						</div>
+					</div>
+				</c:forEach>
+				</div>
 					<section>
 						<div class="pagination">
 			                <jsp:include page="../util/paging.jsp">

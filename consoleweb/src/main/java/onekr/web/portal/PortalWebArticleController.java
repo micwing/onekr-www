@@ -19,6 +19,7 @@ import onekr.portalservice.utils.GlobalConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +43,7 @@ public class PortalWebArticleController extends BaseController {
 	private CountBiz countBiz;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView index(Pageable pageable) {
+	public ModelAndView index(@PageableDefaults(value = 20) Pageable pageable) {
 		ModelAndView mav = new ModelAndView("portalweb:articleList");
 		Page<Article> page = articleBiz.list(pageable);
 		articleBiz.putTotalComment2Articles(page.getContent());

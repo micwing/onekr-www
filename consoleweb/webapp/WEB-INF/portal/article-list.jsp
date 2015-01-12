@@ -42,7 +42,7 @@
 	<div class="pagination">
 	<jsp:include page="../util/paging.jsp">
 		<jsp:param name="_paging_base_url" value="console/article/list?"/>
-		<jsp:param name="_paging_size" value="10"/>
+		<jsp:param name="_paging_size" value="20"/>
 		<jsp:param name="_paging_range" value="3"/>
 	</jsp:include>
 	</div>

@@ -5,7 +5,7 @@
 <html  xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>一氪软件工作室</title>
+<title>婚礼电子请柬模板</title>
 <meta  name ="keywords" content="一氪软件工作室,电子请柬,电子喜帖,手机请柬,微信请柬">
 <meta  name="description"  content="一氪软件工作室 电子请柬、电子喜帖、微信喜帖、婚纱电子相册制作平台">
 <meta  name="apple-mobile-web-app-capable"  content="yes">
@@ -73,6 +73,7 @@ a{text-decoration:none;}
 </style>
 </head>
 <body>
+<div style="display:none"><img src="<%=basePath%>assets/images/logo.png" /></div>
 <div  class=""  style="display: none; position: absolute;">
 	<div  class="aui_outer">
 		<table  class="aui_border">

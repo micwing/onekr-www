@@ -63,6 +63,7 @@ header{margin-top:-10px;}
 </style>
 </head>
 <body class="page">
+<div style="display:none"><img src="<%=basePath %>attached${fn:replace(coverPhoto.thumb.storePath, '\\', '/')}" /></div>
 <div class="container">
 	
 <div class="header">

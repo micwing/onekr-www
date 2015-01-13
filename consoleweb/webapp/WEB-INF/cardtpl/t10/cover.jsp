@@ -25,6 +25,7 @@
     
 </head>
 <body class="home">
+<div style="display:none"><img src="<%=basePath %>attached${fn:replace(coverPhoto.thumb.storePath, '\\', '/')}" /></div>
 <div class="container">
 	<div class="container-home">
 		<div class="header">

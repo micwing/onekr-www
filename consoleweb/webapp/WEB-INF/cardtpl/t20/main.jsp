@@ -3,59 +3,452 @@
 <!Doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>我们结婚啦！-李雷雷&韩梅梅</title>
-    <meta name="description" content="我们结婚啦！-李雷雷&韩梅梅" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta content="telephone=no" name="format-detection" />
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="touch-icon.png" rel="apple-touch-icon-precomposed" />
-    <link rel="apple-touch-startup-image" href="touch-icon.png" />
-    <link rel="apple-touch-icon" href="touch-icon.png"/>
-    <link rel="stylesheet" type="text/css" href="app/Tpl/fanwe/mob/t46/css/eic.css" />
-	<link rel="stylesheet" type="text/css" href="app/Tpl/fanwe/mob/t46/css/photo_mod.css" />
-	<link rel="stylesheet" charset="utf-8" href="app/Tpl/fanwe/mob/t46/css/discuz.css" />
-	<script type="text/javascript">
-        var phoneWidth =  parseInt(window.screen.width);
-		var isAndroid = RegExp("Android").test(navigator.userAgent);
-		if (isAndroid) {
-			var phoneScale = phoneWidth/480;
-			if (phoneWidth>720){
-				document.write('<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">');
-			}else{
-				document.write('<meta name="viewport" content="width=480,  minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
-			}
-		} else {
-			if (phoneWidth<420){
-				document.write('<meta name="viewport" content="width=420, user-scalable=no, target-densitydpi=device-dpi">');
-				document.write('<style>textarea,input,select{font-size:16px;line-height:20px}</style>');
-			}else{
-				document.write('<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">');
-			}
-		}
-    </script>
-	<script src="../libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="app/Tpl/fanwe/mob/t46/js/lhgdialog.js"></script>
-    <script type="text/javascript" src="app/Tpl/fanwe/mob/t46/js/aimoload.js"></script>
-	<style type="text/css">
-		.body,.bbox{min-height:0;overflow-x:hidden;overflow-y:auto;}
-		a {cursor:pointer;}
-		.msg span {cursor:pointer;}
-		.zps{min-height:300px;overflow:hidden;}
-		#music_btn{width:40px;height:40px;overflow:hidden;background:url('app/Tpl/fanwe/mob/t46/images/music_btn.png') no-repeat;cursor:pointer;margin:0 auto;}
-		#header table tr th div.parse_sta{background-position:right;}
-		#header table tr th a{text-decoration:none;}
-	</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我们结婚啦！-李雷雷&韩梅梅</title>
+<meta name="description" content="我们结婚啦！-李雷雷&韩梅梅" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta content="telephone=no" name="format-detection" />
+<base href="<%=basePath%>" />
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="touch-icon.png" rel="apple-touch-icon-precomposed" />
+<link rel="apple-touch-startup-image" href="touch-icon.png" />
+<link rel="apple-touch-icon" href="touch-icon.png"/>
+<link rel="stylesheet" type="text/css" href="assets/cardtpl/t20046/css/eic.css" />
+<link rel="stylesheet" type="text/css" href="assets/cardtpl/t20046/css/photo_mod.css" />
+<link rel="stylesheet" charset="utf-8" href="assets/cardtpl/t20046/css/discuz.css" />
+<script type="text/javascript">
+var phoneWidth =  parseInt(window.screen.width);
+var isAndroid = RegExp("Android").test(navigator.userAgent);
+if (isAndroid) {
+	var phoneScale = phoneWidth/480;
+	if (phoneWidth>720){
+		document.write('<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">');
+	}else{
+		document.write('<meta name="viewport" content="width=480,  minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+	}
+} else {
+	if (phoneWidth<420){
+		document.write('<meta name="viewport" content="width=420, user-scalable=no, target-densitydpi=device-dpi">');
+		document.write('<style>textarea,input,select{font-size:16px;line-height:20px}</style>');
+	}else{
+		document.write('<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">');
+	}
+}
+</script>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="assets/cardtpl/t20046/js/lhgdialog.js"></script>
+<script type="text/javascript" src="assets/cardtpl/t20046/js/aimoload.js"></script>
+<style type="text/css">
+.body {min-height:0;overflow-x:hidden;overflow-y:auto;}
+a {cursor:pointer;}
+.msg span {cursor:pointer;}
+</style>
 </head>
 <body id="color_a">
 <div id="myHtmlArea">
-<!--SPLIT-->	<div class="myHtmlAreaClass" id="ta_00"></div>
+
+
+<div id="ta_0index" class="myHtmlAreaClass">
+<!--SPLIT-->
+<div id="cover" class="cover index" style="background:url('/public/wedding/original/201412/19/10/549387737d7a5.jpg') no-repeat top;background-size:cover">
+	<div class="cover_img"><img src="http://www.360hunjia.com/app/Tpl/fanwe/mob/t46/images/index_img.png" alt="" /></div>
+</div>
+<style type="text/css">
+#leafContainer {z-index:2;width:100%;height:0;top:0;overflow:hidden} 
+#leafContainer > div {position: absolute;max-width:100px;max-height: 100px;-webkit-animation-iteration-count: infinite, infinite; -webkit-animation-direction: normal, normal;-webkit-animation-timing-function: linear, ease-in;} 
+#leafContainer > div > img {width: 100%; -webkit-animation-iteration-count: infinite;-webkit-animation-direction: alternate;-webkit-animation-timing-function: ease-in-out; -webkit-transform-origin: 50% -100%;} 
+@-webkit-keyframes fade{ 0% {opacity: 1;} 95% {opacity: 1;} 100% {opacity: 0;}} @-webkit-keyframes drop{ 0% {-webkit-transform: translate(0px, -50px);} 100% {-webkit-transform: translate(0px, 650px);}} @-webkit-keyframes clockwiseSpin{ 0% {-webkit-transform: rotate(-50deg);} 100% {-webkit-transform: rotate(50deg);}} @-webkit-keyframes counterclockwiseSpinAndFlip { 0% {-webkit-transform: scale(-1, 1) rotate(50deg);} 100% {-webkit-transform: scale(-1, 1) rotate(-50deg);} }
+</style>
+<div id="leafContainer"></div>
+<script type="text/javascript">
+var tximages = ['','','','meigui','realLeaf','snow','paopao'];
+var txiname = tximages[3];
+const NUMBER_OF_LEAVES = 20;function init(){ var container = document.getElementById('leafContainer'); for (var i = 0; i < NUMBER_OF_LEAVES; i++) {container.appendChild(createALeaf());} } function randomInteger(low, high){return low + Math.floor(Math.random() * (high - low));} function randomFloat(low, high){return low + Math.random() * (high - low);} function pixelValue(value){return value + 'px';} function durationValue(value){return value + 's';} function createALeaf(){ var leafDiv = document.createElement('div');var image = document.createElement('img');
+image.src = 'http://img.360hunjia.com/static/images/float/' + txiname + randomInteger(1, 5) + '.png';
+leafDiv.style.top = "-100px";leafDiv.style.left = pixelValue(randomInteger(0, 500));var spinAnimationName = (Math.random() < 0.5) ? 'clockwiseSpin' : 'counterclockwiseSpinAndFlip'; leafDiv.style.webkitAnimationName = 'fade, drop'; image.style.webkitAnimationName = spinAnimationName; var fadeAndDropDuration = durationValue(randomFloat(5, 11));var spinDuration = durationValue(randomFloat(4, 8)); leafDiv.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
+var leafDelay = durationValue(randomFloat(0, 5)); leafDiv.style.webkitAnimationDelay = leafDelay + ', ' + leafDelay;image.style.webkitAnimationDuration = spinDuration; leafDiv.appendChild(image); return leafDiv; } /*window.addEventListener('load', init, false);*/ $(document).ready(function(){init();});
+</script>
+<!--SPLIT-->
+</div>
+
+
+<div id="ta_0invite" class="myHtmlAreaClass">
+<!--SPLIT-->    <script type="text/javascript">
+        $(document).ready(function(){
+            var w = $('.cir').width();
+            $('.cir').height(w);
+        })
+    </script>
+    <style type="text/css">
+        .leftShow{margin-left:-100%;}
+       .active_item .leftShow{animation: leftS 3s forwards;-moz-animation: leftS 3s forwards;-webkit-animation: leftS 3s forwards;-o-animation: leftS 3s forwards;}
+        @keyframes leftS
+        {
+        0% {margin-left:-100%;}
+        100% {margin-left: 0;}
+        }
+
+        @-moz-keyframes leftS /* Firefox */
+        {
+        0% {margin-left:-100%;}
+        100% {margin-left: 0;}
+        }
+
+        @-webkit-keyframes leftS /* Safari 和 Chrome */
+        {
+        0% {margin-left:-100%;}
+        100% {margin-left: 0;}
+        }
+
+        @-o-keyframes leftS /* Opera */
+        {
+        0% {margin-left:-100%;}
+        100% {margin-left: 0;}
+        }
+    </style>
+    <div class="invite">
+            <table  cellspacing="0" cellpadding="0" border="0" width="100%" class="detail leftShow">
+            <tr>
+                <td width="47%" align="center" valign="middle">
+                    <span class="cir"><h1>李雷雷<br>韩梅梅</h1><p>-邀请您-</p>
+                        <cite><img src="http://www.360hunjia.com/app/Tpl/fanwe/mob/t46/images/queue.jpg" /></cite>
+                    </span>
+                </td>
+                <td width="53%">
+                    <table  cellspacing="0" cellpadding="0" border="0" class="dates">
+                        <tr>
+                            <td height="28"><span style="font-size:32px">2014</span></td>
+                            <td rowspan="2" height="90"><span style="font-size:80px">30</span></td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size:32px">12月</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span style="font-size:30px">星期二18点18分</span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <h2>敬请光临</h2>
+					<h3>席设：上海四季</h3>
+                    <h3>地址：上海静安区威海路500号</h3>
+                                    </td>
+            </tr>
+        </table>
+
+        <table  cellspacing="0" cellpadding="0" border="0" class="bot" width="100%">
+            <tr>
+                <td width="50%" align="center"><a onclick="new_page_goto(5)"><img src="http://www.360hunjia.com/app/Tpl/fanwe/mob/t46/images/bot_1.png"/></a></td>
+                <td width="50%" align="center"><a onclick="new_page_goto(4)" title=""><img src="http://www.360hunjia.com/app/Tpl/fanwe/mob/t46/images/bot_2.png"/></a></td>
+            </tr>
+        </table>
+    
+</div>
+<!--SPLIT-->
+</div>
+
+
+
+<div id="ta_0photo" class="myHtmlAreaClass">
+<!--SPLIT--><div id="photoarea" style="position:relative;height:100%;width:100%">
+<style type="text/css">
+	#Gallery{position:absolute;top:0;left:0;bottom:0;right:0;background-color:#f1f1f1;z-index:80}
+	#Gallery li{position:absolute;width:100%;height:100%;overflow:hidden;text-align:center;left:0;top:0;display: none;background:url('http://www.360hunjia.com/app/Tpl/fanwe/mob/t46/images/loading.gif') center no-repeat;background-color:#000;background-size:40px 40px;}
+	#Gallery li .li_img_area{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden}
+	#Gallery li img{max-height:100%;overflow:hidden;max-width:100%}
+	
+	#Gallery li:nth-child(1) {display: block;z-index: 3;}
+	#Gallery li:nth-child(2) {display: block;z-index: 2;}
+	#Gallery li:nth-child(3) {display: block;z-index: 1;}
+	#flash_gla_btn_area{position:absolute;z-index:99;width:100%;height:100%;overflow:hidden;filter:alpha(opacity=10);-moz-opacity:0.1;opacity:0.1;}
+	#Gallery li.show_animate .some_filter_2{animation:myfirst1 2s;-moz-animation:myfirst1 2s;-webkit-animation:myfirst1 2s;-o-animation:myfirst1 2s;left:0;}
+	@keyframes myfirst1{from {left:-100%;}to {left:0;}}
+	@-moz-keyframes myfirst1{from {left:-100%;}to {left:0;}}
+	@-webkit-keyframes myfirst1{from {left:-100%;}to {left:0;}}
+	@-o-keyframes myfirst1{from {left:-100%;}to {left:0;}}
+	#Gallery li.show_animate .some_filter_1{animation:myfirst2 2s;-moz-animation:myfirst2 2s;-webkit-animation:myfirst2 2s;-o-animation:myfirst2 2s;left:0;}
+	@keyframes myfirst2{from {left:100%;}to {left:0;}}
+	@-moz-keyframes myfirst2{from {left:100%;}to {left:0;}}
+	@-webkit-keyframes myfirst2{from {left:100%;}to {left:0;}}
+	@-o-keyframes myfirst2{from {left:100%;}to {left:0;}}
+</style>
+	<ul id="Gallery" >
+	        <li>
+			<div class="li_img_area" style="background:url('/public/wedding/original/201412/18/17/54929982d2785.jpg') no-repeat center center #000;background-size:100% auto">
+   	<span class="my-story" style="background-image: url('http://img.360hunjia.com/static/images/theme/commons/my_story.png');"></span>        </li>
+      
+            <li>
+			<div class="li_img_area" style="background:url('/public/wedding/original/201412/18/17/5492998992954.JPG') no-repeat center center #000;background-size:100% auto">
+   	      </li>
+      
+            <li>
+			<div class="li_img_area" style="background:url('/public/wedding/original/201412/18/17/549299879611a.JPG') no-repeat center center #000;background-size:100% auto">
+   	      </li>
+      
+            <li>
+			<div class="li_img_area" bgi="background:url('/public/wedding/original/201412/18/17/5492999b92035.JPG') no-repeat center center ;background-size:100% auto">
+   	      </li>
+      
+            <li>
+			<div class="li_img_area" bgi="background:url('/public/wedding/original/201412/18/17/549299748e364.jpg') no-repeat center center ;background-size:100% auto">
+   	      </li>
+      
+            <li>
+			<div class="li_img_area" bgi="background:url('/public/wedding/original/201412/18/17/5492998274c34.jpg') no-repeat center center ;background-size:100% auto">
+   	      </li>
+      
+            <li>
+			<div class="li_img_area" bgi="background:url('/public/wedding/original/201412/18/17/54929994631a5.jpg') no-repeat center center ;background-size:100% auto">
+   	      </li>
+      
+            <li>
+			<div class="li_img_area" bgi="background:url('/public/wedding/original/201412/18/17/5492997fadeaf.jpg') no-repeat center center ;background-size:100% auto">
+   	      </li>
+      
+            <li>
+			<div class="li_img_area" bgi="background:url('/public/wedding/original/201412/18/17/5492997e38941.jpg') no-repeat center center ;background-size:100% auto">
+   	      </li>
+      
+    		
+    </ul>
+	<div id="flash_gla_btn_area"></div>
+</div>
+<style type="text/css">
+	body#color_a div.ps-document-overlay,body#color_b div.ps-document-overlay,body#color_c div.ps-document-overlay{background:#fff;}
+</style>
+<!--SPLIT-->
+</div>
+
+
+
+<div id="ta_0map" class="myHtmlAreaClass">
+<!--SPLIT--><div class="body">
+	<div class="map">
+    <div class="tit"><img src="http://www.360hunjia.com/app/Tpl/fanwe/mob/t46/images/map.png"/></div>    
+	<div class="mtf mtf_dt">
+		<div class="infos">
+            <div id="maparea"><a href="#"><img id="bdmap" src=""/></a>
+            <p>上海四季</p>
+            </div>
+            <div class="hinfo">
+                <p class="guide"><a href="#" id="guide_bd_btn" title="点击一键导航" >点击一键导航</a></p>
+                					<p class="phone"><a href="tel:15202105852">新郎电话：15202105852</a></p>
+                                    <p class="phone"><a href="tel:15202105852">新娘电话：15202105852</a></p>
+                                    <p class="hour">18点18分</p>
+            </div>
+       </div>
+	</div>
+	</div>
+</div>
+<!--SPLIT-->
+</div>
+
+
+
+<div id="ta_0words" class="myHtmlAreaClass">
+<!--SPLIT-->
+<div class="body">
+	<div class="mtf mtf_zf">
+        <div class="tit">
+            <img src="http://www.360hunjia.com/app/Tpl/fanwe/mob/t46/images/word.png"/>
+        </div>
+        <div class="infos">
+            
+            <div class="zfinfo">
+                                   <div class="zftit">回执寄语</div>
+                    <table width="100%" class="szf" cellspacing="10">
+                        <tr>
+                            <td width="40" align="right">姓名:</td>
+                            <td><input class="name" type="text" id="name" name="name" /></td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">出席:</td>
+                            <td><select name="reply_num" id="reply_num">
+                            <option value="无">无法出席</option>
+                                <option value="1" selected="">1人出席</option>
+                                <option value="2">2人出席</option>
+                                <option value="3">3人出席</option>
+                                <option value="4">4人出席</option>
+                                <option value="5">5人出席</option>
+                                <option value="6">6人出席</option>
+                                <option value="7">7人出席</option>
+                                <option value="8">8人出席</option>
+                                <option value="9">9人出席</option>
+                                <option value="10">10人出席</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">寄语:</td>
+							<td><textarea id="content" name="content" onkeyup="javascript:strcounter(this);" onchange="javascript:strcounter(this);"></textarea>
+							<script type="text/javascript">
+							function strcounter(field){
+								//计算输入字数
+								if (field.value.length > 60){
+									$.dialog.alert('留言字数不能超过60字哦');
+									field.value = field.value.substring(0, 60);
+								}
+							}
+							</script>
+							</td>
+						</tr>
+						<tr>
+							<td> </td>
+							<td>（注：留言内容限60字以内）</td>
+						</tr>
+                        <tr>
+                        <td colspan="2" align="center">
+                            <input class="submit" type="button"  onclick="subMsgForm(58450)" value="回执寄语" />
+                        </td>
+                        </tr>
+						                    </table>
+
+			              <div id="msg_area">
+					<div class="msg">
+	<span class="contenboxspan">2015-01-16</span>    
+				   <h5>来自“<cite>1</cite>”的回执：</h5>
+				   <p>哈哈</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-16</span>    
+				   <h5>来自“<cite>1</cite>”的回执：</h5>
+				   <p>哈哈</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-16</span>    
+				   <h5>来自“<cite>happy</cite>”的回执：</h5>
+				   <p>111</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-16</span>    
+				   <h5>来自“<cite>李美美</cite>”的回执：</h5>
+				   <p>哈哈</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-13</span>    
+				   <h5>来自“<cite>严明</cite>”的回执：</h5>
+				   <p>222</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-13</span>    
+				   <h5>来自“<cite>严明</cite>”的回执：</h5>
+				   <p>222</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-13</span>    
+				   <h5>来自“<cite>严明</cite>”的回执：</h5>
+				   <p>222</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-12</span>    
+				   <h5>来自“<cite>咚咚咚</cite>”的回执：</h5>
+				   <p>还好</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-12</span>    
+				   <h5>来自“<cite>肖肖</cite>”的回执：</h5>
+				   <p>还不错</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+	<div class="msg">
+	<span class="contenboxspan">2015-01-11</span>    
+				   <h5>来自“<cite>肖肖肖</cite>”的回执：</h5>
+				   <p>能不能送模板啊</p>
+				     <p style="text-align:right; color:#ccc"> 1人出席</p>
+	</div>
+
+	
+<div class="pages_m"><a class="disabled">上一页</a><strong>1/14</strong><a href="javascript:get_wall(2)">下一页</a></div>
+			  </div>
+<script type="text/javascript">
+function subMsgForm(xtId){
+	 var guest =$('#name').val();
+	 var reply_num =$('#reply_num').val();
+	 var content=$('#content').val();
+	 if (guest==''||guest=='您的姓名'){		 
+		 if (guest==''||guest=='您的姓名'){
+			jQuery.dialog.tips('<p class="tips_12_g">请填写您的姓名</p>');
+			 jQuery('#name').focus();
+			 return ;
+		 }
+		 return ;
+	 }
+	 if (content.length<2){
+		 jQuery.dialog.tips('<p class="tips_12_g">留言内容不能少于2个字符</p>');
+		 jQuery('#content').focus();
+		 return ;
+	 }
+	 $.ajax({
+		'type':'post',
+		'url':'/create.php?ctl=create&act=ajaxmsgsave',
+		'data':{'name':guest,'content':content,'xitieid':xtId,'reply_num':reply_num,'comment_view_theme':'t46'},
+		'dataType':'json', //json Obj
+		success:function(json){			
+			if (json.status=='1'){
+				jQuery.dialog.tips('<p class="tips_12_g">'+json.msg+'</p>');
+				$("#msg_area").prepend(json.html).hide().fadeIn("slow");
+			}else{
+				
+				jQuery.dialog.tips('<p class="tips_12_g">'+json.msg+'</p>');
+			}
+		}
+	 });
+	}
+function get_wall(p){
+	if (p>0){
+		var offset=10;
+		$.ajax({
+			type:'post',
+			url:'/create.php?ctl=create&act=getcommentbypage',
+			data:{'xt_id':'58450','page':p,'offset':offset,'theme_id':'t44'},
+			dataType:'json',
+			success:function(d){			
+				$('#msg_area').html(d.html);
+			}
+		});
+	}
+}
+</script>           </div>
+       </div>
+   </div>
+</div>
+<!--SPLIT-->
+</div>
+
+
 </div>
 <style type="text/css">
 	html{width:100%;height:100%;}
 	body{width:100%;height:100%;position:relative;}
-	#myHtmlArea{width:100%;position:absolute;top:0;bottom:0;left:0;overflow:hidden;}
+	#myHtmlArea{width:100%;height: 100%;position:absolute;top:0;bottom:0;left:0;overflow:hidden;}
 	.myHtmlAreaClass{width:100%;height:100%;overflow-x:hidden;overflow-y:auto;margin:0 auto;position:relative;}
 	#ta_0index .back_tx_area{position:absolute;}
 .animateYl { display:block; position:absolute; z-index:9999; 
@@ -214,28 +607,18 @@ $(function(){
 		link=page_arr[i];
 		if ($('#myHtmlArea #ta_0'+i).length>0){
 		}else{
-			$.ajax({
-				'type':'get',
-				'url':link,
-				'async':false,
-				'dataType':'html',
-				'success':function(r){
-					var d=r.split('<!--SPLIT-->');
-					if (d.length>2&&d[1].length>1){
-						$('<div id="ta_0'+page_id_arr[i]+'" class="myHtmlAreaClass">'+d[1]+'</div>').appendTo('#myHtmlArea');
-						if (i==(page_arr.length-1)){
-							photo_add_ems();
-							$('#ta_00').fadeOut('slow',function(){
-								$(this).remove();
-								var rel_fm=$('#inner_container').attr('rel');
-								if (rel_fm!=1){
-									$('.myHtmlAreaClass:first').addClass('active_item');
-								}
-							});
-						}
+			
+			
+			if (i==(page_arr.length-1)){
+				photo_add_ems();
+				$('#ta_00').fadeOut('slow',function(){
+					$(this).remove();
+					var rel_fm=$('#inner_container').attr('rel');
+					if (rel_fm!=1){
+						$('.myHtmlAreaClass:first').addClass('active_item');
 					}
-				}
-			});
+				});
+			}
 		}
 	}
 });
@@ -617,13 +1000,6 @@ document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 </script>
 <div id="inner_container" style="width:0;height:0;overflow:hidden;display:none" rel="0"></div>
 <script type="text/javascript">
-function strcounter(field){
-	//计算输入字数
-	if (field.value.length > 60){
-		$.dialog.alert('留言字数不能超过60字哦');
-		field.value = field.value.substring(0, 60);
-	}
-}
 $(function(){
 	doOptions();
 	});
